@@ -1,116 +1,151 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en" data-bs-theme="dark">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heri Riski Anto - Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { inter: ['Inter', 'sans-serif'] },
-          colors: { primary: '#6366F1' }
-        }
-      }
-    };
-  </script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <style>
-    html.dark body { background-color: #0f172a; color: #e2e8f0; }
-    .sticky-nav { position: sticky; top: 0; z-index: 50; backdrop-filter: blur(10px); }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .section-title {
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+    .badge {
+      margin: 2px;
+    }
+    .navbar-brand {
+      font-weight: 600;
+    }
+    footer {
+      margin-top: 4rem;
+      padding-top: 1rem;
+      border-top: 1px solid #444;
+      text-align: center;
+      font-size: 0.875rem;
+    }
   </style>
 </head>
+<body class="container py-4">
 
-<body class="font-inter bg-white dark:bg-slate-900 text-gray-800 dark:text-gray-200">
-  <header class="sticky-nav bg-white/70 dark:bg-slate-900/70 shadow-md">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-      <h1 class="text-xl font-bold text-primary whitespace-nowrap">Heri Riski Anto</h1>
-      <div class="flex items-center gap-6">
-        <nav class="hidden md:flex gap-6 items-center">
-          <a href="#about" class="hover:text-primary">About</a>
-          <a href="#skills" class="hover:text-primary">Skills</a>
-          <a href="#contact" class="hover:text-primary">Contact</a>
-        </nav>
-        <button onclick="toggleTheme()" class="text-sm px-3 py-1 rounded-full border dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-800 transition">
-          Toggle Theme
-        </button>
-        <button id="menuToggle" class="md:hidden focus:outline-none">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+  <nav class="navbar bg-body-tertiary fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">@RiprLutuk</a>
+      <div class="d-flex align-items-center gap-2">
+        <button class="btn btn-outline-secondary" onclick="toggleTheme()">🌓</button>
+        <button class="btn btn-outline-light" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNav">
+          ☰
         </button>
       </div>
     </div>
-    <div id="mobileMenu" class="md:hidden hidden px-6 pb-4">
-      <a href="#about" class="block py-2 hover:text-primary">About</a>
-      <a href="#skills" class="block py-2 hover:text-primary">Skills</a>
-      <a href="#contact" class="block py-2 hover:text-primary">Contact</a>
+  </nav>
+
+  <div class="offcanvas offcanvas-start text-bg-dark" tabindex="-1" id="offcanvasNav">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">@RiprLutuk</h5>
+      <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
     </div>
+    <div class="offcanvas-body">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#collab">Collaborate</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <header class="mb-5 mt-5 pt-5" data-aos="fade-up">
+    <h1 class="display-5 fw-bold">👋 Hi there, I'm Heri Riski Anto (@RiprLutuk)</h1>
+    <p class="lead">Software Engineer & Database Administrator passionate about backend systems, data infrastructure, and system security.</p>
   </header>
 
-  <main class="max-w-4xl mx-auto px-6 py-12">
-    <section id="about" class="mb-16" data-aos="fade-up">
-      <h2 class="text-3xl font-bold mb-4 text-primary">👋 Hi there, I'm Heri Riski Anto (@RiprLutuk)</h2>
-      <p class="text-lg leading-relaxed">I'm a passionate Software Engineer & Database Administrator with solid experience in backend engineering, data center infrastructure, and system hardening. I enjoy solving complex problems, building scalable systems, and securing critical infrastructure.</p>
-    </section>
+  <section id="about" data-aos="fade-up">
+    <h2 class="section-title">🚀 About Me</h2>
+    <ul>
+      <li>💼 Working with: PostgreSQL, SQL Server, MySQL, Redis, Golang, .NET (C#), PHP, Python, Shell Script, Docker, Nginx, Linux</li>
+      <li>🧠 Expertise: DRC, BCP, encryption, data center management, firewall & VPN setup (fail2ban, strongSwan, Mikrotik)</li>
+      <li>📊 Building monitoring dashboards (HTML + PHP), ETL pipelines with billions of rows</li>
+      <li>🔒 ISO 27001 implementation & audit documentation</li>
+      <li>🧪 API tester using k6, JMeter, BlazeMeter</li>
+      <li>📱 Started with Android Studio (Java) and love Unix OS</li>
+    </ul>
+  </section>
 
-    <section id="skills" class="mb-16" data-aos="fade-up">
-      <h2 class="text-2xl font-bold mb-4 text-primary">🛠️ Skills & Tools</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-sm">
-        <div>
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300">Backend</h3>
-          <p>Golang, .NET (C#), PHP, Python, Shell</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300">Database</h3>
-          <p>PostgreSQL, SQL Server, MySQL, Redis</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300">Infrastructure</h3>
-          <p>Linux, Docker, Nginx, Fail2Ban, Fortigate</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300">Monitoring & Testing</h3>
-          <p>k6, JMeter, BlazeMeter</p>
-        </div>
-        <div>
-          <h3 class="font-semibold text-gray-700 dark:text-gray-300">Security & DevOps</h3>
-          <p>ISO 27001, VPN (strongSwan, Mikrotik), DRC/BCP</p>
-        </div>
+  <section id="skills" data-aos="fade-up">
+    <h2 class="section-title">🛠️ Skills & Tools</h2>
+    <div class="ms-3">
+      <h5>🔧 Backend & Languages</h5>
+      <div class="d-flex flex-wrap">
+        <span class="badge bg-primary">Golang</span>
+        <span class="badge bg-dark">.NET (C#)</span>
+        <span class="badge bg-secondary">PHP</span>
+        <span class="badge bg-info text-dark">Python</span>
+        <span class="badge bg-success">Shell Script</span>
       </div>
-    </section>
+      <h5 class="mt-3">🗃️ Databases & Cache</h5>
+      <div class="d-flex flex-wrap">
+        <span class="badge bg-info text-dark">PostgreSQL</span>
+        <span class="badge bg-danger">SQL Server</span>
+        <span class="badge bg-primary">MySQL</span>
+        <span class="badge bg-danger">Redis</span>
+      </div>
+      <h5 class="mt-3">☁️ Infrastructure & Tools</h5>
+      <div class="d-flex flex-wrap">
+        <span class="badge bg-info">Docker</span>
+        <span class="badge bg-warning text-dark">Linux</span>
+        <span class="badge bg-success">Nginx</span>
+        <span class="badge bg-primary">Fail2Ban</span>
+        <span class="badge bg-danger">Fortigate</span>
+      </div>
+      <h5 class="mt-3">🚦 Monitoring & Testing</h5>
+      <div class="d-flex flex-wrap">
+        <span class="badge bg-primary">k6</span>
+        <span class="badge bg-danger">JMeter</span>
+        <span class="badge bg-danger">BlazeMeter</span>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact" data-aos="fade-up">
-      <h2 class="text-2xl font-bold mb-4 text-primary">📬 Contact Me</h2>
-      <ul class="space-y-2">
-        <li>Email: <a href="mailto:heririskianto@yahoo.com" class="text-primary hover:underline">heririskianto@yahoo.com</a></li>
-        <li>GitHub: <a href="https://github.com/RiprLutuk" class="text-primary hover:underline">@RiprLutuk</a></li>
-        <li>LinkedIn: <a href="https://www.linkedin.com/in/riprlutuk" class="text-primary hover:underline">RiprLutuk</a></li>
-      </ul>
-    </section>
-  </main>
+  <section id="collab" data-aos="fade-up">
+    <h2 class="section-title">🤝 Let's Collaborate</h2>
+    <ul>
+      <li>⚙️ Database tuning & hardening</li>
+      <li>☁️ Cloud engineering & infrastructure</li>
+      <li>💻 C#/.NET & backend development</li>
+      <li>📈 Monitoring dashboard or API optimization</li>
+      <li>🛡️ System hardening & security implementation</li>
+      <li>📝 ISO 27001 / API / security documentation</li>
+    </ul>
+  </section>
 
-  <footer class="text-center text-sm py-6 border-t dark:border-slate-700">
-    © 2025 Heri Riski Anto. All rights reserved.
+  <section id="contact" data-aos="fade-up">
+    <h2 class="section-title">📬 Contact Me</h2>
+    <p>Email: <a href="mailto:heririskianto@yahoo.com">heririskianto@yahoo.com</a></p>
+    <p>GitHub: <a href="https://github.com/RiprLutuk" target="_blank">@RiprLutuk</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/riprlutuk" target="_blank">RiprLutuk</a></p>
+  </section>
+
+  <footer>
+    © 2025 Heri Riski Anto • Built with 💙 & Bootstrap
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    const toggleTheme = () => {
-      document.documentElement.classList.toggle('dark');
-    };
-
-    document.getElementById('menuToggle').addEventListener('click', () => {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('hidden');
-    });
+    AOS.init();
+    function toggleTheme() {
+      const html = document.documentElement;
+      const currentTheme = html.getAttribute("data-bs-theme");
+      html.setAttribute("data-bs-theme", currentTheme === "dark" ? "light" : "dark");
+    }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  <script>AOS.init();</script>
-</body>
 
+</body>
 </html>
