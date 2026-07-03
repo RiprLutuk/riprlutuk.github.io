@@ -5,36 +5,44 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heri Riski Anto</title>
   <meta name="description" content="Infrastructure, database, backend, and AI automation engineer." />
-  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #040404;
+      --bg: #050816;
+      --bg-soft: #0a1124;
       --panel: rgba(255,255,255,.03);
-      --text: #f5f7fa;
-      --muted: rgba(245,247,250,.62);
-      --soft: rgba(245,247,250,.38);
-      --line: rgba(255,255,255,.08);
-      --shadow: rgba(255,255,255,.05) 0 0 0 1px;
-      --accent: #6ea8ff;
-      --font: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      --text: #f5f7fb;
+      --muted: rgba(245,247,251,.68);
+      --soft: rgba(245,247,251,.46);
+      --line: rgba(255,255,255,.09);
+      --accent: #8ea2ff;
+      --accent-2: #d6dcff;
+      --shadow: rgba(50,50,93,.28) 0 30px 70px -40px, rgba(0,0,0,.18) 0 18px 36px -24px;
+      --font: 'Source Sans 3', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     }
 
     [data-theme="light"] {
-      --bg: #fbfbfc;
-      --panel: rgba(23,23,23,.02);
-      --text: #171717;
-      --muted: rgba(23,23,23,.62);
-      --soft: rgba(23,23,23,.42);
-      --line: rgba(23,23,23,.08);
-      --shadow: rgba(0,0,0,.08) 0 0 0 1px;
-      --accent: #0a72ef;
+      --bg: #f7f8fc;
+      --bg-soft: #ffffff;
+      --panel: rgba(255,255,255,.84);
+      --text: #061b31;
+      --muted: rgba(6,27,49,.68);
+      --soft: rgba(6,27,49,.5);
+      --line: rgba(6,27,49,.08);
+      --accent: #533afd;
+      --accent-2: #2e2b8c;
+      --shadow: rgba(50,50,93,.18) 0 30px 50px -36px, rgba(0,0,0,.08) 0 18px 30px -20px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      background: var(--bg);
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(142,162,255,.13), transparent 28%),
+        radial-gradient(circle at 85% 15%, rgba(214,220,255,.12), transparent 24%),
+        linear-gradient(180deg, var(--bg-soft) 0%, var(--bg) 72%);
       color: var(--text);
       font-family: var(--font);
       -webkit-font-smoothing: antialiased;
@@ -52,7 +60,7 @@
     }
 
     .wrap {
-      width: min(1120px, calc(100% - 40px));
+      width: min(1180px, calc(100% - 48px));
       margin: 0 auto;
     }
 
@@ -66,135 +74,162 @@
       gap: 24px;
     }
     .brand {
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 15px;
+      font-weight: 600;
       letter-spacing: -0.02em;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
     }
     .nav-links a,
     .theme-toggle {
       font-size: 13px;
       color: var(--muted);
-      padding: 10px 14px;
+      padding: 11px 16px;
       border-radius: 999px;
-      box-shadow: var(--shadow);
-      background: var(--panel);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+      backdrop-filter: blur(14px);
       transition: .18s ease;
     }
     .nav-links a:hover,
     .theme-toggle:hover {
       color: var(--text);
       transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
     }
 
     main {
-      padding: 48px 0 112px;
+      padding: 28px 0 110px;
+    }
+
+    .hero-shell {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
     }
 
     .hero {
+      min-height: calc(100vh - 180px);
       display: grid;
-      gap: 42px;
-      padding: 60px 0 84px;
+      grid-template-columns: minmax(0, 1.3fr) minmax(280px, .7fr);
+      gap: 44px;
+      align-items: stretch;
+      padding: clamp(28px, 4vw, 54px);
+      border-radius: 26px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
+        radial-gradient(circle at top right, rgba(142,162,255,.12), transparent 34%);
+    }
+
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 34px;
     }
     .eyebrow {
-      font-size: 13px;
+      display: inline-flex;
+      width: fit-content;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
       color: var(--soft);
+      font-size: 12px;
       text-transform: uppercase;
-      letter-spacing: .08em;
+      letter-spacing: .1em;
+      background: rgba(255,255,255,.03);
     }
     h1 {
       margin: 0;
-      max-width: 9ch;
-      font-size: clamp(54px, 9vw, 96px);
-      line-height: .94;
+      max-width: 8.8ch;
+      font-size: clamp(62px, 9vw, 112px);
+      line-height: .92;
       letter-spacing: -0.055em;
-      font-weight: 600;
+      font-weight: 300;
     }
     .summary {
       max-width: 34ch;
-      font-size: clamp(20px, 2.6vw, 28px);
+      font-size: clamp(22px, 2.8vw, 30px);
       line-height: 1.55;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.02em;
       color: var(--muted);
+      font-weight: 300;
     }
 
-    .meta-grid {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 8px;
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
-    .meta-card {
+    .btn-primary,
+    .btn-secondary {
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-size: 15px;
+      font-weight: 500;
+      transition: .18s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: #ffffff;
+      box-shadow: rgba(83,58,253,.28) 0 14px 36px -18px;
+    }
+    .btn-secondary {
+      border: 1px solid var(--line);
+      color: var(--text);
+      background: rgba(255,255,255,.03);
+    }
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 16px;
+      align-content: end;
+    }
+    .side-card {
       padding: 22px 22px 24px;
       border-radius: 22px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.03);
       display: grid;
       gap: 10px;
-      min-height: 132px;
     }
-    .meta-card span {
+    .side-card span {
       font-size: 12px;
       color: var(--soft);
       text-transform: uppercase;
       letter-spacing: .08em;
     }
-    .meta-card strong {
-      font-size: 18px;
-      line-height: 1.5;
-      font-weight: 500;
+    .side-card strong {
+      font-size: 19px;
+      line-height: 1.55;
+      font-weight: 400;
       letter-spacing: -0.02em;
     }
 
-    .statement {
-      padding: 34px 0 0;
+    .hero-note {
+      margin-top: 22px;
+      padding-top: 22px;
       border-top: 1px solid var(--line);
-      max-width: 840px;
-      font-size: clamp(24px, 3.2vw, 40px);
-      line-height: 1.34;
-      letter-spacing: -0.04em;
-      font-weight: 500;
-    }
-    .statement small {
-      display: block;
-      margin-top: 18px;
-      max-width: 54ch;
+      max-width: 68ch;
       font-size: 16px;
-      line-height: 1.85;
-      letter-spacing: -0.01em;
+      line-height: 1.9;
       color: var(--muted);
-      font-weight: 400;
-    }
-
-    .links {
-      margin-top: 48px;
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-    .link-chip {
-      padding: 14px 18px;
-      border-radius: 999px;
-      background: var(--panel);
-      box-shadow: var(--shadow);
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 500;
-      transition: .18s ease;
-    }
-    .link-chip:hover {
-      color: var(--accent);
-      transform: translateY(-1px);
+      font-weight: 300;
     }
 
     footer {
-      padding: 28px 0 52px;
-      border-top: 1px solid var(--line);
+      padding: 26px 0 46px;
       display: flex;
       justify-content: space-between;
       gap: 18px;
@@ -202,8 +237,13 @@
       font-size: 13px;
     }
 
-    @media (max-width: 960px) {
-      .meta-grid { grid-template-columns: 1fr 1fr; }
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+      .hero-copy { gap: 28px; }
+      .hero-side { grid-template-columns: 1fr 1fr; align-content: start; }
     }
 
     @media (max-width: 640px) {
@@ -222,15 +262,40 @@
         flex: 1 1 calc(50% - 10px);
         text-align: center;
       }
-      main { padding: 18px 0 72px; }
-      .hero { gap: 30px; padding: 24px 0 56px; }
-      .summary { max-width: 100%; line-height: 1.7; }
-      .meta-grid { grid-template-columns: 1fr; gap: 14px; }
-      .meta-card { min-height: auto; padding: 18px 18px 20px; }
-      .statement { font-size: 28px; line-height: 1.45; }
-      .statement small { font-size: 15px; line-height: 1.8; }
-      .links { margin-top: 34px; gap: 12px; }
-      .link-chip { width: 100%; text-align: center; }
+      main { padding: 12px 0 72px; }
+      .hero-shell { padding: 14px; border-radius: 24px; }
+      .hero {
+        padding: 22px;
+        gap: 26px;
+        border-radius: 18px;
+      }
+      h1 {
+        font-size: clamp(44px, 14vw, 72px);
+        max-width: 100%;
+      }
+      .summary {
+        max-width: 100%;
+        font-size: 20px;
+        line-height: 1.7;
+      }
+      .hero-actions {
+        flex-direction: column;
+      }
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+      .hero-side {
+        grid-template-columns: 1fr;
+      }
+      .side-card strong {
+        font-size: 17px;
+      }
+      .hero-note {
+        font-size: 15px;
+        line-height: 1.8;
+      }
       footer {
         flex-direction: column;
         padding-bottom: 34px;
@@ -244,7 +309,7 @@
       <div class="nav">
         <a class="brand" href="/">Heri Riski Anto</a>
         <div class="nav-links">
-          <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
+          <a href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
           <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
           <button class="theme-toggle" type="button" onclick="toggleTheme()">Theme</button>
         </div>
@@ -252,43 +317,49 @@
     </header>
 
     <main>
-      <section class="hero">
-        <div class="eyebrow">Infrastructure · Database · Backend · AI Automation</div>
-        <h1>Calm systems. Clear operations.</h1>
-        <div class="summary">
-          I build backend, database, and infrastructure systems with a bias toward stability, clean boundaries, and less operational noise.
-        </div>
+      <section class="hero-shell">
+        <div class="hero">
+          <div class="hero-copy">
+            <div>
+              <div class="eyebrow">Infrastructure · Database · Backend · AI Automation</div>
+            </div>
 
-        <div class="meta-grid">
-          <article class="meta-card">
-            <span>Experience</span>
-            <strong>8+ years in IT across backend, infra, and database work.</strong>
-          </article>
-          <article class="meta-card">
-            <span>Scale</span>
-            <strong>Hands-on exposure to 100+ servers and 400+ databases.</strong>
-          </article>
-          <article class="meta-card">
-            <span>Focus</span>
-            <strong>DBA operations, API platforms, analytics pipelines, automation.</strong>
-          </article>
-          <article class="meta-card">
-            <span>Base</span>
-            <strong>Tangerang, Indonesia. Practical builder, not slideware.</strong>
-          </article>
-        </div>
+            <div>
+              <h1>Calm systems.<br>Professional depth.</h1>
+              <div class="summary">
+                I design and operate backend, database, and infrastructure systems with a focus on reliability, security, and operational clarity.
+              </div>
+            </div>
 
-        <div class="statement">
-          I prefer systems that are easier to run, easier to recover, and easier to trust.
-          <small>
-            That usually means fewer moving parts, tighter service boundaries, cleaner operational visibility, and automation that solves real daily work instead of adding more surface area.
-          </small>
-        </div>
+            <div>
+              <div class="hero-actions">
+                <a class="btn-primary" href="mailto:rizqy.pra85@gmail.com">Contact</a>
+                <a class="btn-secondary" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">View Latest Work</a>
+              </div>
+              <div class="hero-note">
+                From day-to-day operations to analytics pipelines, I prefer systems with clear boundaries, fewer moving parts, and better recovery when production gets noisy.
+              </div>
+            </div>
+          </div>
 
-        <div class="links">
-          <a class="link-chip" href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="link-chip" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="link-chip" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">CH OLAP Pipeline</a>
+          <aside class="hero-side">
+            <article class="side-card">
+              <span>Experience</span>
+              <strong>8+ years across IT, backend engineering, database operations, and infrastructure work.</strong>
+            </article>
+            <article class="side-card">
+              <span>Scale</span>
+              <strong>Hands-on exposure to 100+ servers and 400+ databases in production-oriented environments.</strong>
+            </article>
+            <article class="side-card">
+              <span>Strength</span>
+              <strong>DBA operations, API platforms, data movement, service hardening, and practical automation.</strong>
+            </article>
+            <article class="side-card">
+              <span>Base</span>
+              <strong>Tangerang, Indonesia. Built for real delivery, not presentation-only architecture.</strong>
+            </article>
+          </aside>
         </div>
       </section>
     </main>
