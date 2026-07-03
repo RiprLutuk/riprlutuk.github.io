@@ -394,6 +394,93 @@
       margin-top: 30px;
     }
 
+    .cred-grid {
+      margin-top: 30px;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 16px;
+    }
+
+    .cred-card,
+    .stack-card {
+      padding: 22px;
+      border: 1px solid var(--line-soft);
+      border-radius: 22px;
+      background: rgba(255,255,255,.022);
+    }
+
+    .cred-card h3,
+    .stack-card h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      line-height: 1.28;
+      letter-spacing: -.03em;
+      font-weight: 590;
+    }
+
+    .cred-list,
+    .stack-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .cred-item {
+      display: grid;
+      grid-template-columns: 92px minmax(0, 1fr);
+      gap: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line-soft);
+    }
+
+    .cred-item:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .cred-item span,
+    .stack-chip-label {
+      color: var(--soft);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .02em;
+    }
+
+    .cred-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+      line-height: 1.45;
+      font-weight: 590;
+      letter-spacing: -.02em;
+    }
+
+    .cred-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .stack-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .stack-chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line-soft);
+      border-radius: 999px;
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
     .work-card {
       border-radius: 22px;
       padding: 22px;
@@ -453,6 +540,7 @@
       .section { grid-template-columns: 1fr; }
       .section-label { position: static; }
       .work-grid { grid-template-columns: 1fr; }
+      .cred-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 720px) {
@@ -580,6 +668,82 @@
               <span>2025–Now</span>
               <div><strong>Data platforms and practical automation</strong><p>Focused on API gateways, analytics pipelines, ClickHouse-oriented architecture, monitoring, and AI-assisted workflows that reduce repetitive operational work.</p></div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">CREDIBILITY</div>
+        <div class="section-card">
+          <h2>Real-world scope, not just design-friendly claims.</h2>
+          <p>
+            The work I enjoy most sits where operations, systems ownership, and delivery meet. That usually means production-minded infrastructure, database-heavy environments, and practical automation that helps teams move faster without losing control.
+          </p>
+          <div class="cred-grid">
+            <article class="cred-card">
+              <h3>Experience snapshot</h3>
+              <div class="cred-list">
+                <div class="cred-item">
+                  <span>SCALE</span>
+                  <div>
+                    <strong>Worked around environments with 100+ servers and 400+ databases.</strong>
+                    <p>Comfortable with operational complexity, repetitive maintenance work, access discipline, and the reality of keeping services stable over time.</p>
+                  </div>
+                </div>
+                <div class="cred-item">
+                  <span>FOCUS</span>
+                  <div>
+                    <strong>DBA, infrastructure, backend, reporting, and analytics-oriented delivery.</strong>
+                    <p>Most useful when systems need someone who can move between SQL, APIs, Linux services, network boundaries, and production troubleshooting.</p>
+                  </div>
+                </div>
+                <div class="cred-item">
+                  <span>STYLE</span>
+                  <div>
+                    <strong>Production-aware and security-first by default.</strong>
+                    <p>I prefer simpler architectures, clear ownership, localhost-only internal services where possible, and operational visibility before unnecessary complexity.</p>
+                  </div>
+                </div>
+              </div>
+            </article>
+            <article class="stack-card">
+              <h3>Core stack</h3>
+              <div class="stack-list">
+                <div>
+                  <div class="stack-chip-label">INFRASTRUCTURE & NETWORK</div>
+                  <div class="stack-chips">
+                    <span class="stack-chip">Linux</span>
+                    <span class="stack-chip">Systemd</span>
+                    <span class="stack-chip">VPS / Cloud</span>
+                    <span class="stack-chip">VPC</span>
+                    <span class="stack-chip">Caddy</span>
+                    <span class="stack-chip">Fortinet</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="stack-chip-label">DATA & DATABASE</div>
+                  <div class="stack-chips">
+                    <span class="stack-chip">PostgreSQL</span>
+                    <span class="stack-chip">MySQL</span>
+                    <span class="stack-chip">SQL Server</span>
+                    <span class="stack-chip">ClickHouse</span>
+                    <span class="stack-chip">SQL Tuning</span>
+                    <span class="stack-chip">Reporting</span>
+                  </div>
+                </div>
+                <div>
+                  <div class="stack-chip-label">BACKEND & AUTOMATION</div>
+                  <div class="stack-chips">
+                    <span class="stack-chip">Go</span>
+                    <span class="stack-chip">APIs</span>
+                    <span class="stack-chip">Gateway Design</span>
+                    <span class="stack-chip">Monitoring</span>
+                    <span class="stack-chip">Crawlers</span>
+                    <span class="stack-chip">AI Automation</span>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
