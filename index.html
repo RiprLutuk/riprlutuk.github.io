@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heri Riski Anto — Database Infrastructure & Data Platform Engineer</title>
-  <meta name="description" content="Heri Riski Anto — Database Infrastructure, Backend, and Data Platform Engineer. 100+ servers, 400+ databases, production-minded systems work." />
+  <title>Heri Riski Anto — Infrastructure, Database & AI Automation Engineer</title>
+  <meta name="description" content="Heri Riski Anto — infrastructure, database, backend, analytics, and AI automation engineer. 100+ servers, 400+ databases, production-minded systems work." />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap');
 
@@ -189,9 +189,9 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(300px, .75fr);
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: minmax(0, 1.05fr) minmax(340px, .95fr);
+      gap: 34px;
+      align-items: stretch;
     }
     .eyebrow {
       display: inline-flex;
@@ -216,7 +216,7 @@
     }
     h1 {
       margin: 0;
-      max-width: 18ch;
+      max-width: 15.5ch;
       font-size: clamp(40px, 5.6vw, 68px);
       line-height: 1.04;
       letter-spacing: -.04em;
@@ -224,7 +224,7 @@
       text-wrap: balance;
     }
     .lead {
-      max-width: 62ch;
+      max-width: 54ch;
       margin: 22px 0 0;
       color: var(--muted);
       font-size: 18px;
@@ -272,6 +272,7 @@
     .hero-rail {
       display: grid;
       gap: 14px;
+      align-content: stretch;
     }
     .note {
       padding: 22px;
@@ -279,6 +280,7 @@
       background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
       border: 1px solid var(--line);
       box-shadow: var(--shadow);
+      min-height: 100%;
     }
     [data-theme="light"] .note {
       background: linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.78));
@@ -330,15 +332,17 @@
     }
 
     .strip {
-      margin-top: 22px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      gap: 14px 24px;
-      flex-wrap: wrap;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 16px;
+      background: rgba(255,255,255,.018);
       color: var(--muted);
       font: 500 13px/1.8 var(--mono);
     }
+    .strip span { display: block; }
     .strip strong { color: var(--ink); font-weight: 700; }
 
     section {
@@ -652,12 +656,6 @@
               <a class="btn" href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
             </div>
             <div class="mini">Tangerang, Indonesia · Infrastructure / database / backend / analytics engineer · Practical automation over buzzwords</div>
-            <div class="strip">
-              <span><strong>100+</strong> servers operated</span>
-              <span><strong>400+</strong> databases handled</span>
-              <span><strong>8+ years</strong> IT / backend experience</span>
-              <span><strong>24/7</strong> production mindset</span>
-            </div>
           </div>
 
           <aside class="hero-rail" aria-label="Professional summary">
@@ -667,6 +665,12 @@
               <p>
                 Good infrastructure is not just fast. It must be diagnosable, recoverable, secure by default, and operable by humans under pressure.
               </p>
+            </div>
+            <div class="strip" aria-label="Operational highlights">
+              <span><strong>100+</strong> servers operated</span>
+              <span><strong>400+</strong> databases handled</span>
+              <span><strong>8+ years</strong> IT / backend experience</span>
+              <span><strong>24/7</strong> production mindset</span>
             </div>
             <div class="metrics">
               <div class="metric"><b>DBA</b><span>operations & recovery</span></div>
