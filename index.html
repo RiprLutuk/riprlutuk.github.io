@@ -5,22 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Heri Riski Anto</title>
   <meta name="description" content="Infrastructure, database, backend, and AI automation engineer." />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #000000;
-      --text: #f5f5f7;
-      --muted: rgba(255,255,255,.5);
-      --line: rgba(255,255,255,.1);
-      --accent: #2997ff;
-      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --bg: #040404;
+      --panel: rgba(255,255,255,.03);
+      --text: #f5f7fa;
+      --muted: rgba(245,247,250,.62);
+      --soft: rgba(245,247,250,.38);
+      --line: rgba(255,255,255,.08);
+      --shadow: rgba(255,255,255,.05) 0 0 0 1px;
+      --accent: #6ea8ff;
+      --font: 'Geist', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     }
 
     [data-theme="light"] {
-      --bg: #f5f5f7;
-      --text: #1d1d1f;
-      --muted: rgba(29,29,31,.55);
-      --line: rgba(29,29,31,.12);
-      --accent: #0066cc;
+      --bg: #fbfbfc;
+      --panel: rgba(23,23,23,.02);
+      --text: #171717;
+      --muted: rgba(23,23,23,.62);
+      --soft: rgba(23,23,23,.42);
+      --line: rgba(23,23,23,.08);
+      --shadow: rgba(0,0,0,.08) 0 0 0 1px;
+      --accent: #0a72ef;
     }
 
     * { box-sizing: border-box; }
@@ -29,140 +36,265 @@
       margin: 0;
       background: var(--bg);
       color: var(--text);
-      font-family: var(--sans);
+      font-family: var(--font);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
       letter-spacing: -0.01em;
     }
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+    button {
+      font: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      padding: 0;
+    }
 
     .wrap {
-      width: min(980px, calc(100% - 40px));
+      width: min(1120px, calc(100% - 40px));
       margin: 0 auto;
     }
 
-    /* Minimal Nav */
     header {
-      padding: 40px 0;
+      padding: 28px 0;
+    }
+    .nav {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
       font-size: 14px;
       font-weight: 500;
+      letter-spacing: -0.02em;
     }
-    .brand { letter-spacing: -0.02em; }
-    .nav-links { display: flex; gap: 24px; color: var(--muted); }
-    .nav-links a:hover, .theme-toggle:hover { color: var(--text); transition: color .2s ease; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .nav-links a,
+    .theme-toggle {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 10px 14px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+      background: var(--panel);
+      transition: .18s ease;
+    }
+    .nav-links a:hover,
+    .theme-toggle:hover {
+      color: var(--text);
+      transform: translateY(-1px);
+    }
 
-    /* Hero */
-    main { padding-bottom: 120px; }
-    
+    main {
+      padding: 48px 0 112px;
+    }
+
     .hero {
-      padding: 12vh 0 8vh;
-      max-width: 800px;
+      display: grid;
+      gap: 42px;
+      padding: 60px 0 84px;
+    }
+    .eyebrow {
+      font-size: 13px;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: .08em;
     }
     h1 {
-      margin: 0 0 24px;
-      font-size: clamp(48px, 8vw, 84px);
-      line-height: 1;
-      letter-spacing: -0.04em;
+      margin: 0;
+      max-width: 9ch;
+      font-size: clamp(54px, 9vw, 96px);
+      line-height: .94;
+      letter-spacing: -0.055em;
       font-weight: 600;
     }
     .summary {
-      font-size: clamp(20px, 3vw, 28px);
-      line-height: 1.4;
+      max-width: 34ch;
+      font-size: clamp(20px, 2.6vw, 28px);
+      line-height: 1.55;
+      letter-spacing: -0.025em;
       color: var(--muted);
-      letter-spacing: -0.02em;
-      max-width: 24ch;
     }
 
-    /* Info Grid */
-    .info {
-      margin-top: 80px;
+    .meta-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      border-top: 1px solid var(--line);
-      padding-top: 40px;
-      max-width: 600px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 8px;
     }
-    .info-block { display: flex; flex-direction: column; gap: 8px; }
-    .info-label { font-size: 13px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
-    .info-value { font-size: 16px; line-height: 1.5; font-weight: 500; }
+    .meta-card {
+      padding: 22px 22px 24px;
+      border-radius: 22px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 10px;
+      min-height: 132px;
+    }
+    .meta-card span {
+      font-size: 12px;
+      color: var(--soft);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+    .meta-card strong {
+      font-size: 18px;
+      line-height: 1.5;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+    }
 
-    /* Links */
-    .links {
-      margin-top: 60px;
-      display: flex;
-      gap: 24px;
-      font-size: 16px;
+    .statement {
+      padding: 34px 0 0;
+      border-top: 1px solid var(--line);
+      max-width: 840px;
+      font-size: clamp(24px, 3.2vw, 40px);
+      line-height: 1.34;
+      letter-spacing: -0.04em;
       font-weight: 500;
     }
-    .link-item { color: var(--text); display: inline-flex; align-items: center; gap: 4px; }
-    .link-item::after { content: "↗"; font-family: system-ui; opacity: 0.5; font-size: 14px; }
-    .link-item:hover { color: var(--accent); }
-    .link-item:hover::after { opacity: 1; }
+    .statement small {
+      display: block;
+      margin-top: 18px;
+      max-width: 54ch;
+      font-size: 16px;
+      line-height: 1.85;
+      letter-spacing: -0.01em;
+      color: var(--muted);
+      font-weight: 400;
+    }
 
-    /* Footer */
+    .links {
+      margin-top: 48px;
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .link-chip {
+      padding: 14px 18px;
+      border-radius: 999px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      transition: .18s ease;
+    }
+    .link-chip:hover {
+      color: var(--accent);
+      transform: translateY(-1px);
+    }
+
     footer {
-      padding: 40px 0;
+      padding: 28px 0 52px;
       border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
-      font-size: 13px;
+      gap: 18px;
       color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 960px) {
+      .meta-grid { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
-      .wrap { width: calc(100% - 32px); }
-      header { flex-direction: column; align-items: flex-start; gap: 16px; padding: 24px 0; }
-      .nav-links { width: 100%; justify-content: flex-start; gap: 20px; }
-      .hero { padding: 8vh 0 4vh; }
-      .summary { max-width: 100%; }
-      .info { grid-template-columns: 1fr; gap: 32px; margin-top: 60px; }
-      .links { flex-direction: column; gap: 16px; }
+      .wrap { width: calc(100% - 24px); }
+      header { padding: 18px 0; }
+      .nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        width: 100%;
+        gap: 10px;
+      }
+      .nav-links a,
+      .theme-toggle {
+        flex: 1 1 calc(50% - 10px);
+        text-align: center;
+      }
+      main { padding: 18px 0 72px; }
+      .hero { gap: 30px; padding: 24px 0 56px; }
+      .summary { max-width: 100%; line-height: 1.7; }
+      .meta-grid { grid-template-columns: 1fr; gap: 14px; }
+      .meta-card { min-height: auto; padding: 18px 18px 20px; }
+      .statement { font-size: 28px; line-height: 1.45; }
+      .statement small { font-size: 15px; line-height: 1.8; }
+      .links { margin-top: 34px; gap: 12px; }
+      .link-chip { width: 100%; text-align: center; }
+      footer {
+        flex-direction: column;
+        padding-bottom: 34px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <a class="brand" href="/">Heri Riski Anto</a>
-      <div class="nav-links">
-        <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
-        <button class="theme-toggle" type="button" onclick="toggleTheme()">Theme</button>
+      <div class="nav">
+        <a class="brand" href="/">Heri Riski Anto</a>
+        <div class="nav-links">
+          <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
+          <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+          <button class="theme-toggle" type="button" onclick="toggleTheme()">Theme</button>
+        </div>
       </div>
     </header>
 
     <main>
       <section class="hero">
-        <h1>Keep it running.<br>Keep it quiet.</h1>
+        <div class="eyebrow">Infrastructure · Database · Backend · AI Automation</div>
+        <h1>Calm systems. Clear operations.</h1>
         <div class="summary">
-          Infrastructure, database, and backend systems designed for operational clarity.
+          I build backend, database, and infrastructure systems with a bias toward stability, clean boundaries, and less operational noise.
         </div>
-      </section>
 
-      <section class="info">
-        <div class="info-block">
-          <span class="info-label">Focus</span>
-          <span class="info-value">Database Operations<br>Backend & API Platform<br>AI Workflow Automation</span>
+        <div class="meta-grid">
+          <article class="meta-card">
+            <span>Experience</span>
+            <strong>8+ years in IT across backend, infra, and database work.</strong>
+          </article>
+          <article class="meta-card">
+            <span>Scale</span>
+            <strong>Hands-on exposure to 100+ servers and 400+ databases.</strong>
+          </article>
+          <article class="meta-card">
+            <span>Focus</span>
+            <strong>DBA operations, API platforms, analytics pipelines, automation.</strong>
+          </article>
+          <article class="meta-card">
+            <span>Base</span>
+            <strong>Tangerang, Indonesia. Practical builder, not slideware.</strong>
+          </article>
         </div>
-        <div class="info-block">
-          <span class="info-label">Scale & Experience</span>
-          <span class="info-value">100+ Servers, 400+ DBs<br>8+ Years in IT<br>Based in Tangerang, ID</span>
-        </div>
-      </section>
 
-      <section class="links">
-        <a class="link-item" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
-        <a class="link-item" href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a class="link-item" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">Latest Work: CH OLAP Pipeline</a>
+        <div class="statement">
+          I prefer systems that are easier to run, easier to recover, and easier to trust.
+          <small>
+            That usually means fewer moving parts, tighter service boundaries, cleaner operational visibility, and automation that solves real daily work instead of adding more surface area.
+          </small>
+        </div>
+
+        <div class="links">
+          <a class="link-chip" href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="link-chip" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="link-chip" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">CH OLAP Pipeline</a>
+        </div>
       </section>
     </main>
 
     <footer>
-      <span>© 2026 Heri Riski Anto</span>
+      <span>Heri Riski Anto</span>
       <span>Tangerang, Indonesia</span>
     </footer>
   </div>
