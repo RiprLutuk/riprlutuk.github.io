@@ -1,15 +1,36 @@
 # riprlutuk.github.io
-Ripr Lutuk Landing Page
 
-## Apa itu Ripr Lutuk?
-Ripr Lutuk adalah Freelancer yang bergerak dibidang dunia IT khususnya Cloud Computing, Config dan Install Server, Pembuatan Web Company Profile, Rest API dan Sysadmin Serta DevOps.
+Professional engineering portfolio for **Heri Riski Anto**.
 
-## Running the tests
+Live site: <https://riprlutuk.github.io>
+
+## Positioning
+
+Database Infrastructure · Backend · Data Platform Engineer
+
+This portfolio highlights practical production experience across:
+
+- database infrastructure and DBA operations
+- backend/API platforms
+- OLTP to OLAP / CDC-oriented data pipelines
+- infrastructure automation and observability
+- security-first operational design
+
+## Design goals
+
+- professional dark-mode-first landing page
+- human-friendly copy for recruiters, engineers, and community visitors
+- strong DBA/infra identity
+- no build step required
+- pure static HTML/CSS/JS for GitHub Pages
+
+## Local preview
+
+```bash
+python3 -m http.server 8080
+# open http://localhost:8080
 ```
-jalankan langsung di server atau lokal server
-```
-## Built With
-- Bootstrap dan custom template
 
-## Authors
-- **Heri Riski Anto** - _Initial work_ - [RiprLutuk](https://gitlab.com/riprlutuk)
+## Maintainer
+
+Heri Riski Anto — <https://github.com/RiprLutuk>
