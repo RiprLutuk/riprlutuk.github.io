@@ -352,6 +352,13 @@
       font-size: 16px;
       max-width: 62ch;
     }
+    .section-head.stacked {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .section-head.stacked p {
+      max-width: 76ch;
+    }
 
     .editorial-grid {
       display: grid;
@@ -730,7 +737,7 @@
 
     <section id="projects" aria-labelledby="projects-title">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head stacked">
           <h2 id="projects-title">Selected direction</h2>
           <p>
             Public work I want to sharpen into something useful for the wider DBA / infra / backend community — not just demos, but tools with operational value.
@@ -762,7 +769,33 @@
                   <span class="chip">Operational Access</span>
                 </div>
               </div>
-              <a class="project-link" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">See GitHub</a>
+              <a class="project-link" href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noreferrer">See GitHub</a>
+            </article>
+
+            <article class="project">
+              <div>
+                <h3>PasPapan</h3>
+                <p>An HRIS and operations platform covering attendance, payroll, reimbursement, KPI workflows, scheduling, and broader internal process management for multi-branch teams.</p>
+                <div class="project-meta">
+                  <span class="chip">HRIS</span>
+                  <span class="chip">Operations</span>
+                  <span class="chip">Multi-branch</span>
+                </div>
+              </div>
+              <a class="project-link" href="https://github.com/RiprLutuk/PasPapan" target="_blank" rel="noreferrer">See GitHub</a>
+            </article>
+
+            <article class="project">
+              <div>
+                <h3>pg-mini-warden</h3>
+                <p>A lightweight PostgreSQL fleet monitoring and connection analysis tool designed for constrained environments where observability still needs to stay practical and low-overhead.</p>
+                <div class="project-meta">
+                  <span class="chip">PostgreSQL</span>
+                  <span class="chip">Monitoring</span>
+                  <span class="chip">Constrained VPS</span>
+                </div>
+              </div>
+              <a class="project-link" href="https://github.com/RiprLutuk/pg-mini-warden" target="_blank" rel="noreferrer">See GitHub</a>
             </article>
           </div>
         </div>
