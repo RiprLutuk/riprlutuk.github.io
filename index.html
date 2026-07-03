@@ -145,6 +145,19 @@
       flex-wrap: wrap;
       justify-content: flex-end;
     }
+    .menu-toggle {
+      display: none;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: rgba(255,255,255,.03);
+      font: 700 12px/1 var(--mono);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
     .nav-links a,
     .theme-toggle {
       min-height: 42px;
@@ -163,6 +176,7 @@
       gap: 8px;
     }
     .nav-links a:hover,
+    .menu-toggle:hover,
     .theme-toggle:hover {
       color: var(--ink);
       border-color: var(--line-strong);
@@ -517,14 +531,27 @@
 
     @media (max-width: 980px) {
       .nav-inner {
-        min-height: 78px;
+        min-height: 68px;
         padding: 12px 0;
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: wrap;
       }
+      .brand-copy span { display: none; }
+      .menu-toggle { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; }
       .nav-links {
         width: 100%;
-        justify-content: space-between;
+        display: none;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        padding: 10px;
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        background: color-mix(in srgb, var(--bg) 94%, transparent);
+        box-shadow: var(--shadow);
+      }
+      .nav-links.is-open {
+        display: grid;
       }
       .hero-grid,
       .section-head {
@@ -541,15 +568,19 @@
       .container { width: min(100%, calc(100% - 24px)); }
       .nav-links a,
       .theme-toggle {
-        flex: 1 1 calc(50% - 8px);
+        width: 100%;
+        min-height: 46px;
+        padding: 0 12px;
       }
+      .theme-toggle { grid-column: 1 / -1; }
+      .hero { padding: 34px 0 24px; }
       .eyebrow {
         width: 100%;
-        justify-content: center;
-        text-align: center;
+        justify-content: flex-start;
+        text-align: left;
         border-radius: 18px;
       }
-      h1 { max-width: 100%; font-size: clamp(38px, 14vw, 62px); }
+      h1 { max-width: 100%; font-size: clamp(34px, 10.5vw, 48px); line-height: 1.05; }
       .lead { font-size: 17px; }
       .hero-actions { flex-direction: column; align-items: stretch; }
       .btn { width: 100%; }
@@ -565,9 +596,10 @@
 
     @media (max-width: 520px) {
       .metrics { grid-template-columns: 1fr; }
-      .nav-links a,
-      .theme-toggle { flex: 1 1 100%; }
-      .brand { width: 100%; }
+      .nav-links { grid-template-columns: 1fr; }
+      .brand { max-width: calc(100% - 92px); }
+      .brand-copy strong { font-size: 13px; }
+      .mark { width: 36px; height: 36px; border-radius: 12px; }
       .strip { font-size: 12px; }
     }
 
@@ -589,7 +621,8 @@
           <span>Database Infrastructure · Data Platform</span>
         </span>
       </a>
-      <div class="nav-links">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation menu" aria-controls="primaryNavLinks" aria-expanded="false">Menu</button>
+      <div class="nav-links" id="primaryNavLinks">
         <a href="#expertise">Expertise</a>
         <a href="#approach">Approach</a>
         <a href="#projects">Projects</a>
@@ -831,6 +864,8 @@
       const root = document.documentElement;
       const toggle = document.getElementById('themeToggle');
       const icon = document.getElementById('themeIcon');
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('primaryNavLinks');
       const saved = localStorage.getItem('theme');
 
       const setTheme = (theme) => {
@@ -844,6 +879,25 @@
       setTheme(saved || 'dark');
       toggle.addEventListener('click', () => {
         setTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      });
+
+      const setMenu = (open) => {
+        navLinks.classList.toggle('is-open', open);
+        menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        menuToggle.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+        menuToggle.textContent = open ? 'Close' : 'Menu';
+      };
+
+      menuToggle.addEventListener('click', () => {
+        setMenu(menuToggle.getAttribute('aria-expanded') !== 'true');
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => setMenu(false));
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.matchMedia('(min-width: 981px)').matches) setMenu(false);
       });
     })();
   </script>
