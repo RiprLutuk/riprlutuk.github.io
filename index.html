@@ -41,6 +41,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    :target { scroll-margin-top: 96px; }
     body {
       margin: 0;
       background:
@@ -53,8 +54,27 @@
     }
     [data-theme="light"] body {
       background:
-        radial-gradient(circle at top left, rgba(15,23,32,.04), transparent 26%),
-        linear-gradient(180deg, #f7f9fb, #eef2f6 100%);
+        radial-gradient(circle at top left, rgba(120,140,160,.16), transparent 34%),
+        linear-gradient(180deg, #f7f9fb 0%, #eef2f6 100%);
+    }
+    .skip-link {
+      position: fixed;
+      top: 14px;
+      left: 14px;
+      z-index: 1000;
+      padding: 10px 14px;
+      color: #071017;
+      background: #fff;
+      border: 2px solid var(--accent-strong);
+      border-radius: 999px;
+      transform: translateY(-140%);
+      transition: transform .18s ease;
+    }
+    .skip-link:focus { transform: translateY(0); }
+    :focus-visible {
+      outline: 3px solid var(--accent-strong);
+      outline-offset: 4px;
+      border-radius: 12px;
     }
 
     a { color: inherit; text-decoration: none; }
@@ -155,7 +175,7 @@
     }
     .hero-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(320px, .8fr);
+      grid-template-columns: minmax(0, 1.45fr) minmax(300px, .75fr);
       gap: 28px;
       align-items: start;
     }
@@ -182,10 +202,10 @@
     }
     h1 {
       margin: 0;
-      max-width: 11ch;
-      font-size: clamp(44px, 7.2vw, 84px);
-      line-height: .98;
-      letter-spacing: -.05em;
+      max-width: 18ch;
+      font-size: clamp(40px, 5.6vw, 68px);
+      line-height: 1.04;
+      letter-spacing: -.04em;
       font-weight: 700;
       text-wrap: balance;
     }
@@ -550,8 +570,10 @@
     }
   </style>
 </head>
-<body>
-  <nav class="nav">
+<body id="top">
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header" role="banner">
+    <nav class="nav" aria-label="Primary navigation">
     <div class="container nav-inner">
       <a class="brand" href="#top" aria-label="Heri Riski Anto home">
         <span class="mark">HR</span>
@@ -565,21 +587,22 @@
         <a href="#approach">Approach</a>
         <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
-        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
-          <span id="themeIcon">◐</span>
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle color theme" aria-pressed="true">
+          <span id="themeIcon" aria-hidden="true">◐</span>
           <span>Theme</span>
         </button>
       </div>
     </div>
-  </nav>
+    </nav>
+  </header>
 
-  <main id="top">
-    <section class="hero">
+  <main id="main-content" tabindex="-1">
+    <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero-grid">
           <div>
             <div class="eyebrow"><span class="pulse"></span> Database Infrastructure · Backend · Data Platform</div>
-            <h1>Quiet systems. Clear thinking. Real operations.</h1>
+            <h1 id="hero-title">Quiet systems. Clear thinking. Real operations.</h1>
             <p class="lead">
               I work on backend platforms, database estates, and data movement systems built for real operational pressure — where <strong>reliability</strong>, <strong>access control</strong>, <strong>recovery</strong>, and <strong>maintainability</strong> matter more than hype.
             </p>
@@ -616,10 +639,10 @@
       </div>
     </section>
 
-    <section id="expertise">
+    <section id="expertise" aria-labelledby="expertise-title">
       <div class="container">
         <div class="section-head">
-          <h2>What I bring</h2>
+          <h2 id="expertise-title">What I bring</h2>
           <p>
             Not just code delivery. I care about uptime, rollback paths, blast radius, auditability, and whether the system remains sane after the original builder is no longer in the room.
           </p>
@@ -666,10 +689,10 @@
       </div>
     </section>
 
-    <section id="approach">
+    <section id="approach" aria-labelledby="approach-title">
       <div class="container">
         <div class="section-head">
-          <h2>How I think about systems</h2>
+          <h2 id="approach-title">How I think about systems</h2>
           <p>
             My default posture is simple: reduce unnecessary complexity, isolate risk, keep operational surfaces small, and document the parts that matter when things go wrong.
           </p>
@@ -705,10 +728,10 @@
       </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" aria-labelledby="projects-title">
       <div class="container">
         <div class="section-head">
-          <h2>Selected direction</h2>
+          <h2 id="projects-title">Selected direction</h2>
           <p>
             Public work I want to sharpen into something useful for the wider DBA / infra / backend community — not just demos, but tools with operational value.
           </p>
@@ -746,10 +769,10 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" aria-labelledby="contact-title">
       <div class="container">
         <div class="contact">
-          <h2>Open to serious engineering conversations.</h2>
+          <h2 id="contact-title">Open to serious engineering conversations.</h2>
           <p>
             If you need someone who can talk about backend delivery, database operations, infrastructure constraints, and long-term maintainability in the same conversation, feel free to reach out.
           </p>
@@ -763,7 +786,7 @@
     </section>
   </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container footer-inner">
       <span>Heri Riski Anto — Database Infrastructure & Data Platform Engineer</span>
       <span>Built as a minimal, static GitHub Pages portfolio.</span>
@@ -781,6 +804,8 @@
         root.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
         icon.textContent = theme === 'dark' ? '◐' : '○';
+        toggle.setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
+        toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
       };
 
       setTheme(saved || 'dark');
