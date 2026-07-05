@@ -3,63 +3,64 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heri Riski Anto</title>
-  <meta name="description" content="DBA, infrastructure, backend, network, and automation engineer based in Tangerang, Indonesia." />
+  <title>Heri Riski Anto — DBA, Infrastructure & Backend Engineer</title>
+  <meta name="description" content="DBA, infrastructure, backend, network, and automation engineer based in Tangerang, Indonesia. 8+ years in IT." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0c10;
-      --surface: #101218;
-      --text: #f3f4f6;
-      --muted: #b8bec8;
-      --soft: #78808d;
-      --line: rgba(255,255,255,.12);
-      --line-strong: rgba(255,255,255,.2);
-      --accent: #8a53d2;
-      --accent-soft: rgba(138,83,210,.16);
+      --bg: #fcfcfb;
+      --surface: #ffffff;
+      --text: #101319;
+      --muted: #52606d;
+      --soft: #7c8895;
+      --line: #e8edf2;
+      --line-strong: #d8e0e8;
+      --accent: #2151ff;
+      --accent-soft: #eef3ff;
+      --tag-bg: #f7f9fc;
+      --tag-border: #e4eaf2;
       --font: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --shadow: 0 18px 40px rgba(16, 19, 25, .05);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(33,81,255,.05), transparent 28%),
+        linear-gradient(180deg, #fcfcfb 0%, #f9fbfd 100%);
       color: var(--text);
       font-family: var(--font);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(138,83,210,.16), transparent 24%),
-        radial-gradient(circle at 100% 0%, rgba(35,82,160,.10), transparent 22%),
-        linear-gradient(180deg, #0b0c10 0%, #0a0b0e 100%);
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
 
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
 
     .wrap {
-      width: min(1180px, calc(100% - 40px));
+      width: min(1040px, calc(100% - 40px));
       margin: 0 auto;
     }
 
     .nav {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      min-height: 82px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid var(--line);
     }
 
     .brand {
       font-size: 13px;
       font-weight: 700;
-      letter-spacing: .16em;
+      letter-spacing: .14em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--text);
       white-space: nowrap;
     }
 
@@ -67,346 +68,362 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: flex-end;
-      gap: 10px;
+      gap: 18px;
     }
 
     .nav-links a {
-      color: var(--soft);
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 500;
-      letter-spacing: .02em;
+      color: var(--soft);
       transition: color .18s ease;
     }
 
     .nav-links a:hover { color: var(--text); }
 
-    main { padding: 32px 0 72px; }
+    main { padding: 34px 0 84px; }
 
     .hero {
-      padding: clamp(28px, 6vw, 72px) 0 34px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-    }
-
-    .hero-top {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr);
-      gap: 30px;
-      align-items: end;
+      padding: clamp(52px, 9vw, 104px) 0 54px;
+      border-bottom: 1px solid var(--line);
     }
 
     .eyebrow,
     .section-kicker,
-    .meta-label,
-    .row-index,
-    .stack-name {
-      display: inline-block;
+    .list-label,
+    .timeline-year,
+    .footer-label {
       font-family: var(--mono);
       font-size: 11px;
-      line-height: 1.7;
-      letter-spacing: .14em;
+      letter-spacing: .15em;
       text-transform: uppercase;
       color: var(--soft);
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
+      gap: 42px;
+      align-items: end;
     }
 
     h1 {
       margin: 18px 0 0;
-      max-width: 8.5ch;
-      font-size: clamp(62px, 10vw, 128px);
-      line-height: .88;
-      letter-spacing: -.08em;
+      max-width: 10ch;
+      font-size: clamp(50px, 8.4vw, 96px);
+      line-height: 1.03;
+      letter-spacing: -.04em;
       font-weight: 800;
-    }
-
-    .hero-side {
-      padding-bottom: 10px;
-    }
-
-    .hero-side p,
-    .lead,
-    .row-copy,
-    .timeline-copy,
-    .project-copy,
-    .footer-note {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.9;
+      color: var(--text);
     }
 
     .lead {
-      max-width: 62ch;
+      max-width: 56ch;
       margin: 28px 0 0;
-      font-size: clamp(18px, 2vw, 22px);
-      line-height: 1.75;
-      letter-spacing: -.02em;
+      color: var(--muted);
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.82;
+      letter-spacing: -.01em;
     }
 
-    .hero-actions {
+    .hero-links {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
-      margin-top: 30px;
+      margin-top: 34px;
     }
 
-    .hero-actions a {
+    .hero-links a,
+    .project-link,
+    .cta-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
       font-size: 14px;
       font-weight: 600;
+      transition: all .18s ease;
+    }
+
+    .hero-links a:first-child,
+    .cta-link {
+      background: var(--text);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-links a:first-child:hover,
+    .cta-link:hover {
+      transform: translateY(-1px);
+      opacity: .94;
+    }
+
+    .hero-links a:not(:first-child),
+    .project-link {
+      border: 1px solid var(--line-strong);
       color: var(--text);
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.7);
     }
 
-    .hero-actions a:hover {
-      border-color: var(--accent);
-      color: #ffffff;
+    .hero-links a:not(:first-child):hover,
+    .project-link:hover {
+      border-color: #b9c6d4;
+      background: #fff;
     }
 
-    .hero-metrics {
-      margin-top: 54px;
-      border-top: 1px solid rgba(255,255,255,.08);
+    .profile-card {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
     }
 
-    .metric-row,
-    .signal-row,
-    .timeline-row,
-    .project-row,
-    .stack-row {
+    .profile-card .copy {
+      margin-top: 12px;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .mini-stats {
       display: grid;
-      gap: 18px;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .mini-stat {
+      display: grid;
+      grid-template-columns: 82px minmax(0,1fr);
+      gap: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+    }
+
+    .mini-stat:first-child {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .mini-value {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.03em;
+      color: var(--text);
+    }
+
+    .hero-notes {
+      margin-top: 56px;
+      border-top: 1px solid var(--line);
+    }
+
+    .note-row,
+    .signal-row,
+    .stack-row,
+    .timeline-row,
+    .project-row {
+      display: grid;
+      gap: 20px;
       align-items: start;
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      border-bottom: 1px solid var(--line);
     }
 
-    .metric-row {
-      grid-template-columns: 120px minmax(0, 1fr) minmax(200px, 280px);
-      padding: 18px 0;
+    .note-row {
+      grid-template-columns: 140px minmax(0, 1fr);
+      padding: 22px 0;
     }
 
-    .metric-value {
-      font-size: 18px;
-      line-height: 1.5;
-      letter-spacing: -.02em;
+    .copy,
+    .section-intro {
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.9;
+    }
+
+    .copy strong,
+    .timeline-row strong,
+    .project-row strong {
+      color: var(--text);
       font-weight: 600;
-    }
-
-    .metric-note {
-      color: var(--soft);
-      font-size: 14px;
-      line-height: 1.75;
-      text-align: right;
     }
 
     .section {
-      padding: 56px 0 0;
+      padding-top: 68px;
     }
 
     .section-head {
       display: grid;
-      grid-template-columns: 180px minmax(0, 1fr);
+      grid-template-columns: 160px minmax(0, 1fr);
       gap: 20px;
+      margin-bottom: 26px;
       align-items: start;
-      margin-bottom: 22px;
     }
 
     .section-head h2 {
       margin: 0;
       max-width: 12ch;
-      font-size: clamp(30px, 5vw, 54px);
-      line-height: .96;
-      letter-spacing: -.06em;
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -.04em;
       font-weight: 800;
+      color: var(--text);
     }
 
-    .section-desc {
-      max-width: 72ch;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.9;
-      margin-top: 16px;
+    .section-intro {
+      max-width: 64ch;
+      margin-top: 12px;
     }
 
-    .flow-list {
-      border-top: 1px solid rgba(255,255,255,.08);
+    .flow,
+    .stack-wrap,
+    .timeline-wrap,
+    .project-wrap {
+      border-top: 1px solid var(--line);
     }
 
     .signal-row {
-      grid-template-columns: 80px minmax(0, 280px) minmax(0, 1fr);
-      padding: 22px 0;
+      grid-template-columns: 64px minmax(0, 220px) minmax(0, 1fr);
+      padding: 24px 0;
     }
 
-    .row-title {
-      font-size: 22px;
-      line-height: 1.2;
-      letter-spacing: -.04em;
+    .signal-title,
+    .project-title {
+      color: var(--text);
+      font-size: 19px;
+      line-height: 1.35;
+      letter-spacing: -.025em;
       font-weight: 700;
     }
 
-    .row-copy strong,
-    .timeline-copy strong,
-    .project-copy strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .stack-list {
-      margin-top: 8px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-
     .stack-row {
-      grid-template-columns: 180px minmax(0, 1fr);
-      padding: 18px 0;
+      grid-template-columns: 160px minmax(0, 1fr);
+      padding: 22px 0;
     }
 
     .stack-items {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 14px;
+      gap: 10px;
     }
 
     .stack-items span {
-      position: relative;
-      padding-left: 14px;
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 13.5px;
+      font-weight: 500;
+      color: #33404d;
+      transition: all .18s ease;
+    }
+
+    .stack-items span:hover {
+      border-color: #c8d4e0;
+      background: #fff;
       color: var(--text);
-      font-size: 15px;
-      line-height: 1.8;
-    }
-
-    .stack-items span::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: .8em;
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px var(--accent-soft);
-      transform: translateY(-50%);
-    }
-
-    .timeline-list,
-    .project-list {
-      margin-top: 8px;
-      border-top: 1px solid rgba(255,255,255,.08);
     }
 
     .timeline-row {
       grid-template-columns: 120px minmax(0, 1fr);
-      padding: 22px 0;
-    }
-
-    .timeline-year {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      letter-spacing: -.01em;
-    }
-
-    .timeline-title,
-    .project-title {
-      display: block;
-      margin-bottom: 8px;
-      font-size: 22px;
-      line-height: 1.2;
-      letter-spacing: -.04em;
-      font-weight: 700;
-      color: var(--text);
-    }
-
-    .project-row {
-      grid-template-columns: 180px minmax(0, 1fr) 160px;
       padding: 24px 0;
     }
 
-    .project-link {
-      justify-self: end;
-      align-self: start;
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--text);
-      padding-bottom: 6px;
-      border-bottom: 1px solid rgba(255,255,255,.2);
+    .project-row {
+      grid-template-columns: 160px minmax(0, 1fr) 132px;
+      padding: 28px 0;
     }
 
-    .project-link:hover {
-      border-color: var(--accent);
+    .cta-strip {
+      margin-top: 68px;
+      background: linear-gradient(180deg, rgba(255,255,255,.78), rgba(255,255,255,.94));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .cta-title {
+      font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+      font-weight: 800;
+      color: var(--text);
+      margin: 0;
     }
 
     footer {
-      padding: 64px 0 36px;
-      border-top: 1px solid rgba(255,255,255,.08);
+      padding: 62px 0 42px;
+      border-top: 1px solid var(--line);
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
     }
 
-    .footer-name {
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: var(--muted);
+    .footer-label {
+      color: var(--text);
+      font-weight: 600;
     }
 
     @media (max-width: 920px) {
-      .hero-top,
+      .hero-grid,
       .section-head,
-      .metric-row,
+      .note-row,
       .signal-row,
       .stack-row,
       .timeline-row,
-      .project-row {
+      .project-row,
+      .cta-strip {
         grid-template-columns: 1fr;
       }
 
-      .metric-note,
-      .project-link {
-        text-align: left;
-        justify-self: start;
-      }
-
+      .project-link,
+      .cta-link { justify-self: start; }
       h1 { max-width: 100%; }
     }
 
     @media (max-width: 640px) {
-      .wrap { width: calc(100% - 24px); }
+      .wrap { width: calc(100% - 28px); }
       .nav {
         min-height: auto;
-        padding: 18px 0;
+        padding: 20px 0;
         flex-direction: column;
         align-items: flex-start;
       }
-      .nav-links {
-        gap: 8px 14px;
-        justify-content: flex-start;
-      }
-      main { padding-top: 14px; }
-      .hero { padding-top: 18px; }
+      .nav-links { justify-content: flex-start; gap: 12px 16px; }
       h1 {
-        font-size: clamp(44px, 18vw, 74px);
-        line-height: .92;
-        letter-spacing: -.07em;
+        font-size: clamp(40px, 15vw, 66px);
+        line-height: 1.05;
+        letter-spacing: -.03em;
       }
-      .lead {
-        margin-top: 20px;
-        font-size: 17px;
-        line-height: 1.78;
+      .lead,
+      .copy,
+      .section-intro {
+        font-size: 16px;
+        line-height: 1.82;
       }
-      .hero-actions {
+      .hero-links {
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
       }
-      .section { padding-top: 42px; }
-      .section-head h2,
-      .row-title,
-      .timeline-title,
-      .project-title {
-        max-width: 100%;
+      .hero-links a,
+      .project-link,
+      .cta-link {
+        width: 100%;
+        justify-content: center;
       }
+      .section { padding-top: 50px; }
+      .profile-card,
+      .cta-strip { padding: 22px; }
       footer {
         flex-direction: column;
-        padding-top: 44px;
+        padding-top: 48px;
       }
     }
   </style>
@@ -426,45 +443,55 @@
     </header>
 
     <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-top">
+      <section class="hero">
+        <div class="hero-grid">
           <div>
             <div class="eyebrow">Infrastructure / Database / Backend / Network / Automation</div>
-            <h1 id="hero-title">Built for real operations, not for noise.</h1>
-          </div>
-          <div class="hero-side">
-            <div class="meta-label">Profile</div>
-            <p>
-              DBA, infrastructure, backend, reporting, networking, and practical automation. Strongest in environments where systems need tighter control, cleaner boundaries, and calmer daily operations.
+            <h1>Built for real operations, not for noise.</h1>
+            <p class="lead">
+              DBA, infrastructure, backend, reporting, networking, and practical automation. I work best where systems need clearer boundaries, calmer operations, and less unnecessary complexity.
             </p>
+            <div class="hero-links">
+              <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
+              <a href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
+              <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
           </div>
+
+          <aside class="profile-card">
+            <div class="section-kicker">Profile</div>
+            <p class="copy">
+              Strongest in environments where systems need tighter control, cleaner service boundaries, and daily operations that stay calm after go-live.
+            </p>
+            <div class="mini-stats">
+              <div class="mini-stat">
+                <div class="list-label">Years</div>
+                <div class="mini-value">8+ in IT</div>
+              </div>
+              <div class="mini-stat">
+                <div class="list-label">Scale</div>
+                <div class="mini-value">100+ servers / 400+ DBs</div>
+              </div>
+              <div class="mini-stat">
+                <div class="list-label">Focus</div>
+                <div class="mini-value">Data, infra, backend, network</div>
+              </div>
+            </div>
+          </aside>
         </div>
 
-        <p class="lead">
-          I work across Linux services, SQL-heavy systems, API layers, VPC and network context, monitoring, and operational automation. The value is not in adding complexity. The value is in making systems stay clear, secure, and maintainable after they go live.
-        </p>
-
-        <div class="hero-actions">
-          <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
-          <a href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
-        </div>
-
-        <div class="hero-metrics">
-          <div class="metric-row">
-            <div class="meta-label">Experience</div>
-            <div class="metric-value">8+ years in IT with hands-on work starting in 2018.</div>
-            <div class="metric-note">Started from practical delivery and grew into database, backend, infra, and operational ownership.</div>
+        <div class="hero-notes">
+          <div class="note-row">
+            <div class="list-label">Experience</div>
+            <div class="copy"><strong>8+ years in IT since 2018.</strong> Built from hands-on delivery into database, backend, infrastructure, and operational ownership.</div>
           </div>
-          <div class="metric-row">
-            <div class="meta-label">Scale</div>
-            <div class="metric-value">Exposure to 100+ servers and 400+ databases across real environments.</div>
-            <div class="metric-note">Comfortable with repeated operational responsibility, not just one-off builds.</div>
+          <div class="note-row">
+            <div class="list-label">Scale</div>
+            <div class="copy"><strong>Exposure to 100+ servers and 400+ databases.</strong> Comfortable with repeated operational responsibility, not only one-time project work.</div>
           </div>
-          <div class="metric-row">
-            <div class="meta-label">Strength</div>
-            <div class="metric-value">Calmer systems, cleaner exposure, and more production-aware technical decisions.</div>
-            <div class="metric-note">Best when working between SQL, Linux, APIs, service boundaries, network context, and documentation.</div>
+          <div class="note-row">
+            <div class="list-label">Focus</div>
+            <div class="copy"><strong>Production-aware systems with tighter exposure.</strong> Strong across SQL, Linux, APIs, VPC, monitoring, Fortinet context, and internal automation.</div>
           </div>
         </div>
       </section>
@@ -473,41 +500,32 @@
         <div class="section-head">
           <div class="section-kicker">Signals</div>
           <div>
-            <h2>What I actually carry.</h2>
-            <p class="section-desc">
-              Not a list of random tools. These are the areas where I can take real responsibility and keep technical work connected to operational reality.
+            <h2>What I actually do.</h2>
+            <p class="section-intro">
+              The work is centered on useful technical ownership: data, services, infrastructure, access boundaries, and operational clarity.
             </p>
           </div>
         </div>
-
-        <div class="flow-list">
+        <div class="flow">
           <article class="signal-row">
-            <div class="row-index">01</div>
-            <div class="row-title">Database operations</div>
-            <div class="row-copy">
-              Production-minded SQL work, reporting, access discipline, restore awareness, troubleshooting, and database responsibilities that stay manageable over time.
-            </div>
+            <div class="list-label">01</div>
+            <div class="signal-title">Database operations</div>
+            <div class="copy">SQL-heavy systems, reporting, troubleshooting, access discipline, restore awareness, and database responsibilities that stay manageable after go-live.</div>
           </article>
           <article class="signal-row">
-            <div class="row-index">02</div>
-            <div class="row-title">Backend and API layers</div>
-            <div class="row-copy">
-              Services, gateway thinking, integration flows, auth-aware endpoints, read-only API patterns, and backend structures that respect operational constraints.
-            </div>
+            <div class="list-label">02</div>
+            <div class="signal-title">Backend and API work</div>
+            <div class="copy">Services, read-only API layers, auth-aware flows, gateway thinking, and backend structures that respect operational constraints.</div>
           </article>
           <article class="signal-row">
-            <div class="row-index">03</div>
-            <div class="row-title">Infrastructure and network boundaries</div>
-            <div class="row-copy">
-              Linux, systemd, VPS/cloud, VPC structure, service exposure control, reverse proxy design, monitoring visibility, and network awareness including Fortinet contexts.
-            </div>
+            <div class="list-label">03</div>
+            <div class="signal-title">Infrastructure and network</div>
+            <div class="copy">Linux, systemd, VPS/cloud, VPC, service exposure control, reverse proxy design, monitoring visibility, and Fortinet-related context.</div>
           </article>
           <article class="signal-row">
-            <div class="row-index">04</div>
-            <div class="row-title">Analytics and automation</div>
-            <div class="row-copy">
-              ClickHouse-oriented direction, pipelines, crawlers, internal automation, dashboards, and practical AI-assisted workflows that reduce repetitive technical loops.
-            </div>
+            <div class="list-label">04</div>
+            <div class="signal-title">Analytics and automation</div>
+            <div class="copy">ClickHouse direction, pipelines, crawlers, dashboards, and practical AI-assisted automation for reducing repetitive technical work.</div>
           </article>
         </div>
       </section>
@@ -516,59 +534,35 @@
         <div class="section-head">
           <div class="section-kicker">Stack</div>
           <div>
-            <h2>Core stack, kept honest.</h2>
-            <p class="section-desc">
-              The stack matters, but only as proof of where I operate: between data, services, infrastructure, exposure control, and operational visibility.
+            <h2>Core stack.</h2>
+            <p class="section-intro">
+              Kept direct, because the stack is only useful when it supports real delivery and cleaner operations.
             </p>
           </div>
         </div>
-
-        <div class="stack-list">
+        <div class="stack-wrap">
           <div class="stack-row">
-            <div class="stack-name">Infrastructure</div>
+            <div class="list-label">Infrastructure</div>
             <div class="stack-items">
-              <span>Linux</span>
-              <span>Systemd</span>
-              <span>VPS / Cloud</span>
-              <span>VPC</span>
-              <span>Caddy</span>
-              <span>Service Exposure Control</span>
-              <span>Monitoring</span>
-              <span>Grafana / Prometheus Direction</span>
+              <span>Linux</span><span>Systemd</span><span>VPS / Cloud</span><span>VPC</span><span>Caddy</span><span>Monitoring</span><span>Service Exposure Control</span>
             </div>
           </div>
           <div class="stack-row">
-            <div class="stack-name">Network</div>
+            <div class="list-label">Network</div>
             <div class="stack-items">
-              <span>Fortinet Contexts</span>
-              <span>Private Boundaries</span>
-              <span>Public Access Hardening</span>
-              <span>Gateway Routing</span>
-              <span>Tighter Surface Area</span>
+              <span>Fortinet Contexts</span><span>Private Boundaries</span><span>Gateway Routing</span><span>Public Access Hardening</span>
             </div>
           </div>
           <div class="stack-row">
-            <div class="stack-name">Data</div>
+            <div class="list-label">Data</div>
             <div class="stack-items">
-              <span>PostgreSQL</span>
-              <span>MySQL</span>
-              <span>SQL Server</span>
-              <span>SQL Tuning</span>
-              <span>Reporting</span>
-              <span>Operational Data Work</span>
-              <span>ClickHouse</span>
+              <span>PostgreSQL</span><span>MySQL</span><span>SQL Server</span><span>SQL Tuning</span><span>Reporting</span><span>ClickHouse</span>
             </div>
           </div>
           <div class="stack-row">
-            <div class="stack-name">Backend</div>
+            <div class="list-label">Backend</div>
             <div class="stack-items">
-              <span>Go</span>
-              <span>REST APIs</span>
-              <span>Auth-Aware Services</span>
-              <span>Read-Only Data APIs</span>
-              <span>Automation Scripts</span>
-              <span>Crawlers</span>
-              <span>AI Automation</span>
+              <span>Go</span><span>REST APIs</span><span>Auth-Aware Services</span><span>Read-Only APIs</span><span>Automation Scripts</span><span>Crawlers</span><span>AI Automation</span>
             </div>
           </div>
         </div>
@@ -578,34 +572,24 @@
         <div class="section-head">
           <div class="section-kicker">Timeline</div>
           <div>
-            <h2>How the work evolved.</h2>
-            <p class="section-desc">
-              Started from direct hands-on delivery, then moved deeper into database-heavy work, backend systems, infrastructure responsibilities, and stronger data-platform direction.
+            <h2>How it evolved.</h2>
+            <p class="section-intro">
+              Started from practical software delivery, then moved deeper into database-heavy work, backend systems, infrastructure ownership, and platform-minded automation.
             </p>
           </div>
         </div>
-
-        <div class="timeline-list">
+        <div class="timeline-wrap">
           <article class="timeline-row">
             <div class="timeline-year">2018</div>
-            <div class="timeline-copy">
-              <span class="timeline-title">Entered professional IT work.</span>
-              Started through practical software delivery, including early Android/mobile work, before moving further into backend and database-heavy responsibilities.
-            </div>
+            <div class="copy"><strong>Entered professional IT work.</strong> Began from direct delivery, including early Android/mobile experience, before moving closer to backend and database operations.</div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2019–2024</div>
-            <div class="timeline-copy">
-              <span class="timeline-title">Expanded into DBA, backend, and infra depth.</span>
-              Worked closer to reporting, service support, SQL-intensive operations, Linux environments, internal systems, and recurring production responsibilities.
-            </div>
+            <div class="copy"><strong>Expanded into DBA, backend, and infra depth.</strong> Worked with reporting, SQL-intensive operations, Linux environments, internal systems, and recurring production responsibilities.</div>
           </article>
           <article class="timeline-row">
             <div class="timeline-year">2025–Now</div>
-            <div class="timeline-copy">
-              <span class="timeline-title">Pushing further into platform and automation thinking.</span>
-              More focus on gateway structure, ClickHouse-oriented analytics direction, monitoring visibility, automation flows, and AI-assisted reduction of repetitive technical work.
-            </div>
+            <div class="copy"><strong>Pushing toward platform and automation direction.</strong> More focus on gateways, ClickHouse-oriented analytics, monitoring visibility, and AI-assisted workflows.</div>
           </article>
         </div>
       </section>
@@ -614,45 +598,43 @@
         <div class="section-head">
           <div class="section-kicker">Work</div>
           <div>
-            <h2>Selected work directions.</h2>
-            <p class="section-desc">
-              The work I want to be known for is operationally useful: clearer data exposure, stronger platform visibility, better service boundaries, and infrastructure that does not collapse into unnecessary complexity.
+            <h2>Selected directions.</h2>
+            <p class="section-intro">
+              Work that improves operational usefulness: clearer data exposure, stronger visibility, better service boundaries, and less needless complexity.
             </p>
           </div>
         </div>
-
-        <div class="project-list">
+        <div class="project-wrap">
           <article class="project-row">
-            <div class="stack-name">Data platform</div>
-            <div class="project-copy">
-              <span class="project-title">CH OLAP Pipeline</span>
-              Open-source direction for multi-database CDC and analytics pipelines into ClickHouse, positioned for DBA, infra, and data-platform engineers.
-            </div>
-            <a class="project-link" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">Open project</a>
+            <div class="list-label">Data platform</div>
+            <div class="copy"><strong class="project-title">CH OLAP Pipeline</strong> Multi-database CDC and analytics direction into ClickHouse for DBA, infra, and data-platform engineering needs.</div>
+            <a class="project-link" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">Open</a>
           </article>
           <article class="project-row">
-            <div class="stack-name">API gateway</div>
-            <div class="project-copy">
-              <span class="project-title">Dynamic Data API Gateway</span>
-              Read-only data API management direction with cleaner gateway routing, auth awareness, operational testing, and stronger service boundaries.
-            </div>
-            <a class="project-link" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">View GitHub</a>
+            <div class="list-label">API gateway</div>
+            <div class="copy"><strong class="project-title">Dynamic Data API Gateway</strong> Read-only data API management with cleaner routing, auth awareness, and stronger operational boundaries.</div>
+            <a class="project-link" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
           </article>
           <article class="project-row">
-            <div class="stack-name">Ops automation</div>
-            <div class="project-copy">
-              <span class="project-title">Daily Work Automation</span>
-              Practical scripts, monitoring flows, crawlers, and AI-assisted automations designed to reduce repetitive work and improve technical response speed.
-            </div>
-            <a class="project-link" href="mailto:rizqy.pra85@gmail.com">Discuss work</a>
+            <div class="list-label">Ops automation</div>
+            <div class="copy"><strong class="project-title">Daily Work Automation</strong> Scripts, crawlers, monitoring flows, and AI-assisted automations that reduce repetitive work and speed up technical response.</div>
+            <a class="project-link" href="mailto:rizqy.pra85@gmail.com">Talk</a>
           </article>
         </div>
+      </section>
+
+      <section class="cta-strip">
+        <div>
+          <div class="section-kicker">Available for useful technical work</div>
+          <h3 class="cta-title">Clean systems, tighter boundaries, and operations that remain manageable.</h3>
+        </div>
+        <a class="cta-link" href="mailto:rizqy.pra85@gmail.com">Start a conversation</a>
       </section>
     </main>
 
     <footer>
-      <div class="footer-name">Heri Riski Anto</div>
-      <div class="footer-note">Tangerang, Indonesia · DBA / Infrastructure / Backend / Network / Automation</div>
+      <div class="footer-label">Heri Riski Anto</div>
+      <div class="copy">Tangerang, Indonesia · DBA / Infrastructure / Backend / Network / Automation</div>
     </footer>
   </div>
 </body>
