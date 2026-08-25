@@ -452,11 +452,11 @@ function startCoreEngine() {
   const typeEl = document.getElementById("hero-dynamic-text");
   if (typeEl) {
     window.heroTypewriter = new TypeWriter(typeEl, [
-      "Fullstack Web & Mobile Apps (Android Java Native, Flutter, Vue 3, Laravel).",
-      "Zero-Downtime Multi-Engine Database Clusters (Postgres, MSSQL, Oracle).",
-      "High-Throughput Go & Python API Gateways with Zero-Trust Security.",
-      "Real-Time CDC & OLAP Pipelines (Kafka, ClickHouse, Debezium).",
-      "ISO/IEC 27001 & UU PDP Certified Fintech Security Lead."
+      "Android Native & Flutter Mobile Apps.",
+      "Zero-Downtime HA Database Clusters.",
+      "High-Throughput Go & Python APIs.",
+      "Real-Time Kafka & ClickHouse CDC.",
+      "ISO 27001 & UU PDP Certified Lead."
     ]);
   }
 

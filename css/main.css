@@ -508,10 +508,29 @@ section {
   }
 }
 
+.hero-dynamic-text-wrap {
+  font-family: var(--font-mono);
+  font-size: clamp(0.88rem, 1.7vw, 1.02rem);
+  color: var(--accent-cyan);
+  margin-bottom: 16px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 28px;
+  white-space: nowrap;
+}
+
+.prompt-symbol {
+  color: var(--accent-primary);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
 .hero-dynamic-text {
-  display: inline-block;
-  min-height: 1.2em;
+  display: inline;
   border-right: 2px solid var(--accent-primary);
+  padding-right: 2px;
   animation: blink-caret 0.8s step-end infinite;
 }
 
