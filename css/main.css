@@ -494,16 +494,12 @@ section {
 }
 
 .hero-headline {
-  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.5rem);
   font-weight: 900;
-  line-height: 1.28;
+  line-height: 1.2;
   letter-spacing: -0.03em;
-  margin-bottom: 22px;
+  margin-bottom: 18px;
   color: #fff;
-}
-
-.hero-line {
-  display: block;
 }
 
 @media (max-width: 640px) {
@@ -2114,9 +2110,10 @@ section {
    ========================================================================== */
 .floating-action-dock {
   position: fixed;
-  bottom: 24px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1000;
   background: rgba(15, 23, 36, 0.88);
   border: 1px solid rgba(249, 115, 22, 0.35);
   border-radius: var(--radius-full);

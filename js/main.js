@@ -452,7 +452,7 @@ function startCoreEngine() {
   const typeEl = document.getElementById("hero-dynamic-text");
   if (typeEl) {
     window.heroTypewriter = new TypeWriter(typeEl, [
-      "Fullstack Web & Cross-Platform Mobile Apps (Flutter, Vue 3, Laravel).",
+      "Fullstack Web & Mobile Apps (Android Java Native, Flutter, Vue 3, Laravel).",
       "Zero-Downtime Multi-Engine Database Clusters (Postgres, MSSQL, Oracle).",
       "High-Throughput Go & Python API Gateways with Zero-Trust Security.",
       "Real-Time CDC & OLAP Pipelines (Kafka, ClickHouse, Debezium).",
@@ -465,7 +465,7 @@ function startCoreEngine() {
   // ==========================================
   const matcherData = {
     fullstack: {
-      badge: "Fullstack & Mobile Maestro (Flutter, Vue, Laravel)",
+      badge: "Fullstack & Mobile Maestro (Java Native, Flutter, Vue, Laravel)",
       desc: "End-to-end fullstack web & cross-platform mobile engineering: Flutter & Android mobile apps, Vue 3 PWAs with embedded WASM, responsive Tailwind CSS, WebSockets, Anti-Mock GPS, and Face ID biometric authentication."
     },
     dba: {
