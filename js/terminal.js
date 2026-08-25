@@ -196,6 +196,38 @@ class InteractiveTerminal {
     `);
   }
 
+  cmdLab() {
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6;">
+        <strong style="color: var(--accent-primary);">🔬 INTERACTIVE DBA DIAGNOSTIC LAB:</strong><br>
+        • <strong>Available Workloads:</strong> 10M Row SeqScan vs B-Tree, Crowdfunding Deadlock, Real-Time ClickHouse OLAP, PgBouncer Multiplexing.<br>
+        👉 <a href="#dba-lab" onclick="document.getElementById('cli-modal').classList.remove('active');" style="color:var(--accent-emerald); text-decoration:underline; font-weight:700;">Jump to Interactive DBA Lab on Page ↗</a>
+      </div>
+    `);
+  }
+
+  cmdROI() {
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6;">
+        <strong style="color: var(--accent-emerald);">💰 CLOUD DATABASE ROI ESTIMATOR:</strong><br>
+        • Average AWS/Cloud RDS Cost Reduction: <strong>35% – 55%</strong> via index defragmentation &amp; query plan tuning.<br>
+        • Query Latency Reduction: <strong>Up to 96%</strong>.<br>
+        👉 <a href="#roi-calculator" onclick="document.getElementById('cli-modal').classList.remove('active');" style="color:var(--accent-primary); text-decoration:underline; font-weight:700;">Open Interactive ROI Calculator ↗</a>
+      </div>
+    `);
+  }
+
+  cmdDrill() {
+    if (window.sreIncidentRoom) {
+      window.sreIncidentRoom.runDrill();
+      this.print(`
+        <div style="color: var(--accent-emerald); font-weight:700;">
+          🚨 SRE Incident Resilience Playbook Triggered! Watch live telemetry on page.
+        </div>
+      `);
+    }
+  }
+
   cmdProjects() {
     this.print(`
       <div style="color: var(--text-secondary); line-height: 1.6;">

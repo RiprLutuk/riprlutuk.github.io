@@ -1768,3 +1768,265 @@ section {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   MODULE: INTERACTIVE DBA DIAGNOSTIC LAB & EXPLAIN ANALYZE VISUALIZER
+   ========================================================================== */
+.dba-lab-card {
+  background: rgba(15, 23, 36, 0.85);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), 0 0 35px rgba(249, 115, 22, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+.dba-lab-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  background: rgba(6, 10, 16, 0.9);
+  border-bottom: 1px solid var(--border-subtle);
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.dba-select-input {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-medium);
+  color: var(--text-primary);
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+.dba-select-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.dba-lab-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 24px;
+}
+@media (max-width: 900px) {
+  .dba-lab-body { grid-template-columns: 1fr; }
+}
+
+.dba-code-pane {
+  background: #050811;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.dba-code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+.dba-code-content {
+  padding: 16px;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+  overflow-x: auto;
+  flex-grow: 1;
+  max-height: 320px;
+}
+
+.dba-metrics-hud {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+@media (max-width: 600px) {
+  .dba-metrics-hud { grid-template-columns: 1fr; }
+}
+
+.dba-metric-box {
+  background: rgba(6, 10, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.dba-metric-box-label {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.dba-metric-box-val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+}
+
+/* SRE Incident Room */
+.sre-incident-box {
+  background: rgba(6, 10, 16, 0.85);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* ==========================================================================
+   MODULE: ENTERPRISE ROI & CLOUD COST SAVINGS CALCULATOR
+   ========================================================================== */
+.roi-calculator-wrap {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  background: linear-gradient(145deg, rgba(15, 23, 36, 0.85) 0%, rgba(9, 13, 20, 0.95) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-radius: var(--radius-xl);
+  padding: 32px;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+@media (max-width: 900px) {
+  .roi-calculator-wrap { grid-template-columns: 1fr; padding: 20px; }
+}
+
+.roi-slider-group {
+  margin-bottom: 22px;
+}
+
+.roi-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.roi-slider-input {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.12);
+  outline: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+.roi-slider-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  cursor: pointer;
+  box-shadow: 0 0 12px var(--accent-primary);
+}
+
+.roi-results-card {
+  background: rgba(6, 10, 16, 0.8);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.1);
+}
+
+.roi-savings-hero {
+  text-align: center;
+  padding: 16px 0;
+}
+
+.roi-savings-number {
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent-emerald);
+  font-family: var(--font-mono);
+  line-height: 1.1;
+}
+
+/* ==========================================================================
+   MODULE: FLOATING CYBERNETIC RECRUITER & CLIENT ACTION DOCK
+   ========================================================================== */
+.floating-action-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(15, 23, 36, 0.88);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  border-radius: var(--radius-full);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(249, 115, 22, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 990;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.dock-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.dock-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dock-btn.dock-btn-primary {
+  background: var(--gradient-accent);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.35);
+}
+.dock-btn.dock-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(249, 115, 22, 0.5);
+}
+
+@media (max-width: 768px) {
+  .floating-action-dock {
+    bottom: 12px;
+    padding: 6px 10px;
+    gap: 4px;
+  }
+  .dock-btn span.dock-label {
+    display: none;
+  }
+}
