@@ -266,9 +266,7 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  -webkit-box-decoration-break: clone;
-  box-decoration-break: clone;
-  display: inline;
+  display: inline-block;
 }
 
 /* ==========================================================================
@@ -464,12 +462,22 @@ section {
 }
 
 .hero-headline {
-  font-size: clamp(2.3rem, 4.5vw, 3.5rem);
+  font-size: clamp(2.1rem, 4.2vw, 3.2rem);
   font-weight: 900;
-  line-height: 1.2;
+  line-height: 1.28;
   letter-spacing: -0.03em;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
   color: #fff;
+}
+
+.hero-line {
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .hero-line {
+    display: inline;
+  }
 }
 
 .hero-dynamic-text {
