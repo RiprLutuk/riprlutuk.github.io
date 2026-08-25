@@ -567,7 +567,137 @@
     <!-- ==========================================
          FLAGSHIP PROJECTS BENTO GRID
          ========================================== -->
-    <section id="projects">
+        <!-- ==========================================
+         SECTION: INTERACTIVE DBA DIAGNOSTIC LAB & QUERY OPTIMIZER
+         ========================================== -->
+    <section id="dba-lab">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Interactive Diagnostic Lab</div>
+          <h2 class="section-title">DBA Query Optimizer &amp; <span class="text-gradient">Execution Plan Visualizer</span></h2>
+          <p class="section-subtitle">
+            Experience real-world database bottleneck resolution live in the browser. Select a high-load production scenario to inspect raw execution plans vs Heri&#39;s index tuning &amp; architectural refactor.
+          </p>
+        </div>
+
+        <div id="dba-lab-container" class="dba-lab-card">
+          <!-- Topbar Controls -->
+          <div class="dba-lab-topbar">
+            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+              <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-primary);">
+                🔬 WORKLOAD SCENARIO:
+              </span>
+              <select id="dba-scenario-select" class="dba-select-input">
+                <option value="seqscan">1. 10M Row Ledger Table (Sequential Scan vs Composite B-Tree Index)</option>
+                <option value="deadlock">2. Crowdfunding Escrow Deadlock (Advisory Locks &amp; Serializable Isolation)</option>
+                <option value="olap">3. Real-Time BI Analytics (Postgres GroupBy vs ClickHouse Columnar SIMD)</option>
+                <option value="pgbouncer">4. Connection Pool Starvation (Raw Postgres vs PgBouncer Multiplexing)</option>
+              </select>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <button id="dba-toggle-optimize-btn" class="btn-cta btn-primary" style="padding: 8px 16px; font-size: 0.82rem;">
+                <span>⚡ Apply Heri&#39;s DB Optimization</span>
+              </button>
+              <button id="dba-run-btn" class="btn-cta btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;">
+                <span>🚀 Run EXPLAIN ANALYZE</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scenario Header & Speedup Badge -->
+          <div style="padding: 20px 24px 0 24px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span id="dba-engine-badge" class="bento-pill">PostgreSQL 16</span>
+                <h3 id="dba-scenario-title" style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0;">10M Row Ledger Table: Sequential Scan vs B-Tree Composite Index</h3>
+              </div>
+              <p id="dba-problem-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; max-width: 800px; line-height: 1.5;">
+                A monthly financial aggregation query on a 10,000,000 row transaction table takes 4,280ms, triggering CPU spikes and locking connection threads.
+              </p>
+            </div>
+
+            <div id="dba-speedup-badge" style="padding: 6px 14px; border-radius: var(--radius-full); font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; border: 1px solid rgba(244, 63, 94, 0.3); background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); display: inline-flex; align-items: center; gap: 6px;">
+              ⚠️ UNOPTIMIZED WORKLOAD
+            </div>
+          </div>
+
+          <!-- Dual Code & Execution Plan Panes -->
+          <div class="dba-lab-body">
+            <!-- Left: SQL Query -->
+            <div class="dba-code-pane">
+              <div class="dba-code-header">
+                <span>📄 SQL WORKLOAD &amp; DDL</span>
+                <span style="color: var(--accent-cyan);">INPUT</span>
+              </div>
+              <pre id="dba-query-code" class="dba-code-content">SELECT tenant_id, DATE_TRUNC(&#39;month&#39;, created_at) AS tx_month, 
+       SUM(amount) AS total_volume, COUNT(*) AS tx_count
+FROM financial_transactions
+WHERE tenant_id = &#39;afpi_node_99&#39; 
+  AND created_at &gt;= &#39;2025-01-01&#39; 
+  AND status = &#39;COMPLETED&#39;
+GROUP BY 1, 2;</pre>
+            </div>
+
+            <!-- Right: EXPLAIN Plan -->
+            <div class="dba-code-pane">
+              <div class="dba-code-header">
+                <span>📊 EXPLAIN (ANALYZE, BUFFERS) OUTPUT</span>
+                <span style="color: var(--accent-emerald);">EXECUTION TREE</span>
+              </div>
+              <pre id="dba-plan-output" class="dba-code-content" style="color: #a7f3d0;">Seq Scan on financial_transactions (cost=0.00..428,940.10 rows=14,200 width=48) (actual time=42.10..4280.45 rows=14,198 loops=1)
+  Filter: ((created_at &gt;= &#39;2025-01-01&#39;::date) AND (status = &#39;COMPLETED&#39;::text) AND (tenant_id = &#39;afpi_node_99&#39;::text))
+  Rows Removed by Filter: 9,985,802
+  Buffers: shared hit=8,201 read=342,100
+Planning Time: 0.852 ms
+Execution Time: 4280.950 ms</pre>
+            </div>
+          </div>
+
+          <!-- Live Metrics HUD -->
+          <div style="padding: 0 24px 24px 24px;">
+            <div class="dba-metrics-hud">
+              <div class="dba-metric-box">
+                <div class="dba-metric-box-label">Execution Latency</div>
+                <div id="dba-metric-latency" class="dba-metric-box-val" style="color: #f43f5e;">4,280 ms</div>
+              </div>
+              <div class="dba-metric-box">
+                <div class="dba-metric-box-label">Optimizer Planner Cost</div>
+                <div id="dba-metric-cost" class="dba-metric-box-val">428,940</div>
+              </div>
+              <div class="dba-metric-box">
+                <div class="dba-metric-box-label">Buffer Cache vs Disk I/O</div>
+                <div id="dba-metric-buffers" class="dba-metric-box-val" style="font-size: 0.95rem;">342,100 Disk Read</div>
+              </div>
+            </div>
+
+            <div id="dba-solution-desc" style="margin-top: 14px; padding: 12px 16px; background: rgba(255, 255, 255, 0.04); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
+              <strong>Bottleneck Diagnosis:</strong> Click <em>"Apply Heri&#39;s DB Optimization"</em> to see the index tuning and architecture refactor.
+            </div>
+
+            <!-- Embedded SRE Incident Simulator -->
+            <div class="sre-incident-box">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+                <div>
+                  <strong style="color: #fff; font-size: 0.95rem;">🚨 Production SRE Resilience Drill:</strong>
+                  <span style="font-size: 0.8rem; color: var(--text-secondary); margin-left: 6px;">Simulate automated incident response under 40,000 req/s load.</span>
+                </div>
+                <button id="sre-drill-trigger-btn" class="btn-cta btn-primary" style="padding: 6px 14px; font-size: 0.78rem;">
+                  <span>⚡ Simulate Automated Playbook</span>
+                </button>
+              </div>
+              <div id="sre-live-logs" style="background: #050811; border-radius: 6px; padding: 10px 14px; max-height: 110px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.06);">
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">
+                  [System Idle] Click "Simulate Automated Playbook" to test multi-tier perimeter &amp; database failover drill.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="projects">
       <div class="container">
         <div class="section-header">
           <div class="section-tag">Engineering Portfolio</div>
@@ -911,7 +1041,97 @@
     <!-- ==========================================
          CONTACT & HIRE SECTION
          ========================================== -->
-    <section id="contact">
+        <!-- ==========================================
+         SECTION: ENTERPRISE ROI & CLOUD COST CALCULATOR
+         ========================================== -->
+    <section id="roi-calculator">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Client &amp; Recruiter Value Engine</div>
+          <h2 class="section-title">Enterprise Database <span class="text-gradient">ROI &amp; Cost Calculator</span></h2>
+          <p class="section-subtitle">
+            See the direct financial and performance impact of professional DBA optimization on your cloud infrastructure spend (AWS RDS, Aurora, Cloud SQL) and application SLAs.
+          </p>
+        </div>
+
+        <div class="roi-calculator-wrap">
+          <!-- Left: Interactive Sliders -->
+          <div>
+            <h3 style="font-size: 1.15rem; font-weight: 800; color: #fff; margin-bottom: 20px;">
+              📊 Input Your Current Database Metrics:
+            </h3>
+
+            <!-- Slider 1: Database Size -->
+            <div class="roi-slider-group">
+              <div class="roi-slider-header">
+                <span style="color: var(--text-secondary);">1. Total Database Storage Size:</span>
+                <span id="roi-db-size-val" style="color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700;">2 TB</span>
+              </div>
+              <input id="roi-db-size" type="range" min="0.5" max="50" step="0.5" value="2" class="roi-slider-input">
+            </div>
+
+            <!-- Slider 2: Monthly Cloud Spend -->
+            <div class="roi-slider-group">
+              <div class="roi-slider-header">
+                <span style="color: var(--text-secondary);">2. Monthly Cloud DB Compute Spend (AWS / GCP / Azure):</span>
+                <span id="roi-cloud-spend-val" style="color: var(--accent-emerald); font-family: var(--font-mono); font-weight: 700;">$3,500 / mo</span>
+              </div>
+              <input id="roi-cloud-spend" type="range" min="500" max="25000" step="250" value="3500" class="roi-slider-input">
+            </div>
+
+            <!-- Slider 3: Current Slow Query Latency -->
+            <div class="roi-slider-group">
+              <div class="roi-slider-header">
+                <span style="color: var(--text-secondary);">3. Average Slow Reporting / Aggregation Latency:</span>
+                <span id="roi-query-latency-val" style="color: var(--accent-amber); font-family: var(--font-mono); font-weight: 700;">4.2s</span>
+              </div>
+              <input id="roi-query-latency" type="range" min="0.5" max="30" step="0.5" value="4.2" class="roi-slider-input">
+            </div>
+
+            <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">
+              💡 <em>Calculations based on real production DBA tuning: index defragmentation, connection pooling, memory buffer optimization, and IOPS reduction.</em>
+            </div>
+          </div>
+
+          <!-- Right: Calculated Results & Direct CTA -->
+          <div class="roi-results-card">
+            <div>
+              <div style="font-size: 0.75rem; text-transform: uppercase; font-family: var(--font-mono); font-weight: 700; color: var(--text-muted); margin-bottom: 4px;">
+                PROJECTED ANNUAL CLOUD SAVINGS
+              </div>
+              <div class="roi-savings-hero">
+                <div id="roi-savings-month" class="roi-savings-number">$1,470</div>
+                <div style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px;">Estimated Monthly Savings</div>
+                <div id="roi-savings-year" style="font-size: 1.05rem; font-weight: 700; color: var(--accent-emerald); margin-top: 4px; font-family: var(--font-mono);">$17,640 / year</div>
+              </div>
+
+              <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 14px; margin-top: 10px; font-size: 0.85rem; line-height: 1.6;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <span style="color: var(--text-secondary);">Query Latency After Tuning:</span>
+                  <strong id="roi-latency-optimized" style="color: var(--accent-primary); font-family: var(--font-mono);">168 ms</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+                  <span style="color: var(--text-secondary);">Speedup Multiplier:</span>
+                  <strong id="roi-speedup-ratio" style="color: var(--accent-emerald); font-family: var(--font-mono);">25x Faster</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: var(--text-secondary);">ISO 27001 &amp; UU PDP Readiness:</span>
+                  <strong style="color: var(--accent-cyan); font-family: var(--font-mono);">99.98% SLA</strong>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <a id="roi-telegram-cta" href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="width: 100%; justify-content: center;">
+                <span>✈️ Book Architecture Audit on Telegram</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="contact">
       <div class="container">
         <div class="recruiter-hub-card" style="text-align: center; padding: 56px 24px;">
           <div class="section-tag" style="margin-bottom: 12px;">Get In Touch</div>
@@ -1292,6 +1512,8 @@
 
   <!-- JavaScript Modules -->
   <script src="js/audio.js?v=1787682468"></script>
+  <script src="js/dba-lab.js"></script>
+  <script src="js/roi-calculator.js"></script>
   <script src="js/topology.js?v=1787682468"></script>
   <script src="js/github.js?v=1787682468"></script>
   <script src="js/terminal.js?v=1787682468"></script>
