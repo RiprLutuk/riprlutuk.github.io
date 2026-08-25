@@ -1,0 +1,15 @@
+# Operating System Files
+.DS_Store
+Thumbs.db
+
+# Sensitive & Personal Documents (Do NOT upload to public repo)
+*.pdf
+CV*
+cv-*
+*.cdr
+
+# Python & Build artifacts
+__pycache__/
+*.pyc
+.env
+.venv/

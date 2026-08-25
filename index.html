@@ -1,787 +1,1190 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" data-theme="obsidian">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Heri Riski Anto — DBA, Infrastructure & Backend Engineer</title>
-  <meta name="description" content="DBA, infrastructure, backend, network, and automation engineer based in Tangerang, Indonesia. 8+ years in IT." />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heri Riski Anto — Senior Database Administrator (DBA) | Cloud Infrastructure & Platform Engineer</title>
+  
+  <meta name="description" content="Official portfolio of Heri Riski Anto (@RiprLutuk). Senior Database Administrator (DBA), Cloud Infrastructure, and Backend Platform Engineer with 7+ years of experience across PostgreSQL, MSSQL, Oracle, MySQL, Kafka CDC, Go, and ISO 27001 security.">
+  <meta name="keywords" content="Heri Riski Anto, RiprLutuk, Database Administrator, DBA, Cloud Infrastructure, Backend Engineer, PostgreSQL, Oracle, SQL Server, Go, Kafka, ClickHouse, Debezium, ISO 27001, Indonesia DBA">
+  <meta name="author" content="Heri Riski Anto">
+  <link rel="canonical" href="https://riprlutuk.github.io">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riprlutuk.github.io/">
+  <meta property="og:title" content="Heri Riski Anto — Senior DBA & Cloud Infrastructure Engineer">
+  <meta property="og:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, and ISO 27001 certified infrastructure.">
+  <meta property="og:image" content="https://riprlutuk.github.io/images/ico.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://riprlutuk.github.io/">
+  <meta property="twitter:title" content="Heri Riski Anto — Senior DBA & Cloud Infrastructure Engineer">
+  <meta property="twitter:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, and ISO 27001 certified infrastructure.">
+  <meta property="twitter:image" content="https://riprlutuk.github.io/images/ico.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="images/ico.png">
+  <link rel="apple-touch-icon" href="images/ico.png">
+
+  <!-- Web Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg: #f7f8fa;
-      --surface: #ffffff;
-      --surface-soft: #f1f4f7;
-      --text: #0f141a;
-      --muted: #5f6b76;
-      --soft: #7d8894;
-      --line: #e3e9ef;
-      --line-strong: #cfd8e2;
-      --accent: #161c23;
-      --accent-soft: #edf2f7;
-      --tag-bg: #f3f6f9;
-      --tag-border: #dce5ee;
-      --font: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      --shadow: 0 18px 48px rgba(15, 20, 26, 0.06);
-      --radius: 22px;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(circle at top left, rgba(13, 18, 24, 0.03), transparent 30%),
-        linear-gradient(180deg, #fbfcfd 0%, #f6f8fa 100%);
-      color: var(--text);
-      font-family: var(--font);
-      -webkit-font-smoothing: antialiased;
-      text-rendering: optimizeLegibility;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    .wrap {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
-
-    .nav {
-      display: grid;
-      gap: 14px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .nav-links a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-      padding: 0 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.72);
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-      border-color: var(--line-strong);
-      background: #fff;
-    }
-
-    main {
-      padding: 22px 0 72px;
-    }
-
-    .hero {
-      padding: 18px 0 28px;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 22px;
-      align-items: start;
-    }
-
-    .eyebrow,
-    .section-kicker,
-    .list-label,
-    .timeline-year,
-    .footer-label {
-      font-family: var(--mono);
-      font-size: 11px;
-      line-height: 1.7;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: var(--soft);
-      font-weight: 500;
-    }
-
-    h1 {
-      margin: 14px 0 0;
-      max-width: 14ch;
-      font-size: clamp(38px, 10vw, 56px);
-      line-height: 1.16;
-      letter-spacing: -0.015em;
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    .lead {
-      max-width: 34rem;
-      margin: 22px 0 0;
-      color: var(--muted);
-      font-size: 16px;
-      line-height: 1.82;
-    }
-
-    .hero-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-    }
-
-    .hero-links a,
-    .project-link,
-    .cta-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 40px;
-      padding: 0 15px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 600;
-      transition: .18s ease;
-    }
-
-    .hero-links a:first-child,
-    .cta-link {
-      background: var(--accent);
-      color: #fff;
-      box-shadow: var(--shadow);
-    }
-
-    .hero-links a:first-child:hover,
-    .cta-link:hover {
-      transform: translateY(-1px);
-      opacity: .95;
-    }
-
-    .hero-links a:not(:first-child),
-    .project-link {
-      border: 1px solid var(--line-strong);
-      background: rgba(255,255,255,.78);
-      color: var(--text);
-    }
-
-    .hero-links a:not(:first-child):hover,
-    .project-link:hover {
-      border-color: #bcc8d4;
-      background: #fff;
-    }
-
-    .profile-card,
-    .cta-strip {
-      background: rgba(255,255,255,.8);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
-    }
-
-    .profile-card {
-      padding: 20px;
-    }
-
-    .profile-card .copy {
-      margin-top: 10px;
-    }
-
-    .mini-stats {
-      display: grid;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .mini-stat {
-      display: grid;
-      gap: 4px;
-      padding-top: 12px;
-      border-top: 1px solid var(--line);
-    }
-
-    .mini-stat:first-child {
-      padding-top: 0;
-      border-top: 0;
-    }
-
-    .mini-value {
-      font-size: 18px;
-      line-height: 1.45;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      color: var(--text);
-    }
-
-    .hero-notes,
-    .flow,
-    .stack-wrap,
-    .timeline-wrap,
-    .project-wrap {
-      margin-top: 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    .note-row,
-    .signal-row,
-    .stack-row,
-    .timeline-row,
-    .project-row {
-      display: grid;
-      gap: 10px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--line);
-      align-items: start;
-    }
-
-    .copy,
-    .section-intro {
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.84;
-    }
-
-    .copy strong,
-    .timeline-row strong,
-    .project-row strong {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    .section {
-      padding-top: 42px;
-    }
-
-    .section-head {
-      display: grid;
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .section-head h2 {
-      margin: 0;
-      max-width: 16ch;
-      font-size: clamp(28px, 7vw, 38px);
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    .section-intro {
-      max-width: 42rem;
-      margin-top: 8px;
-    }
-
-    .signal-title,
-    .project-title {
-      color: var(--text);
-      font-size: 18px;
-      line-height: 1.38;
-      letter-spacing: -0.01em;
-      font-weight: 700;
-    }
-
-    .stack-items {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .stack-items span {
-      display: inline-flex;
-      align-items: center;
-      min-height: 34px;
-      padding: 0 12px;
-      border-radius: 999px;
-      background: var(--tag-bg);
-      border: 1px solid var(--tag-border);
-      color: #33404d;
-      font-size: 12.5px;
-      font-weight: 500;
-    }
-
-    .project-link {
-      width: fit-content;
-    }
-
-    .cta-strip {
-      margin-top: 42px;
-      padding: 22px;
-      display: grid;
-      gap: 16px;
-    }
-
-    .cta-title {
-      margin: 8px 0 0;
-      max-width: 20ch;
-      font-size: clamp(24px, 6vw, 34px);
-      line-height: 1.24;
-      letter-spacing: -0.015em;
-      font-weight: 800;
-      color: var(--text);
-    }
-
-    footer {
-      display: grid;
-      gap: 8px;
-      padding: 38px 0 34px;
-      border-top: 1px solid var(--line);
-    }
-
-    .footer-label {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    @media (min-width: 700px) {
-      .wrap {
-        width: min(1120px, calc(100% - 48px));
-      }
-
-      .nav {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 18px;
-        min-height: 78px;
-        padding: 0;
-      }
-
-      .nav-links {
-        justify-content: flex-end;
-      }
-
-      .hero {
-        padding: 42px 0 34px;
-      }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.2fr) minmax(280px, .8fr);
-        gap: 28px;
-      }
-
-      h1 {
-        max-width: 15ch;
-        font-size: clamp(52px, 7vw, 78px);
-        line-height: 1.18;
-      }
-
-      .lead {
-        font-size: 17px;
-      }
-
-      .profile-card {
-        padding: 24px;
-      }
-
-      .mini-stat {
-        grid-template-columns: 84px minmax(0,1fr);
-        gap: 12px;
-      }
-
-      .section {
-        padding-top: 56px;
-      }
-
-      .section-head {
-        grid-template-columns: 138px minmax(0, 1fr);
-        gap: 18px;
-        margin-bottom: 24px;
-      }
-
-      .note-row {
-        grid-template-columns: 124px minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      .signal-row {
-        grid-template-columns: 54px minmax(0, 220px) minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      .stack-row,
-      .project-row {
-        grid-template-columns: 138px minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      .timeline-row {
-        grid-template-columns: 104px minmax(0, 1fr);
-        gap: 18px;
-      }
-
-      .project-row {
-        padding: 22px 0;
-      }
-
-      .project-row .project-link {
-        margin-top: 4px;
-      }
-
-      .cta-strip {
-        grid-template-columns: minmax(0,1fr) auto;
-        align-items: center;
-        gap: 18px;
-        padding: 28px;
-        margin-top: 56px;
-      }
-
-      footer {
-        grid-template-columns: auto 1fr;
-        align-items: center;
-        gap: 18px;
-      }
-    }
-
-    @media (min-width: 960px) {
-      .hero {
-        padding: 58px 0 42px;
-      }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1.24fr) minmax(300px, .76fr);
-        gap: 42px;
-      }
-
-      h1 {
-        max-width: 16ch;
-        font-size: clamp(62px, 6.6vw, 84px);
-        line-height: 1.2;
-        letter-spacing: -0.018em;
-      }
-
-      .lead {
-        max-width: 39rem;
-        font-size: 18px;
-      }
-
-      .section {
-        padding-top: 68px;
-      }
-
-      .section-head {
-        grid-template-columns: 160px minmax(0, 1fr);
-        gap: 22px;
-        margin-bottom: 26px;
-      }
-
-      .section-head h2 {
-        font-size: clamp(34px, 4.6vw, 46px);
-      }
-
-      .note-row {
-        grid-template-columns: 140px minmax(0, 1fr);
-      }
-
-      .stack-row {
-        grid-template-columns: 160px minmax(0, 1fr);
-      }
-
-      .timeline-row {
-        grid-template-columns: 120px minmax(0, 1fr);
-      }
-
-      .project-row {
-        grid-template-columns: 160px minmax(0, 1fr) 128px;
-        align-items: center;
-      }
-
-      .project-row .project-link {
-        justify-self: end;
-        margin-top: 0;
-      }
-
-      .hero-notes,
-      .flow,
-      .stack-wrap,
-      .timeline-wrap,
-      .project-wrap {
-        margin-top: 28px;
-      }
-
-      .note-row,
-      .signal-row,
-      .stack-row,
-      .timeline-row,
-      .project-row {
-        gap: 20px;
-        padding: 22px 0;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="css/main.css">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Heri Riski Anto",
+    "alternateName": "RiprLutuk",
+    "url": "https://riprlutuk.github.io",
+    "image": "https://avatars.githubusercontent.com/u/30901830?v=4",
+    "jobTitle": "Senior Database Administrator & Cloud Infrastructure Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "PT Link Net Tbk"
+    },
+    "sameAs": [
+      "https://github.com/RiprLutuk",
+      "https://linkedin.com/in/riprlutuk"
+    ],
+    "knowsAbout": [
+      "Database Administration",
+      "PostgreSQL",
+      "Microsoft SQL Server",
+      "Oracle Database",
+      "MySQL",
+      "ClickHouse",
+      "Apache Kafka",
+      "Debezium CDC",
+      "Go (Golang)",
+      "Linux Server Administration",
+      "ISO 27001 ISMS",
+      "Cloud Infrastructure"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header class="nav">
-      <a class="brand" href="/">Heri Riski Anto</a>
-      <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#signals">Signals</a>
-        <a href="#stack">Stack</a>
-        <a href="#timeline">Timeline</a>
-        <a href="#work">Work</a>
-        <a href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+
+  <!-- Ambient Dynamic Canvas Background -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-mesh-grid"></div>
+
+  <!-- Navigation Bar -->
+  <header class="site-nav">
+    <div class="nav-glass-container">
+      <a href="#hero" class="brand-link" title="Heri Riski Anto">
+        <div class="brand-avatar">HR</div>
+        <div class="brand-title">
+          <span class="brand-name">Heri Riski Anto</span>
+          <span class="brand-badge">Senior DBA & Infra</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#recruiter-hub" class="nav-link">Recruiter Hub</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#repos" class="nav-link">Public Works</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
       </nav>
-    </header>
 
-    <main>
-      <section class="hero">
+      <!-- Interactive Controls -->
+      <div class="nav-controls">
+        <button class="btn-cli-badge open-terminal-btn" title="Open Interactive CLI Console (Ctrl+K)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          <span>CLI</span>
+          <kbd>Ctrl+K</kbd>
+        </button>
+
+        <button id="sound-toggle-btn" class="btn-icon" title="Toggle Sound FX">
+          <svg class="sound-icon-on" style="display:none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+          <svg class="sound-icon-off" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        </button>
+
+        <button id="theme-toggle-btn" class="btn-icon" title="Cycle Theme Preset">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        
+        <button id="mobile-menu-toggle" class="btn-icon mobile-toggle" title="Menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section id="hero" class="hero-section">
+      <div class="container">
         <div class="hero-grid">
+          <!-- Left Column -->
           <div>
-            <div class="eyebrow">Database / AI Infrastructure / Backend / Automation</div>
-            <h1>Built for real operations, not for noise.</h1>
-            <p class="lead">
-              Database Administrator, Backend Engineer, and AI Infrastructure builder. I design zero-trust API gateways, connect LLMs to corporate databases, and build automation that keeps operations calm and scalable.
-            </p>
-            <div class="hero-links">
-              <a href="mailto:rizqy.pra85@gmail.com">Contact</a>
-              <a href="https://www.linkedin.com/in/riprlutuk" target="_blank" rel="noreferrer">LinkedIn</a>
-              <a href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+            <div class="status-badge-live">
+              <span class="status-pulse-dot"></span>
+              <span>OPEN FOR ROLES & CONSULTING</span>
             </div>
-          </div>
 
-          <aside class="profile-card">
-            <div class="section-kicker">Profile</div>
-            <p class="copy">
-              Strongest in environments where systems need tighter control, cleaner service boundaries, and daily operations that stay calm after go-live.
+            <h1 class="hero-headline">
+              Architecting <span class="text-gradient">Resilient Databases</span>, High-Throughput Pipelines & Cloud Infrastructure.
+            </h1>
+
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 20px; font-weight: 600;">
+              &gt; <span id="hero-dynamic-text" class="hero-dynamic-text"></span>
+            </div>
+
+            <p class="hero-lead">
+              Senior Database Administrator (DBA) and Cloud Infrastructure Engineer with <strong>7+ years of production experience</strong>. Specializing in multi-engine database high availability (PostgreSQL, MSSQL, Oracle, MySQL), real-time CDC OLAP streaming, and ISO 27001-certified fintech security.
             </p>
-            <div class="mini-stats">
-              <div class="mini-stat">
-                <div class="list-label">Years</div>
-                <div class="mini-value">8+ in IT</div>
+
+            <div class="hero-actions">
+              <a href="#architecture" class="btn-cta btn-primary">
+                <span>🚀 Explore Architecture</span>
+              </a>
+              <button class="btn-cta btn-secondary open-resume-modal-btn">
+                <span>📄 Curriculum Vitae</span>
+              </button>
+              <button class="btn-cta btn-telegram open-contact-modal-btn">
+                <span>💬 Quick Hire / Contact</span>
+              </button>
+            </div>
+
+            <!-- Metric Tickers -->
+            <div class="hero-stats-row">
+              <div class="stat-box">
+                <span class="stat-number">7+</span>
+                <span class="stat-label">Years Experience</span>
               </div>
-              <div class="mini-stat">
-                <div class="list-label">Scale</div>
-                <div class="mini-value">100+ servers / 400+ DBs</div>
+              <div class="stat-box">
+                <span class="stat-number">4</span>
+                <span class="stat-label">Core RDBMS Engines</span>
               </div>
-              <div class="mini-stat">
-                <div class="list-label">Focus</div>
-                <div class="mini-value">Data, infra, backend, network</div>
+              <div class="stat-box">
+                <span class="stat-number">100+</span>
+                <span class="stat-label">Fintech Nodes Secured</span>
+              </div>
+              <div class="stat-box">
+                <span class="stat-number">99.98%</span>
+                <span class="stat-label">Database Uptime SLA</span>
               </div>
             </div>
-          </aside>
-        </div>
+          </div>
 
-        <div class="hero-notes">
-          <div class="note-row">
-            <div class="list-label">Experience</div>
-            <div class="copy"><strong>8+ years in IT since 2018.</strong> Built from hands-on delivery into database, backend, infrastructure, and operational ownership.</div>
-          </div>
-          <div class="note-row">
-            <div class="list-label">Scale</div>
-            <div class="copy"><strong>Exposure to 100+ servers and 400+ databases.</strong> Comfortable with repeated operational responsibility, not only one-time project work.</div>
-          </div>
-          <div class="note-row">
-            <div class="list-label">Focus</div>
-            <div class="copy"><strong>Production-aware systems with tighter exposure.</strong> Strong across SQL, Linux, APIs, VPC, monitoring, Fortinet context, and internal automation.</div>
-          </div>
-          <div class="stack-card">
-            <h3>PasPapan: All-in-One HRIS & Operations</h3>
-            <p class="copy">Comprehensive HRIS system featuring Face ID & GPS attendance, one-click payroll calculation, KPI appraisal, shift planning, and full CRM/Accounting integration. Built with native iOS & Android support and a multi-branch admin dashboard.</p>
-            <div class="tags">
-              <span class="tag">PHP</span>
-              <span class="tag">Laravel</span>
-              <span class="tag">Livewire</span>
-              <span class="tag">iOS/Android</span>
-            </div>
-            <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" style="margin-top: 16px; display: inline-block; font-size: 13px; font-weight: 600; text-decoration: underline; margin-right: 12px;">View on GitHub ↗</a>
-            <a href="https://paspapan.pandanteknik.com" target="_blank" style="margin-top: 16px; display: inline-block; font-size: 13px; font-weight: 600; text-decoration: underline;">Live Demo ↗</a>
-          </div>
-        </div>
-      </section>
-
-      <section id="signals" class="section">
-        <div class="section-head">
-          <div class="section-kicker">Signals</div>
+          <!-- Right Column: Live Console Bento Card -->
           <div>
-            <h2>What I actually do.</h2>
-            <p class="section-intro">
-              The work is centered on useful technical ownership: data, services, infrastructure, access boundaries, and operational clarity.
-            </p>
-          </div>
-        </div>
-        <div class="flow">
-          <article class="signal-row">
-            <div class="list-label">01</div>
-            <div class="signal-title">Database operations</div>
-            <div class="copy">SQL-heavy systems, reporting, troubleshooting, access discipline, restore awareness, and database responsibilities that stay manageable after go-live.</div>
-          </article>
-          <article class="signal-row">
-            <div class="list-label">02</div>
-            <div class="signal-title">Backend and API work</div>
-            <div class="copy">Services, read-only API layers, auth-aware flows, gateway thinking, and backend structures that respect operational constraints.</div>
-          </article>
-          <article class="signal-row">
-            <div class="list-label">03</div>
-            <div class="signal-title">Infrastructure and network</div>
-            <div class="copy">Linux, systemd, VPS/cloud, VPC, service exposure control, reverse proxy design, monitoring visibility, and Fortinet-related context.</div>
-          </article>
-          <article class="signal-row">
-            <div class="list-label">04</div>
-            <div class="signal-title">Analytics and automation</div>
-            <div class="copy">ClickHouse direction, pipelines, crawlers, dashboards, and practical AI-assisted automation for reducing repetitive technical work.</div>
-          </article>
-        </div>
-      </section>
+            <div class="hero-card-terminal">
+              <div class="terminal-card-header">
+                <div class="terminal-dots">
+                  <span class="t-dot red"></span>
+                  <span class="t-dot yellow"></span>
+                  <span class="t-dot green"></span>
+                </div>
+                <div class="terminal-card-title">dba-cluster-telemetry.sh</div>
+                <button class="btn-icon open-terminal-btn" style="width:24px; height:24px; font-size:0.7rem;" title="Expand Full CLI">&gt;_</button>
+              </div>
 
-      <section id="stack" class="section">
-        <div class="section-head">
-          <div class="section-kicker">Stack</div>
-          <div>
-            <h2>Core stack.</h2>
-            <p class="section-intro">
-              Kept direct, because the stack is only useful when it supports real delivery and cleaner operations.
-            </p>
-          </div>
-        </div>
-        <div class="stack-wrap">
-          <div class="stack-row">
-            <div class="list-label">Infrastructure</div>
-            <div class="stack-items">
-              <span>Linux Server</span><span>Ubuntu / Debian</span><span>Systemd Services</span><span>VPS Operations</span><span>AWS EC2</span><span>RDS</span><span>VPC</span><span>Security Groups</span><span>Caddy</span><span>Nginx Basics</span><span>SSL / HTTPS</span><span>Service Exposure Control</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Network</div>
-            <div class="stack-items">
-              <span>Fortinet / FortiGate Context</span><span>Firewall Rules</span><span>NAT Awareness</span><span>VPN Awareness</span><span>Private Network Boundaries</span><span>Gateway Routing</span><span>DNS</span><span>Public Access Hardening</span><span>Tailscale</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Database</div>
-            <div class="stack-items">
-              <span>PostgreSQL</span><span>MySQL / MariaDB</span><span>SQL Server</span><span>Oracle</span><span>Database Administration</span><span>Query Optimization</span><span>Indexing</span><span>Backup / Restore Awareness</span><span>Access Control</span><span>Schema Review</span><span>Reporting Queries</span><span>Performance Troubleshooting</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Data Platform</div>
-            <div class="stack-items">
-              <span>ClickHouse</span><span>OLTP to OLAP</span><span>CDC Direction</span><span>Kafka Direction</span><span>Debezium Direction</span><span>Data Pipeline Design</span><span>Dashboard Data Models</span><span>Operational Analytics</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Backend</div>
-            <div class="stack-items">
-              <span>Go</span><span>Laravel / PHP Legacy Context</span><span>REST APIs</span><span>API Gateway</span><span>Read-Only Data APIs</span><span>Auth-Aware Services</span><span>Token-Based Access</span><span>Connection Pooling</span><span>SQL-Based API Design</span><span>Internal Admin Tools</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Operations</div>
-            <div class="stack-items">
-              <span>Monitoring</span><span>Grafana</span><span>Logs Review</span><span>Cron Jobs</span><span>Shell Scripts</span><span>Automation Scripts</span><span>Crawlers</span><span>Deployment Checks</span><span>Troubleshooting</span><span>Incident Follow-Up</span><span>Documentation</span>
-            </div>
-          </div>
-          <div class="stack-row">
-            <div class="list-label">Automation</div>
-            <div class="stack-items">
-              <span>Python Scripts</span><span>AI-Assisted Workflows</span><span>Agentic Automation</span><span>API Testing</span><span>OpenAPI Awareness</span><span>Postman</span><span>k6 Basics</span><span>GitHub Actions</span><span>Git / GitHub</span>
-            </div>
-          </div>
-          <div class="stack-card">
-            <h3>PasPapan: All-in-One HRIS & Operations</h3>
-            <p class="copy">Comprehensive HRIS system featuring Face ID & GPS attendance, one-click payroll calculation, KPI appraisal, shift planning, and full CRM/Accounting integration. Built with native iOS & Android support and a multi-branch admin dashboard.</p>
-            <div class="tags">
-              <span class="tag">PHP</span>
-              <span class="tag">Laravel</span>
-              <span class="tag">Livewire</span>
-              <span class="tag">iOS/Android</span>
-            </div>
-            <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" style="margin-top: 16px; display: inline-block; font-size: 13px; font-weight: 600; text-decoration: underline; margin-right: 12px;">View on GitHub ↗</a>
-            <a href="https://paspapan.pandanteknik.com" target="_blank" style="margin-top: 16px; display: inline-block; font-size: 13px; font-weight: 600; text-decoration: underline;">Live Demo ↗</a>
-          </div>
-        </div>
-      </section>
+              <div class="terminal-card-body">
+                <div class="console-line">
+                  <span class="console-prompt">riprlutuk@prod:~$</span>
+                  <span class="console-cmd">cluster-status --all-nodes</span>
+                </div>
+                <div class="console-out">
+                  [OK] PostgreSQL 16 Cluster: <span class="console-success">● PRIMARY / STANDBY STREAMING</span><br>
+                  [OK] MS SQL Server AlwaysOn: <span class="console-success">● SYNCHRONIZED</span><br>
+                  [OK] Oracle Database 19c: <span class="console-success">● ARCHIVELOG ENABLED</span><br>
+                  [OK] Kafka Debezium CDC: <span class="console-success">● 0 LAG / 4,800 events/sec</span><br>
+                  [OK] FortiGate IPsec VPN: <span class="console-success">● 100+ TUNNELS ACTIVE</span>
+                </div>
 
-      <section id="timeline" class="section">
-        <div class="section-head">
-          <div class="section-kicker">Timeline</div>
-          <div>
-            <h2>How it evolved.</h2>
-            <p class="section-intro">
-              Started from practical software delivery, then moved deeper into database-heavy work, backend systems, infrastructure ownership, and platform-minded automation.
-            </p>
+                <div class="console-line" style="margin-top:12px;">
+                  <span class="console-prompt">riprlutuk@prod:~$</span>
+                  <span class="console-cmd">query-perf-audit --target "10M_records"</span>
+                </div>
+                <div class="console-out">
+                  Query Latency: <span class="console-highlight">4,200ms → 18ms (-99.5%)</span><br>
+                  Security Baseline: <span class="console-success">ISO/IEC 27001 Compliant</span>
+                </div>
+
+                <div class="live-metrics-pill-grid">
+                  <div class="metric-pill">
+                    <div class="metric-pill-label">DB UPTIME SLA</div>
+                    <div class="metric-pill-val"><span class="status-pulse-dot" style="width:6px; height:6px;"></span> 99.98%</div>
+                  </div>
+                  <div class="metric-pill">
+                    <div class="metric-pill-label">RPO / RTO RECOVERY</div>
+                    <div class="metric-pill-val">⏱ &lt;15m / &lt;1h</div>
+                  </div>
+                  <div class="metric-pill">
+                    <div class="metric-pill-label">CURRENT ROLE</div>
+                    <div class="metric-pill-val">DBA @ Link Net</div>
+                  </div>
+                  <div class="metric-pill">
+                    <div class="metric-pill-label">SECURITY POSTURE</div>
+                    <div class="metric-pill-val">🛡 ISO 27001</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="timeline-wrap">
-          <article class="timeline-row">
-            <div class="timeline-year">2018</div>
-            <div class="copy"><strong>Entered professional IT work.</strong> Began from direct delivery, including early Android/mobile experience, before moving closer to backend and database operations.</div>
-          </article>
-          <article class="timeline-row">
-            <div class="timeline-year">2019–2024</div>
-            <div class="copy"><strong>Expanded into DBA, backend, and infra depth.</strong> Worked with reporting, SQL-intensive operations, Linux environments, internal systems, and recurring production responsibilities.</div>
-          </article>
-          <article class="timeline-row">
-            <div class="timeline-year">2025–Now</div>
-            <div class="copy"><strong>Pushing toward platform and automation direction.</strong> More focus on gateways, ClickHouse-oriented analytics, monitoring visibility, and AI-assisted workflows.</div>
-          </article>
-        </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="work" class="section">
-        <div class="section-head">
-          <div class="section-kicker">Work</div>
-          <div>
-            <h2>Selected directions.</h2>
-            <p class="section-intro">
-              Work that improves operational usefulness: clearer data exposure, stronger visibility, better service boundaries, and less needless complexity.
-            </p>
+    <!-- ==========================================
+         RECRUITER & HR FAST-TRACK HUB (CHEAT SHEET)
+         ========================================== -->
+    <section id="recruiter-hub">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Recruiter &amp; Hiring Fast-Track</div>
+          <h2 class="section-title">The 30-Second <span class="text-gradient">Candidate Summary</span></h2>
+          <p class="section-subtitle">
+            Everything HR recruiters, talent acquisition leads, and engineering managers need to know at a single glance.
+          </p>
+        </div>
+
+        <div class="recruiter-hub-card">
+          <div class="recruiter-grid">
+            <!-- Left Summary -->
+            <div>
+              <h3 class="recruiter-summary-title">Why Hire Heri Riski Anto?</h3>
+              <p style="margin-bottom: 14px; font-size: 1rem; line-height: 1.65;">
+                A battle-tested <strong>Senior DBA, Infrastructure, and Backend Platform Engineer</strong> who bridges the gap between deep database internals, high-performance backend pipelines (Go, Python, Laravel), and enterprise security compliance.
+              </p>
+
+              <div class="recruiter-tag-list">
+                <span class="recruiter-tag highlight">🎯 PostgreSQL, MSSQL, Oracle, MySQL</span>
+                <span class="recruiter-tag highlight">🚀 Go (Golang) &amp; Python APIs</span>
+                <span class="recruiter-tag highlight">🔄 Kafka &amp; Debezium CDC Streaming</span>
+                <span class="recruiter-tag highlight">🛡️ ISO/IEC 27001 ISMS Lead</span>
+                <span class="recruiter-tag">⚡ Query Tuning (-60% latency)</span>
+                <span class="recruiter-tag">🌐 Linux Fleet &amp; FortiGate VPN</span>
+                <span class="recruiter-tag">📊 ClickHouse Real-Time OLAP</span>
+                <span class="recruiter-tag">🔐 Zero-Trust API Gateways</span>
+              </div>
+
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <button class="btn-cta btn-primary open-resume-modal-btn">
+                  <span>📄 View & Request Curriculum Vitae</span>
+                </button>
+                <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram">
+                  <span>💬 Chat on Telegram (@riprlutuk)</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right FAQ Grid -->
+            <div>
+              <div class="recruiter-faq-box">
+                <div class="faq-row">
+                  <span class="faq-key">Target Roles:</span>
+                  <span class="faq-val">Senior / Lead DBA, Infra Engineer, Platform / Backend Engineer</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Experience Level:</span>
+                  <span class="faq-val">7+ Years in Production IT</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Location:</span>
+                  <span class="faq-val">Tangerang, Banten / Pemalang, ID</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Work Model:</span>
+                  <span class="faq-val">Remote / Hybrid / On-site (Jakarta &amp; Tangerang)</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Availability:</span>
+                  <span class="faq-val" style="color: var(--accent-emerald);">● Open for Full-time &amp; Consulting</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Languages:</span>
+                  <span class="faq-val">Indonesian (Native), English (Professional Working)</span>
+                </div>
+                <div class="faq-row">
+                  <span class="faq-key">Curriculum Vitae Compatibility:</span>
+                  <span class="faq-val" style="color: var(--accent-emerald);">98/100 (Workday, Taleo, Greenhouse)</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="project-wrap">
-          <article class="project-row">
-            <div class="list-label">Data platform</div>
-            <div class="copy"><strong class="project-title">CH OLAP Pipeline</strong> Multi-database CDC and analytics direction into ClickHouse for DBA, infra, and data-platform engineering needs.</div>
-            <a class="project-link" href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noreferrer">Open</a>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         INTERACTIVE SYSTEM TOPOLOGY & ARCHITECTURE
+         ========================================== -->
+    <section id="architecture">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Interactive Architecture</div>
+          <h2 class="section-title">Production Systems <span class="text-gradient">Under the Hood</span></h2>
+          <p class="section-subtitle">
+            Explore interactive system topologies engineered by Heri Riski Anto. Click on any node to inspect latency, security controls, and design decisions.
+          </p>
+        </div>
+
+        <div class="topology-container">
+          <!-- Topology Header Tabs -->
+          <div class="topology-header">
+            <div style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
+              <span>🌐 SYSTEM TOPOLOGY VIEWER</span>
+            </div>
+
+            <div class="topology-tabs">
+              <button class="topology-tab-btn active" data-topology="afpi">1. AFPI Fintech Data Center</button>
+              <button class="topology-tab-btn" data-topology="cdc">2. Real-Time CDC Pipeline</button>
+              <button class="topology-tab-btn" data-topology="ddag">3. DDAG Zero-Trust Gateway</button>
+            </div>
+          </div>
+
+          <!-- Interactive Topology Canvas -->
+          <div class="topology-canvas-area" id="topology-canvas-wrap">
+            <!-- Rendered dynamically by topology.js -->
+          </div>
+
+          <!-- Node Detail Panel -->
+          <div class="topology-detail-panel" id="topology-detail-panel">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         DBA PERFORMANCE & BENCHMARK SIMULATOR
+         ========================================== -->
+    <section id="benchmarks">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">DBA Superpowers &amp; Metrics</div>
+          <h2 class="section-title">Quantified Production <span class="text-gradient">Impact</span></h2>
+          <p class="section-subtitle">
+            Real performance benchmarks and operational metrics achieved across enterprise databases.
+          </p>
+        </div>
+
+        <div class="benchmark-card">
+          <div class="benchmark-grid">
+            <!-- Box 1: Query Latency Optimization -->
+            <div class="benchmark-box">
+              <div class="benchmark-box-title">
+                <span>⚡</span>
+                <span>10M-Row Aggregation Latency</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">
+                Execution plan analysis, composite B-tree indexing, and partition pruning on PostgreSQL &amp; SQL Server.
+              </p>
+
+              <div class="benchmark-comparison-bar">
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>Before (Full Table Scan)</span>
+                    <span style="color:#ef4444;">4,200 ms</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill before" style="width: 95%;"></div>
+                  </div>
+                </div>
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>After (Optimized Index Scan)</span>
+                    <span style="color:#10b981;">18 ms</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill after" style="width: 4%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <span class="benchmark-impact-pill">🚀 99.5% Latency Reduction</span>
+            </div>
+
+            <!-- Box 2: Disaster Recovery & SLA -->
+            <div class="benchmark-box">
+              <div class="benchmark-box-title">
+                <span>🛡️</span>
+                <span>Disaster Recovery SLA (HA/DR)</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">
+                Automated WAL/Binlog shipping, RMAN backups, and automated restoration verification protocols.
+              </p>
+
+              <div class="benchmark-comparison-bar">
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>Recovery Point Objective (RPO)</span>
+                    <span style="color:#10b981;">&lt; 15 mins</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill after" style="width: 15%;"></div>
+                  </div>
+                </div>
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>Recovery Time Objective (RTO)</span>
+                    <span style="color:#10b981;">&lt; 1 hour</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill after" style="width: 25%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <span class="benchmark-impact-pill">✅ 99.98% High Availability</span>
+            </div>
+
+            <!-- Box 3: CDC Streaming Throughput -->
+            <div class="benchmark-box">
+              <div class="benchmark-box-title">
+                <span>🔄</span>
+                <span>CDC Stream Ingestion Throughput</span>
+              </div>
+              <p style="font-size: 0.8rem; color: var(--text-secondary);">
+                Debezium Kafka streaming from OLTP to ClickHouse columnar database for real-time analytical queries.
+              </p>
+
+              <div class="benchmark-comparison-bar">
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>Peak Event Throughput</span>
+                    <span style="color:#10b981;">10,000+ evt/s</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill after" style="width: 90%;"></div>
+                  </div>
+                </div>
+                <div class="bar-item">
+                  <div class="bar-label">
+                    <span>OLAP Aggregation Latency</span>
+                    <span style="color:#10b981;">&lt; 40 ms</span>
+                  </div>
+                  <div class="bar-track">
+                    <div class="bar-fill after" style="width: 8%;"></div>
+                  </div>
+                </div>
+              </div>
+
+              <span class="benchmark-impact-pill">📊 Sub-Second Analytics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         FLAGSHIP PROJECTS BENTO GRID
+         ========================================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Engineering Portfolio</div>
+          <h2 class="section-title">Flagship <span class="text-gradient">Architectures &amp; Platforms</span></h2>
+          <p class="section-subtitle">
+            Selected platforms designed and deployed to production, combining infrastructure resilience with modern software craftsmanship.
+          </p>
+        </div>
+
+        <div class="bento-projects-grid">
+          <!-- Card 1: DDAG (Span 8) -->
+          <article class="bento-card bento-span-8">
+            <div>
+              <div class="bento-tag-row">
+                <span class="bento-pill">GO / GOLANG</span>
+                <span class="bento-pill">MULTI-DIALECT SQL</span>
+                <span class="bento-pill">ZERO-TRUST SECURITY</span>
+              </div>
+              <h3 class="bento-title">DDAG — Zero-Trust Multi-Dialect Dynamic API Gateway</h3>
+              <p class="bento-desc">
+                High-performance API Gateway written in Go that dynamically reflects schema and exposes PostgreSQL, MySQL, MS SQL Server, and Oracle databases as secure, governed REST APIs. Features JWT token authentication, SQL injection parameter sanitization, PgBouncer-style connection pooling, and route-level RBAC.
+              </p>
+              <div class="bento-metrics-row">
+                <div>⚡ <strong>Latency:</strong> &lt; 2.5ms Gateway Overhead</div>
+                <div>🛡️ <strong>Security:</strong> Granular Table/View RBAC</div>
+                <div>💾 <strong>Dialects:</strong> Postgres, MSSQL, Oracle, MySQL</div>
+              </div>
+            </div>
+
+            <div class="bento-footer">
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Open Source Platform</span>
+              <div class="bento-links">
+                <a href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>GitHub Repo ↗</span>
+                </a>
+              </div>
+            </div>
           </article>
-          <article class="project-row">
-            <div class="list-label">API gateway</div>
-            <div class="copy"><strong class="project-title">Dynamic Data API Gateway</strong> Read-only data API management with cleaner routing, auth awareness, and stronger operational boundaries.</div>
-            <a class="project-link" href="https://github.com/RiprLutuk" target="_blank" rel="noreferrer">GitHub</a>
+
+          <!-- Card 2: ch-olap-pipeline (Span 4) -->
+          <article class="bento-card bento-span-4">
+            <div>
+              <div class="bento-tag-row">
+                <span class="bento-pill">DEBEZIUM</span>
+                <span class="bento-pill">KAFKA</span>
+                <span class="bento-pill">CLICKHOUSE</span>
+              </div>
+              <h3 class="bento-title">ch-olap-pipeline</h3>
+              <p class="bento-desc">
+                Universal Change Data Capture (CDC) pipeline streaming transaction mutations from PostgreSQL, MySQL, and SQL Server into ClickHouse columnar storage for instant operational BI.
+              </p>
+              <div class="bento-metrics-row">
+                <div>🔄 <strong>Sync:</strong> Real-Time CDC</div>
+                <div>📈 <strong>Speed:</strong> 100x vs OLTP Query</div>
+              </div>
+            </div>
+
+            <div class="bento-footer">
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Data Platform</span>
+              <div class="bento-links">
+                <a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>Live Demo ↗</span>
+                </a>
+                <a href="https://github.com/RiprLutuk/ch-olap-pipeline" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>GitHub ↗</span>
+                </a>
+              </div>
+            </div>
           </article>
-          <article class="project-row">
-            <div class="list-label">Ops automation</div>
-            <div class="copy"><strong class="project-title">Daily Work Automation</strong> Scripts, crawlers, monitoring flows, and AI-assisted automations that reduce repetitive work and speed up technical response.</div>
-            <a class="project-link" href="mailto:rizqy.pra85@gmail.com">Talk</a>
+
+          <!-- Card 3: PasPapan HRIS (Span 6) -->
+          <article class="bento-card bento-span-6">
+            <div>
+              <div class="bento-tag-row">
+                <span class="bento-pill">LARAVEL</span>
+                <span class="bento-pill">LIVEWIRE</span>
+                <span class="bento-pill">MOBILE &amp; BIOMETRICS</span>
+              </div>
+              <h3 class="bento-title">PasPapan — Enterprise HRIS &amp; Operations</h3>
+              <p class="bento-desc">
+                Comprehensive workforce management system featuring Face ID &amp; GPS attendance, 1-click automated payroll calculation, KPI appraisal matrix, shift scheduling, and multi-branch management.
+              </p>
+              <div class="bento-metrics-row">
+                <div>👥 <strong>Users:</strong> Multi-Branch Operations</div>
+                <div>📍 <strong>Security:</strong> Anti-Mock GPS &amp; Face Biometrics</div>
+              </div>
+            </div>
+
+            <div class="bento-footer">
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Live SaaS Product</span>
+              <div class="bento-links">
+                <a href="https://paspapan.pandanteknik.com" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>Live Demo ↗</span>
+                </a>
+                <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>GitHub ↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 4: WargaHub (Span 6) -->
+          <article class="bento-card bento-span-6">
+            <div>
+              <div class="bento-tag-row">
+                <span class="bento-pill">VUE 3 PWA</span>
+                <span class="bento-pill">FASTIFY</span>
+                <span class="bento-pill">PGLITE WASM</span>
+              </div>
+              <h3 class="bento-title">WargaHub — Digital Neighborhood Governance</h3>
+              <p class="bento-desc">
+                Digital consensus, financial transparency, and operational platform for RT/RW neighborhoods. Features transparent budget reporting, digital voting, and offline-capable embedded WASM PostgreSQL.
+              </p>
+              <div class="bento-metrics-row">
+                <div>🏡 <strong>Ecosystem:</strong> RT/RW Community Governance</div>
+                <div>⚡ <strong>Tech:</strong> Fastify + Vue 3 PWA + PGlite</div>
+              </div>
+            </div>
+
+            <div class="bento-footer">
+              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Community PWA</span>
+              <div class="bento-links">
+                <a href="https://github.com/RiprLutuk/WargaHub" target="_blank" rel="noopener" class="bento-link-btn">
+                  <span>GitHub ↗</span>
+                </a>
+              </div>
+            </div>
           </article>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="cta-strip">
+    <!-- ==========================================
+         PUBLIC GITHUB REPOSITORIES LIVE EXPLORER
+         ========================================== -->
+    <section id="repos">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Public Open Source Works</div>
+          <h2 class="section-title">GitHub <span class="text-gradient">Repositories Explorer</span></h2>
+          <p class="section-subtitle">
+            Real-time public repositories created and maintained by Heri Riski Anto on GitHub. Search and filter across 49+ projects.
+          </p>
+        </div>
+
+        <div class="github-explorer-wrap">
+          <!-- Filter & Search Controls -->
+          <div class="github-filter-bar">
+            <input type="text" id="github-search-input" class="github-search-input" placeholder="🔍 Search repositories (e.g. DDAG, postgres, cdc, laravel)...">
+
+            <div class="github-category-tabs">
+              <button class="github-tab active" data-category="All">All</button>
+              <button class="github-tab" data-category="DBA &amp; Data Platform">DBA &amp; Data</button>
+              <button class="github-tab" data-category="Backend &amp; APIs">Backend &amp; APIs</button>
+              <button class="github-tab" data-category="Fullstack &amp; Apps">Apps &amp; Fullstack</button>
+              <button class="github-tab" data-category="DevOps &amp; Security">DevOps &amp; Security</button>
+              <button class="github-tab" data-category="Tools">Tools</button>
+            </div>
+
+            <div id="total-repos-count" style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan); font-weight: 600;">
+              Loading repos...
+            </div>
+          </div>
+
+          <!-- Dynamic Repository Cards Grid -->
+          <div class="repo-cards-grid" id="github-repos-grid">
+            <!-- Populated dynamically by github.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         PROFESSIONAL CAREER EXPERIENCE TIMELINE
+         ========================================== -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Career History</div>
+          <h2 class="section-title">Professional <span class="text-gradient">Experience</span></h2>
+          <p class="section-subtitle">
+            7+ years of consistent production delivery, infrastructure hardening, and high-availability engineering.
+          </p>
+        </div>
+
+        <div class="timeline-track">
+          <!-- Job 1: Link Net -->
+          <div class="timeline-item">
+            <div class="timeline-node-point"></div>
+            <div class="timeline-content-card">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 class="timeline-role-title">Database Administrator (DBA)</h3>
+                  <div class="timeline-company-name">PT Link Net Tbk</div>
+                </div>
+                <span class="timeline-period-badge">Feb 2025 – Present | Jakarta / Remote</span>
+              </div>
+              <ul class="timeline-bullet-list" style="margin-top: 14px;">
+                <li>Administer enterprise-scale multi-engine databases across <strong>Microsoft SQL Server, Oracle Database 19c, PostgreSQL, and MySQL/MariaDB</strong>, maintaining <strong>99.98% database availability SLA</strong>.</li>
+                <li>Engineered automated database backup validation, transaction log shipping, and disaster recovery procedures, reducing Recovery Point Objective (RPO) to &lt; 15 minutes and Recovery Time Objective (RTO) to &lt; 1 hour.</li>
+                <li>Diagnosed bottlenecks, analyzed execution plans, refactored slow-running queries, and optimized indexing, reducing latency on critical reporting workloads by up to <strong>60%</strong>.</li>
+                <li>Enforced enterprise database security governance, audit trails, connection pool limits, and role-based access control (RBAC).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 2: Halalvestor -->
+          <div class="timeline-item">
+            <div class="timeline-node-point"></div>
+            <div class="timeline-content-card">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 class="timeline-role-title">Senior Fullstack Engineer / IT Specialist</h3>
+                  <div class="timeline-company-name">Halalvestor Global Asia (Vestora.id)</div>
+                </div>
+                <span class="timeline-period-badge">Dec 2024 – Oct 2025 | Tangerang / Jakarta</span>
+              </div>
+              <ul class="timeline-bullet-list" style="margin-top: 14px;">
+                <li>Architected backend microservices, financial ledgers, and investor web portals for <strong>Vestora.id</strong>, a regulated Sharia securities crowdfunding platform.</li>
+                <li>Developed high-concurrency RESTful APIs, payment gateway integrations, automated investor KYC verifications, and yield distribution algorithms using <strong>PHP/Laravel, PostgreSQL, and Vue.js</strong>.</li>
+                <li>Optimized database transaction isolation levels and row-level locking, preventing double-allocation and race conditions under peak investment campaigns.</li>
+                <li>Configured automated CI/CD container build and deployment pipelines on cloud infrastructure.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 3: AFPI -->
+          <div class="timeline-item">
+            <div class="timeline-node-point"></div>
+            <div class="timeline-content-card">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 class="timeline-role-title">Data Management &amp; Infrastructure Operations Lead</h3>
+                  <div class="timeline-company-name">AFPI (Asosiasi Fintech Pendanaan Bersama Indonesia) &bull; Fintech Data Center</div>
+                </div>
+                <span class="timeline-period-badge">Mar 2020 – Apr 2025 (5+ Years) | Jakarta</span>
+              </div>
+              <ul class="timeline-bullet-list" style="margin-top: 14px;">
+                <li>Directed infrastructure architecture, server operations, and database reliability for the <strong>Fintech Data Center (FDC)</strong>, federating real-time credit data exchange and borrower deduplication across <strong>100+ licensed P2P fintech lenders nationwide</strong> under OJK regulatory framework (<strong>POJK No. 10/POJK.05/2022</strong>).</li>
+                <li><strong>Led ISO/IEC 27001:2013 Implementation &amp; Transition Upgrade to ISO/IEC 27001:2022 (ISMS)</strong>, enforcing Annex A security controls aligned with <strong>UU No. 27/2022 (UU Pelindungan Data Pribadi / PDP)</strong> and OJK IT Risk Management (MRTI).</li>
+                <li><strong>Data Privacy &amp; Masking (A.8.11 &amp; UU PDP):</strong> Implemented dynamic data masking and column-level encryption for Sensitive Personal Data / PII (NIK KTP, Phone Numbers, Financial Ledgers) across query layers, staging environments, and monitoring telemetry to eliminate data leakage risks.</li>
+                <li><strong>Perimeter &amp; Network Encryption (A.8.24):</strong> Configured and enforced encrypted site-to-site <strong>IPsec VPN tunnels (AES-256 via Fortinet FortiGate &amp; StrongSwan)</strong> with mutual TLS (mTLS) for all cross-institutional API transactions between member fintech platforms and FDC.</li>
+                <li><strong>Identity Governance &amp; User Access Matrix (A.5.15 - A.5.18):</strong> Formulated strict Role-Based Access Control (RBAC), quarterly User Access Reviews (UAR), Bastion Jump Host SSH key enforcement with MFA, and Principle of Least Privilege (PoLP) across production database fleets.</li>
+                <li><strong>Centralized Audit Logging &amp; Retensi 5 Tahun (POJK 10/2022 &amp; A.8.15):</strong> Engineered tamper-resistant centralized audit logging (pgAudit, MySQL audit, Syslog) tracking all DDL/DML changes, privileged commands, and authentication events with a guaranteed 5-year retention policy.</li>
+                <li><strong>DRC, BCP &amp; Disaster Recovery Drills (A.5.30 &amp; POJK 10/2022):</strong> Architected Disaster Recovery Center (DRC) in Indonesia with real-time replication, running periodic BCP/DRP simulation drills achieving <strong>RPO &lt; 15 mins, RTO &lt; 1 hour</strong>, and 99.9% uptime SLA.</li>
+                <li>Managed high-throughput <strong>PostgreSQL and MySQL database clusters</strong>, automated ETL pipelines, and built real-time Prometheus &amp; Grafana observability dashboards monitoring millions of daily credit scoring inquiries.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Job 4: Sas Kreasindo & Earlier -->
+          <div class="timeline-item">
+            <div class="timeline-node-point"></div>
+            <div class="timeline-content-card">
+              <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
+                <div>
+                  <h3 class="timeline-role-title">Earlier Career: Business Analysis, Sharia P2P &amp; Mobile</h3>
+                  <div class="timeline-company-name">PT Sas Kreasindo Utama · Syarfi Fintech · PT Kerjaholic</div>
+                </div>
+                <span class="timeline-period-badge">2018 – 2020</span>
+              </div>
+              <ul class="timeline-bullet-list" style="margin-top: 14px;">
+                <li><strong>PT Sas Kreasindo Utama (2019–2020):</strong> Mapped manufacturing supply chain workflows and customized Odoo ERP modules to eliminate operational data silos.</li>
+                <li><strong>Syarfi P2P Fintech (2018–2019):</strong> Maintained full-lifecycle IT infrastructure, cloud Linux servers, and network firewall policies for OJK regulatory compliance.</li>
+                <li><strong>Kerjaholic (2018):</strong> Built native Android job search application features using Java, Retrofit REST client, and Google Maps API.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         EDUCATION & CERTIFICATIONS
+         ========================================== -->
+    <section id="education" style="padding-top: 20px;">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Credentials</div>
+          <h2 class="section-title">Education &amp; <span class="text-gradient">Certifications</span></h2>
+        </div>
+
+        <div class="recruiter-hub-card" style="padding: 28px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan); margin-bottom: 4px;">FORMAL DEGREE</div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Bachelor of Computer Science (S.Kom)</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">STMIK Widya Pratama Pekalongan (2014 – 2018)</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-emerald); margin-bottom: 4px;">SECURITY CREDENTIAL</div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">ISO/IEC 27001 ISMS Framework</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">Implementation &amp; Audit Alignment (AFPI)</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-primary); margin-bottom: 4px;">CYBERSECURITY</div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Ethical Hacking Fundamentals</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">Spentera Hacking Playground</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-amber); margin-bottom: 4px;">DATA &amp; PYTHON</div>
+              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Engineering &amp; Python Track</div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem;">DQLab &amp; Dicoding Academy</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CONTACT & HIRE SECTION
+         ========================================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="recruiter-hub-card" style="text-align: center; padding: 56px 24px;">
+          <div class="section-tag" style="margin-bottom: 12px;">Get In Touch</div>
+          <h2 style="font-size: 2.2rem; font-weight: 900; margin-bottom: 16px;">
+            Let’s Build <span class="text-gradient">Resilient Infrastructure</span> Together.
+          </h2>
+          <p style="max-width: 600px; margin: 0 auto 32px; font-size: 1.05rem; color: var(--text-secondary);">
+            Open for Senior Database Administrator, Cloud Infrastructure, and Platform Engineering roles, consulting, or technical advisory.
+          </p>
+
+          <div style="display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 32px;">
+            <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram">
+              <span>✈️ Chat on Telegram (@riprlutuk)</span>
+            </a>
+            <a href="https://linkedin.com/in/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-secondary">
+              <span>🔗 Connect on LinkedIn</span>
+            </a>
+            <a href="mailto:rizqy.pra85@gmail.com?subject=Opportunity%20Discussion%20-%20Heri%20Riski%20Anto" class="btn-cta btn-primary">
+              <span>✉️ Send Email (rizqy.pra85@gmail.com)</span>
+            </a>
+          </div>
+
+          <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; font-size: 0.85rem; color: var(--text-muted);">
+            <button class="copy-btn btn-cli-badge" data-copy="rizqy.pra85@gmail.com" data-msg="Email address copied!">
+              📋 Copy Email: rizqy.pra85@gmail.com
+            </button>
+            <button class="copy-btn btn-cli-badge" data-copy="https://t.me/riprlutuk" data-msg="Telegram handle copied!">
+              📋 Copy Telegram: @riprlutuk
+            </button>
+            <button class="copy-btn btn-cli-badge" data-copy="https://linkedin.com/in/riprlutuk" data-msg="LinkedIn URL copied!">
+              📋 Copy LinkedIn: in/riprlutuk
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ==========================================
+       SITE FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
         <div>
-          <div class="section-kicker">Available for useful technical work</div>
-          <h3 class="cta-title">Clean systems, tighter boundaries, and operations that remain manageable.</h3>
+          <div class="footer-brand-title">Heri Riski Anto (@RiprLutuk)</div>
+          <p style="font-size: 0.9rem; max-width: 400px; color: var(--text-secondary); margin-bottom: 16px;">
+            Senior Database Administrator (DBA), Cloud Infrastructure &amp; Backend Platform Engineer based in Tangerang &amp; Pemalang, Indonesia.
+          </p>
+          <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+            Hosted on GitHub Pages · Domain: <a href="https://riprlutuk.github.io" style="text-decoration:underline;">riprlutuk.github.io</a>
+          </div>
         </div>
-        <a class="cta-link" href="mailto:rizqy.pra85@gmail.com">Start a conversation</a>
-      </section>
-    </main>
 
-    <footer>
-      <div class="footer-label">Heri Riski Anto</div>
-      <div class="copy">Tangerang, Indonesia · DBA / Infrastructure / Backend / Network / Automation</div>
-    </footer>
+        <div>
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 12px; font-size: 0.9rem;">PORTFOLIO NAVIGATION</div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+            <li><a href="#about">About &amp; Summary</a></li>
+            <li><a href="#recruiter-hub">Recruiter Fast-Track</a></li>
+            <li><a href="#architecture">System Topology</a></li>
+            <li><a href="#projects">Flagship Projects</a></li>
+            <li><a href="#repos">Public GitHub Repos</a></li>
+            <li><a href="#experience">Career Timeline</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div style="font-weight: 700; color: var(--text-primary); margin-bottom: 12px; font-size: 0.9rem;">CONNECT &amp; RESUME</div>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px; font-size: 0.85rem; color: var(--text-secondary);">
+            <li><a href="https://github.com/RiprLutuk" target="_blank" rel="noopener">GitHub (@RiprLutuk) ↗</a></li>
+            <li><a href="https://linkedin.com/in/riprlutuk" target="_blank" rel="noopener">LinkedIn Profile ↗</a></li>
+            <li><a href="https://t.me/riprlutuk" target="_blank" rel="noopener">Telegram (@riprlutuk) ↗</a></li>
+            <li><a href="cv-ats-heri-riski-anto.html" target="_blank">View ATS Print Page ↗</a></li>
+            <li><a href="#" class="open-terminal-btn">CLI Console (Ctrl+K)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Heri Riski Anto. Crafted for High Availability &amp; Production Performance.</div>
+        <div>
+          <button class="open-terminal-btn" style="background:none; border:none; color:var(--accent-primary); cursor:pointer; font-family:var(--font-mono); font-size:0.8rem;">
+            &gt;_ Press Ctrl+K to Launch Interactive Terminal
+          </button>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==========================================
+       MODAL 1: PROFESSIONAL RESUME & EXECUTIVE PROFILE
+       ========================================== -->
+  <div id="resume-modal" class="modal-backdrop">
+    <div class="modal-dialog">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="font-size: 1.3rem;">📄</span>
+          <div>
+            <div style="font-weight: 800; font-size: 1.1rem; color: #fff;">Curriculum Vitae &amp; Professional Profile</div>
+            <div style="font-size: 0.75rem; color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 600;">
+              Heri Riski Anto &bull; Senior Database Administrator &bull; Cloud &amp; Infrastructure &bull; Backend Platform
+            </div>
+          </div>
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Top Executive Highlights Banner (No ATS buzzwords) -->
+        <div class="ats-score-banner" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(6, 182, 212, 0.12) 100%); border-color: var(--border-strong);">
+          <div>
+            <div style="font-size: 0.75rem; text-transform: uppercase; font-weight: 700; color: var(--text-muted); font-family: var(--font-mono);">
+              CANDIDATE SUMMARY &bull; HERI RISKI ANTO
+            </div>
+            <div style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-top: 2px;">
+              Senior DBA, Infrastructure &amp; Backend Platform Engineer
+            </div>
+            <div style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 4px;">
+              7+ Years Experience &bull; Telecom, National Fintech &amp; Crowdfunding &bull; ISO 27001 Lead &bull; 99.98% SLA
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="padding: 10px 18px; font-size: 0.85rem;">
+              <span>✈️ Request Full CV via Telegram</span>
+            </a>
+            <a href="mailto:rizqy.pra85@gmail.com?subject=Request%20Full%20CV%20-%20Heri%20Riski%20Anto" class="btn-cta btn-primary" style="padding: 10px 18px; font-size: 0.85rem;">
+              <span>✉️ Request via Email</span>
+            </a>
+            <button class="btn-cta btn-secondary copy-btn" data-copy="HERI RISKI ANTO&#10;Senior Database Administrator | Cloud Infrastructure | Backend Platform Engineer&#10;Email: rizqy.pra85@gmail.com | Telegram: @riprlutuk | LinkedIn: linkedin.com/in/riprlutuk | GitHub: github.com/RiprLutuk&#10;&#10;SUMMARY: Results-driven DBA & Infrastructure Engineer with 7+ years of experience administering PostgreSQL, MS SQL Server, Oracle 19c, MySQL, Kafka CDC, Go, and ISO/IEC 27001 ISMS certification lead." data-msg="Candidate summary copied!" style="padding: 10px 16px; font-size: 0.85rem;">
+              <span>📋 Copy Summary</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Full Document Paper View -->
+        <article class="ats-paper-preview">
+          <!-- Paper Header -->
+          <header class="ats-paper-header">
+            <h1 class="ats-paper-name">HERI RISKI ANTO</h1>
+            <div class="ats-paper-title">Senior Database Administrator (DBA) | Cloud &amp; Infrastructure Engineer | Backend Platform Engineer</div>
+            <div class="ats-paper-contacts">
+              <span>📍 Tangerang, Banten &amp; Pemalang, Central Java, Indonesia</span>
+              <span>✈️ <a href="https://t.me/riprlutuk" target="_blank">t.me/riprlutuk</a></span>
+              <span>✉️ <a href="mailto:rizqy.pra85@gmail.com">rizqy.pra85@gmail.com</a></span>
+              <span>🔗 <a href="https://linkedin.com/in/riprlutuk" target="_blank">linkedin.com/in/riprlutuk</a></span>
+              <span>🐙 <a href="https://github.com/RiprLutuk" target="_blank">github.com/RiprLutuk</a></span>
+              <span>🌐 <a href="https://riprlutuk.github.io" target="_blank">riprlutuk.github.io</a></span>
+            </div>
+          </header>
+
+          <!-- Professional Summary -->
+          <section>
+            <h2 class="ats-paper-sec-title">Professional Summary</h2>
+            <p style="color: #334155; line-height: 1.65; text-align: justify; font-size: 0.9rem;">
+              Results-driven <strong>Database Administrator (DBA), Cloud Infrastructure, and Backend Platform Engineer</strong> with <strong>7+ years of production experience</strong> designing, scaling, and securing enterprise data platforms, telecommunication database fleets, and fintech infrastructure. Expert in administering multi-engine database environments (<strong>PostgreSQL, Microsoft SQL Server, Oracle Database 19c, MySQL/MariaDB, ClickHouse</strong>), designing high-availability (HA/DR) failovers, automating real-time CDC/ETL data pipelines, and leading <strong>ISO/IEC 27001 Information Security Management System (ISMS)</strong> compliance. Proven track record in developing high-throughput backend services and zero-trust API gateways using <strong>Go (Golang)</strong>, <strong>Python</strong>, and modern cloud-native architectures.
+            </p>
+          </section>
+
+          <!-- Core Competencies & Skills -->
+          <section>
+            <h2 class="ats-paper-sec-title">Core Competencies &amp; Technical Skills</h2>
+            <div style="font-size: 0.88rem; line-height: 1.65; color: #334155;">
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #0f172a;">Database Administration (DBA):</strong> PostgreSQL (9.x–16.x), Microsoft SQL Server (2016–2022 AlwaysOn AG), Oracle Database 11g/19c (RMAN, Data Guard), MySQL / MariaDB (Replication, Galera), Redis, ClickHouse, SQLite/PGlite. High Availability (HA/DR), Streaming &amp; Logical Replication, Query Plan Analysis, Composite Index Tuning, Table Partitioning, PgBouncer Connection Pooling, RMAN / pg_dump / Barman Backup &amp; Disaster Recovery, Zero-Downtime Data Migration.
+              </div>
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #0f172a;">Data Platform &amp; Real-Time CDC:</strong> Change Data Capture (CDC), Debezium Connector, Apache Kafka Cluster, OLTP-to-OLAP Real-Time Streaming, ETL/ELT Pipeline Automation, Data Validation, Prometheus Exporters &amp; Grafana Operational Dashboards.
+              </div>
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #0f172a;">Backend &amp; API Engineering:</strong> Go (Golang), Python (FastAPI, Flask, Automation Scripts), PHP (Laravel, Native), Java, C# / .NET, TypeScript / JavaScript, Bash / Shell Scripting, RESTful API Architecture, Microservices, Zero-Trust API Gateways, Rate Limiting, Nginx &amp; Caddy Reverse Proxies.
+              </div>
+              <div style="margin-bottom: 8px;">
+                <strong style="color: #0f172a;">Cloud, Infrastructure &amp; DevOps:</strong> Linux Administration (Ubuntu, Debian, RHEL, CentOS), AWS (EC2, RDS, VPC, S3, IAM, CloudWatch), Docker, Docker Compose, Kubernetes fundamentals, Systemd Service Hardening, CI/CD Pipelines (GitHub Actions, GitLab CI).
+              </div>
+              <div>
+                <strong style="color: #0f172a;">Security &amp; Network Governance:</strong> ISO/IEC 27001 ISMS Controls, Risk Assessment &amp; Security Baseline Formulation, Fortinet FortiGate Enterprise Firewall Rules, Site-to-Site IPsec VPN (StrongSwan), OpenVPN, Tailscale / WireGuard, NAT Routing, CIS Benchmark Hardening, RBAC, SSL/TLS Management.
+              </div>
+            </div>
+          </section>
+
+          <!-- Professional Experience -->
+          <section>
+            <h2 class="ats-paper-sec-title">Professional Experience</h2>
+
+            <!-- Job 1 -->
+            <div style="margin-bottom: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px;">
+                <div><strong style="font-size: 0.98rem; color: #0f172a;">Database Administrator (DBA)</strong> &bull; <span style="color: #0369a1; font-weight: 700;">PT Link Net Tbk</span></div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #64748b;">Feb 2025 – Present | Jakarta / Remote, ID</div>
+              </div>
+              <ul class="ats-paper-bullet-list">
+                <li>Administer enterprise multi-engine production database environments across <strong>Microsoft SQL Server (AlwaysOn Availability Groups), Oracle Database 19c, PostgreSQL, and MySQL/MariaDB</strong>, maintaining <strong>99.98% database availability SLA</strong> across telecom service backbones.</li>
+                <li>Engineered automated database backup validation, transaction log shipping, and disaster recovery procedures using RMAN, pg_dump, and shell automation scripts, reducing Recovery Point Objective (RPO) to &lt; 15 minutes and Recovery Time Objective (RTO) to &lt; 1 hour.</li>
+                <li>Diagnosed system performance bottlenecks, analyzed query execution plans, refactored slow-running stored procedures, and fine-tuned indexing strategies, cutting latency on heavy reporting workloads by up to <strong>60%</strong>.</li>
+                <li>Enforced enterprise database security governance, audit trails, connection pool limits, and role-based access control (RBAC) in compliance with telecommunication security and data protection regulations.</li>
+              </ul>
+            </div>
+
+            <!-- Job 2 -->
+            <div style="margin-bottom: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px;">
+                <div><strong style="font-size: 0.98rem; color: #0f172a;">Senior Fullstack Engineer / IT Specialist</strong> &bull; <span style="color: #0369a1; font-weight: 700;">Halalvestor Global Asia (Vestora.id)</span></div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #64748b;">Dec 2024 – Oct 2025 | Tangerang / Jakarta, ID</div>
+              </div>
+              <ul class="ats-paper-bullet-list">
+                <li>Architected backend microservices, financial ledgers, and investor web portals for <strong>Vestora.id</strong>, a regulated Sharia securities crowdfunding (SCF) and P2P investment platform under OJK oversight.</li>
+                <li>Developed high-concurrency RESTful APIs, multi-channel payment gateway integrations, automated investor KYC verifications, escrow wallet settlement, and investment yield distribution algorithms using <strong>PHP 8.x / Laravel, PostgreSQL, and Vue.js</strong>.</li>
+                <li>Optimized database transaction isolation levels and row-level locking mechanisms, eliminating race conditions and double-spending during rapid, oversubscribed crowdfunding investment campaigns.</li>
+                <li>Configured automated CI/CD container build and deployment pipelines on cloud infrastructure, ensuring continuous zero-downtime application releases.</li>
+              </ul>
+            </div>
+
+            <!-- Job 3 -->
+            <div style="margin-bottom: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px;">
+                <div><strong style="font-size: 0.98rem; color: #0f172a;">Data Management &amp; Infrastructure Operations Lead</strong> &bull; <span style="color: #0369a1; font-weight: 700;">AFPI (Asosiasi Fintech Pendanaan Bersama Indonesia)</span></div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #64748b;">Mar 2020 – Apr 2025 (5+ Years) | Jakarta, ID</div>
+              </div>
+              <ul class="ats-paper-bullet-list">
+                <li>Directed infrastructure architecture, server fleet, and database operations for the national <strong>Fintech Data Center (FDC)</strong>, federating real-time credit data exchange and borrower deduplication across <strong>100+ licensed P2P fintech lenders nationwide</strong>.</li>
+                <li><strong>Spearheaded ISO/IEC 27001 ISMS certification and subsequent upgrade lifecycle</strong>, authoring comprehensive IT security governance policies, implementing technical controls, managing access matrices, and hardening Linux server fleets according to CIS benchmarks.</li>
+                <li>Configured and maintained high-availability site-to-site <strong>IPsec VPN tunnels (StrongSwan)</strong>, <strong>Fortinet FortiGate enterprise firewalls</strong>, and <strong>OpenVPN gateways</strong> for encrypted cross-institutional financial communications.</li>
+                <li>Built automated real-time ETL pipelines and observability dashboards with <strong>Grafana, Prometheus, and Python</strong>, reducing incident triage and resolution time by <strong>50%</strong> while monitoring millions of daily credit inquiries.</li>
+                <li>Administered high-volume <strong>PostgreSQL and MySQL database clusters</strong>, executing zero-downtime schema migrations, index optimizations, and data cleansing routines on millions of borrower records.</li>
+              </ul>
+            </div>
+
+            <!-- Job 4 -->
+            <div style="margin-bottom: 18px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px;">
+                <div><strong style="font-size: 0.98rem; color: #0f172a;">IT Business Analyst (Odoo ERP)</strong> &bull; <span style="color: #0369a1; font-weight: 700;">PT Sas Kreasindo Utama</span></div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #64748b;">Nov 2019 – Feb 2020 | ID</div>
+              </div>
+              <ul class="ats-paper-bullet-list">
+                <li>Mapped and analyzed end-to-end manufacturing workflows (Purchase Orders, Raw Materials Ingestion, Production Stages, Quality Assurance, Finished Goods Inventory, and Multi-channel Dispatch).</li>
+                <li>Collaborated with software engineering teams to customize Odoo ERP modules, streamlining inventory management accuracy and eliminating cross-departmental data silos.</li>
+              </ul>
+            </div>
+
+            <!-- Job 5 & Earlier -->
+            <div style="margin-bottom: 14px;">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px;">
+                <div><strong style="font-size: 0.98rem; color: #0f172a;">ICT &amp; Systems Officer &bull; Java Android Developer</strong> &bull; <span style="color: #0369a1; font-weight: 700;">Syarfi Fintech &bull; PT Kerjaholic</span></div>
+                <div style="font-size: 0.82rem; font-weight: 700; color: #64748b;">2018 – 2019 | ID</div>
+              </div>
+              <ul class="ats-paper-bullet-list">
+                <li><strong>Syarfi P2P Fintech (2018–2019):</strong> Maintained full-lifecycle IT infrastructure, cloud Linux servers, network switching, and firewall security policies for an OJK-registered Sharia P2P platform.</li>
+                <li><strong>Kerjaholic (2018):</strong> Built native Android job search application features using Java, Retrofit REST client, Google Cloud Messaging (GCM) push notifications, and Google Maps API.</li>
+              </ul>
+            </div>
+          </section>
+
+          <!-- Key Projects -->
+          <section>
+            <h2 class="ats-paper-sec-title">Key Engineering Projects &amp; Open Source</h2>
+            <div style="font-size: 0.88rem; color: #334155; line-height: 1.55;">
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #0f172a;">DDAG (Zero-Trust Multi-Dialect Dynamic API Gateway)</strong> &bull; <em>Go (Golang), PostgreSQL, MSSQL, Oracle, MySQL</em><br>
+                High-performance API Gateway in Go that dynamically reflects database schema and exposes SQL databases as secure REST APIs with JWT token auth, SQL injection parameter sanitization, connection pooling, and granular RBAC. (<a href="https://github.com/RiprLutuk/DDAG" target="_blank" style="color:#0284c7; font-weight:600;">github.com/RiprLutuk/DDAG</a>)
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #0f172a;">ch-olap-pipeline (Universal OLTP-to-OLAP CDC Engine)</strong> &bull; <em>Debezium, Apache Kafka, ClickHouse, Shell</em><br>
+                Continuous Change Data Capture streaming pipeline capturing transaction mutations from PostgreSQL, MySQL, and SQL Server into ClickHouse columnar storage for sub-second analytical reporting. (<a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" style="color:#0284c7; font-weight:600;">Live Demo</a> &bull; <a href="https://github.com/RiprLutuk/ch-olap-pipeline" target="_blank" style="color:#0284c7; font-weight:600;">GitHub</a>)
+              </div>
+              <div style="margin-bottom: 10px;">
+                <strong style="color: #0f172a;">PasPapan (Enterprise HRIS &amp; Workforce Operations)</strong> &bull; <em>Laravel, Livewire, Mobile &amp; Face Biometrics, MySQL</em><br>
+                Comprehensive workforce management system with Face ID &amp; GPS biometric attendance, 1-click automated payroll calculation, KPI appraisal matrix, shift scheduling, and multi-branch management. (<a href="https://paspapan.pandanteknik.com" target="_blank" style="color:#0284c7; font-weight:600;">Live Demo</a> &bull; <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" style="color:#0284c7; font-weight:600;">GitHub</a>)
+              </div>
+              <div>
+                <strong style="color: #0f172a;">WargaHub (Neighborhood Governance &amp; Financial Transparency PWA)</strong> &bull; <em>Vue 3 PWA, Fastify, PGlite WASM</em><br>
+                Digital consensus and transparent financial administration platform for RT/RW community governance featuring embedded offline-capable WASM PostgreSQL database. (<a href="https://github.com/RiprLutuk/WargaHub" target="_blank" style="color:#0284c7; font-weight:600;">github.com/RiprLutuk/WargaHub</a>)
+              </div>
+            </div>
+          </section>
+
+          <!-- Education & Certifications -->
+          <section>
+            <h2 class="ats-paper-sec-title">Education &amp; Professional Certifications</h2>
+            <div style="font-size: 0.88rem; color: #334155; line-height: 1.6;">
+              <div>&bull; <strong>Bachelor of Computer Science / Informatics (S.Kom)</strong> — STMIK Widya Pratama Pekalongan (2014 – 2018)</div>
+              <div>&bull; <strong>ISO/IEC 27001 Information Security Management Systems (ISMS)</strong> — Implementation &amp; Audit Framework (AFPI)</div>
+              <div>&bull; <strong>Ethical Hacking &amp; System Security Fundamentals</strong> — Spentera Hacking Playground</div>
+              <div>&bull; <strong>Data Engineering &amp; Python Career Track</strong> — DQLab Academy &amp; Dicoding Academy</div>
+            </div>
+          </section>
+        </article>
+
+        <!-- Footer Note -->
+        <div style="margin-top: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+          <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald);">
+            🔒 Official PDF CV is sent directly upon request to protect personal data.
+          </span>
+          <button class="btn-cta btn-secondary modal-close-btn" style="padding: 8px 18px; font-size: 0.85rem;">
+            Close Resume
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
+
+  <!-- ==========================================
+       MODAL 2: INTERACTIVE CLI TERMINAL (Ctrl+K)
+       ========================================== -->
+  <div id="terminal-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 800px; background: var(--bg-code);">
+      <div class="modal-header" style="background: rgba(0,0,0,0.5); padding: 14px 20px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="terminal-dots">
+            <span class="t-dot red"></span>
+            <span class="t-dot yellow"></span>
+            <span class="t-dot green"></span>
+          </div>
+          <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-primary); font-weight: 700;">
+            riprlutuk@cloud-console:~$ (Interactive CLI)
+          </div>
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="cli-terminal-window">
+        <div class="cli-body" id="cli-output-body">
+          <div style="color: var(--accent-cyan); margin-bottom: 12px; line-height: 1.5;">
+            <strong>HERI RISKI ANTO INTERACTIVE CLI SHELL [Version 3.2.0-prod]</strong><br>
+            Type <span style="color: var(--accent-primary); font-weight: 700;">help</span> to see available commands, or try <span style="color: var(--accent-emerald); font-weight: 700;">sudo hire</span>, <span style="color: var(--accent-cyan);">skills</span>, <span style="color: var(--accent-cyan);">projects</span>, <span style="color: var(--accent-cyan);">ats</span>.
+          </div>
+        </div>
+
+        <form class="cli-input-form" id="cli-form">
+          <span class="console-prompt">riprlutuk@cloud:~$</span>
+          <input type="text" id="cli-input" class="cli-input-field" placeholder="type a command (e.g. help, skills, hire)..." autocomplete="off" spellcheck="false">
+          <button type="submit" class="btn-cta btn-primary" style="padding: 6px 14px; font-size: 0.75rem;">Run</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 3: DIRECT CONTACT / HIRE MODAL
+       ========================================== -->
+  <div id="contact-modal" class="modal-backdrop">
+    <div class="modal-dialog" style="max-width: 540px;">
+      <div class="modal-header">
+        <div class="modal-title">💬 Connect with Heri Riski Anto</div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+
+      <div class="modal-body" style="text-align: center;">
+        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 0.95rem;">
+          Choose your preferred direct channel to start a conversation regarding full-time roles, freelance projects, or technical consulting.
+        </p>
+
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px;">
+          <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="justify-content: center;">
+            <span>✈️ Direct Telegram (@riprlutuk)</span>
+          </a>
+
+          <a href="mailto:rizqy.pra85@gmail.com?subject=Career%20Opportunity%20for%20Heri%20Riski%20Anto" class="btn-cta btn-primary" style="justify-content: center;">
+            <span>✉️ Send Direct Email (rizqy.pra85@gmail.com)</span>
+          </a>
+
+          <a href="https://linkedin.com/in/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-secondary" style="justify-content: center;">
+            <span>🔗 Connect on LinkedIn (/in/riprlutuk)</span>
+          </a>
+        </div>
+
+        <div style="border-top: 1px solid var(--border-subtle); padding-top: 18px; font-size: 0.8rem; color: var(--text-muted);">
+          Location: Tangerang City, Banten &amp; Pemalang, Indonesia (UTC+7)
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/audio.js"></script>
+  <script src="js/topology.js"></script>
+  <script src="js/github.js"></script>
+  <script src="js/terminal.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
