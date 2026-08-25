@@ -1002,33 +1002,103 @@ section {
    FLAGSHIP PROJECTS BENTO GRID
    ========================================================================== */
 
-/* Clean & Minimalist Projects Grid (Modern SaaS Aesthetic) */
+/* Cybernetic High-Tech Bento Projects Grid */
 .bento-projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 20px;
+  gap: 22px;
 }
 
 .bento-card {
-  background: rgba(15, 23, 36, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(145deg, rgba(15, 23, 36, 0.88) 0%, rgba(9, 13, 20, 0.95) 100%);
+  border: 1px solid rgba(249, 115, 22, 0.22);
   border-radius: 18px;
   padding: 24px 26px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Cybernetic Corner Bracket & Ambient Scanlines */
+.bento-card::before {
+  content: ;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-primary), var(--accent-emerald), transparent);
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.bento-card::after {
+  content: ;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(circle, rgba(249, 115, 22, 0.08) 0%, transparent 70%);
+  pointer-events: none;
+  transition: transform 0.4s ease;
 }
 
 .bento-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
   border-color: var(--accent-primary);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(249, 115, 22, 0.2);
-  background: rgba(24, 34, 50, 0.85);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(249, 115, 22, 0.28);
+  background: linear-gradient(145deg, rgba(24, 34, 50, 0.95) 0%, rgba(13, 19, 32, 0.98) 100%);
+}
+
+.bento-card:hover::before {
+  opacity: 1;
+}
+
+.bento-card:hover::after {
+  transform: scale(1.4);
+}
+
+.bento-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.bento-code-tag {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.04em;
+}
+
+.bento-hud-metric {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: rgba(6, 10, 16, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  margin: 12px 0 16px 0;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+
+.bento-hud-metric strong {
+  color: var(--accent-emerald);
 }
 
 .bento-card.featured-hero-card {
