@@ -88,17 +88,88 @@
         </div>
       </a>
 
-      <!-- Desktop Nav Links -->
-      <nav>
+      <!-- Desktop Grouped Nav Links -->
+      <nav aria-label="Main Navigation">
         <ul class="nav-links">
           <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#recruiter-hub" class="nav-link">Recruiter Hub</a></li>
-          <li><a href="#architecture" class="nav-link">Architecture</a></li>
-          <li><a href="#dba-lab" class="nav-link">DBA Lab</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#repos" class="nav-link">Public Works</a></li>
-          <li><a href="#roi-calculator" class="nav-link">ROI Calc</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
+          
+          <!-- Dropdown 1: Engineering -->
+          <li class="nav-item-dropdown">
+            <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <span>🖥️ Engineering</span>
+              <span style="font-size: 0.65rem;">▼</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="#architecture" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🌐</span>
+                <div>
+                  <div>System Architecture</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Interactive Topology &amp; Streamer</div>
+                </div>
+              </a>
+              <a href="#dba-lab" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🔬</span>
+                <div>
+                  <div>DBA Diagnostic Lab</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Live EXPLAIN Plan Optimizer</div>
+                </div>
+              </a>
+              <a href="#projects" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🚀</span>
+                <div>
+                  <div>Flagship Projects</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">DDAG, CDC, OpenOrg, WargaHub</div>
+                </div>
+              </a>
+              <a href="#repos" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🐙</span>
+                <div>
+                  <div>Public Works</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Live GitHub Repository Explorer</div>
+                </div>
+              </a>
+              <a href="#benchmarks" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">📊</span>
+                <div>
+                  <div>DBA Benchmarks</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">10M Rows Latency &amp; CDC Throughput</div>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <!-- Dropdown 2: Recruiter & Business -->
+          <li class="nav-item-dropdown">
+            <button class="nav-dropdown-trigger" aria-haspopup="true" aria-expanded="false">
+              <span>💼 Recruiter &amp; Business</span>
+              <span style="font-size: 0.65rem;">▼</span>
+            </button>
+            <div class="nav-dropdown-menu">
+              <a href="#recruiter-hub" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">⚡</span>
+                <div>
+                  <div>Recruiter Fast-Track Hub</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">30-Sec Fit Summary &amp; Hiring FAQ</div>
+                </div>
+              </a>
+              <a href="#roi-calculator" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">💰</span>
+                <div>
+                  <div>Cloud ROI Calculator</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">AWS/Cloud Spend Savings Estimator</div>
+                </div>
+              </a>
+              <a href="#experience" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">📜</span>
+                <div>
+                  <div>Experience Timeline</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Link Net, AFPI (ISO 27001), Vestora</div>
+                </div>
+              </a>
+            </div>
+          </li>
+
+          <li><button class="nav-link open-resume-modal-btn" style="background:none; border:none; cursor:pointer;">📄 Resume</button></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>

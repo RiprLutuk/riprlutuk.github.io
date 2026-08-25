@@ -473,6 +473,11 @@ class TopologyVisualizer {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function initTopology() {
   window.topologyVisualizer = new TopologyVisualizer();
-});
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", initTopology);
+} else {
+  initTopology();
+}

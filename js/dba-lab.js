@@ -198,20 +198,13 @@ class DBALab {
     this.isExecuting = true;
 
     if (window.soundFx) window.soundFx.playClick();
-    const btnText = this.runBtn.querySelector("span");
+    const btnText = this.runBtn ? this.runBtn.querySelector("span") : null;
     if (btnText) btnText.textContent = "⚡ Running EXPLAIN ANALYZE...";
-    this.runBtn.disabled = true;
-
-    const meterEl = document.getElementById("dba-gauge-fill");
-    if (meterEl) {
-      meterEl.style.width = "10%";
-      meterEl.style.transition = "width 0.4s ease";
-      setTimeout(() => { meterEl.style.width = "75%"; }, 300);
-    }
+    if (this.runBtn) this.runBtn.disabled = true;
 
     setTimeout(() => {
       this.isExecuting = false;
-      this.runBtn.disabled = false;
+      if (this.runBtn) this.runBtn.disabled = false;
       if (btnText) btnText.textContent = "🚀 Re-run Benchmark";
       if (window.soundFx) window.soundFx.playSuccess();
       if (window.showToast) {
@@ -219,14 +212,13 @@ class DBALab {
         window.showToast(this.isOptimized ? `Benchmark Completed: ${data.timeAfter} (${data.speedup})` : `Unoptimized Query Finished: ${data.timeBefore}`);
       }
       this.render();
-    }, 900);
+    }, 800);
   }
 
   render() {
     const data = DBA_LAB_SCENARIOS[this.currentKey];
     if (!data) return;
 
-    // Elements
     const titleEl = document.getElementById("dba-scenario-title");
     const engineEl = document.getElementById("dba-engine-badge");
     const problemEl = document.getElementById("dba-problem-desc");
@@ -271,7 +263,7 @@ class DBALab {
     }
 
     if (solutionDescEl) {
-      solutionDescEl.innerHTML = this.isOptimized ? `<strong>Heri's Optimization:</strong> ${data.solution}` : `<strong>Bottleneck Diagnosis:</strong> Click <em>"Apply Optimization"</em> to see Heri's index tuning and architecture refactor.`;
+      solutionDescEl.innerHTML = this.isOptimized ? `<strong>Heri's Optimization:</strong> ${data.solution}` : `<strong>Bottleneck Diagnosis:</strong> Click <em>"Apply Heri's DB Optimization"</em> to see the index tuning and architecture refactor.`;
     }
 
     if (this.toggleOptimizeBtn) {
@@ -285,9 +277,6 @@ class DBALab {
   }
 }
 
-// ----------------------------------------------------
-// Production SRE Incident Room Simulator
-// ----------------------------------------------------
 class SREIncidentRoom {
   constructor() {
     this.currentStep = 0;
@@ -314,11 +303,11 @@ class SREIncidentRoom {
     }
 
     const steps = [
-      { step: 1, title: "🛡️ Perimeter Firewall: Rate Limiting & FortiGate ACL Filter Activated", delay: 800 },
-      { step: 2, title: "🏊 Connection Pool Guard: PgBouncer Isolates High-Volume Threads", delay: 1600 },
-      { step: 3, title: "🔒 UU PDP Privacy Shield: Dynamic PII Masking Enforced on Telemetry", delay: 2400 },
-      { step: 4, title: "💾 High Availability Sync: DRC Node Synchronized (0 Data Loss, RPO <15s)", delay: 3200 },
-      { step: 5, title: "✅ 100% HEALTH RESTORED: All 100+ Fintech Nodes Operating at <1.2ms SLA", delay: 4000 }
+      { title: "🛡️ Perimeter Firewall: Rate Limiting & FortiGate ACL Filter Activated", delay: 600 },
+      { title: "🏊 Connection Pool Guard: PgBouncer Isolates High-Volume Threads", delay: 1200 },
+      { title: "🔒 UU PDP Privacy Shield: Dynamic PII Masking Enforced on Telemetry", delay: 1800 },
+      { title: "💾 High Availability Sync: DRC Node Synchronized (0 Data Loss, RPO <15s)", delay: 2400 },
+      { title: "✅ 100% HEALTH RESTORED: All 100+ Fintech Nodes Operating at <1.2ms SLA", delay: 3000 }
     ];
 
     const logsContainer = document.getElementById("sre-live-logs");
@@ -354,7 +343,13 @@ class SREIncidentRoom {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function startDBALab() {
   window.dbaLab = new DBALab();
   window.sreIncidentRoom = new SREIncidentRoom();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startDBALab);
+} else {
+  startDBALab();
+}

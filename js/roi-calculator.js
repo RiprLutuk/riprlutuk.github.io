@@ -44,13 +44,10 @@ class ROICalculator {
     if (this.spendVal) this.spendVal.textContent = `$${spend.toLocaleString()} / mo`;
     if (this.latencyVal) this.latencyVal.textContent = `${latency.toFixed(1)}s`;
 
-    // Calculation formulas based on real DBA production optimization averages
-    // Query optimization, memory tuning & index defragmentation typically yields 40% - 55% AWS/Cloud compute downsizing
     const savingsPercent = 0.42; 
     const monthlySavings = Math.round(spend * savingsPercent);
     const yearlySavings = monthlySavings * 12;
 
-    // Latency drops by ~95% with proper B-Tree indexing, partition pruning, and connection pooling
     const optimizedLatencyMs = Math.max(12, Math.round((latency * 1000) * 0.04));
     const speedupRatio = Math.round((latency * 1000) / optimizedLatencyMs);
 
@@ -68,6 +65,12 @@ class ROICalculator {
   }
 }
 
-document.addEventListener("DOMContentLoaded", () => {
+function startROICalculator() {
   window.roiCalculator = new ROICalculator();
-});
+}
+
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", startROICalculator);
+} else {
+  startROICalculator();
+}
