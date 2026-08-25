@@ -1080,17 +1080,65 @@ section {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 14px;
+  gap: 10px;
+  flex-wrap: nowrap;
 }
 
 .bento-code-tag {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: var(--accent-cyan);
-  display: flex;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.bento-code-tag span {
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.bento-action-links {
+  display: inline-flex;
   align-items: center;
   gap: 6px;
-  letter-spacing: 0.04em;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.bento-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+  text-decoration: none;
+  line-height: 1.2;
+  transition: all var(--transition-fast);
+}
+
+.bento-icon-btn span {
+  white-space: nowrap;
+}
+
+.bento-icon-btn:hover {
+  background: var(--accent-primary);
+  border-color: var(--accent-primary);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
 }
 
 .bento-hud-metric {
