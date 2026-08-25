@@ -174,7 +174,7 @@ class InteractiveTerminal {
       <div style="color: var(--text-secondary); line-height: 1.6;">
         <strong style="color: var(--accent-cyan);">ENGINEERING STACK & COMPETENCIES:</strong><br>
         • <strong>Databases (DBA):</strong> PostgreSQL, MS SQL Server, Oracle Database 19c, MySQL/MariaDB, ClickHouse, Redis, PgBouncer, HA/DR, Backup & RMAN, Performance Tuning.<br>
-        • <strong>Data Platform & CDC:</strong> Debezium, Apache Kafka, OLTP-to-OLAP Real-time CDC, ETL Automation, Grafana & Prometheus.<br>
+        • <strong>Data Platform & CDC:</strong> Debezium, Apache Kafka, OLTP-to-OLAP Real-time CDC, ETL Automation, Grafana, Prometheus & Blackbox Exporter Synthetic Monitoring (HTTP/TCP/SSL).<br>
         • <strong>Backend & APIs:</strong> Go (Golang), Python (FastAPI), PHP (Laravel), Java, C# / .NET, TypeScript, REST, Microservices.<br>
         • <strong>Cloud & Infra:</strong> Linux (Ubuntu, Debian, RHEL), AWS (EC2, RDS, VPC), Docker, Kubernetes basics, Nginx, Caddy, CI/CD.<br>
         • <strong>Security & Network:</strong> ISO/IEC 27001 ISMS, Fortinet FortiGate Firewall, IPsec VPN (StrongSwan), OpenVPN, Zero-Trust.
@@ -199,11 +199,12 @@ class InteractiveTerminal {
   cmdProjects() {
     this.print(`
       <div style="color: var(--text-secondary); line-height: 1.6;">
-        <strong style="color: var(--accent-cyan);">FLAGSHIP PROJECTS:</strong><br>
-        1. <strong>DDAG (Dynamic Data API Gateway):</strong> Go-based Zero-Trust API Gateway dynamically exposing databases. (<a href="https://github.com/RiprLutuk/DDAG" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">github.com/RiprLutuk/DDAG</a>)<br>
-        2. <strong>ch-olap-pipeline:</strong> Universal CDC streaming pipeline (Debezium + Kafka + ClickHouse). (<a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">Demo</a>)<br>
-        3. <strong>PasPapan HRIS:</strong> Full-suite HRIS with Face ID & GPS biometric payroll. (<a href="https://paspapan.pandanteknik.com" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">Demo</a>)<br>
-        4. <strong>WargaHub:</strong> Neighborhood governance & financial transparency PWA. (<a href="https://github.com/RiprLutuk/WargaHub" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub</a>)
+        <strong style="color: var(--accent-cyan);">FLAGSHIP PRODUCTION PROJECTS:</strong><br>
+        1. <strong>DDAG (Dynamic Data API Gateway):</strong> Go-based Zero-Trust Multi-Dialect SQL API Gateway. (<a href="https://github.com/RiprLutuk/DDAG" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">github.com/RiprLutuk/DDAG</a>)<br>
+        2. <strong>ch-olap-pipeline:</strong> Universal CDC streaming pipeline into ClickHouse (Debezium + Kafka). (<a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">Demo</a>)<br>
+        3. <strong>OpenOrg:</strong> Organization governance platform with digital KTA, SKP academy & certificate verification. (<a href="https://github.com/RiprLutuk/openorg" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">github.com/RiprLutuk/openorg</a>)<br>
+        4. <strong>WargaHub:</strong> Neighborhood digital governance & financial transparency PWA with embedded WASM PostgreSQL. (<a href="https://github.com/RiprLutuk/WargaHub" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">github.com/RiprLutuk/WargaHub</a>)<br>
+        5. <strong>PasPapan HRIS:</strong> Enterprise HRIS with Face ID & GPS biometric attendance and payroll. (<a href="https://paspapan.pandanteknik.com" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">Demo</a>)
       </div>
     `);
   }

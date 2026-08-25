@@ -58,11 +58,11 @@ const ARCHITECTURE_DATA = {
         badge: "AUDIT LOGS",
         icon: "📊",
         title: "Audit Trail & Telemetry",
-        desc: "pgAudit + 5-Yr Retention & Grafana (A.8.15)",
+        desc: "pgAudit + 5-Yr Logs & Blackbox Exporter (A.8.15)",
         telemetryNormal: "100% Integrity • WORM",
         telemetrySpike: "Real-Time Telemetry Active",
         tags: ["5-Year Retention", "Prometheus", "Grafana SLA"],
-        details: "Tamper-resistant centralized logging capturing all DDL/DML, RBAC matrix authentications, and live Grafana dashboards monitoring SLA and latency percentiles."
+        details: "Tamper-resistant centralized audit logging (pgAudit) combined with Prometheus Blackbox Exporter performing 24/7 synthetic HTTP/TCP probes, SSL expiry tracking, and Grafana SLA uptime telemetry."
       }
     ]
   },
