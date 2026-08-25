@@ -280,6 +280,7 @@
           <!-- Right Column: Live Console Bento Card -->
           <div>
             <div class="hero-card-terminal">
+              <!-- Terminal Header Bar -->
               <div class="terminal-card-header">
                 <div class="terminal-dots">
                   <span class="t-dot red"></span>
@@ -287,48 +288,75 @@
                   <span class="t-dot green"></span>
                 </div>
                 <div class="terminal-card-title">dba-cluster-telemetry.sh</div>
-                <button class="btn-icon open-terminal-btn" style="width:24px; height:24px; font-size:0.7rem;" title="Expand Full CLI">&gt;_</button>
+                <button class="btn-icon open-terminal-btn" style="width:24px; height:24px; font-size:0.7rem; cursor:pointer;" title="Expand Full CLI">&gt;_</button>
               </div>
 
+              <!-- Terminal Live Console Body -->
               <div class="terminal-card-body">
+                <!-- Command 1: Cluster Health -->
                 <div class="console-line">
                   <span class="console-prompt">riprlutuk@prod:~$</span>
-                  <span class="console-cmd">cluster-status --all-nodes</span>
-                </div>
-                <div class="console-out">
-                  [OK] PostgreSQL 16 Cluster: <span class="console-success">● PRIMARY / STANDBY STREAMING</span><br>
-                  [OK] MS SQL Server AlwaysOn: <span class="console-success">● SYNCHRONIZED</span><br>
-                  [OK] Oracle Database 19c: <span class="console-success">● ARCHIVELOG ENABLED</span><br>
-                  [OK] Kafka Debezium CDC: <span class="console-success">● 0 LAG / 4,800 events/sec</span><br>
-                  [OK] FortiGate IPsec VPN: <span class="console-success">● 100+ TUNNELS ACTIVE</span>
+                  <span class="console-cmd">dba-cluster-status --live</span>
                 </div>
 
-                <div class="console-line" style="margin-top:12px;">
+                <div class="terminal-table-list">
+                  <div class="terminal-row">
+                    <span class="t-label">PostgreSQL 16 HA</span>
+                    <span class="t-val-green">● PRIMARY / STREAMING</span>
+                  </div>
+                  <div class="terminal-row">
+                    <span class="t-label">MS SQL Server AlwaysOn</span>
+                    <span class="t-val-green">● SYNCHRONIZED</span>
+                  </div>
+                  <div class="terminal-row">
+                    <span class="t-label">Oracle 19c ARCHIVELOG</span>
+                    <span class="t-val-green">● HEALTHY (0 LAG)</span>
+                  </div>
+                  <div class="terminal-row">
+                    <span class="t-label">Kafka Debezium CDC</span>
+                    <span class="t-val-cyan">● 4.8K evt/s (0-LAG)</span>
+                  </div>
+                  <div class="terminal-row">
+                    <span class="t-label">FortiGate IPsec VPN</span>
+                    <span class="t-val-green">● 100+ TUNNELS UP</span>
+                  </div>
+                </div>
+
+                <!-- Command 2: Query Optimization Audit -->
+                <div class="console-line">
                   <span class="console-prompt">riprlutuk@prod:~$</span>
-                  <span class="console-cmd">query-perf-audit --target "10M_records"</span>
-                </div>
-                <div class="console-out">
-                  Query Latency: <span class="console-highlight">4,200ms → 18ms (-99.5%)</span><br>
-                  Security Baseline: <span class="console-success">ISO/IEC 27001 Compliant</span>
+                  <span class="console-cmd">explain-analyze --ledger-10m</span>
                 </div>
 
-                <div class="live-metrics-pill-grid">
-                  <div class="metric-pill">
-                    <div class="metric-pill-label">DB UPTIME SLA</div>
-                    <div class="metric-pill-val"><span class="status-pulse-dot" style="width:6px; height:6px;"></span> 99.98%</div>
+                <div class="terminal-query-audit">
+                  <div class="t-audit-item">
+                    <span style="color: var(--text-muted);">Query Latency:</span>
+                    <span><span style="color: #ef4444; text-decoration: line-through;">4,200ms</span> &rarr; <strong style="color: var(--accent-emerald);">18ms (-99.5%)</strong></span>
                   </div>
-                  <div class="metric-pill">
-                    <div class="metric-pill-label">RPO / RTO RECOVERY</div>
-                    <div class="metric-pill-val">⏱ &lt;15m / &lt;1h</div>
+                  <div class="t-audit-item">
+                    <span style="color: var(--text-muted);">Security Standard:</span>
+                    <strong style="color: var(--accent-cyan);">ISO/IEC 27001 ISMS Compliant</strong>
                   </div>
-                  <div class="metric-pill">
-                    <div class="metric-pill-label">CURRENT ROLE</div>
-                    <div class="metric-pill-val">DBA @ Link Net</div>
-                  </div>
-                  <div class="metric-pill">
-                    <div class="metric-pill-label">SECURITY POSTURE</div>
-                    <div class="metric-pill-val">🛡 ISO 27001</div>
-                  </div>
+                </div>
+              </div>
+
+              <!-- Terminal Bottom 4-HUD Micro Grid -->
+              <div class="terminal-card-stats">
+                <div class="t-stat-card">
+                  <div class="t-stat-label">SLA Uptime</div>
+                  <div class="t-stat-val" style="color: var(--accent-emerald);">99.98%</div>
+                </div>
+                <div class="t-stat-card">
+                  <div class="t-stat-label">HA / DR</div>
+                  <div class="t-stat-val" style="color: var(--accent-primary);">&lt;15m / &lt;1h</div>
+                </div>
+                <div class="t-stat-card">
+                  <div class="t-stat-label">Track Record</div>
+                  <div class="t-stat-val" style="color: #fff;">Link Net / AFPI</div>
+                </div>
+                <div class="t-stat-card">
+                  <div class="t-stat-label">Compliance</div>
+                  <div class="t-stat-val" style="color: var(--accent-cyan);">ISO 27001</div>
                 </div>
               </div>
             </div>
