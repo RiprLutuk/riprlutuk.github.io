@@ -1005,8 +1005,18 @@ section {
 /* Cybernetic High-Tech Bento Projects Grid */
 .bento-projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+@media (max-width: 1080px) {
+  .bento-projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 720px) {
+  .bento-projects-grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 .bento-card {

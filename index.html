@@ -700,158 +700,217 @@ Execution Time: 4280.950 ms</pre>
 <section id="projects">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Engineering Portfolio</div>
-          <h2 class="section-title">Flagship <span class="text-gradient">Architectures &amp; Platforms</span></h2>
+          <div class="section-tag">Cybernetic Craftsmanship</div>
+          <h2 class="section-title">Flagship <span class="text-gradient">Production Projects</span></h2>
           <p class="section-subtitle">
-            Selected platforms designed and deployed to production, combining infrastructure resilience with modern software craftsmanship.
+            Enterprise database engines, real-time CDC streaming pipelines, and fullstack platforms engineered with high-throughput reliability, zero-trust security, and modern craftsmanship.
           </p>
         </div>
 
+        <!-- Symmetrical 3x2 Cybernetic Projects Grid -->
         <div class="bento-projects-grid">
-          <!-- Card 1: DDAG (Span 8) -->
-          <article class="bento-card bento-span-8">
+          <!-- Card 1: DDAG -->
+          <article class="bento-card">
             <div>
-              <div class="bento-tag-row">
-                <span class="bento-pill">GO / GOLANG</span>
-                <span class="bento-pill">MULTI-DIALECT SQL</span>
-                <span class="bento-pill">ZERO-TRUST SECURITY</span>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 01 // GO-GATEWAY ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
-              <h3 class="bento-title">DDAG — Zero-Trust Multi-Dialect Dynamic API Gateway</h3>
+              <h3 class="bento-title">DDAG</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px;">Zero-Trust Dynamic SQL API Gateway</div>
               <p class="bento-desc">
-                High-performance API Gateway written in Go that dynamically reflects schema and exposes PostgreSQL, MySQL, MS SQL Server, and Oracle databases as secure, governed REST APIs. Features JWT token authentication, SQL injection parameter sanitization, PgBouncer-style connection pooling, and route-level RBAC.
+                High-performance Go gateway dynamically reflecting SQL schemas and exposing PostgreSQL, MySQL, MSSQL, and Oracle databases as secure, governed REST APIs with JWT auth and PgBouncer connection pooling.
               </p>
-              <div class="bento-metrics-row">
-                <div>⚡ <strong>Latency:</strong> &lt; 2.5ms Gateway Overhead</div>
-                <div>🛡️ <strong>Security:</strong> Granular Table/View RBAC</div>
-                <div>💾 <strong>Dialects:</strong> Postgres, MSSQL, Oracle, MySQL</div>
+              <div class="bento-hud-metric">
+                <span>⚡ Overhead: <strong>&lt;2.5ms</strong></span>
+                <span>🛡️ Auth: <strong>JWT + RBAC</strong></span>
+                <span>💾 Engines: <strong>4 RDBMS</strong></span>
               </div>
             </div>
-
-            <div class="bento-footer">
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Open Source Platform</span>
-              <div class="bento-links">
-                <a href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>GitHub Repo ↗</span>
-                </a>
-              </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">Go (Golang)</span>
+              <span class="bento-chip">PostgreSQL</span>
+              <span class="bento-chip">MSSQL</span>
+              <span class="bento-chip">Oracle 19c</span>
+              <span class="bento-chip">PgBouncer</span>
             </div>
           </article>
 
-          <!-- Card 2: ch-olap-pipeline (Span 4) -->
-          <article class="bento-card bento-span-4">
+          <!-- Card 2: ch-olap-pipeline -->
+          <article class="bento-card">
             <div>
-              <div class="bento-tag-row">
-                <span class="bento-pill">DEBEZIUM</span>
-                <span class="bento-pill">KAFKA</span>
-                <span class="bento-pill">CLICKHOUSE</span>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 02 // CDC-ENGINE ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>Demo ↗</span>
+                  </a>
+                  <a href="https://github.com/RiprLutuk/ch-olap-pipeline" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
               <h3 class="bento-title">ch-olap-pipeline</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">Universal Real-Time CDC Streaming Engine</div>
               <p class="bento-desc">
-                Universal Change Data Capture (CDC) pipeline streaming transaction mutations from PostgreSQL, MySQL, and SQL Server into ClickHouse columnar storage for instant operational BI.
+                Continuous Change Data Capture streaming pipeline capturing transactional mutation logs from OLTP into ClickHouse columnar storage for sub-second analytical reporting over 50M+ rows.
               </p>
-              <div class="bento-metrics-row">
-                <div>🔄 <strong>Sync:</strong> Real-Time CDC</div>
-                <div>📈 <strong>Speed:</strong> 100x vs OLTP Query</div>
+              <div class="bento-hud-metric">
+                <span>🔄 Streaming: <strong>0-Lag CDC</strong></span>
+                <span>📈 OLAP: <strong>ClickHouse</strong></span>
+                <span>⚡ Speed: <strong>100x vs OLTP</strong></span>
               </div>
             </div>
-
-            <div class="bento-footer">
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Data Platform</span>
-              <div class="bento-links">
-                <a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>Live Demo ↗</span>
-                </a>
-                <a href="https://github.com/RiprLutuk/ch-olap-pipeline" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>GitHub ↗</span>
-                </a>
-              </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">Debezium</span>
+              <span class="bento-chip">Apache Kafka</span>
+              <span class="bento-chip">ClickHouse</span>
+              <span class="bento-chip">ReplacingMergeTree</span>
             </div>
           </article>
 
-          <!-- Card 3: OpenOrg (Span 4) -->
-          <article class="bento-card bento-span-4">
+          <!-- Card 3: OpenOrg -->
+          <article class="bento-card">
             <div>
-              <div class="bento-tag-row">
-                <span class="bento-pill">TYPESCRIPT</span>
-                <span class="bento-pill">HEADLESS CMS</span>
-                <span class="bento-pill">CREDENTIAL VERIFIER</span>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 03 // GOVERNANCE ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://github.com/RiprLutuk/openorg" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
-              <h3 class="bento-title">OpenOrg — Organization Governance Platform</h3>
+              <h3 class="bento-title">OpenOrg</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px;">Organization Governance &amp; Headless CMS</div>
               <p class="bento-desc">
-                Open-source single-tenant organization platform with digital membership ID (KTA), SKP academy credentialing, governance hierarchy, and tamper-resistant cryptographic certificate verification.
+                Single-tenant organization management platform with digital membership ID (KTA), SKP academy credentialing, governance hierarchy, and tamper-resistant cryptographic certificate verification.
               </p>
-              <div class="bento-metrics-row">
-                <div>🏛️ <strong>Governance:</strong> Digital KTA &amp; Hierarchy</div>
-                <div>📜 <strong>Academy:</strong> SKP Credit &amp; Verification</div>
+              <div class="bento-hud-metric">
+                <span>🏛️ Hierarchy: <strong>Multi-Tier</strong></span>
+                <span>📜 SKP: <strong>Academy Verified</strong></span>
+                <span>🔐 Security: <strong>Tamper-Proof</strong></span>
               </div>
             </div>
-
-            <div class="bento-footer">
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Open Source Platform</span>
-              <div class="bento-links">
-                <a href="https://github.com/RiprLutuk/openorg" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>GitHub ↗</span>
-                </a>
-              </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">TypeScript</span>
+              <span class="bento-chip">Headless CMS</span>
+              <span class="bento-chip">Digital KTA</span>
+              <span class="bento-chip">SKP Academy</span>
             </div>
           </article>
 
-          <!-- Card 4: WargaHub (Span 4) -->
-          <article class="bento-card bento-span-4">
+          <!-- Card 4: WargaHub -->
+          <article class="bento-card">
             <div>
-              <div class="bento-tag-row">
-                <span class="bento-pill">FASTIFY</span>
-                <span class="bento-pill">VUE 3 PWA</span>
-                <span class="bento-pill">PGLITE WASM</span>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 04 // CIVIC-TECH ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://github.com/RiprLutuk/WargaHub" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
-              <h3 class="bento-title">WargaHub — Neighborhood Digital Governance</h3>
+              <h3 class="bento-title">WargaHub</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">Neighborhood Governance &amp; Transparent Ledger</div>
               <p class="bento-desc">
-                Community information system, transparent budget ledger, digital consensus (musyawarah), and RT/RW neighborhood operations powered by Fastify and embedded offline-capable WASM PostgreSQL.
+                Community information system, transparent budget ledger, and digital musyawarah consensus for RT/RW neighborhoods powered by embedded offline-capable WASM PostgreSQL database.
               </p>
-              <div class="bento-metrics-row">
-                <div>🏡 <strong>Scope:</strong> RT/RW Digital Transparency</div>
-                <div>⚡ <strong>Stack:</strong> Vue 3 PWA + Embedded PGlite</div>
+              <div class="bento-hud-metric">
+                <span>🏡 Scope: <strong>RT/RW Transparency</strong></span>
+                <span>⚡ DB: <strong>PGlite WASM</strong></span>
+                <span>📱 Mode: <strong>Offline-First PWA</strong></span>
               </div>
             </div>
-
-            <div class="bento-footer">
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Civic Tech PWA</span>
-              <div class="bento-links">
-                <a href="https://github.com/RiprLutuk/WargaHub" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>GitHub ↗</span>
-                </a>
-              </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">Fastify</span>
+              <span class="bento-chip">Vue 3 PWA</span>
+              <span class="bento-chip">PGlite WASM</span>
+              <span class="bento-chip">PostgreSQL</span>
             </div>
           </article>
 
-          <!-- Card 5: PasPapan (Span 4) -->
-          <article class="bento-card bento-span-4">
+          <!-- Card 5: PasPapan -->
+          <article class="bento-card">
             <div>
-              <div class="bento-tag-row">
-                <span class="bento-pill">LARAVEL</span>
-                <span class="bento-pill">LIVEWIRE</span>
-                <span class="bento-pill">FACE BIOMETRICS</span>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 05 // ENTERPRISE-SAAS ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://paspapan.pandanteknik.com" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>Demo ↗</span>
+                  </a>
+                  <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
-              <h3 class="bento-title">PasPapan — Enterprise HRIS &amp; Operations</h3>
+              <h3 class="bento-title">PasPapan</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px;">Enterprise HRIS &amp; Biometric Operations</div>
               <p class="bento-desc">
-                Enterprise workforce management system featuring Face ID &amp; GPS attendance, 1-click automated payroll calculation, KPI appraisal matrix, shift scheduling, and multi-branch management.
+                Comprehensive enterprise workforce operations featuring Anti-Mock GPS &amp; Face ID attendance, automated 1-click payroll calculation, KPI appraisal matrix, and multi-branch dashboards.
               </p>
-              <div class="bento-metrics-row">
-                <div>👥 <strong>Workforce:</strong> Multi-Branch Operations</div>
-                <div>📍 <strong>Security:</strong> Anti-Mock GPS &amp; Face ID</div>
+              <div class="bento-hud-metric">
+                <span>👥 Scope: <strong>Multi-Branch</strong></span>
+                <span>📍 GPS: <strong>Anti-Mock Biometrics</strong></span>
+                <span>💰 Payroll: <strong>1-Click Auto</strong></span>
               </div>
             </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">Laravel</span>
+              <span class="bento-chip">Livewire</span>
+              <span class="bento-chip">Face Biometrics</span>
+              <span class="bento-chip">MySQL</span>
+            </div>
+          </article>
 
-            <div class="bento-footer">
-              <span style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">Live SaaS Product</span>
-              <div class="bento-links">
-                <a href="https://paspapan.pandanteknik.com" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>Live Demo ↗</span>
-                </a>
-                <a href="https://github.com/RiprLutuk/PasPapan" target="_blank" rel="noopener" class="bento-link-btn">
-                  <span>GitHub ↗</span>
-                </a>
+          <!-- Card 6: pg2ora-cdc -->
+          <article class="bento-card">
+            <div>
+              <div class="bento-card-header">
+                <div class="bento-code-tag">
+                  <span>[ 06 // DATA-INTEGRATION ]</span>
+                  <span style="color: var(--accent-emerald);">● ACTIVE</span>
+                </div>
+                <div class="bento-action-links">
+                  <a href="https://github.com/RiprLutuk/pg2ora_debezium_kafka" target="_blank" rel="noopener" class="bento-icon-btn">
+                    <span>GitHub ↗</span>
+                  </a>
+                </div>
               </div>
+              <h3 class="bento-title">pg2ora-cdc</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-primary); margin-bottom: 8px;">PostgreSQL to Oracle Real-Time CDC</div>
+              <p class="bento-desc">
+                High-availability Change Data Capture integration synchronizing real-time financial ledger mutations from PostgreSQL to Oracle Database 19c with schema mapping and DLQ replay.
+              </p>
+              <div class="bento-hud-metric">
+                <span>🔄 Sync: <strong>Near Real-Time</strong></span>
+                <span>💾 Target: <strong>Oracle 19c</strong></span>
+                <span>🛡️ Recovery: <strong>Dead-Letter Queue</strong></span>
+              </div>
+            </div>
+            <div class="bento-highlights-strip">
+              <span class="bento-chip highlight">Debezium</span>
+              <span class="bento-chip">PostgreSQL</span>
+              <span class="bento-chip">Oracle 19c</span>
+              <span class="bento-chip">Kafka Connect</span>
             </div>
           </article>
         </div>
