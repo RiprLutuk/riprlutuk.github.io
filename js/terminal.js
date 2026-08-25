@@ -336,7 +336,7 @@ class CyberTerminal {
       <div style="color: var(--text-secondary); line-height: 1.6; font-size: 0.82rem;">
         <strong style="color: var(--accent-cyan); font-size: 0.95rem;">HERI RISKI ANTO — CURRICULUM VITAE &amp; EXECUTIVE PROFILE</strong><br>
         • <strong>Role:</strong> Senior Database Administrator (DBA), Cloud Infrastructure &amp; Platform Engineer<br>
-        • <strong>Current Role (PT Link Net Tbk):</strong> Lead DBA &bull; Oracle &rarr; PostgreSQL Migration, MongoDB &rarr; AWS DocumentDB, AWS RDS &rarr; TencentDB, and Centralized Grafana Fleet Dashboards.<br>
+        • <strong>Current Role (PT Link Net Tbk):</strong> Database Administrator (DBA) &bull; Oracle &rarr; PostgreSQL Migration, MongoDB &rarr; AWS DocumentDB, AWS RDS &rarr; TencentDB, and Centralized Grafana Fleet Dashboards.<br>
 • <strong>Track Record:</strong> 7+ Years Experience across Telecom (PT Link Net Tbk), Fintech (AFPI Data Center), and Crowdfunding (Vestora.id)<br>
         • <strong>Compliance Lead:</strong> ISO/IEC 27001:2013 &amp; Upgrade to 27001:2022 (ISMS), UU No. 27/2022 (UU PDP), POJK 10/2022<br>
         • <strong>Core Databases:</strong> PostgreSQL, MS SQL Server (AlwaysOn AG), Oracle 19c, MySQL, ClickHouse, Redis<br>
