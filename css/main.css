@@ -266,6 +266,9 @@ section {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  display: inline;
 }
 
 /* ==========================================================================
@@ -461,11 +464,12 @@ section {
 }
 
 .hero-headline {
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  font-size: clamp(2.3rem, 4.5vw, 3.5rem);
   font-weight: 900;
-  line-height: 1.12;
-  letter-spacing: -0.04em;
+  line-height: 1.2;
+  letter-spacing: -0.03em;
   margin-bottom: 20px;
+  color: #fff;
 }
 
 .hero-dynamic-text {
