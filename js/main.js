@@ -1,10 +1,48 @@
 /**
- * Core UI Controller, Background Particle Mesh with Mouse Gravity & Interactive Effects
+ * Core UI Controller, Typewriter, Background Particle Mesh with Mouse Gravity & Interactive Effects
  * Pure Vanilla ES6 — 60fps Butter Smooth Execution
  */
 
 // ==========================================
-// 1. SOUND FX SYNTHESIZER
+// 1. TYPEWRITER ENGINE
+// ==========================================
+class TypeWriter {
+  constructor(el, phrases) {
+    this.el = el;
+    this.phrases = phrases;
+    this.phraseIndex = 0;
+    this.charIndex = 0;
+    this.isDeleting = false;
+    this.type();
+  }
+
+  type() {
+    const current = this.phrases[this.phraseIndex];
+    if (this.isDeleting) {
+      this.charIndex--;
+      this.el.textContent = current.substring(0, this.charIndex);
+    } else {
+      this.charIndex++;
+      this.el.textContent = current.substring(0, this.charIndex);
+    }
+
+    let speed = this.isDeleting ? 25 : 55;
+
+    if (!this.isDeleting && this.charIndex === current.length) {
+      speed = 2200; // Pause at end of sentence
+      this.isDeleting = true;
+    } else if (this.isDeleting && this.charIndex === 0) {
+      this.isDeleting = false;
+      this.phraseIndex = (this.phraseIndex + 1) % this.phrases.length;
+      speed = 400;
+    }
+
+    setTimeout(() => this.type(), speed);
+  }
+}
+
+// ==========================================
+// 2. SOUND FX SYNTHESIZER
 // ==========================================
 class SoundFX {
   constructor() {
@@ -74,7 +112,7 @@ class SoundFX {
 }
 
 // ==========================================
-// 2. THEME MANAGER
+// 3. THEME MANAGER
 // ==========================================
 class ThemeManager {
   constructor() {
@@ -100,11 +138,11 @@ class ThemeManager {
 }
 
 // ==========================================
-// 3. ADVANCED NEURAL CONSTELLATION & GRAVITY FIELD CANVAS
+// 4. ADVANCED NEURAL CONSTELLATION & GRAVITY FIELD CANVAS
 // ==========================================
 class ParticleMesh {
   constructor() {
-    this.canvas = document.getElementById("ambient-particle-canvas");
+    this.canvas = document.getElementById("bg-canvas") || document.getElementById("ambient-particle-canvas");
     if (!this.canvas) return;
     this.ctx = this.canvas.getContext("2d");
     this.particles = [];
@@ -222,7 +260,7 @@ class ParticleMesh {
 }
 
 // ==========================================
-// 4. 3D HOLOGRAPHIC PARALLAX CARD TILT ENGINE
+// 5. 3D HOLOGRAPHIC PARALLAX CARD TILT ENGINE
 // ==========================================
 class CardTilt3D {
   constructor() {
@@ -259,7 +297,7 @@ class CardTilt3D {
 }
 
 // ==========================================
-// 5. ROLLING METRIC COUNTER TICKER
+// 6. ROLLING METRIC COUNTER TICKER
 // ==========================================
 class RollingCounters {
   constructor() {
@@ -315,7 +353,7 @@ class RollingCounters {
 }
 
 // ==========================================
-// 6. GLOBAL TOAST ALERTS & MODAL CONTROLLERS
+// 7. GLOBAL TOAST ALERTS & MODAL CONTROLLERS
 // ==========================================
 window.showToast = function(message, duration = 3000) {
   let toast = document.getElementById("cyber-toast");
@@ -368,7 +406,8 @@ class ModalManager {
 
     // Copy to clipboard buttons
     document.querySelectorAll(".copy-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         const text = btn.getAttribute("data-copy");
         const msg = btn.getAttribute("data-msg") || "Copied to clipboard!";
         if (text) {
@@ -383,17 +422,23 @@ class ModalManager {
 
   openModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.add("active");
+    if (modal) {
+      modal.classList.add("active");
+      modal.classList.add("open");
+    }
   }
 
   closeModal(modalId) {
     const modal = document.getElementById(modalId);
-    if (modal) modal.classList.remove("active");
+    if (modal) {
+      modal.classList.remove("active");
+      modal.classList.remove("open");
+    }
   }
 }
 
 // ==========================================
-// 7. BOOTSTRAP ALL CONTROLLERS SAFELY
+// 8. BOOTSTRAP ALL CONTROLLERS SAFELY
 // ==========================================
 function startCoreEngine() {
   window.soundFx = new SoundFX();
@@ -402,6 +447,17 @@ function startCoreEngine() {
   window.particleMesh = new ParticleMesh();
   window.cardTilt3D = new CardTilt3D();
   window.rollingCounters = new RollingCounters();
+
+  // Initialize Typewriter Effect
+  const typeEl = document.getElementById("hero-dynamic-text");
+  if (typeEl) {
+    window.heroTypewriter = new TypeWriter(typeEl, [
+      "Zero-Downtime Multi-Engine Database Clusters.",
+      "High-Throughput Real-Time CDC & OLAP Pipelines.",
+      "ISO/IEC 27001 Certified Cloud & Network Security.",
+      "Resilient Go API Gateways & Platform Engineering."
+    ]);
+  }
 
   // Bind Navbar Theme Button
   const themeBtn = document.getElementById("theme-toggle-btn");
