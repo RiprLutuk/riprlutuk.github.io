@@ -188,6 +188,11 @@ class CyberTerminal {
       case "failover":
         this.cmdDrill();
         break;
+      case "mobile":
+      case "apps":
+        this.cmdMobile();
+        break;
+      case "fullstack":
       case "skills":
       case "stack":
       case "tech":
@@ -386,13 +391,13 @@ class CyberTerminal {
         <div>
           <span style="color: var(--accent-primary); font-weight: 800;">riprlutuk</span>@<span style="color: var(--accent-emerald); font-weight: 800;">cloud-node-01</span><br>
           ------------------------<br>
-          <strong style="color: #fff;">OS:</strong> Linux 6.8.0-cloud x86_64<br>
-          <strong style="color: #fff;">Host:</strong> Fintech Data Center (AFPI)<br>
-          <strong style="color: #fff;">Kernel:</strong> Telecom DBA &amp; Zero-Trust SRE<br>
-          <strong style="color: #fff;">Uptime:</strong> 7+ Years Continuous Production<br>
-          <strong style="color: #fff;">Databases:</strong> Postgres 16, MSSQL, Oracle 19c, ClickHouse<br>
-          <strong style="color: #fff;">Languages:</strong> Go (Golang), Python, PHP, TypeScript, SQL<br>
-          <strong style="color: #fff;">Security:</strong> ISO/IEC 27001:2022 Lead, UU PDP, FortiGate<br>
+          <strong style="color: #fff;">Role:</strong> The "One-Man IT Division" (Fullstack, Mobile &amp; DBA)<br>
+          <strong style="color: #fff;">Track Record:</strong> 7+ Years Continuous Production Delivery<br>
+          <strong style="color: #fff;">Mobile:</strong> Flutter, React Native, Android Biometrics &amp; Anti-Mock GPS<br>
+          <strong style="color: #fff;">Frontend:</strong> Vue 3, React, Tailwind CSS, Fastify, PGlite WASM, PWA<br>
+          <strong style="color: #fff;">Backend:</strong> Go (Golang), Python, PHP (Laravel), Java, C# / .NET<br>
+          <strong style="color: #fff;">Databases:</strong> Postgres 16, MSSQL, Oracle 19c, ClickHouse, MySQL, Redis<br>
+          <strong style="color: #fff;">Security:</strong> ISO/IEC 27001:2022 Lead, UU PDP, FortiGate VPN<br>
           <strong style="color: #fff;">Availability:</strong> 99.98% High Availability SLA
         </div>
       </div>
@@ -470,7 +475,32 @@ class CyberTerminal {
     }
   }
 
+  cmdMobile() {
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6;">
+        <strong style="color: var(--accent-cyan);">📱 MOBILE &amp; BIOMETRIC APP CAPABILITIES:</strong><br>
+        • <strong>Frameworks:</strong> Flutter, React Native, Native Android (Java/Kotlin)<br>
+        • <strong>Biometrics &amp; Security:</strong> Face ID Biometric Attendance, Anti-Mock GPS spoof detection, Offline SQLite/WASM caching, Secure Keystore tokenization.<br>
+        • <strong>Flagship Apps:</strong> PasPapan Enterprise HRIS &amp; WargaHub Civic Governance PWA.
+      </div>
+    `);
+  }
+
   cmdSkills() {
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6;">
+        <strong style="color: var(--accent-primary);">THE "ONE-MAN IT DIVISION" FULL CAPABILITIES:</strong><br>
+        • <strong>Mobile &amp; Frontend:</strong> Flutter, Android, Vue 3, React, Tailwind CSS, Fastify, PGlite WASM, PWA.<br>
+        • <strong>Backend &amp; APIs:</strong> Go (Golang), Python (FastAPI/Flask), PHP (Laravel/Livewire), Java, C# / .NET, REST, WebSockets.<br>
+        • <strong>Core Databases (DBA):</strong> PostgreSQL (9-16), MS SQL Server (AlwaysOn), Oracle 19c (RMAN), MySQL, ClickHouse OLAP, Redis.<br>
+        • <strong>Data Platform &amp; SRE:</strong> Apache Kafka, Debezium CDC, Prometheus, Grafana Blackbox Exporter, Linux Fleet.<br>
+        • <strong>Security &amp; Compliance:</strong> ISO/IEC 27001:2022 Lead, UU No. 27/2022 (UU PDP), Fortinet FortiGate, StrongSwan IPsec VPN.
+      </div>
+    `);
+    return;
+  }
+
+  _oldCmdSkills() {
     this.print(`
       <div style="color: var(--text-secondary); line-height: 1.6;">
         <strong style="color: var(--accent-primary);">CORE TECHNICAL COMPETENCIES:</strong><br>

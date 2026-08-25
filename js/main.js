@@ -452,10 +452,11 @@ function startCoreEngine() {
   const typeEl = document.getElementById("hero-dynamic-text");
   if (typeEl) {
     window.heroTypewriter = new TypeWriter(typeEl, [
-      "Zero-Downtime Multi-Engine Database Clusters.",
-      "High-Throughput Real-Time CDC & OLAP Pipelines.",
-      "ISO/IEC 27001 Certified Cloud & Network Security.",
-      "Resilient Go API Gateways & Platform Engineering."
+      "Fullstack Web & Cross-Platform Mobile Apps (Flutter, Vue 3, Laravel).",
+      "Zero-Downtime Multi-Engine Database Clusters (Postgres, MSSQL, Oracle).",
+      "High-Throughput Go & Python API Gateways with Zero-Trust Security.",
+      "Real-Time CDC & OLAP Pipelines (Kafka, ClickHouse, Debezium).",
+      "ISO/IEC 27001 & UU PDP Certified Fintech Security Lead."
     ]);
   }
 
@@ -463,6 +464,10 @@ function startCoreEngine() {
   // Recruiter 1-Click Role Matcher Controller
   // ==========================================
   const matcherData = {
+    fullstack: {
+      badge: "Fullstack & Mobile Maestro (Flutter, Vue, Laravel)",
+      desc: "End-to-end fullstack web & cross-platform mobile engineering: Flutter & Android mobile apps, Vue 3 PWAs with embedded WASM, responsive Tailwind CSS, WebSockets, Anti-Mock GPS, and Face ID biometric authentication."
+    },
     dba: {
       badge: "7+ Years Track Record",
       desc: "Proven production experience managing high-availability multi-engine clusters at PT Link Net Tbk (99.98% SLA), query plan optimizer, partition tuning, and RMAN automated disaster recovery."
