@@ -1,131 +1,192 @@
 /**
- * Interactive System Topology & Architecture Visualizer
+ * Cybernetic System Topology & Architecture Visualizer
+ * Includes Live Particle Canvas Streamer, Telemetry Simulator & Failover Drills
  */
 
 const ARCHITECTURE_DATA = {
   afpi: {
     title: "AFPI National Fintech Data Center (FDC) — ISO/IEC 27001:2022 & UU PDP",
-    badge: "ISO 27001:2022 & POJK 10/2022 Compliant",
-    description: "National data hub connecting 100+ licensed P2P fintech lenders with ISO 27001:2022 security controls, UU PDP data masking, tamper-resistant audit logs (5-yr retention), and secondary DRC site.",
+    badge: "ISO 27001:2022 & POJK 10/2022",
+    description: "National credit federator connecting 100+ licensed P2P lenders with dynamic PII data masking, tamper-resistant audit trails (5-yr retention), and secondary DRC site.",
     nodes: [
       {
         id: "fintech-nodes",
         badge: "SOURCE",
-        title: "100+ P2P Fintech Nodes",
-        desc: "POJK 10/2022 regulated credit inquiries & deduplication",
-        details: "Transmits encrypted borrower records and credit inquiries via mutual TLS (mTLS) with token-based authorization and rate limiters."
+        icon: "🏢",
+        title: "100+ Fintech Nodes",
+        desc: "P2P lenders credit score & deduplication inquiries",
+        telemetryNormal: "3,850 req/s • 1.2ms",
+        telemetrySpike: "12,400 req/s • 2.8ms",
+        tags: ["mTLS", "POJK 10/2022", "Token Auth"],
+        details: "Secure API endpoints accepting encrypted JSON credit inquiries and borrower deduplication requests across 100+ member platforms under OJK oversight."
       },
       {
         id: "vpn-edge",
         badge: "SECURITY EDGE",
+        icon: "🛡️",
         title: "FortiGate + IPsec VPN",
         desc: "AES-256 StrongSwan & Fortinet Firewall (A.8.24)",
-        details: "Encrypted site-to-site IPsec tunnels with strict ingress/egress filtering, IP whitelisting per licensed member, and DDoS protection."
+        telemetryNormal: "0 Dropped • 0.4ms",
+        telemetrySpike: "DDoS Filter Active • 0.9ms",
+        tags: ["AES-256-GCM", "IPsec Tunnel", "Egress Filtering"],
+        details: "Hardware-accelerated site-to-site IPsec VPN tunnels with strict ingress firewall policies, IP whitelisting per member, and anti-DDoS perimeter protection."
       },
       {
         id: "ingest-backend",
         badge: "COMPUTE",
-        title: "Ingestion & Data Masking",
-        desc: "Go & Python ETL + UU PDP PII Masking (A.8.11)",
-        details: "Executes dynamic data masking on NIK KTP, phone numbers, and financial ledgers, ensuring compliance with UU No. 27/2022 (UU PDP)."
+        icon: "⚙️",
+        title: "Ingestion & PII Masking",
+        desc: "Go & Python ETL + UU PDP Data Masking (A.8.11)",
+        telemetryNormal: "4,200 evt/s • 0.9ms",
+        telemetrySpike: "14,000 evt/s • 2.1ms",
+        tags: ["UU No. 27/2022", "Dynamic Masking", "Go Gateway"],
+        details: "High-throughput microservices performing dynamic masking on NIK KTP, phone numbers, and bank accounts before analytical processing to guarantee UU PDP compliance."
       },
       {
         id: "db-ha",
         badge: "STORAGE",
+        icon: "💾",
         title: "Postgres & MySQL HA + DRC",
-        desc: "Primary-Standby Replication & DRC Site (POJK 10/2022)",
-        details: "Encrypted tablespaces (AES-256) with continuous streaming replication to secondary DRC site in Indonesia (RPO < 15m, RTO < 1h, 99.9% SLA)."
+        desc: "Streaming Replication & DRC Site (POJK 10/2022)",
+        telemetryNormal: "99.98% SLA • RPO <15m",
+        telemetrySpike: "Sync Active • RTO <1h",
+        tags: ["Primary-Standby", "TDE AES-256", "DRC Site"],
+        details: "Enterprise database cluster with encrypted tablespaces, WAL archiving, and real-time replication to a secondary Disaster Recovery Center in Indonesia."
       },
       {
-        id: "audit-logs",
+        id: "audit-telemetry",
         badge: "AUDIT LOGS",
+        icon: "📊",
         title: "Audit Trail & Telemetry",
-        desc: "pgAudit + 5-Year Log Retention & Grafana (A.8.15)",
-        details: "Tamper-resistant centralized audit logging recording all DDL/DML, RBAC matrix reviews, and real-time Prometheus/Grafana SLA telemetry."
+        desc: "pgAudit + 5-Yr Retention & Grafana (A.8.15)",
+        telemetryNormal: "100% Integrity • WORM",
+        telemetrySpike: "Real-Time Telemetry Active",
+        tags: ["5-Year Retention", "Prometheus", "Grafana SLA"],
+        details: "Tamper-resistant centralized logging capturing all DDL/DML, RBAC matrix authentications, and live Grafana dashboards monitoring SLA and latency percentiles."
       }
     ]
   },
   cdc: {
-    title: "Universal OLTP-to-OLAP Real-Time CDC Pipeline",
+    title: "Universal OLTP-to-OLAP Real-Time CDC Pipeline (ch-olap-pipeline)",
     badge: "Sub-Second Analytical Latency",
     description: "Zero-impact Change Data Capture pipeline streaming transaction mutations from multiple RDBMS into ClickHouse for fast analytics.",
     nodes: [
       {
         id: "oltp-sources",
-        badge: "OLTP SYSTEMS",
+        badge: "OLTP SOURCES",
+        icon: "🗄️",
         title: "Multi-RDBMS Sources",
-        desc: "PostgreSQL, MySQL & SQL Server",
-        details: "Captures row-level INSERT, UPDATE, DELETE changes without impacting production read/write workloads."
+        desc: "PostgreSQL, MySQL & MS SQL Server",
+        telemetryNormal: "5,200 tx/s • WAL Stream",
+        telemetrySpike: "18,500 tx/s • 0 Impact",
+        tags: ["Postgres WAL", "MySQL Binlog", "MSSQL CDC"],
+        details: "Captures row-level INSERT, UPDATE, DELETE transaction logs without impacting production OLTP read/write operations."
       },
       {
         id: "debezium",
         badge: "CDC CONNECTOR",
+        icon: "🔄",
         title: "Debezium Engine",
-        desc: "WAL & Binlog stream parser",
-        details: "Converts database transaction logs into serialized Kafka event records with full before/after snapshots."
+        desc: "Transaction log stream parser",
+        telemetryNormal: "0 Lag • 1.1ms",
+        telemetrySpike: "Batch Ingest • 2.4ms",
+        tags: ["Kafka Connect", "Schema Evolution", "Avro/JSON"],
+        details: "Converts raw database transaction logs into structured event records with full before-and-after change snapshots."
       },
       {
         id: "kafka",
         badge: "MESSAGE BROKER",
+        icon: "📨",
         title: "Apache Kafka Cluster",
         desc: "Distributed partitioned event topics",
-        details: "Guarantees at-least-once message delivery, backpressure handling, and horizontal stream scalability."
+        telemetryNormal: "3x Replicas • 0 Loss",
+        telemetrySpike: "Backpressure Managed",
+        tags: ["Distributed Topics", "At-Least-Once", "High-Throughput"],
+        details: "Horizontally scalable event streaming broker providing partitioned topic ordering, consumer group balancing, and reliable backpressure handling."
       },
       {
         id: "clickhouse",
         badge: "OLAP ENGINE",
-        title: "ClickHouse Database",
-        desc: "Columnar storage with ReplacingMergeTree",
-        details: "Executes analytical aggregations across 100M+ rows in under 20 milliseconds."
+        icon: "🚀",
+        title: "ClickHouse Columnar",
+        desc: "ReplacingMergeTree storage engine",
+        telemetryNormal: "18ms Query • 10M rows",
+        telemetrySpike: "34ms Query • 50M rows",
+        tags: ["Columnar DB", "Vector Execution", "Compression 80%"],
+        details: "High-performance analytical columnar database executing complex aggregations across tens of millions of rows in sub-50 milliseconds."
       },
       {
         id: "bi-dashboards",
         badge: "CONSUMERS",
+        icon: "📈",
         title: "Real-Time BI & APIs",
-        desc: "Grafana, Metabase & REST APIs",
-        details: "Live operational dashboards providing instant business intelligence with zero lag."
+        desc: "Grafana, Metabase & REST Endpoints",
+        telemetryNormal: "Live Refresh • 1s Poll",
+        telemetrySpike: "Instant Aggregations",
+        tags: ["Grafana", "Metabase", "Executive BI"],
+        details: "Live executive and operational dashboards providing continuous real-time business visibility with zero batch latency."
       }
     ]
   },
   ddag: {
-    title: "DDAG (Zero-Trust Multi-Dialect API Gateway)",
+    title: "DDAG (Zero-Trust Multi-Dialect API Gateway in Go)",
     badge: "High-Throughput Go Engine",
-    description: "Dynamically exposes SQL databases as secure REST APIs with granular RBAC, connection pooling, and parameter sanitization.",
+    description: "Dynamically reflects SQL schemas and exposes databases as secure REST APIs with granular RBAC, connection pooling, and parameter sanitization.",
     nodes: [
       {
         id: "clients",
         badge: "CLIENTS",
-        title: "Consumers & Services",
-        desc: "Web, mobile apps & third-party webhooks",
-        details: "Sends standard REST HTTP requests with Bearer JWT tokens."
+        icon: "🌐",
+        title: "Consumers & Apps",
+        desc: "Web apps, mobile clients & microservices",
+        telemetryNormal: "2,400 req/s • HTTP/2",
+        telemetrySpike: "9,600 req/s • Rate Limit Active",
+        tags: ["REST", "Bearer JWT", "JSON"],
+        details: "Client applications consuming standard REST HTTP endpoints with Bearer token authentication."
       },
       {
         id: "ddag-core",
         badge: "API GATEWAY",
+        icon: "⚡",
         title: "DDAG Core (Go)",
-        desc: "Routing, Token Auth & Query Parser",
-        details: "Zero-trust parameter sanitization preventing SQL injections and validating route-level ACL permissions."
+        desc: "Routing, Token Auth & Sanitization",
+        telemetryNormal: "1.4ms Overhead • Zero-Trust",
+        telemetrySpike: "3.2ms Overhead • 0 Leak",
+        tags: ["Golang", "SQL Injection Sanitizer", "RBAC"],
+        details: "High-speed Go gateway validating route-level ACLs, token signatures, and parameter sanitization to eliminate SQL injection vulnerabilities."
       },
       {
         id: "pooler",
         badge: "CONNECTION POOL",
+        icon: "🏊",
         title: "Smart Connection Pool",
-        desc: "PgBouncer & Dialect Connection Multiplexer",
-        details: "Reuses database connections efficiently to sustain thousands of concurrent queries without exhaustion."
+        desc: "PgBouncer & Multiplexer",
+        telemetryNormal: "98% Pool Efficiency",
+        telemetrySpike: "1,500 Conns Multiplexed",
+        tags: ["PgBouncer", "Dialect Multiplexer", "Zero Exhaustion"],
+        details: "Multiplexes thousands of client requests across a pre-warmed pool of persistent database connections, preventing connection exhaustion."
       },
       {
         id: "target-db",
         badge: "RDBMS",
-        title: "Target Relational DBs",
-        desc: "Postgres, Oracle, MSSQL, MySQL",
-        details: "Dynamic schema reflection allows seamless query execution across heterogeneous database engines."
+        icon: "💾",
+        title: "Target SQL Databases",
+        desc: "Postgres, MSSQL, Oracle, MySQL",
+        telemetryNormal: "Dynamic Reflection Active",
+        telemetrySpike: "Multi-Engine Queries Synced",
+        tags: ["PostgreSQL", "MS SQL Server", "Oracle 19c", "MySQL"],
+        details: "Executes parameterized dynamic SQL queries across heterogeneous RDBMS engines with schema caching."
       },
       {
         id: "audit-trace",
         badge: "AUDIT LOGS",
-        title: "Audit & Telemetry",
-        desc: "Structured JSON access logs & tracing",
-        details: "Records full audit trails for compliance with security policies and performance debugging."
+        icon: "📋",
+        title: "Audit & Tracing",
+        desc: "Structured JSON Access Trails",
+        telemetryNormal: "100% Request Traced",
+        telemetrySpike: "Alert Rules Monitored",
+        tags: ["Audit Trail", "OpenTelemetry", "Zero-Trust"],
+        details: "Records complete cryptographic access logs and latency traces for security audit compliance and performance troubleshooting."
       }
     ]
   }
@@ -135,14 +196,28 @@ class TopologyVisualizer {
   constructor() {
     this.currentKey = "afpi";
     this.activeNodeIndex = 0;
+    this.isSpikeMode = false;
+    this.isPaused = false;
+    
     this.container = document.getElementById("topology-canvas-wrap");
     this.detailContainer = document.getElementById("topology-detail-panel");
     this.tabButtons = document.querySelectorAll(".topology-tab-btn");
     
+    this.canvas = null;
+    this.ctx = null;
+    this.particles = [];
+    this.animationFrameId = null;
+
     this.init();
   }
 
   init() {
+    this.initControls();
+    this.render();
+    this.initCanvas();
+  }
+
+  initControls() {
     this.tabButtons.forEach(btn => {
       btn.addEventListener("click", () => {
         if (window.soundFx) window.soundFx.playClick();
@@ -151,7 +226,51 @@ class TopologyVisualizer {
       });
     });
 
-    this.render();
+    // Traffic Spike Simulation Button
+    const spikeBtn = document.getElementById("topo-spike-btn");
+    if (spikeBtn) {
+      spikeBtn.addEventListener("click", () => {
+        this.isSpikeMode = !this.isSpikeMode;
+        spikeBtn.classList.toggle("active", this.isSpikeMode);
+        spikeBtn.innerHTML = this.isSpikeMode ? "⚡ Traffic: PEAK SPIKE (14K req/s)" : "⚡ Traffic: Normal (3.8K req/s)";
+        if (window.soundFx) window.soundFx.playSuccess();
+        if (window.showToast) window.showToast(this.isSpikeMode ? "Traffic Spike Simulated: 14,000 req/s!" : "Traffic returned to normal load.");
+        this.updateTelemetryValues();
+      });
+    }
+
+    // Failover Simulation Button
+    const failoverBtn = document.getElementById("topo-failover-btn");
+    if (failoverBtn) {
+      failoverBtn.addEventListener("click", () => {
+        if (window.soundFx) window.soundFx.playSuccess();
+        if (window.showToast) window.showToast("🛡️ Failover Drill Executed: Primary → Standby Sync verified in <1.2s!");
+        this.triggerFailoverAnimation();
+      });
+    }
+  }
+
+  initCanvas() {
+    let canvasEl = document.getElementById("topology-flow-canvas");
+    if (!canvasEl && this.container) {
+      canvasEl = document.createElement("canvas");
+      canvasEl.id = "topology-flow-canvas";
+      this.container.insertBefore(canvasEl, this.container.firstChild);
+    }
+
+    if (canvasEl) {
+      this.canvas = canvasEl;
+      this.ctx = canvasEl.getContext("2d");
+      this.resizeCanvas();
+      window.addEventListener("resize", () => this.resizeCanvas());
+      this.startParticleAnimation();
+    }
+  }
+
+  resizeCanvas() {
+    if (!this.canvas || !this.container) return;
+    this.canvas.width = this.container.clientWidth;
+    this.canvas.height = this.container.clientHeight;
   }
 
   switchTopology(key) {
@@ -164,6 +283,7 @@ class TopologyVisualizer {
     });
 
     this.render();
+    setTimeout(() => this.resizeCanvas(), 50);
   }
 
   selectNode(index) {
@@ -177,6 +297,31 @@ class TopologyVisualizer {
     });
   }
 
+  updateTelemetryValues() {
+    const data = ARCHITECTURE_DATA[this.currentKey];
+    if (!data || !this.container) return;
+
+    data.nodes.forEach((node, idx) => {
+      const telEl = this.container.querySelector(`.arch-node[data-index="${idx}"] .arch-node-telemetry span:last-child`);
+      if (telEl) {
+        telEl.textContent = this.isSpikeMode ? node.telemetrySpike : node.telemetryNormal;
+        telEl.style.color = this.isSpikeMode ? "#f97316" : "#10b981";
+      }
+    });
+  }
+
+  triggerFailoverAnimation() {
+    const dbNode = this.container.querySelector(".arch-node[data-index="3"]");
+    if (dbNode) {
+      dbNode.style.boxShadow = "0 0 45px #10b981";
+      dbNode.style.borderColor = "#10b981";
+      setTimeout(() => {
+        dbNode.style.boxShadow = "";
+        dbNode.style.borderColor = "";
+      }, 1500);
+    }
+  }
+
   render() {
     const data = ARCHITECTURE_DATA[this.currentKey];
     if (!data || !this.container) return;
@@ -185,33 +330,20 @@ class TopologyVisualizer {
 
     data.nodes.forEach((node, index) => {
       const isActive = index === this.activeNodeIndex ? "active" : "";
-      const icons = {
-        "SOURCE": "⚡",
-        "SECURITY EDGE": "🛡️",
-        "COMPUTE": "⚙️",
-        "STORAGE": "💾",
-        "OBSERVABILITY": "📊",
-        "OLTP SYSTEMS": "🗄️",
-        "CDC CONNECTOR": "🔄",
-        "MESSAGE BROKER": "📨",
-        "OLAP ENGINE": "🚀",
-        "CONSUMERS": "📈",
-        "CLIENTS": "🌐",
-        "API GATEWAY": "⚡",
-        "CONNECTION POOL": "🏊",
-        "RDBMS": "💾",
-        "AUDIT LOGS": "📋"
-      };
-      const icon = icons[node.badge] || "🔷";
+      const telemetry = this.isSpikeMode ? node.telemetrySpike : node.telemetryNormal;
 
       html += `
         <div class="arch-node ${isActive}" data-index="${index}">
-          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <div class="arch-node-top">
             <span class="arch-node-badge">${node.badge}</span>
-            <span style="font-size:1.1rem;">${icon}</span>
+            <div class="arch-node-icon">${node.icon}</div>
           </div>
           <div class="arch-node-title">${node.title}</div>
           <div class="arch-node-desc">${node.desc}</div>
+          <div class="arch-node-telemetry">
+            <span>● LIVE</span>
+            <span style="color: ${this.isSpikeMode ? "#f97316" : "#10b981"}; font-weight:700;">${telemetry}</span>
+          </div>
         </div>
       `;
 
@@ -225,7 +357,12 @@ class TopologyVisualizer {
     });
 
     html += "</div>";
-    this.container.innerHTML = html;
+    
+    // Preserve canvas when updating DOM
+    const canvasHtml = `<canvas id="topology-flow-canvas"></canvas>`;
+    this.container.innerHTML = canvasHtml + html;
+
+    this.initCanvas();
 
     this.container.querySelectorAll(".arch-node").forEach(el => {
       el.addEventListener("click", () => {
@@ -242,19 +379,100 @@ class TopologyVisualizer {
     const node = data.nodes[this.activeNodeIndex];
     if (!this.detailContainer || !node) return;
 
+    const tagsHtml = (node.tags || []).map(t => `
+      <span style="font-size:0.72rem; font-family:var(--font-mono); background:rgba(249, 115, 22, 0.15); color:var(--accent-primary); border:1px solid rgba(249, 115, 22, 0.3); padding:2px 8px; border-radius:4px; font-weight:600;">
+        ${t}
+      </span>
+    `).join(" ");
+
     this.detailContainer.innerHTML = `
-      <div>
-        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--accent-cyan); font-family: var(--font-mono); font-weight: 600;">
-          Component Details: <strong>${node.title}</strong> (${node.badge})
+      <div style="flex: 1; min-width: 300px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+          <span style="font-size: 1.1rem;">${node.icon}</span>
+          <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700;">
+            ${node.title} (${node.badge})
+          </span>
+          <div style="display:flex; gap:6px; margin-left:auto;">
+            ${tagsHtml}
+          </div>
         </div>
-        <div style="color: var(--text-primary); font-weight: 500; margin-top: 4px;">
+        <div style="color: var(--text-primary); font-size: 0.88rem; line-height: 1.5; margin-top: 6px;">
           ${node.details}
         </div>
       </div>
-      <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted);">
-        System: <span style="color: var(--accent-primary); font-weight: 600;">${data.title}</span>
+      <div style="font-size: 0.8rem; font-family: var(--font-mono); color: var(--text-muted); text-align: right;">
+        Active System:<br>
+        <span style="color: var(--accent-emerald); font-weight: 700;">${data.badge}</span>
       </div>
     `;
+  }
+
+  startParticleAnimation() {
+    if (this.animationFrameId) cancelAnimationFrame(this.animationFrameId);
+
+    const spawnParticle = () => {
+      const nodes = this.container.querySelectorAll(".arch-node");
+      if (nodes.length < 2) return;
+
+      const rate = this.isSpikeMode ? 3 : 1;
+      for (let r = 0; r < rate; r++) {
+        const startNodeIdx = Math.floor(Math.random() * (nodes.length - 1));
+        const n1 = nodes[startNodeIdx].getBoundingClientRect();
+        const n2 = nodes[startNodeIdx + 1].getBoundingClientRect();
+        const parent = this.container.getBoundingClientRect();
+
+        const x1 = n1.right - parent.left;
+        const y1 = n1.top + n1.height / 2 - parent.top;
+        const x2 = n2.left - parent.left;
+        const y2 = n2.top + n2.height / 2 - parent.top;
+
+        this.particles.push({
+          x: x1,
+          y: y1,
+          targetX: x2,
+          targetY: y2,
+          progress: 0,
+          speed: this.isSpikeMode ? (0.025 + Math.random() * 0.02) : (0.012 + Math.random() * 0.008),
+          size: Math.random() * 2.5 + 2,
+          color: Math.random() > 0.4 ? "#f97316" : "#10b981"
+        });
+      }
+    };
+
+    let tick = 0;
+    const animate = () => {
+      if (!this.ctx || !this.canvas) return;
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+
+      tick++;
+      if (tick % (this.isSpikeMode ? 4 : 10) === 0) {
+        spawnParticle();
+      }
+
+      for (let i = this.particles.length - 1; i >= 0; i--) {
+        const p = this.particles[i];
+        p.progress += p.speed;
+
+        const currentX = p.x + (p.targetX - p.x) * p.progress;
+        const currentY = p.y + (p.targetY - p.y) * p.progress;
+
+        this.ctx.beginPath();
+        this.ctx.arc(currentX, currentY, p.size, 0, Math.PI * 2);
+        this.ctx.fillStyle = p.color;
+        this.ctx.shadowColor = p.color;
+        this.ctx.shadowBlur = 8;
+        this.ctx.fill();
+        this.ctx.shadowBlur = 0;
+
+        if (p.progress >= 1) {
+          this.particles.splice(i, 1);
+        }
+      }
+
+      this.animationFrameId = requestAnimationFrame(animate);
+    };
+
+    animate();
   }
 }
 

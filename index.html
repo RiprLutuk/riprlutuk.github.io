@@ -339,16 +339,21 @@
         </div>
 
         <div class="topology-container">
-          <!-- Topology Header Tabs -->
+          <!-- Topology Header Tabs & Interactive Simulation Controls -->
           <div class="topology-header">
-            <div style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 700; color: var(--text-primary); display: flex; align-items: center; gap: 8px;">
-              <span>🌐 SYSTEM TOPOLOGY VIEWER</span>
-            </div>
-
             <div class="topology-tabs">
               <button class="topology-tab-btn active" data-topology="afpi">1. AFPI Fintech Data Center</button>
               <button class="topology-tab-btn" data-topology="cdc">2. Real-Time CDC Pipeline</button>
               <button class="topology-tab-btn" data-topology="ddag">3. DDAG Zero-Trust Gateway</button>
+            </div>
+
+            <div class="topology-controls-bar">
+              <button id="topo-spike-btn" class="topology-btn-sim" title="Simulate peak traffic spikes">
+                <span>⚡ Traffic: Normal (3.8K req/s)</span>
+              </button>
+              <button id="topo-failover-btn" class="topology-btn-sim" title="Simulate primary-standby failover drill">
+                <span>🛡️ Failover Drill</span>
+              </button>
             </div>
           </div>
 

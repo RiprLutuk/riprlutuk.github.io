@@ -229,6 +229,7 @@ class ModalManager {
 // ==========================================
 // 5. Toast System & Clipboard
 // ==========================================
+window.showToast = showToast;
 function showToast(message, duration = 3000) {
   let container = document.querySelector(".toast-container");
   if (!container) {
