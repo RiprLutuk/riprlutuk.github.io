@@ -82,19 +82,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "claude-code-templates",
-    "description": "CLI tool for configuring and monitoring Claude Code",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/claude-code-templates",
-    "updated_at": "2026-07-29T07:35:54Z",
-    "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "WargaHub",
     "description": "\ud83c\udfe1 Sistem Informasi, Transparansi Keuangan, Musyawarah Digital & Operasional Lingkungan Warga (RT/RW) | Fastify, Vue 3 PWA, PGlite WASM",
     "language": "TypeScript",
@@ -212,32 +199,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "AntigravityManager",
-    "description": "Antigravity Manager is a powerful Electron-based application designed to manage accounts and processes for the Antigravity application. It provides a seamless interface for switching accounts, backing up progress, and controlling the application lifecycle.",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/AntigravityManager",
-    "updated_at": "2026-01-26T15:24:09Z",
-    "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": true,
-    "demo_url": null
-  },
-  {
-    "name": "fuckspamcallers",
-    "description": "Repository fuckspamcallers by Heri Riski Anto",
-    "language": "Blade",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/fuckspamcallers",
-    "updated_at": "2026-01-25T06:35:47Z",
-    "category": "Tools",
-    "is_fork": false,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "101-linux-commands-ebook",
     "description": "101 Linux commands Open-source eBook",
     "language": "Other",
@@ -264,19 +225,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "PyUnzip",
-    "description": "PyUnzip adalah program Python sederhana yang dirancang untuk meng-crack kata sandi file Zip. Program ini menggunakan teknik Dictionary Attack, yaitu teknik yang mencoba semua kemungkinan kata sandi yang terdapat dalam file Wordlist.",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/PyUnzip",
-    "updated_at": "2024-07-26T02:24:42Z",
-    "category": "DevOps & Security",
-    "is_fork": false,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "nginx-tuning",
     "description": "NGINX tuning for best performance",
     "language": "Other",
@@ -287,19 +235,6 @@ const FALLBACK_REPOS = [
     "category": "DevOps & Security",
     "is_fork": true,
     "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "xcodepandawarouter",
-    "description": "Aplikasi untuk membangun NAT, DHCP Server, access log, cache web, port forwarding dan VPN Server secara cepat termasuk juga konfigurasinya di Ubuntu Server 18.04 LTS.",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/xcodepandawarouter",
-    "updated_at": "2021-06-02T09:59:56Z",
-    "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": true,
     "demo_url": null
   },
   {
@@ -316,19 +251,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "xcodephpshell",
-    "description": "PHP Shell untuk remote shell Web Server, upload dan sebagainya",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/xcodephpshell",
-    "updated_at": "2020-12-17T13:52:39Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "telegram-whatsapp-webapp",
     "description": "telegram web app for brave browser",
     "language": "Shell",
@@ -338,71 +260,6 @@ const FALLBACK_REPOS = [
     "updated_at": "2020-10-21T08:52:46Z",
     "category": "Tools",
     "is_fork": false,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "java",
-    "description": "Official Java client library for kubernetes",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/java",
-    "updated_at": "2020-09-08T10:49:18Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "tokoku_native",
-    "description": "CMS Toko Online PHP Native",
-    "language": "PHP",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/tokoku_native",
-    "updated_at": "2020-06-13T05:51:36Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "Tokol",
-    "description": "Toko Online DistroIT dengan PHP native, MySQLi dan Bootstrap 3",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/Tokol",
-    "updated_at": "2020-06-13T05:13:14Z",
-    "category": "DBA & Data Platform",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "Toko-Online-Batik",
-    "description": "Toko Online Batik dengan Bootstrap + PHP + MySql",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/Toko-Online-Batik",
-    "updated_at": "2020-06-13T05:12:07Z",
-    "category": "DBA & Data Platform",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "tokonlen",
-    "description": "Simple Toko Online",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/tokonlen",
-    "updated_at": "2020-06-13T05:00:53Z",
-    "category": "Tools",
-    "is_fork": true,
     "is_featured": false,
     "demo_url": null
   }
