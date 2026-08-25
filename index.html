@@ -206,7 +206,7 @@
       <div class="container">
         <!-- Top 2-Column Balanced Grid -->
         <div class="hero-grid">
-          <!-- Left Column: Executive Summary & CTAs -->
+          <!-- Left Column: Executive Summary & Dynamic Persona Switcher -->
           <div>
             <div class="status-badge-live">
               <span class="status-pulse-dot"></span>
@@ -218,25 +218,63 @@
               Fullstack, Mobile &amp; Core DBA.
             </h1>
 
-            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 18px; font-weight: 600;">
+            <div style="font-family: var(--font-mono); font-size: 1.05rem; color: var(--accent-cyan); margin-bottom: 14px; font-weight: 600;">
               &gt; <span id="hero-dynamic-text" class="hero-dynamic-text"></span>
             </div>
 
-            <p class="hero-lead">
-              Senior Fullstack Developer, Mobile App Engineer, Senior Database Administrator (DBA), and Infrastructure Architect with <strong>7+ years of production experience</strong>. Engineering the entire tech stack — from Android Native (Java/Kotlin) &amp; Flutter mobile apps, high-throughput Go/Python/Laravel APIs, to multi-engine database high availability (PostgreSQL, MSSQL, Oracle, MySQL) and ISO/IEC 27001 fintech compliance.
-            </p>
+            <!-- Interactive Persona Switcher HUD -->
+            <div class="persona-switch-bar">
+              <span class="persona-switch-label">🚀 CUSTOMIZE BRIEFING FOR YOUR ROLE:</span>
+              <div class="persona-pills-group">
+                <button class="persona-pill-btn active" data-persona="recruiter">
+                  👔 Tech Recruiter / HR
+                </button>
+                <button class="persona-pill-btn" data-persona="founder">
+                  🚀 Startup Founder / CTO
+                </button>
+                <button class="persona-pill-btn" data-persona="enterprise">
+                  🏢 Enterprise VP / Director
+                </button>
+              </div>
+            </div>
 
-            <div class="hero-actions">
-              <a href="#projects" class="btn-cta btn-primary">
-                <span>🚀 Explore Flagship Platforms</span>
-              </a>
-              <button class="btn-cta btn-secondary open-resume-modal-btn">
-                <span>📄 Curriculum Vitae</span>
-              </button>
+            <!-- Dynamic Persona Pitch Deck Card -->
+            <div id="persona-pitch-deck" class="persona-pitch-card">
+              <div class="persona-pitch-title">
+                <span id="pitch-icon">👔</span>
+                <span id="pitch-title">Senior DBA, Fullstack Platform &amp; Mobile Architect</span>
+                <span id="pitch-badge" class="bento-chip highlight" style="margin-left:auto;">Immediate Fit</span>
+              </div>
+              <div id="pitch-points" class="persona-pitch-points">
+                <div class="persona-pitch-point-item">
+                  <span>🎯</span>
+                  <span><strong>Target Roles:</strong> Senior DBA, Platform Engineer, Fullstack &amp; Mobile Architect.</span>
+                </div>
+                <div class="persona-pitch-point-item">
+                  <span>🏢</span>
+                  <span><strong>Enterprise Pedigree:</strong> PT Link Net Tbk (99.98% SLA), AFPI Fintech Data Center (ISO 27001).</span>
+                </div>
+                <div class="persona-pitch-point-item">
+                  <span>💼</span>
+                  <span><strong>Availability:</strong> Open for Full-Time &amp; High-Impact Consulting (Remote / Hybrid / On-Site).</span>
+                </div>
+                <div class="persona-pitch-point-item">
+                  <span>📄</span>
+                  <span><strong>ATS Match Score:</strong> 98/100 verified on Workday, Taleo, and Greenhouse.</span>
+                </div>
+              </div>
+              <div class="persona-pitch-actions">
+                <button class="btn-cta btn-primary open-resume-modal-btn" style="padding: 8px 16px; font-size: 0.82rem;">
+                  <span>📄 View Official Curriculum Vitae</span>
+                </button>
+                <a id="pitch-cta-tg" href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="padding: 8px 16px; font-size: 0.82rem;">
+                  <span>💬 Chat Direct on Telegram (@riprlutuk)</span>
+                </a>
+              </div>
             </div>
           </div>
 
-          <!-- Right Column: Live Console Bento Card -->
+          <!-- Right Column: Interactive Mission Control Console -->
           <div>
             <div class="hero-card-terminal">
               <!-- Terminal Header Bar -->
@@ -250,8 +288,16 @@
                 <button class="btn-icon open-terminal-btn" style="width:24px; height:24px; font-size:0.7rem; cursor:pointer;" title="Expand Full CLI">&gt;_</button>
               </div>
 
+              <!-- Interactive Terminal Tabs Bar -->
+              <div class="terminal-tabs-bar">
+                <button class="t-tab-btn active" data-tab="status">🖥️ Fleet Status</button>
+                <button class="t-tab-btn" data-tab="migrations">🔄 Link Net Migrations</button>
+                <button class="t-tab-btn" data-tab="security">🛡️ ISO 27001 Security</button>
+                <button class="t-tab-btn" data-tab="mobile">📱 Mobile &amp; Web</button>
+              </div>
+
               <!-- Terminal Live Console Body -->
-              <div class="terminal-card-body">
+              <div id="hero-terminal-body" class="terminal-card-body">
                 <!-- Command 1: Full-Stack Health -->
                 <div class="console-line">
                   <span class="console-prompt">riprlutuk@prod:~$</span>

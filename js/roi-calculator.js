@@ -31,6 +31,25 @@ class ROICalculator {
     this.spendInput.addEventListener("input", updateHandler);
     this.latencyInput.addEventListener("input", updateHandler);
 
+    // Bind 1-Click Client Preset Scenarios
+    const presetBtns = document.querySelectorAll(".roi-preset-btn");
+    presetBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        const dbSize = btn.getAttribute("data-dbsize");
+        const spend = btn.getAttribute("data-spend");
+        const latency = btn.getAttribute("data-latency");
+
+        if (this.dbSizeInput && dbSize) this.dbSizeInput.value = dbSize;
+        if (this.spendInput && spend) this.spendInput.value = spend;
+        if (this.latencyInput && latency) this.latencyInput.value = latency;
+
+        if (window.soundFx) window.soundFx.playSuccess();
+        this.calculate();
+        if (window.showToast) window.showToast(`Applied Preset: ${btn.textContent.trim()}`);
+      });
+    });
+
     this.calculate();
   }
 

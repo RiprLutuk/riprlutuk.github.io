@@ -555,6 +555,175 @@ function startCoreEngine() {
     });
   });
 
+// ==========================================
+  // Dynamic Persona Switcher Controller
+  // ==========================================
+  const personaPills = document.querySelectorAll(".persona-pill-btn");
+  const pitchIcon = document.getElementById("pitch-icon");
+  const pitchTitle = document.getElementById("pitch-title");
+  const pitchBadge = document.getElementById("pitch-badge");
+  const pitchPoints = document.getElementById("pitch-points");
+  const pitchCtaTg = document.getElementById("pitch-cta-tg");
+
+  const PERSONA_DATA = {
+    recruiter: {
+      icon: "👔",
+      title: "Senior DBA, Fullstack Platform & Mobile Architect",
+      badge: "Immediate Fit",
+      points: `
+        <div class="persona-pitch-point-item"><span>🎯</span><span><strong>Target Roles:</strong> Senior DBA, Platform Engineer, Fullstack &amp; Mobile Architect.</span></div>
+        <div class="persona-pitch-point-item"><span>🏢</span><span><strong>Enterprise Pedigree:</strong> PT Link Net Tbk (99.98% SLA), AFPI Fintech Data Center (ISO 27001).</span></div>
+        <div class="persona-pitch-point-item"><span>💼</span><span><strong>Availability:</strong> Open for Full-Time &amp; High-Impact Consulting (Remote / Hybrid / On-Site).</span></div>
+        <div class="persona-pitch-point-item"><span>📄</span><span><strong>ATS Match Score:</strong> 98/100 verified on Workday, Taleo, and Greenhouse.</span></div>
+      `,
+      tgLink: "https://t.me/riprlutuk?text=Halo%20Heri,%20kami%20dari%20tim%20Recruitment%20tertarik%20dengan%20profil%20Anda"
+    },
+    founder: {
+      icon: "🚀",
+      title: "The \"One-Man IT Division\" — Fast 0-to-1 MVP & Scalability",
+      badge: "Founder & CTO Match",
+      points: `
+        <div class="persona-pitch-point-item"><span>📱</span><span><strong>Mobile &amp; Web Apps:</strong> Android Native (Java/Kotlin), Flutter, Vue 3 PWA, React.</span></div>
+        <div class="persona-pitch-point-item"><span>⚡</span><span><strong>Backend &amp; APIs:</strong> High-throughput Go &amp; Python microservices, Laravel 11, Fastify.</span></div>
+        <div class="persona-pitch-point-item"><span>💾</span><span><strong>Rock-Solid Databases:</strong> PostgreSQL, Redis caching, zero-downtime database architecture.</span></div>
+        <div class="persona-pitch-point-item"><span>💰</span><span><strong>4-in-1 Efficiency:</strong> 1 veteran engineer executing your entire stack without hiring 4 specialists.</span></div>
+      `,
+      tgLink: "https://t.me/riprlutuk?text=Halo%20Heri,%20saya%20Founder/CTO%20ingin%20diskusi%20pengembangan%20produk%20kami"
+    },
+    enterprise: {
+      icon: "🏢",
+      title: "Enterprise Database Migrations, 99.98% SLA & ISO 27001 ISMS",
+      badge: "Enterprise Scale",
+      points: `
+        <div class="persona-pitch-point-item"><span>🔄</span><span><strong>Proven Migrations:</strong> Oracle 19c &rarr; PostgreSQL 16, MongoDB &rarr; AWS DocumentDB, AWS RDS &rarr; TencentDB.</span></div>
+        <div class="persona-pitch-point-item"><span>🛡️</span><span><strong>Security &amp; Compliance:</strong> Lead ISO/IEC 27001:2022, UU No. 27/2022 (UU PDP), Fortinet FortiGate IPsec.</span></div>
+        <div class="persona-pitch-point-item"><span>📊</span><span><strong>Fleet Observability:</strong> Grafana &amp; Prometheus monitoring, automated RMAN DR (RPO &lt; 15m, RTO &lt; 1h).</span></div>
+        <div class="persona-pitch-point-item"><span>⚡</span><span><strong>Query Optimization:</strong> 345x latency reduction on 10M+ row enterprise reporting workloads.</span></div>
+      `,
+      tgLink: "https://t.me/riprlutuk?text=Halo%20Heri,%20kami%20ingin%20konsultasi%20Enterprise%20DBA%20dan%20Migrasi%20Database"
+    }
+  };
+
+  personaPills.forEach(pill => {
+    pill.addEventListener("click", () => {
+      personaPills.forEach(p => p.classList.remove("active"));
+      pill.classList.add("active");
+      const persona = pill.getAttribute("data-persona");
+      const data = PERSONA_DATA[persona];
+      if (data) {
+        if (pitchIcon) pitchIcon.textContent = data.icon;
+        if (pitchTitle) pitchTitle.textContent = data.title;
+        if (pitchBadge) pitchBadge.textContent = data.badge;
+        if (pitchPoints) pitchPoints.innerHTML = data.points;
+        if (pitchCtaTg) pitchCtaTg.href = data.tgLink;
+        if (window.soundFx) window.soundFx.playSuccess();
+      }
+    });
+  });
+
+  // ==========================================
+  // Hero Terminal Tab Switcher Controller
+  // ==========================================
+  const terminalTabs = document.querySelectorAll(".t-tab-btn");
+  const heroTermBody = document.getElementById("hero-terminal-body");
+
+  const TERMINAL_TAB_CONTENT = {
+    status: `
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">fullstack-status --entire-division</span>
+      </div>
+      <div class="terminal-table-list">
+        <div class="terminal-row"><span class="t-label">📱 Mobile (Java Native &amp; Flutter)</span><span class="t-val-green">● FACE ID &amp; GPS ACTIVE</span></div>
+        <div class="terminal-row"><span class="t-label">🌐 Frontend (Vue 3, React, PWA)</span><span class="t-val-green">● 100% PWA (PGlite WASM)</span></div>
+        <div class="terminal-row"><span class="t-label">⚡ Backend (Go, Python, Laravel)</span><span class="t-val-cyan">● 200 OK (&lt; 2.5ms Overhead)</span></div>
+        <div class="terminal-row"><span class="t-label">💾 Core DBA (Postgres, MSSQL, Oracle)</span><span class="t-val-green">● 99.98% SLA STREAMING</span></div>
+        <div class="terminal-row"><span class="t-label">🛡️ Security (ISO 27001 &amp; FortiGate)</span><span class="t-val-green">● 100+ NODES ENFORCED</span></div>
+      </div>
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">explain-analyze --ledger-10m</span>
+      </div>
+      <div class="terminal-query-audit">
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Query Latency:</span><span><span style="color: #ef4444; text-decoration: line-through;">4,200ms</span> &rarr; <strong style="color: var(--accent-emerald);">18ms (-99.5%)</strong></span></div>
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Security Standard:</span><strong style="color: var(--accent-cyan);">ISO/IEC 27001 ISMS Compliant</strong></div>
+      </div>
+    `,
+    migrations: `
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">linknet-migrations --inspect --live</span>
+      </div>
+      <div class="terminal-table-list">
+        <div class="terminal-row"><span class="t-label">Oracle 19c &rarr; PostgreSQL 16</span><span class="t-val-green">● PL/pgSQL REWRITE (0-LAG)</span></div>
+        <div class="terminal-row"><span class="t-label">MongoDB &rarr; AWS DocumentDB</span><span class="t-val-green">● SHARDED REPLICAS ACTIVE</span></div>
+        <div class="terminal-row"><span class="t-label">AWS RDS &rarr; TencentDB</span><span class="t-val-cyan">● CROSS-CLOUD COST -35%</span></div>
+        <div class="terminal-row"><span class="t-label">Grafana Fleet Telemetry</span><span class="t-val-green">● 24/7 PROMETHEUS HEALTHY</span></div>
+      </div>
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">migration-integrity-check</span>
+      </div>
+      <div class="terminal-query-audit">
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Data Discrepancy:</span><strong style="color: var(--accent-emerald);">0 Rows (100% Validated)</strong></div>
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Downtime Window:</span><strong style="color: var(--accent-cyan);">&lt; 10s Cutover</strong></div>
+      </div>
+    `,
+    security: `
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">security-audit --iso27001-compliance</span>
+      </div>
+      <div class="terminal-table-list">
+        <div class="terminal-row"><span class="t-label">ISO/IEC 27001:2022 ISMS</span><span class="t-val-green">● AUDIT PASSED / CERTIFIED</span></div>
+        <div class="terminal-row"><span class="t-label">UU No. 27/2022 (UU PDP)</span><span class="t-val-green">● AES-256 ENCRYPTION ENFORCED</span></div>
+        <div class="terminal-row"><span class="t-label">FortiGate IPsec VPN</span><span class="t-val-cyan">● 100+ P2P LENDERS SECURED</span></div>
+        <div class="terminal-row"><span class="t-label">pgAudit Audit Trails</span><span class="t-val-green">● 5-YEAR RETENTION ACTIVE</span></div>
+      </div>
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">drc-failover-readiness</span>
+      </div>
+      <div class="terminal-query-audit">
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Secondary DRC Site:</span><strong style="color: var(--accent-emerald);">Synchronized Standby</strong></div>
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Recovery Targets:</span><strong style="color: var(--accent-cyan);">RPO &lt; 15m / RTO &lt; 1h</strong></div>
+      </div>
+    `,
+    mobile: `
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">mobile-and-web-stack --status</span>
+      </div>
+      <div class="terminal-table-list">
+        <div class="terminal-row"><span class="t-label">Android Native (Java)</span><span class="t-val-green">● FACE ID BIOMETRICS PASS</span></div>
+        <div class="terminal-row"><span class="t-label">Flutter Cross-Platform</span><span class="t-val-green">● ANTI-MOCK GPS 0.00% SPOOF</span></div>
+        <div class="terminal-row"><span class="t-label">Vue 3 PWA + Fastify</span><span class="t-val-cyan">● PGlite WASM (0.4ms QUERY)</span></div>
+        <div class="terminal-row"><span class="t-label">Go REST &amp; WebSockets</span><span class="t-val-green">● 2.5ms LATENCY OVERHEAD</span></div>
+      </div>
+      <div class="console-line">
+        <span class="console-prompt">riprlutuk@prod:~$</span>
+        <span class="console-cmd">mobile-app-benchmark</span>
+      </div>
+      <div class="terminal-query-audit">
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Attendance Logging:</span><strong style="color: var(--accent-emerald);">0.4s Instant Confirmation</strong></div>
+        <div class="t-audit-item"><span style="color: var(--text-muted);">Offline Capability:</span><strong style="color: var(--accent-cyan);">100% Local DB Syncing</strong></div>
+      </div>
+    `
+  };
+
+  terminalTabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      terminalTabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      const tabKey = tab.getAttribute("data-tab");
+      const content = TERMINAL_TAB_CONTENT[tabKey];
+      if (content && heroTermBody) {
+        heroTermBody.innerHTML = content;
+        if (window.soundFx) window.soundFx.playClick();
+      }
+    });
+  });
+
   // Bind Navbar Theme Button
   const themeBtn = document.getElementById("theme-toggle-btn");
   if (themeBtn) {
