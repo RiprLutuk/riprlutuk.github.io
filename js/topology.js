@@ -197,7 +197,6 @@ class TopologyVisualizer {
     this.currentKey = "afpi";
     this.activeNodeIndex = 0;
     this.isSpikeMode = false;
-    this.isPaused = false;
     
     this.container = document.getElementById("topology-canvas-wrap");
     this.detailContainer = document.getElementById("topology-detail-panel");
@@ -214,7 +213,6 @@ class TopologyVisualizer {
   init() {
     this.initControls();
     this.render();
-    this.initCanvas();
   }
 
   initControls() {
@@ -232,7 +230,7 @@ class TopologyVisualizer {
       spikeBtn.addEventListener("click", () => {
         this.isSpikeMode = !this.isSpikeMode;
         spikeBtn.classList.toggle("active", this.isSpikeMode);
-        spikeBtn.innerHTML = this.isSpikeMode ? "⚡ Traffic: PEAK SPIKE (14K req/s)" : "⚡ Traffic: Normal (3.8K req/s)";
+        spikeBtn.innerHTML = this.isSpikeMode ? "<span>⚡ Traffic: PEAK SPIKE (14K req/s)</span>" : "<span>⚡ Traffic: Normal (3.8K req/s)</span>";
         if (window.soundFx) window.soundFx.playSuccess();
         if (window.showToast) window.showToast(this.isSpikeMode ? "Traffic Spike Simulated: 14,000 req/s!" : "Traffic returned to normal load.");
         this.updateTelemetryValues();
@@ -269,8 +267,8 @@ class TopologyVisualizer {
 
   resizeCanvas() {
     if (!this.canvas || !this.container) return;
-    this.canvas.width = this.container.clientWidth;
-    this.canvas.height = this.container.clientHeight;
+    this.canvas.width = this.container.clientWidth || 1000;
+    this.canvas.height = this.container.clientHeight || 450;
   }
 
   switchTopology(key) {
@@ -283,7 +281,6 @@ class TopologyVisualizer {
     });
 
     this.render();
-    setTimeout(() => this.resizeCanvas(), 50);
   }
 
   selectNode(index) {
@@ -311,9 +308,9 @@ class TopologyVisualizer {
   }
 
   triggerFailoverAnimation() {
-    const dbNode = this.container.querySelector(".arch-node[data-index="3"]");
+    const dbNode = this.container.querySelector('.arch-node[data-index="3"]');
     if (dbNode) {
-      dbNode.style.boxShadow = "0 0 45px #10b981";
+      dbNode.style.boxShadow = "0 0 50px #10b981";
       dbNode.style.borderColor = "#10b981";
       setTimeout(() => {
         dbNode.style.boxShadow = "";
@@ -326,7 +323,7 @@ class TopologyVisualizer {
     const data = ARCHITECTURE_DATA[this.currentKey];
     if (!data || !this.container) return;
 
-    let html = "<div class=\"arch-diagram-flow\">";
+    let html = '<div class="arch-diagram-flow">';
 
     data.nodes.forEach((node, index) => {
       const isActive = index === this.activeNodeIndex ? "active" : "";
@@ -358,8 +355,8 @@ class TopologyVisualizer {
 
     html += "</div>";
     
-    // Preserve canvas when updating DOM
-    const canvasHtml = `<canvas id="topology-flow-canvas"></canvas>`;
+    // Canvas container insertion
+    const canvasHtml = '<canvas id="topology-flow-canvas"></canvas>';
     this.container.innerHTML = canvasHtml + html;
 
     this.initCanvas();
@@ -387,7 +384,7 @@ class TopologyVisualizer {
 
     this.detailContainer.innerHTML = `
       <div style="flex: 1; min-width: 300px;">
-        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px; flex-wrap:wrap;">
           <span style="font-size: 1.1rem;">${node.icon}</span>
           <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--accent-primary); font-family: var(--font-mono); font-weight: 700;">
             ${node.title} (${node.badge})
