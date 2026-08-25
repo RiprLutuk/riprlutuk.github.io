@@ -188,6 +188,10 @@ class CyberTerminal {
       case "failover":
         this.cmdDrill();
         break;
+      case "migrations":
+      case "migration":
+        this.cmdMigrations();
+        break;
       case "mobile":
       case "apps":
         this.cmdMobile();
@@ -332,7 +336,8 @@ class CyberTerminal {
       <div style="color: var(--text-secondary); line-height: 1.6; font-size: 0.82rem;">
         <strong style="color: var(--accent-cyan); font-size: 0.95rem;">HERI RISKI ANTO — CURRICULUM VITAE &amp; EXECUTIVE PROFILE</strong><br>
         • <strong>Role:</strong> Senior Database Administrator (DBA), Cloud Infrastructure &amp; Platform Engineer<br>
-        • <strong>Track Record:</strong> 7+ Years Experience across Telecom (PT Link Net Tbk), Fintech (AFPI Data Center), and Crowdfunding (Vestora.id)<br>
+        • <strong>Current Role (PT Link Net Tbk):</strong> Lead DBA &bull; Oracle &rarr; PostgreSQL Migration, MongoDB &rarr; AWS DocumentDB, AWS RDS &rarr; TencentDB, and Centralized Grafana Fleet Dashboards.<br>
+• <strong>Track Record:</strong> 7+ Years Experience across Telecom (PT Link Net Tbk), Fintech (AFPI Data Center), and Crowdfunding (Vestora.id)<br>
         • <strong>Compliance Lead:</strong> ISO/IEC 27001:2013 &amp; Upgrade to 27001:2022 (ISMS), UU No. 27/2022 (UU PDP), POJK 10/2022<br>
         • <strong>Core Databases:</strong> PostgreSQL, MS SQL Server (AlwaysOn AG), Oracle 19c, MySQL, ClickHouse, Redis<br>
         • <strong>Direct Contact:</strong><br>
@@ -473,6 +478,18 @@ class CyberTerminal {
         </div>
       `);
     }
+  }
+
+  cmdMigrations() {
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6;">
+        <strong style="color: var(--accent-primary);">🚀 ENTERPRISE DATABASE MIGRATIONS (PT LINK NET TBK):</strong><br>
+        1. <strong style="color:#fff;">Oracle 19c &rarr; PostgreSQL 16:</strong> Full PL/SQL to PL/pgSQL rewrite, schema mapping &amp; zero-downtime CDC sync.<br>
+        2. <strong style="color:#fff;">MongoDB &rarr; AWS DocumentDB:</strong> Sharded NoSQL migration, index optimization &amp; replica scaling.<br>
+        3. <strong style="color:#fff;">AWS RDS &rarr; TencentDB:</strong> Cross-cloud database migration for cloud compute cost reduction &amp; 99.98% SLA.<br>
+        4. <strong style="color:#fff;">Centralized Grafana Dashboards:</strong> Real-time Prometheus telemetry for connection pools, buffer hits &amp; slow queries.
+      </div>
+    `);
   }
 
   cmdMobile() {
