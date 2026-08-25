@@ -2256,3 +2256,182 @@ body {
   will-change: transform;
   transform-style: preserve-3d;
 }
+
+/* ==========================================
+   FEATURE 1: RECRUITER 1-CLICK ROLE MATCHER
+   ========================================== */
+.recruiter-matcher-wrap {
+  margin-top: 24px;
+  background: rgba(13, 19, 32, 0.85);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  padding: 24px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+}
+
+.matcher-role-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 20px 0;
+}
+
+.matcher-pill-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.matcher-pill-btn:hover {
+  background: rgba(249, 115, 22, 0.15);
+  border-color: var(--accent-primary);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.matcher-pill-btn.active {
+  background: var(--gradient-accent);
+  border-color: var(--accent-primary);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
+}
+
+.matcher-result-card {
+  background: rgba(6, 10, 16, 0.9);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 12px;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  animation: fadeIn 0.3s ease;
+}
+
+/* ==========================================
+   FEATURE 2: LIVE GLOBAL TELEMETRY TICKER
+   ========================================== */
+.telemetry-ticker-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 8px 16px;
+  background: rgba(6, 10, 16, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  margin-top: 18px;
+}
+
+.telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.telemetry-item strong {
+  color: var(--accent-emerald);
+}
+
+/* ==========================================
+   FEATURE 3: DDAG MINI QUERY SANDBOX
+   ========================================== */
+.ddag-sandbox-box {
+  margin-top: 10px;
+  background: #050811;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  color: #a7f3d0;
+  display: none;
+  animation: fadeIn 0.25s ease;
+}
+
+.ddag-sandbox-box.active {
+  display: block;
+}
+
+/* ==========================================
+   FEATURE 4: EXECUTIVE PRINT / CLEAN PDF EXPORT
+   ========================================== */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+  }
+
+  /* Hide website chrome */
+  header, nav, #bg-canvas, .floating-action-dock, .theme-toggle-btn, 
+  #sound-toggle-btn, .modal-close-btn, .btn-cta, .section-tag,
+  .topology-controls-bar, .dba-lab-topbar, .roi-calculator-wrap,
+  #hero, #architecture, #benchmarks, #dba-lab, #projects, #repos, 
+  #roi-calculator, #contact, footer {
+    display: none !important;
+  }
+
+  /* Force Resume Modal to be full-page print */
+  #resume-modal {
+    position: static !important;
+    display: block !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .modal-content, .ats-paper-resume {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    border: none !important;
+    box-shadow: none !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .ats-paper-header h1 {
+    color: #0f172a !important;
+  }
+
+  .ats-paper-sec-title {
+    color: #0f172a !important;
+    border-bottom: 2px solid #0f172a !important;
+  }
+
+  .ats-exp-role {
+    color: #0f172a !important;
+  }
+
+  .ats-exp-company {
+    color: #334155 !important;
+  }
+
+  .ats-bullet {
+    color: #334155 !important;
+  }
+
+  a {
+    color: #0f172a !important;
+    text-decoration: underline !important;
+  }
+}

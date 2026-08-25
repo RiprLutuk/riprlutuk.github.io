@@ -459,6 +459,66 @@ function startCoreEngine() {
     ]);
   }
 
+// ==========================================
+  // Recruiter 1-Click Role Matcher Controller
+  // ==========================================
+  const matcherData = {
+    dba: {
+      badge: "7+ Years Track Record",
+      desc: "Proven production experience managing high-availability multi-engine clusters at PT Link Net Tbk (99.98% SLA), query plan optimizer, partition tuning, and RMAN automated disaster recovery."
+    },
+    platform: {
+      badge: "Go, Python & Microservices",
+      desc: "Engineered DDAG Zero-Trust API gateway in Go with dynamic schema reflection, sub-2.5ms latency overhead, JWT auth, and PgBouncer connection multiplexing."
+    },
+    cdc: {
+      badge: "Kafka + ClickHouse + Debezium",
+      desc: "Architected real-time Change Data Capture pipelines streaming 50M+ mutations from OLTP into ClickHouse columnar storage for sub-second analytical reporting."
+    },
+    security: {
+      badge: "Lead ISO 27001:2022 & UU PDP",
+      desc: "Led security compliance across AFPI Fintech Data Center for 100+ P2P nodes, IPsec StrongSwan VPNs, FortiGate perimeter security, and pgAudit 5-year log retention."
+    }
+  };
+
+  const matcherPills = document.querySelectorAll(".matcher-pill-btn");
+  const matcherDescEl = document.getElementById("matcher-desc");
+  const matcherBadgeEl = document.getElementById("matcher-exp-badge");
+
+  if (matcherPills.length > 0) {
+    matcherPills.forEach(pill => {
+      pill.addEventListener("click", () => {
+        matcherPills.forEach(p => p.classList.remove("active"));
+        pill.classList.add("active");
+        const role = pill.getAttribute("data-role");
+        const data = matcherData[role];
+        if (data && matcherDescEl && matcherBadgeEl) {
+          if (window.soundFx) window.soundFx.playClick();
+          matcherDescEl.textContent = data.desc;
+          matcherBadgeEl.textContent = data.badge;
+          if (window.showToast) window.showToast(`Selected Role: ${pill.textContent.trim()} (100% Match)`);
+        }
+      });
+    });
+  }
+
+  // ==========================================
+  // DDAG Mini Sandbox Toggle Controller
+  // ==========================================
+  const ddagBtn = document.getElementById("ddag-test-api-btn");
+  const ddagSandbox = document.getElementById("ddag-sandbox");
+  if (ddagBtn && ddagSandbox) {
+    ddagBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const isActive = ddagSandbox.classList.toggle("active");
+      if (window.soundFx) window.soundFx.playSuccess();
+      ddagBtn.textContent = isActive ? "✕ Close Response" : "⚡ Test API";
+      if (isActive && window.showToast) {
+        window.showToast("DDAG Gateway Query Executed: HTTP 200 OK (1.2ms)");
+      }
+    });
+  }
+
   // Bind Navbar Theme Button
   const themeBtn = document.getElementById("theme-toggle-btn");
   if (themeBtn) {
