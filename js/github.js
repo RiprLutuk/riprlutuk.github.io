@@ -1,6 +1,6 @@
 /**
  * GitHub Public Repositories Live Explorer
- * Fully resilient with live GitHub API, local JSON cache, and embedded fallback memory
+ * Strictly filters out all forked repositories, displaying only original public works
  */
 
 const LANG_COLORS = {
@@ -15,8 +15,18 @@ const LANG_COLORS = {
   HTML: "#E34C26",
   CSS: "#563D7C",
   PLpgSQL: "#336791",
+  Blade: "#f43f5e",
   Other: "#6E7681"
 };
+
+const KNOWN_FORKS = new Set([
+  "fmhy", "awesome-laravel", "awesome-selfhosted", "signal-android",
+  "adminlte", "azzara-admin-dashboard-template", "dompdf", "phpauth",
+  "php-login", "php-login-advanced", "ezservermonitor-web", "linfo",
+  "phpmailer", "postmark-templates", "html-email-templates",
+  "html-email-templates-1", "email-templates", "edit", "pgtune",
+  "dev-roadmaps"
+]);
 
 const FALLBACK_REPOS = [
   {
@@ -80,32 +90,6 @@ const FALLBACK_REPOS = [
     "url": "https://github.com/RiprLutuk/claude-code-templates",
     "updated_at": "2026-07-29T07:35:54Z",
     "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "edit",
-    "description": "Make changes to FMHY",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/edit",
-    "updated_at": "2026-07-29T07:24:23Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "FMHY",
-    "description": "https://fmhy.net/",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/FMHY",
-    "updated_at": "2026-07-29T07:19:14Z",
-    "category": "Tools",
     "is_fork": true,
     "is_featured": false,
     "demo_url": null
@@ -228,32 +212,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "awesome-laravel",
-    "description": "A curated list of delightful Laravel PHP framework packages and resources",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/awesome-laravel",
-    "updated_at": "2026-03-01T17:07:01Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "awesome-selfhosted",
-    "description": "A list of Free Software network services and web applications which can be hosted on your own servers",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/awesome-selfhosted",
-    "updated_at": "2026-03-01T17:01:18Z",
-    "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "AntigravityManager",
     "description": "Antigravity Manager is a powerful Electron-based application designed to manage accounts and processes for the Antigravity application. It provides a seamless interface for switching accounts, backing up progress, and controlling the application lifecycle.",
     "language": "Other",
@@ -274,19 +232,6 @@ const FALLBACK_REPOS = [
     "forks": 0,
     "url": "https://github.com/RiprLutuk/fuckspamcallers",
     "updated_at": "2026-01-25T06:35:47Z",
-    "category": "Tools",
-    "is_fork": false,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "dev-roadmaps",
-    "description": "Repository dev-roadmaps by Heri Riski Anto",
-    "language": "JavaScript",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/dev-roadmaps",
-    "updated_at": "2026-01-16T15:29:08Z",
     "category": "Tools",
     "is_fork": false,
     "is_featured": false,
@@ -345,32 +290,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "azzara-admin-dashboard-template",
-    "description": "Free Bootstrap 4 Admin Dashboard",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/azzara-admin-dashboard-template",
-    "updated_at": "2021-07-29T04:26:55Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "AdminLTE",
-    "description": "AdminLTE - Free admin dashboard template based on Bootstrap 4",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/AdminLTE",
-    "updated_at": "2021-06-17T13:35:28Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "xcodepandawarouter",
     "description": "Aplikasi untuk membangun NAT, DHCP Server, access log, cache web, port forwarding dan VPN Server secara cepat termasuk juga konfigurasinya di Ubuntu Server 18.04 LTS.",
     "language": "Other",
@@ -397,32 +316,6 @@ const FALLBACK_REPOS = [
     "demo_url": null
   },
   {
-    "name": "Signal-Android",
-    "description": "A private messenger for Android.",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/Signal-Android",
-    "updated_at": "2021-01-11T04:56:38Z",
-    "category": "Fullstack & Apps",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "pgtune",
-    "description": "PostgreSQL configurator for dCache or any other OLTP workloads",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/pgtune",
-    "updated_at": "2020-12-28T08:02:19Z",
-    "category": "DBA & Data Platform",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
     "name": "xcodephpshell",
     "description": "PHP Shell untuk remote shell Web Server, upload dan sebagainya",
     "language": "Other",
@@ -431,58 +324,6 @@ const FALLBACK_REPOS = [
     "url": "https://github.com/RiprLutuk/xcodephpshell",
     "updated_at": "2020-12-17T13:52:39Z",
     "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "postmark-templates",
-    "description": "Rock-solid transactional email templates for applications.",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/postmark-templates",
-    "updated_at": "2020-12-05T02:26:27Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "email-templates",
-    "description": "Free HTML email templates for Mailchimp and other emails services",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/email-templates",
-    "updated_at": "2020-12-05T02:19:24Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "html-email-templates-1",
-    "description": "Responsive HTML email templates by MySigMail Card",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/html-email-templates-1",
-    "updated_at": "2020-12-05T02:18:06Z",
-    "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "html-email-templates",
-    "description": "Free HTML Email Templates created using the Postcards - https://designmodo.com/postcards/",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/html-email-templates",
-    "updated_at": "2020-12-05T01:51:56Z",
-    "category": "Tools",
     "is_fork": true,
     "is_featured": false,
     "demo_url": null
@@ -509,84 +350,6 @@ const FALLBACK_REPOS = [
     "url": "https://github.com/RiprLutuk/java",
     "updated_at": "2020-09-08T10:49:18Z",
     "category": "Tools",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "dompdf",
-    "description": "HTML to PDF converter for PHP",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/dompdf",
-    "updated_at": "2020-08-30T16:10:26Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "PHPAuth",
-    "description": "  PHPAuth is a secure PHP Authentication class that easily integrates into any site. ",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/PHPAuth",
-    "updated_at": "2020-06-30T06:07:48Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "php-login",
-    "description": "A simple, clean, secure, well documented, object-oriented, totally free and reduced to the max PHP & MySQL login script. Download the stable master or have a look into the develop branch for newest features. If you want to commit changes, please always push into develop branch! ;)",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/php-login",
-    "updated_at": "2020-06-30T06:04:43Z",
-    "category": "DBA & Data Platform",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "php-login-advanced",
-    "description": "A simple, but secure PHP login script. Register, login, logout, email verification, password reset, edit user data, gravatars, captchas, remember me / stay logged in cookies, login with email, mail sending via PHPMailer (SMTP or PHP's mail() function/linux sendmail).",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/php-login-advanced",
-    "updated_at": "2020-06-30T06:01:49Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "ezservermonitor-web",
-    "description": "eZ Server Monitor`Web - A simple and lightweight dashboard for Linux",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/ezservermonitor-web",
-    "updated_at": "2020-06-29T07:21:13Z",
-    "category": "DevOps & Security",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
-  },
-  {
-    "name": "linfo",
-    "description": "Linfo PHP Server Health Status",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/linfo",
-    "updated_at": "2020-06-29T07:13:41Z",
-    "category": "Backend & APIs",
     "is_fork": true,
     "is_featured": false,
     "demo_url": null
@@ -642,19 +405,6 @@ const FALLBACK_REPOS = [
     "is_fork": true,
     "is_featured": false,
     "demo_url": null
-  },
-  {
-    "name": "PHPMailer",
-    "description": "The classic email sending library for PHP",
-    "language": "Other",
-    "stars": 0,
-    "forks": 0,
-    "url": "https://github.com/RiprLutuk/PHPMailer",
-    "updated_at": "2020-06-13T04:57:45Z",
-    "category": "Backend & APIs",
-    "is_fork": true,
-    "is_featured": false,
-    "demo_url": null
   }
 ];
 
@@ -705,26 +455,27 @@ class GitHubExplorer {
     const isFileScheme = window.location.protocol === "file:";
 
     if (!isFileScheme) {
-      // 1. Try Live GitHub API
+      // 1. Try Live GitHub API with strict non-fork filtering
       try {
         const res = await fetch("https://api.github.com/users/RiprLutuk/repos?per_page=100&sort=updated");
         if (res.ok) {
           const raw = await res.json();
           this.repos = raw
-            .filter(r => !r.fork)
+            .filter(r => !r.fork && !KNOWN_FORKS.has(r.name.toLowerCase()))
             .map(r => this.normalizeRepo(r));
           this.applyFilter();
           return;
         }
       } catch (e) {
-        // Continue to local json
+        // Continue to local fallback
       }
 
       // 2. Try Local data/repos.json
       try {
         const res = await fetch("data/repos.json");
         if (res.ok) {
-          this.repos = await res.json();
+          const raw = await res.json();
+          this.repos = raw.filter(r => !r.fork && !KNOWN_FORKS.has(r.name.toLowerCase()));
           this.applyFilter();
           return;
         }
@@ -733,18 +484,18 @@ class GitHubExplorer {
       }
     }
 
-    // 3. Guaranteed Embedded Fallback (Works 100% on file:// and offline)
-    this.repos = FALLBACK_REPOS;
+    // 3. Fallback Memory (Strictly original author repos)
+    this.repos = FALLBACK_REPOS.filter(r => !r.fork && !KNOWN_FORKS.has(r.name.toLowerCase()));
     this.applyFilter();
   }
 
   normalizeRepo(r) {
-    const desc = r.description || "Production repository & infrastructure platform.";
+    const desc = r.description || "Original engineering repository & infrastructure platform.";
     let category = "Fullstack & Apps";
     const nameLow = r.name.toLowerCase();
     const descLow = desc.toLowerCase();
     
-    if (nameLow.includes("db") || nameLow.includes("sql") || nameLow.includes("olap") || nameLow.includes("cdc") || descLow.includes("database") || descLow.includes("clickhouse")) {
+    if (nameLow.includes("db") || nameLow.includes("sql") || nameLow.includes("olap") || nameLow.includes("cdc") || descLow.includes("database") || descLow.includes("clickhouse") || descLow.includes("oracle")) {
       category = "DBA & Data Platform";
     } else if (nameLow.includes("gateway") || nameLow.includes("api") || descLow.includes("api") || descLow.includes("gateway") || descLow.includes("backend")) {
       category = "Backend & APIs";
@@ -762,7 +513,7 @@ class GitHubExplorer {
       forks_count: r.forks_count || 0,
       updated_at: r.updated_at,
       category: category,
-      is_featured: ["DDAG", "ch-olap-pipeline", "openorg", "WargaHub", "PasPapan"].includes(r.name)
+      is_featured: ["DDAG", "ch-olap-pipeline", "openorg", "WargaHub", "PasPapan", "pg2ora_debezium_kafka"].includes(r.name)
     };
   }
 
@@ -777,7 +528,7 @@ class GitHubExplorer {
     });
 
     if (this.countBadge) {
-      this.countBadge.textContent = `${this.filteredRepos.length} repositories`;
+      this.countBadge.textContent = `${this.filteredRepos.length} original repositories`;
     }
 
     this.render();
@@ -788,7 +539,7 @@ class GitHubExplorer {
     this.container.innerHTML = `
       <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); font-family: var(--font-mono);">
         <div style="display: inline-block; animation: spin 1s infinite linear; font-size: 1.5rem; margin-bottom: 8px;">⏳</div>
-        <div>Loading repositories...</div>
+        <div>Loading original repositories...</div>
       </div>
     `;
   }
