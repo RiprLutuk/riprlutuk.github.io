@@ -1079,9 +1079,8 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 14px;
-  gap: 10px;
-  flex-wrap: nowrap;
+  margin-bottom: 12px;
+  gap: 8px;
 }
 
 .bento-code-tag {
@@ -1089,25 +1088,54 @@ section {
   font-size: 0.72rem;
   font-weight: 700;
   color: var(--accent-cyan);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
   letter-spacing: 0.03em;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
-.bento-code-tag span {
+.bento-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
   white-space: nowrap;
-  display: inline-block;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.bento-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 12px;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.bento-chips-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  align-items: center;
 }
 
 .bento-action-links {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
-  white-space: nowrap;
 }
 
 .bento-icon-btn {
@@ -1115,30 +1143,24 @@ section {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  padding: 4px 10px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.75rem;
-  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--text-primary);
   white-space: nowrap;
-  flex-shrink: 0;
   text-decoration: none;
-  line-height: 1.2;
   transition: all var(--transition-fast);
 }
 
-.bento-icon-btn span {
-  white-space: nowrap;
-}
-
 .bento-icon-btn:hover {
-  background: var(--accent-primary);
+  background: var(--gradient-accent);
   border-color: var(--accent-primary);
   color: #fff;
   transform: translateY(-1px);
-  box-shadow: 0 0 12px rgba(249, 115, 22, 0.4);
+  box-shadow: 0 0 14px rgba(249, 115, 22, 0.45);
 }
 
 .bento-hud-metric {
