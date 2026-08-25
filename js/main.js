@@ -503,21 +503,52 @@ function startCoreEngine() {
   }
 
   // ==========================================
-  // DDAG Mini Sandbox Toggle Controller
+  // Universal Project Sandbox Controller
   // ==========================================
-  const ddagBtn = document.getElementById("ddag-test-api-btn");
-  const ddagSandbox = document.getElementById("ddag-sandbox");
-  if (ddagBtn && ddagSandbox) {
-    ddagBtn.addEventListener("click", (e) => {
+  const sandboxBtns = document.querySelectorAll(".sandbox-trigger-btn");
+  sandboxBtns.forEach(btn => {
+    btn.addEventListener("click", (e) => {
       e.preventDefault();
-      const isActive = ddagSandbox.classList.toggle("active");
-      if (window.soundFx) window.soundFx.playSuccess();
-      ddagBtn.textContent = isActive ? "✕ Close Response" : "⚡ Test API";
-      if (isActive && window.showToast) {
-        window.showToast("DDAG Gateway Query Executed: HTTP 200 OK (1.2ms)");
+      const targetId = btn.getAttribute("data-target");
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        const isActive = targetPanel.classList.toggle("active");
+        btn.classList.toggle("active", isActive);
+        if (window.soundFx) window.soundFx.playSuccess();
+        if (isActive && window.showToast) {
+          const title = targetPanel.querySelector(".sandbox-title");
+          window.showToast(title ? `Executed: ${title.textContent}` : "Interactive Sandbox Executed!");
+        }
       }
     });
-  }
+  });
+
+// ==========================================
+  // Interactive Technical Trivia Quiz Controller
+  // ==========================================
+  const quizBoxes = document.querySelectorAll(".quiz-question-box");
+  quizBoxes.forEach(box => {
+    const btns = box.querySelectorAll(".quiz-option-btn");
+    const explanation = box.querySelector(".quiz-explanation");
+    btns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const isCorrect = btn.getAttribute("data-correct") === "true";
+        btns.forEach(b => {
+          b.disabled = true;
+          if (b.getAttribute("data-correct") === "true") b.classList.add("correct");
+        });
+        if (!isCorrect) {
+          btn.classList.add("wrong");
+          if (window.soundFx) window.soundFx.playClick();
+          if (window.showToast) window.showToast("Incorrect — See Heri's Production Architecture Solution!");
+        } else {
+          if (window.soundFx) window.soundFx.playSuccess();
+          if (window.showToast) window.showToast("✅ Correct Answer! 345x Speedup Achieved!");
+        }
+        if (explanation) explanation.classList.add("active");
+      });
+    });
+  });
 
   // Bind Navbar Theme Button
   const themeBtn = document.getElementById("theme-toggle-btn");

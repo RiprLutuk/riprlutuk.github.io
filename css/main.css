@@ -2618,3 +2618,164 @@ body {
   font-weight: 800;
   white-space: nowrap;
 }
+
+/* ==========================================
+   INTERACTIVE FLAGSHIP PROJECT SANDBOXES
+   ========================================== */
+.project-sandbox-panel {
+  margin-top: 12px;
+  background: #04070f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.4;
+  display: none;
+  animation: fadeIn 0.2s ease;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+.project-sandbox-panel.active {
+  display: block;
+}
+
+.sandbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.sandbox-title {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  font-size: 0.7rem;
+}
+
+.sandbox-badge {
+  font-size: 0.65rem;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  font-weight: 700;
+}
+
+.sandbox-content {
+  color: #a7f3d0;
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.sandbox-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.sandbox-trigger-btn:hover {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: var(--accent-cyan);
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.sandbox-trigger-btn.active {
+  background: var(--accent-cyan);
+  color: #000;
+  border-color: var(--accent-cyan);
+}
+
+/* ==========================================
+   INTERACTIVE DBA TECHNICAL TRIVIA QUIZ
+   ========================================== */
+.recruiter-quiz-card {
+  margin-top: 24px;
+  background: rgba(13, 19, 32, 0.8);
+  border: 1px solid var(--border-strong);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.quiz-question-box {
+  background: rgba(6, 10, 16, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-top: 14px;
+}
+
+.quiz-options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.quiz-option-btn {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 10px 14px;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.quiz-option-btn:hover {
+  background: rgba(249, 115, 22, 0.1);
+  border-color: var(--accent-primary);
+  color: #fff;
+}
+
+.quiz-option-btn.correct {
+  background: rgba(16, 185, 129, 0.15);
+  border-color: var(--accent-emerald);
+  color: #fff;
+  font-weight: 700;
+}
+
+.quiz-option-btn.wrong {
+  background: rgba(244, 63, 94, 0.15);
+  border-color: var(--accent-rose);
+  color: #fff;
+}
+
+.quiz-explanation {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-size: 0.8rem;
+  color: #a7f3d0;
+  line-height: 1.4;
+  display: none;
+}
+
+.quiz-explanation.active {
+  display: block;
+}

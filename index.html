@@ -449,6 +449,109 @@
             </div>
           </div>
         </div>
+
+        <!-- Recruiter 1-Click Role Compatibility Scanner -->
+        <div class="recruiter-matcher-wrap">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">🎯 Recruiter 1-Click Candidate Compatibility Scanner:</strong>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">
+                Select your open position to evaluate Heri&#39;s verified competencies &amp; production match score:
+              </div>
+            </div>
+            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald); font-weight: 800; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 12px; border-radius: var(--radius-full);">
+              ⚡ RADAR READY
+            </div>
+          </div>
+
+          <div class="matcher-role-pills">
+            <button class="matcher-pill-btn active" data-role="dba">
+              <span>💾 Senior DBA (Postgres / MSSQL / Oracle)</span>
+            </button>
+            <button class="matcher-pill-btn" data-role="platform">
+              <span>⚡ Platform &amp; Golang Backend Engineer</span>
+            </button>
+            <button class="matcher-pill-btn" data-role="cdc">
+              <span>🔄 Real-Time CDC &amp; ClickHouse OLAP</span>
+            </button>
+            <button class="matcher-pill-btn" data-role="security">
+              <span>🛡️ ISO 27001 &amp; UU PDP Compliance Lead</span>
+            </button>
+          </div>
+
+          <!-- Dynamic Result Box -->
+          <div id="matcher-result-box" class="matcher-result-card">
+            <div>
+              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; color: var(--accent-emerald);">
+                  ✅ 100% COMPATIBILITY MATCH
+                </span>
+                <span id="matcher-exp-badge" class="bento-chip highlight">7+ Years Track Record</span>
+              </div>
+              <div id="matcher-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; max-width: 700px;">
+                Proven production experience managing high-availability multi-engine clusters at PT Link Net Tbk (99.98% SLA), query plan optimizer, partition tuning, and RMAN automated disaster recovery.
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="padding: 8px 16px; font-size: 0.82rem;">
+                <span>✈️ Schedule Interview on Telegram</span>
+              </a>
+              <button class="btn-cta btn-secondary open-resume-modal-btn" style="padding: 8px 14px; font-size: 0.82rem;">
+                <span>📄 View Full CV</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive DBA & Architecture Technical Trivia -->
+        <div class="recruiter-quiz-card">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
+            <div>
+              <strong style="color: #fff; font-size: 1.05rem;">🧠 Technical Architecture Quick Challenge:</strong>
+              <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">
+                Test real-world DBA problem-solving scenarios solved by Heri in production:
+              </div>
+            </div>
+            <span class="bento-chip highlight">⚡ 2 Quick Scenarios</span>
+          </div>
+
+          <!-- Scenario 1 -->
+          <div class="quiz-question-box">
+            <div style="font-weight: 700; color: var(--accent-cyan); font-size: 0.88rem;">
+              Scenario 1: A financial table with 10,000,000 rows suffers a 4,280ms slow query during monthly ledger aggregation. What is the optimal production fix?
+            </div>
+            <div class="quiz-options-list">
+              <button class="quiz-option-btn" data-correct="false">
+                A. Upgrade cloud instance CPU &amp; RAM, then restart the database service.
+              </button>
+              <button class="quiz-option-btn" data-correct="true">
+                B. Create a composite covering B-Tree index (tenant_id, created_at, status) INCLUDE (amount) + Range Partitioning.
+              </button>
+            </div>
+            <div class="quiz-explanation">
+              <strong>✅ Correct!</strong> Heri applied this covering index technique to reduce query execution time from 4,280ms down to 12.4ms (345x speedup) with 100% in-memory buffer hits.
+            </div>
+          </div>
+
+          <!-- Scenario 2 -->
+          <div class="quiz-question-box">
+            <div style="font-weight: 700; color: var(--accent-primary); font-size: 0.88rem;">
+              Scenario 2: A sudden burst of 15,000 microservice worker connections exhausts PostgreSQL max_connections (500), causing backend 503 errors. How do you resolve it?
+            </div>
+            <div class="quiz-options-list">
+              <button class="quiz-option-btn" data-correct="false">
+                A. Increase max_connections = 25000 in postgresql.conf (risks OOM memory thrashing).
+              </button>
+              <button class="quiz-option-btn" data-correct="true">
+                B. Deploy PgBouncer in transaction pooling mode with dynamic connection multiplexing.
+              </button>
+            </div>
+            <div class="quiz-explanation">
+              <strong>✅ Correct!</strong> Heri deployed PgBouncer transaction pooling, allowing 15,000 concurrent client connections to be multiplexed seamlessly into 50 persistent database connections with only 14% server RAM usage.
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -754,14 +857,14 @@ Execution Time: 4280.950 ms</pre>
 <section id="projects">
       <div class="container">
         <div class="section-header">
-          <div class="section-tag">Cybernetic Craftsmanship</div>
-          <h2 class="section-title">Flagship <span class="text-gradient">Production Projects</span></h2>
+          <div class="section-tag">Interactive Sandbox &amp; Craftsmanship</div>
+          <h2 class="section-title">Flagship <span class="text-gradient">Production Platforms</span></h2>
           <p class="section-subtitle">
-            Enterprise database engines, real-time CDC streaming pipelines, and fullstack platforms engineered with high-throughput reliability, zero-trust security, and modern craftsmanship.
+            Enterprise database engines, real-time CDC streaming pipelines, and fullstack platforms. Click <strong style="color:var(--accent-cyan);">[⚡ Test / Inspect]</strong> on any card to run live interactive simulations!
           </p>
         </div>
 
-        <!-- Symmetrical 3x2 Cybernetic Projects Grid -->
+        <!-- Symmetrical 3x2 Cybernetic Projects Grid with Live Sandboxes -->
         <div class="bento-projects-grid">
           <!-- Card 1: DDAG -->
           <article class="bento-card">
@@ -791,28 +894,26 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">4 RDBMS</span>
                 </div>
               </div>
-            </div>
-              <!-- Collapsible Mini Interactive Sandbox -->
-              <div id="ddag-sandbox" class="ddag-sandbox-box">
-                <div style="color: var(--accent-cyan); margin-bottom: 4px;">GET /api/v1/query?dialect=postgres&amp;tenant=afpi_node_99</div>
-                <div style="color: var(--accent-emerald); font-weight: 700; margin-bottom: 4px;">HTTP/2 200 OK (1.2ms latency)</div>
-                <pre style="margin:0; font-size: 0.7rem; color: #a7f3d0;">{
-  "status": "success",
-  "dialect": "PostgreSQL 16",
-  "records_returned": 14200,
-  "jwt_security": "VERIFIED_RBAC_PASSED"
-}</pre>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-ddag" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">⚡ REST API GATEWAY SIMULATOR</span>
+                  <span class="sandbox-badge">200 OK (1.2ms)</span>
+                </div>
+                <div class="sandbox-content">GET /api/v1/query?dialect=postgres&amp;tenant=afpi_node_99
+Payload: { "status": "success", "rows": 14200, "jwt_auth": "VERIFIED_PASS" }</div>
               </div>
+            </div>
 
             <div class="bento-card-footer">
               <div class="bento-chips-wrap">
                 <span class="bento-chip highlight">Go (Golang)</span>
                 <span class="bento-chip">Postgres</span>
                 <span class="bento-chip">MSSQL</span>
-                <span class="bento-chip">Oracle</span>
               </div>
               <div class="bento-action-links">
-                <button id="ddag-test-api-btn" class="bento-icon-btn" style="background: rgba(6, 182, 212, 0.15); border-color: rgba(6, 182, 212, 0.3); color: var(--accent-cyan); cursor: pointer;">
+                <button class="sandbox-trigger-btn" data-target="sandbox-ddag">
                   ⚡ Test API
                 </button>
                 <a href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noopener" class="bento-icon-btn">
@@ -850,6 +951,15 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">100x vs OLTP</span>
                 </div>
               </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-cdc" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">🔄 KAFKA CDC EVENT INGESTION</span>
+                  <span class="sandbox-badge">0.024s (50M rows)</span>
+                </div>
+                <div class="sandbox-content">Event Stream: Debezium WAL &rarr; Kafka Topic [fintech.mutations] &rarr; ClickHouse ReplacingMergeTree (Throughput: 33.3 GB/s)</div>
+              </div>
             </div>
 
             <div class="bento-card-footer">
@@ -859,6 +969,9 @@ Execution Time: 4280.950 ms</pre>
                 <span class="bento-chip">ClickHouse</span>
               </div>
               <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-cdc">
+                  ⚡ Emit CDC
+                </button>
                 <a href="https://riprlutuk.github.io/ch-olap-pipeline/" target="_blank" rel="noopener" class="bento-icon-btn">
                   Demo ↗
                 </a>
@@ -897,6 +1010,16 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">Tamper-Proof</span>
                 </div>
               </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-openorg" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">🔍 KTA &amp; CERTIFICATE VERIFIER</span>
+                  <span class="sandbox-badge">HASH VALID</span>
+                </div>
+                <div class="sandbox-content">KTA-ID: [ID-89102-KTA] &bull; Status: ACCREDITED
+SHA-256: 7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa3d677284addd200126d9069</div>
+              </div>
             </div>
 
             <div class="bento-card-footer">
@@ -906,6 +1029,9 @@ Execution Time: 4280.950 ms</pre>
                 <span class="bento-chip">Digital KTA</span>
               </div>
               <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-openorg">
+                  🔍 Verify KTA
+                </button>
                 <a href="https://github.com/RiprLutuk/openorg" target="_blank" rel="noopener" class="bento-icon-btn">
                   GitHub ↗
                 </a>
@@ -941,6 +1067,16 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">Offline PWA</span>
                 </div>
               </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-wargahub" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">💰 EMBEDDED PGLITE WASM QUERY</span>
+                  <span class="sandbox-badge">0.4ms (WASM)</span>
+                </div>
+                <div class="sandbox-content">SELECT SUM(nominal) FROM kas_rt_rw;
+Result: Rp 42.850.000 (100% Transparansi &amp; 0 Selisih Pembukuan)</div>
+              </div>
             </div>
 
             <div class="bento-card-footer">
@@ -950,6 +1086,9 @@ Execution Time: 4280.950 ms</pre>
                 <span class="bento-chip">PGlite WASM</span>
               </div>
               <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-wargahub">
+                  💰 Ledger
+                </button>
                 <a href="https://github.com/RiprLutuk/WargaHub" target="_blank" rel="noopener" class="bento-icon-btn">
                   GitHub ↗
                 </a>
@@ -985,6 +1124,16 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">1-Click Auto</span>
                 </div>
               </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-paspapan" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">📍 BIOMETRIC RADAR SCANNER</span>
+                  <span class="sandbox-badge">SPOOF: 0.00%</span>
+                </div>
+                <div class="sandbox-content">GPS: [-6.2088, 106.8456] &bull; Anti-Mock: PASSED
+Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
+              </div>
             </div>
 
             <div class="bento-card-footer">
@@ -994,6 +1143,9 @@ Execution Time: 4280.950 ms</pre>
                 <span class="bento-chip">Face ID</span>
               </div>
               <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-paspapan">
+                  📍 Biometrics
+                </button>
                 <a href="https://paspapan.pandanteknik.com" target="_blank" rel="noopener" class="bento-icon-btn">
                   Demo ↗
                 </a>
@@ -1032,15 +1184,27 @@ Execution Time: 4280.950 ms</pre>
                   <span class="bento-hud-val">DLQ Replay</span>
                 </div>
               </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-pg2ora" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">🔄 SCHEMA MAPPER &amp; DLQ MONITOR</span>
+                  <span class="sandbox-badge">0 LAG SYNCED</span>
+                </div>
+                <div class="sandbox-content">Postgres [WAL LSN: 0/16B3748] &rarr; Kafka Connect &rarr; Oracle 19c [Redo SCN: 89410294] (DLQ Errors: 0)</div>
+              </div>
             </div>
 
             <div class="bento-card-footer">
               <div class="bento-chips-wrap">
                 <span class="bento-chip highlight">Debezium</span>
-                <span class="bento-chip">PostgreSQL</span>
+                <span class="bento-chip">Postgres</span>
                 <span class="bento-chip">Oracle 19c</span>
               </div>
               <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-pg2ora">
+                  🔄 Sync Map
+                </button>
                 <a href="https://github.com/RiprLutuk/pg2ora_debezium_kafka" target="_blank" rel="noopener" class="bento-icon-btn">
                   GitHub ↗
                 </a>
@@ -1363,7 +1527,31 @@ Execution Time: 4280.950 ms</pre>
     </section>
   </main>
 
-  <!-- ==========================================
+    <!-- ==========================================
+       FLOATING CYBERNETIC QUICK ACTION DOCK
+       ========================================== -->
+  <aside class="floating-action-dock" aria-label="Quick Actions">
+    <a href="#dba-lab" class="dock-btn" title="Interactive DBA Lab">
+      <span>🔬 Lab</span>
+    </a>
+    <a href="#roi-calculator" class="dock-btn" title="Cloud ROI Calculator">
+      <span>💰 ROI</span>
+    </a>
+    <a href="#projects" class="dock-btn" title="Flagship Projects">
+      <span>🚀 Projects</span>
+    </a>
+    <button class="dock-btn open-terminal-btn" title="Open Cyber CLI Terminal (Ctrl+K)">
+      <span>&gt;_ CLI</span>
+    </button>
+    <button class="dock-btn open-resume-modal-btn" title="Curriculum Vitae">
+      <span>📄 CV</span>
+    </button>
+    <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="dock-btn dock-btn-highlight" title="Chat on Telegram">
+      <span>✈️ Hire</span>
+    </a>
+  </aside>
+
+<!-- ==========================================
        SITE FOOTER
        ========================================== -->
   <footer class="site-footer">
