@@ -526,8 +526,8 @@ class TopologyVisualizer {
 
   resizeCanvas() {
     if (!this.canvas || !this.container) return;
-    this.canvas.width = this.container.clientWidth || 1000;
-    this.canvas.height = this.container.clientHeight || 450;
+    this.canvas.width = Math.max(this.container.scrollWidth, this.container.clientWidth, 1000);
+    this.canvas.height = Math.max(this.container.scrollHeight, this.container.clientHeight, 440);
   }
 
   switchTopology(key) {
@@ -685,10 +685,10 @@ class TopologyVisualizer {
         const n2 = nodes[startNodeIdx + 1].getBoundingClientRect();
         const parent = this.container.getBoundingClientRect();
 
-        const x1 = n1.right - parent.left;
-        const y1 = n1.top + n1.height / 2 - parent.top;
-        const x2 = n2.left - parent.left;
-        const y2 = n2.top + n2.height / 2 - parent.top;
+        const x1 = n1.right - parent.left + (this.container.scrollLeft || 0);
+        const y1 = n1.top + n1.height / 2 - parent.top + (this.container.scrollTop || 0);
+        const x2 = n2.left - parent.left + (this.container.scrollLeft || 0);
+        const y2 = n2.top + n2.height / 2 - parent.top + (this.container.scrollTop || 0);
 
         this.particles.push({
           x: x1,
