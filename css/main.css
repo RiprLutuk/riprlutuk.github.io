@@ -3380,26 +3380,31 @@ section {
 }
 
 /* ==========================================================================
-   MODULE: FLOATING CYBERNETIC RECRUITER & CLIENT ACTION DOCK
+   MODULE: FLOATING CYBERNETIC RECRUITER & CLIENT ACTION DOCK (MOBILE ONLY)
    ========================================================================== */
 .floating-action-dock {
+  display: none;
   position: fixed;
-  bottom: 18px;
+  bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 1000;
-  background: rgba(15, 23, 36, 0.88);
+  background: rgba(15, 23, 36, 0.92);
   border: 1px solid rgba(249, 115, 22, 0.35);
   border-radius: var(--radius-full);
-  padding: 8px 14px;
-  display: flex;
+  padding: 6px 12px;
   align-items: center;
-  gap: 8px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(249, 115, 22, 0.25);
+  gap: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(249, 115, 22, 0.25);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  z-index: 990;
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+@media (max-width: 860px) {
+  .floating-action-dock {
+    display: flex;
+  }
 }
 
 .dock-btn {
@@ -3436,6 +3441,7 @@ section {
 
 @media (max-width: 768px) {
   .floating-action-dock {
+    display: flex;
     bottom: 12px;
     padding: 6px 10px;
     gap: 4px;
