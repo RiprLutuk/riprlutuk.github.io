@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787754172">
+  <link rel="stylesheet" href="css/main.css?v=1787754273">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -1483,23 +1483,21 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
                   <h3 class="timeline-role-title">Database Administrator (DBA)</h3>
                   <div class="timeline-company-name">PT Link Net Tbk</div>
                 </div>
-                <span class="timeline-period-badge">Feb 2025 – Present | Jakarta / Remote</span>
+                <span class="timeline-period-badge">Feb 2025 – Present &bull; Jakarta / Remote</span>
               </div>
               
-              <!-- Key Production Migration & Observability Badges -->
-              <div style="display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0 14px 0;">
-                <span class="bento-chip highlight">🔄 Oracle &rarr; PostgreSQL Migration</span>
-                <span class="bento-chip highlight">🍃 MongoDB &rarr; AWS DocumentDB</span>
-                <span class="bento-chip highlight">☁️ AWS RDS &rarr; TencentDB Migration</span>
-                <span class="bento-chip highlight">📊 Grafana Fleet Dashboards</span>
+              <!-- Key Highlights Chips -->
+              <div class="timeline-chips-row">
+                <span class="timeline-chip">🔄 Oracle ➔ Postgres 16</span>
+                <span class="timeline-chip">🍃 MongoDB ➔ AWS DocDB</span>
+                <span class="timeline-chip">☁️ AWS RDS ➔ TencentDB</span>
+                <span class="timeline-chip">📊 Grafana Observability</span>
               </div>
 
               <ul class="timeline-bullet-list">
-                <li><strong>Oracle to PostgreSQL Migration:</strong> Architected and executed zero-downtime database migration from <strong>Oracle Database 19c to PostgreSQL 16</strong>, including PL/SQL to PL/pgSQL stored procedure translation, schema refactoring, and data verification.</li>
-                <li><strong>MongoDB to AWS DocumentDB Migration:</strong> Led migration of distributed NoSQL document clusters to managed <strong>AWS DocumentDB</strong>, optimizing sharded query throughput, index performance, and read-replica scaling.</li>
-                <li><strong>AWS RDS to TencentDB Cloud Migration:</strong> Executed cross-cloud database migration from <strong>AWS RDS to TencentDB</strong> for infrastructure cost optimization while maintaining uninterrupted production SLAs.</li>
-                <li><strong>Grafana &amp; Prometheus Fleet Observability:</strong> Designed and deployed comprehensive <strong>Grafana database monitoring dashboards</strong> with real-time alerting for connection pools, buffer hit ratios, query execution plans, and replication lag.</li>
-                <li>Administer enterprise multi-engine production clusters across <strong>PostgreSQL, MS SQL Server AlwaysOn, Oracle 19c, and MySQL</strong>, maintaining <strong>99.98% High Availability SLA</strong>.</li>
+                <li><strong>Oracle to PostgreSQL Migration:</strong> Architected zero-downtime migration from <strong>Oracle 19c to PostgreSQL 16</strong>, translating PL/SQL stored procedures to PL/pgSQL with automated data validation.</li>
+                <li><strong>Cloud &amp; NoSQL Fleet Scaling:</strong> Led migration of NoSQL document clusters to managed <strong>AWS DocumentDB</strong> and cross-cloud database migration from <strong>AWS RDS to TencentDB</strong> for infrastructure cost optimization.</li>
+                <li><strong>Fleet Observability &amp; HA:</strong> Deployed <strong>Grafana &amp; Prometheus</strong> monitoring with real-time alerting for connection pools, buffer hit ratios, and replication lag across <strong>PostgreSQL, MS SQL AlwaysOn, and Oracle 19c</strong> clusters (<strong>99.98% SLA</strong>).</li>
               </ul>
             </div>
           </div>
@@ -1513,13 +1511,19 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
                   <h3 class="timeline-role-title">Senior Fullstack Engineer / IT Specialist</h3>
                   <div class="timeline-company-name">Halalvestor Global Asia (Vestora.id)</div>
                 </div>
-                <span class="timeline-period-badge">Dec 2024 – Oct 2025 | Tangerang / Jakarta</span>
+                <span class="timeline-period-badge">Dec 2024 – Oct 2025 &bull; Tangerang / Jakarta</span>
               </div>
-              <ul class="timeline-bullet-list" style="margin-top: 14px;">
-                <li>Architected backend microservices, financial ledgers, and investor web portals for <strong>Vestora.id</strong>, a regulated Sharia securities crowdfunding platform.</li>
-                <li>Developed high-concurrency RESTful APIs, payment gateway integrations, automated investor KYC verifications, and yield distribution algorithms using <strong>PHP/Laravel, PostgreSQL, and Vue.js</strong>.</li>
-                <li>Optimized database transaction isolation levels and row-level locking, preventing double-allocation and race conditions under peak investment campaigns.</li>
-                <li>Configured automated CI/CD container build and deployment pipelines on cloud infrastructure.</li>
+              
+              <div class="timeline-chips-row">
+                <span class="timeline-chip">💳 Securities Crowdfunding</span>
+                <span class="timeline-chip">🔒 Advisory Locks</span>
+                <span class="timeline-chip">⚡ High-Concurrency REST</span>
+              </div>
+
+              <ul class="timeline-bullet-list">
+                <li>Architected backend microservices, financial ledgers, and investor portals for <strong>Vestora.id</strong>, a regulated Sharia securities crowdfunding platform.</li>
+                <li>Engineered high-concurrency APIs, payment gateway webhooks, automated KYC verifications, and yield distribution algorithms using <strong>Laravel, PostgreSQL, and Vue.js</strong>.</li>
+                <li>Eliminated race conditions and double-spending by enforcing PostgreSQL advisory locks and deterministic lock ordering during peak campaign surges.</li>
               </ul>
             </div>
           </div>
@@ -1531,38 +1535,43 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
               <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
                 <div>
                   <h3 class="timeline-role-title">Data Management &amp; Infrastructure Operations Lead</h3>
-                  <div class="timeline-company-name">AFPI (Asosiasi Fintech Pendanaan Bersama Indonesia) &bull; Fintech Data Center</div>
+                  <div class="timeline-company-name">AFPI &bull; Fintech Data Center (FDC)</div>
                 </div>
-                <span class="timeline-period-badge">Mar 2020 – Apr 2025 (5+ Years) | Jakarta</span>
+                <span class="timeline-period-badge">Mar 2020 – Apr 2025 (5+ Years) &bull; Jakarta</span>
               </div>
-              <ul class="timeline-bullet-list" style="margin-top: 14px;">
-                <li>Directed infrastructure architecture, server operations, and database reliability for the <strong>Fintech Data Center (FDC)</strong>, federating real-time credit data exchange and borrower deduplication across <strong>100+ licensed P2P fintech lenders nationwide</strong> under OJK regulatory framework (<strong>POJK No. 10/POJK.05/2022</strong>).</li>
-                <li><strong>Led ISO/IEC 27001:2013 Implementation &amp; Transition Upgrade to ISO/IEC 27001:2022 (ISMS)</strong>, enforcing Annex A security controls aligned with <strong>UU No. 27/2022 (UU Pelindungan Data Pribadi / PDP)</strong> and OJK IT Risk Management (MRTI).</li>
-                <li><strong>Data Privacy &amp; Masking (A.8.11 &amp; UU PDP):</strong> Implemented dynamic data masking and column-level encryption for Sensitive Personal Data / PII (NIK KTP, Phone Numbers, Financial Ledgers) across query layers, staging environments, and monitoring telemetry to eliminate data leakage risks.</li>
-                <li><strong>Perimeter &amp; Network Encryption (A.8.24):</strong> Configured and enforced encrypted site-to-site <strong>IPsec VPN tunnels (AES-256 via Fortinet FortiGate &amp; StrongSwan)</strong> with mutual TLS (mTLS) for all cross-institutional API transactions between member fintech platforms and FDC.</li>
-                <li><strong>Identity Governance &amp; User Access Matrix (A.5.15 - A.5.18):</strong> Formulated strict Role-Based Access Control (RBAC), quarterly User Access Reviews (UAR), Bastion Jump Host SSH key enforcement with MFA, and Principle of Least Privilege (PoLP) across production database fleets.</li>
-                <li><strong>Centralized Audit Logging &amp; Retensi 5 Tahun (POJK 10/2022 &amp; A.8.15):</strong> Engineered tamper-resistant centralized audit logging (pgAudit, MySQL audit, Syslog) tracking all DDL/DML changes, privileged commands, and authentication events with a guaranteed 5-year retention policy.</li>
-                <li><strong>DRC, BCP &amp; Disaster Recovery Drills (A.5.30 &amp; POJK 10/2022):</strong> Architected Disaster Recovery Center (DRC) in Indonesia with real-time replication, running periodic BCP/DRP simulation drills achieving <strong>RPO &lt; 15 mins, RTO &lt; 1 hour</strong>, and 99.9% uptime SLA.</li>
-                <li>Managed high-throughput <strong>PostgreSQL and MySQL database clusters</strong>, automated ETL pipelines, and built real-time Prometheus &amp; Grafana observability dashboards monitoring millions of daily credit scoring inquiries.</li>
+              
+              <div class="timeline-chips-row">
+                <span class="timeline-chip">🛡️ ISO 27001 Lead</span>
+                <span class="timeline-chip">🏛️ 100+ Fintech Lenders</span>
+                <span class="timeline-chip">🔐 IPsec VPN &amp; UU PDP</span>
+                <span class="timeline-chip">⚡ RPO &lt; 15m / RTO &lt; 1h</span>
+              </div>
+
+              <ul class="timeline-bullet-list">
+                <li>Directed infrastructure architecture and database reliability for the <strong>Fintech Data Center (FDC)</strong>, federating credit data exchange across <strong>100+ licensed P2P fintech lenders nationwide</strong> under OJK regulatory framework (POJK 10/2022).</li>
+                <li><strong>ISO/IEC 27001 ISMS Lead:</strong> Led implementation &amp; transition to ISO 27001:2022, enforcing Annex A security controls aligned with <strong>UU Pelindungan Data Pribadi (UU PDP No. 27/2022)</strong>.</li>
+                <li><strong>Data Privacy &amp; Masking:</strong> Implemented dynamic data masking and column encryption for sensitive PII (NIK, Phone, Ledgers) and configured site-to-site <strong>FortiGate IPsec VPN tunnels (AES-256)</strong> with mTLS.</li>
+                <li><strong>Disaster Recovery (DRC) &amp; Auditing:</strong> Built tamper-resistant centralized audit logging with 5-year retention, running BCP/DRP drills achieving <strong>RPO &lt; 15 mins, RTO &lt; 1 hour, and 99.9% uptime SLA</strong>.</li>
               </ul>
             </div>
           </div>
 
-          <!-- Job 4: Sas Kreasindo & Earlier -->
+          <!-- Job 4: Earlier Career -->
           <div class="timeline-item">
             <div class="timeline-node-point"></div>
             <div class="timeline-content-card">
               <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
                 <div>
-                  <h3 class="timeline-role-title">Earlier Career: Business Analysis, Sharia P2P &amp; Mobile</h3>
-                  <div class="timeline-company-name">PT Sas Kreasindo Utama · Syarfi Fintech · PT Kerjaholic</div>
+                  <h3 class="timeline-role-title">Earlier Career: ERP, Sharia P2P &amp; Mobile</h3>
+                  <div class="timeline-company-name">PT Sas Kreasindo Utama &bull; Syarfi Fintech &bull; PT Kerjaholic</div>
                 </div>
                 <span class="timeline-period-badge">2018 – 2020</span>
               </div>
-              <ul class="timeline-bullet-list" style="margin-top: 14px;">
-                <li><strong>PT Sas Kreasindo Utama (2019–2020):</strong> Mapped manufacturing supply chain workflows and customized Odoo ERP modules to eliminate operational data silos.</li>
-                <li><strong>Syarfi P2P Fintech (2018–2019):</strong> Maintained full-lifecycle IT infrastructure, cloud Linux servers, and network firewall policies for OJK regulatory compliance.</li>
-                <li><strong>Kerjaholic (2018):</strong> Built native Android job search application features using Java, Retrofit REST client, and Google Maps API.</li>
+              
+              <ul class="timeline-bullet-list" style="margin-top: 10px;">
+                <li><strong>PT Sas Kreasindo Utama (2019–2020):</strong> Mapped manufacturing workflows and customized Odoo ERP modules to eliminate operational silos.</li>
+                <li><strong>Syarfi P2P Fintech (2018–2019):</strong> Maintained IT infrastructure, Linux cloud servers, and network firewalls for OJK compliance.</li>
+                <li><strong>Kerjaholic (2018):</strong> Developed native Android recruitment features using Java, Retrofit REST client, and Google Maps API.</li>
               </ul>
             </div>
           </div>
@@ -2199,12 +2208,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787754172"></script>
-  <script src="js/main.js?v=1787754172"></script>
-  <script src="js/dba-lab.js?v=1787754172"></script>
-  <script src="js/roi-calculator.js?v=1787754172"></script>
-  <script src="js/topology.js?v=1787754172"></script>
-  <script src="js/github.js?v=1787754172"></script>
-  <script src="js/terminal.js?v=1787754172"></script>
+  <script src="js/audio.js?v=1787754273"></script>
+  <script src="js/main.js?v=1787754273"></script>
+  <script src="js/dba-lab.js?v=1787754273"></script>
+  <script src="js/roi-calculator.js?v=1787754273"></script>
+  <script src="js/topology.js?v=1787754273"></script>
+  <script src="js/github.js?v=1787754273"></script>
+  <script src="js/terminal.js?v=1787754273"></script>
 </body>
 </html>

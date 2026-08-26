@@ -1762,9 +1762,8 @@ section {
 }
 
 /* ==========================================================================
-   EXPERIENCE & CAREER TIMELINE
+   EXPERIENCE & CAREER TIMELINE (EXECUTIVE SLEEK DESIGN)
    ========================================================================== */
-
 .timeline-track {
   position: relative;
   max-width: 860px;
@@ -1774,71 +1773,111 @@ section {
 .timeline-track::before {
   content: '';
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 24px;
-  width: 2px;
-  background: var(--border-medium);
+  top: 6px;
+  bottom: 6px;
+  left: 14px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .timeline-item {
   position: relative;
-  padding-left: 64px;
-  margin-bottom: 40px;
+  padding-left: 36px;
+  margin-bottom: 24px;
 }
 
 .timeline-node-point {
   position: absolute;
-  top: 4px;
-  left: 17px;
-  width: 16px;
-  height: 16px;
+  top: 8px;
+  left: 11px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: var(--bg-base);
-  border: 3px solid var(--accent-primary);
+  background: var(--accent-primary);
   box-shadow: 0 0 10px var(--accent-primary);
+  border: 1px solid #fff;
 }
 
 .timeline-content-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-lg);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
+  background: rgba(10, 15, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
   transition: all var(--transition-normal);
 }
+@media (max-width: 640px) {
+  .timeline-content-card {
+    padding: 14px 14px;
+  }
+}
 .timeline-content-card:hover {
-  border-color: var(--border-strong);
+  border-color: rgba(249, 115, 22, 0.3);
   transform: translateY(-2px);
 }
 
 .timeline-role-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 0.96rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0;
 }
+
 .timeline-company-name {
   color: var(--accent-cyan);
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 0.84rem;
+  margin-top: 2px;
 }
+
 .timeline-period-badge {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
-  background: rgba(255,255,255,0.06);
-  padding: 2px 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 3px 8px;
   border-radius: 4px;
   display: inline-block;
-  margin: 6px 0 12px;
+  white-space: nowrap;
+}
+
+.timeline-chips-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+
+.timeline-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: rgba(249, 115, 22, 0.08);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  color: var(--accent-primary);
 }
 
 .timeline-bullet-list {
-  margin-left: 18px;
-  font-size: 0.9rem;
+  padding-left: 16px;
+  margin: 0;
+  font-size: 0.8rem;
   color: var(--text-secondary);
+  line-height: 1.55;
 }
+
 .timeline-bullet-list li {
   margin-bottom: 6px;
+}
+.timeline-bullet-list li:last-child {
+  margin-bottom: 0;
+}
+.timeline-bullet-list strong {
+  color: var(--text-primary);
 }
 
 /* ==========================================================================
@@ -5280,27 +5319,27 @@ body {
 
   /* Career Timeline */
   .timeline-track::before {
-    left: 12px !important;
+    left: 8px !important;
   }
 
   .timeline-item {
-    padding-left: 30px !important;
-    margin-bottom: 20px !important;
+    padding-left: 24px !important;
+    margin-bottom: 16px !important;
   }
 
   .timeline-node-point {
-    left: 6px !important;
-    top: 6px !important;
-    width: 13px !important;
-    height: 13px !important;
+    left: 5px !important;
+    top: 8px !important;
+    width: 7px !important;
+    height: 7px !important;
   }
 
   .timeline-content-card {
-    padding: 14px 12px !important;
+    padding: 12px 12px !important;
   }
 
   .timeline-role-title {
-    font-size: 0.95rem !important;
+    font-size: 0.88rem !important;
   }
 
   /* Contact Section */
