@@ -1654,92 +1654,179 @@ section {
   max-height: calc(92vh - 80px);
 }
 
-/* Pristine ATS Resume Paper Preview */
-.ats-paper-preview {
-  background: #ffffff;
-  color: #1e293b;
-  border-radius: 12px;
-  padding: 36px 44px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  font-family: var(--font-sans);
-  line-height: 1.5;
-  font-size: 0.92rem;
-  border: 1px solid #e2e8f0;
-}
-
-.ats-paper-header {
-  border-bottom: 2px solid #0f172a;
-  padding-bottom: 14px;
-  margin-bottom: 18px;
-}
-
-.ats-paper-name {
-  font-size: 1.8rem;
-  font-weight: 800;
-  color: #0f172a;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-.ats-paper-title {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0369a1;
-  margin-top: 2px;
-}
-
-.ats-paper-contacts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 14px;
-  font-size: 0.85rem;
-  color: #475569;
-  margin-top: 8px;
-}
-.ats-paper-contacts a {
-  color: #0284c7;
-  font-weight: 600;
-}
-.ats-paper-contacts a:hover {
-  text-decoration: underline;
-}
-
-.ats-paper-sec-title {
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: #0f172a;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border-bottom: 1.5px solid #cbd5e1;
-  padding-bottom: 3px;
-  margin: 18px 0 10px;
-}
-
-.ats-paper-bullet-list {
-  margin-left: 18px;
-  color: #334155;
-  font-size: 0.88rem;
-}
-.ats-paper-bullet-list li {
-  margin-bottom: 5px;
-  line-height: 1.5;
-  text-align: justify;
-}
-.ats-paper-bullet-list strong {
-  color: #0f172a;
-}
-
-.ats-score-banner {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.12) 100%);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+/* ==========================================================================
+   CLEAN CYBERNETIC RESUME MODAL STYLES
+   ========================================================================== */
+.resume-dossier-card {
+  background: rgba(13, 19, 32, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
   padding: 16px 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+}
+
+.resume-hero-header {
+  background: linear-gradient(135deg, rgba(13, 19, 32, 0.95), rgba(249, 115, 22, 0.08));
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  border-left: 4px solid var(--accent-primary);
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.resume-candidate-name {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.resume-candidate-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-top: 4px;
+  line-height: 1.35;
+}
+
+.resume-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 12px 0 16px;
+}
+
+.resume-tag-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  font-size: 0.74rem;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+}
+
+.resume-tag-chip.highlight {
+  background: rgba(16, 185, 129, 0.12);
+  border-color: rgba(16, 185, 129, 0.35);
+  color: var(--accent-emerald);
+}
+
+.resume-actions-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-sec-heading {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--accent-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
   display: flex;
   align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.resume-job-item {
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.resume-job-item:first-child {
+  padding-top: 0;
+}
+.resume-job-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.resume-job-header {
+  display: flex;
   justify-content: space-between;
+  align-items: baseline;
   flex-wrap: wrap;
-  gap: 14px;
-  margin-bottom: 20px;
+  gap: 4px 12px;
+  margin-bottom: 8px;
+}
+
+.resume-job-role {
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.resume-job-company {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.resume-job-date {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.resume-bullet-list {
+  padding-left: 18px;
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.resume-bullet-list li {
+  margin-bottom: 6px;
+}
+.resume-bullet-list li:last-child {
+  margin-bottom: 0;
+}
+.resume-bullet-list strong {
+  color: var(--text-primary);
+}
+
+.resume-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+@media (max-width: 640px) {
+  .resume-skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.resume-skill-box {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.resume-skill-box-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  margin-bottom: 4px;
+}
+
+.resume-skill-box-desc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
 }
 
 .modal-title {
