@@ -427,10 +427,18 @@ section {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.12fr 0.88fr;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
   gap: 48px;
   align-items: center;
   margin-bottom: 32px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.hero-grid > div {
+  min-width: 0;
+  max-width: 100%;
+  width: 100%;
 }
 
 .hero-bottom-bar {
@@ -2875,10 +2883,12 @@ body {
    DYNAMIC PERSONA SWITCHER (RECRUITER & CLIENT HUD)
    ========================================== */
 .persona-switch-bar {
-  margin: 18px 0 14px 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  margin: 18px 0 14px 0;
 }
 
 .persona-switch-label {
@@ -2892,7 +2902,16 @@ body {
 .persona-pills-group {
   display: flex;
   gap: 8px;
-  flex-wrap: wrap;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  width: 100%;
+  max-width: 100%;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.persona-pills-group::-webkit-scrollbar {
+  display: none;
 }
 
 .persona-pill-btn {
@@ -2908,6 +2927,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .persona-pill-btn:hover {
@@ -2929,22 +2950,41 @@ body {
   border: 1px solid var(--border-strong);
   border-left: 3px solid var(--accent-primary);
   border-radius: 12px;
-  padding: 16px 20px;
+  padding: 16px 18px;
   margin-bottom: 22px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   animation: fadeIn 0.3s ease;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 .persona-pitch-title {
   font-size: 0.95rem;
   font-weight: 800;
   color: #fff;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  width: 100%;
+  max-width: 100%;
+}
+
+.persona-pitch-title > span#pitch-title {
+  flex: 1 1 100%;
+  line-height: 1.35;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.persona-pitch-title > span#pitch-badge {
+  font-size: 0.68rem;
+  margin-left: 0;
 }
 
 .persona-pitch-points {
