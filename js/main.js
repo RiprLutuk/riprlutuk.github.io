@@ -438,15 +438,292 @@ class ModalManager {
 }
 
 // ==========================================
-// 8. BOOTSTRAP ALL CONTROLLERS SAFELY
+// 8. CYBERNETIC LEFT-RIGHT SWIPE & SNAP CAROUSEL ENGINE
+// ==========================================
+class CyberCarousel {
+  constructor(trackEl, options = {}) {
+    this.track = trackEl;
+    if (!this.track) return;
+
+    this.prevBtn = options.prevBtn || null;
+    this.nextBtn = options.nextBtn || null;
+    this.dotsWrap = options.dotsWrap || null;
+    this.counterEl = options.counterEl || null;
+    this.currentIndex = 0;
+    this.items = [];
+
+    this.init();
+  }
+
+  init() {
+    if (!this.track) return;
+    this.updateItems();
+    if (this.items.length === 0) return;
+
+    this.currentIndex = Math.max(0, Math.min(this.currentIndex, this.items.length - 1));
+    this.bindEvents();
+    this.renderDots();
+    this.updateUI();
+  }
+
+  updateItems() {
+    this.items = Array.from(this.track.children).filter(child => {
+      return child.nodeType === 1 && !child.classList.contains('carousel-ignore') && window.getComputedStyle(child).display !== 'none';
+    });
+  }
+
+  bindEvents() {
+    if (this._eventsBound) return;
+    this._eventsBound = true;
+
+    if (this.prevBtn) {
+      this.prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.scrollPrev();
+      });
+    }
+
+    if (this.nextBtn) {
+      this.nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.scrollNext();
+      });
+    }
+
+    let scrollTimeout;
+    this.track.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => this.handleScroll(), 60);
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+      this.updateUI();
+    });
+  }
+
+  handleScroll() {
+    this.updateItems();
+    if (this.items.length === 0) return;
+
+    const trackRect = this.track.getBoundingClientRect();
+    const trackCenter = trackRect.left + trackRect.width / 2;
+
+    let closestIndex = 0;
+    let minDistance = Infinity;
+
+    this.items.forEach((item, index) => {
+      const rect = item.getBoundingClientRect();
+      const itemCenter = rect.left + rect.width / 2;
+      const distance = Math.abs(itemCenter - trackCenter);
+
+      if (distance < minDistance) {
+        minDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    if (closestIndex !== this.currentIndex) {
+      this.currentIndex = closestIndex;
+      this.updateUI();
+    }
+  }
+
+  scrollToIndex(index) {
+    this.updateItems();
+    if (this.items.length === 0) return;
+
+    index = Math.max(0, Math.min(index, this.items.length - 1));
+    this.currentIndex = index;
+
+    const targetItem = this.items[index];
+    if (targetItem) {
+      const trackRect = this.track.getBoundingClientRect();
+      const itemRect = targetItem.getBoundingClientRect();
+      const offset = itemRect.left - trackRect.left + this.track.scrollLeft - (trackRect.width - itemRect.width) / 2;
+
+      this.track.scrollTo({
+        left: Math.max(0, offset),
+        behavior: 'smooth'
+      });
+    }
+
+    this.updateUI();
+    if (window.soundFx && typeof window.soundFx.playClick === 'function') {
+      window.soundFx.playClick();
+    }
+  }
+
+  scrollPrev() {
+    this.scrollToIndex(this.currentIndex - 1);
+  }
+
+  scrollNext() {
+    this.scrollToIndex(this.currentIndex + 1);
+  }
+
+  renderDots() {
+    if (!this.dotsWrap) return;
+    this.updateItems();
+    this.dotsWrap.innerHTML = '';
+
+    if (this.items.length <= 1) {
+      this.dotsWrap.style.display = 'none';
+      return;
+    }
+    this.dotsWrap.style.display = 'flex';
+
+    this.items.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = `carousel-dot ${i === this.currentIndex ? 'active' : ''}`;
+      dot.setAttribute('aria-label', `Slide ${i + 1}`);
+      dot.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.scrollToIndex(i);
+      });
+      this.dotsWrap.appendChild(dot);
+    });
+  }
+
+  updateUI() {
+    this.updateItems();
+    const count = this.items.length;
+    if (count === 0) {
+      if (this.counterEl) this.counterEl.textContent = '0 / 0';
+      return;
+    }
+
+    if (this.prevBtn) {
+      this.prevBtn.disabled = this.currentIndex <= 0;
+      this.prevBtn.classList.toggle('disabled', this.currentIndex <= 0);
+    }
+
+    if (this.nextBtn) {
+      this.nextBtn.disabled = this.currentIndex >= count - 1;
+      this.nextBtn.classList.toggle('disabled', this.currentIndex >= count - 1);
+    }
+
+    if (this.counterEl) {
+      this.counterEl.textContent = `${this.currentIndex + 1} / ${count}`;
+    }
+
+    if (this.dotsWrap) {
+      const dots = this.dotsWrap.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === this.currentIndex);
+      });
+    }
+  }
+}
+window.CyberCarousel = CyberCarousel;
+
+// ==========================================
+// 9. CYBERNETIC MOBILE NAVIGATION DRAWER CONTROLLER
+// ==========================================
+class MobileNavDrawer {
+  constructor() {
+    this.drawer = document.getElementById('mobile-nav-drawer');
+    this.toggleBtn = document.getElementById('mobile-menu-toggle');
+    this.closeBtn = document.getElementById('mobile-drawer-close');
+    this.backdrop = document.getElementById('mobile-drawer-backdrop');
+    this.navLinks = document.querySelectorAll('.mobile-nav-link');
+    this.init();
+  }
+
+  init() {
+    if (!this.drawer || !this.toggleBtn) return;
+
+    this.toggleBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.open();
+    });
+
+    if (this.closeBtn) {
+      this.closeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.close();
+      });
+    }
+
+    if (this.backdrop) {
+      this.backdrop.addEventListener('click', () => this.close());
+    }
+
+    this.navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        this.close();
+      });
+    });
+
+    const actionBtns = this.drawer.querySelectorAll('.open-resume-modal-btn, .open-terminal-btn');
+    actionBtns.forEach(btn => {
+      btn.addEventListener('click', () => this.close());
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && this.drawer.classList.contains('open')) {
+        this.close();
+      }
+    });
+  }
+
+  open() {
+    this.drawer.classList.add('open');
+    this.drawer.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    if (window.soundFx && typeof window.soundFx.playClick === 'function') {
+      window.soundFx.playClick();
+    }
+  }
+
+  close() {
+    this.drawer.classList.remove('open');
+    this.drawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+// ==========================================
+// 10. BOOTSTRAP ALL CONTROLLERS SAFELY
 // ==========================================
 function startCoreEngine() {
   window.soundFx = new SoundFX();
   window.themeManager = new ThemeManager();
   window.modalManager = new ModalManager();
+  window.mobileNavDrawer = new MobileNavDrawer();
   window.particleMesh = new ParticleMesh();
   window.cardTilt3D = new CardTilt3D();
   window.rollingCounters = new RollingCounters();
+
+  // Initialize Cyber Carousels
+  const projTrack = document.getElementById('projects-carousel-track');
+  if (projTrack) {
+    window.projectsCarousel = new CyberCarousel(projTrack, {
+      prevBtn: document.getElementById('projects-prev-btn'),
+      nextBtn: document.getElementById('projects-next-btn'),
+      dotsWrap: document.getElementById('projects-carousel-dots'),
+      counterEl: document.getElementById('projects-carousel-counter')
+    });
+  }
+
+  const benchTrack = document.getElementById('benchmarks-carousel-track');
+  if (benchTrack) {
+    window.benchmarksCarousel = new CyberCarousel(benchTrack, {
+      prevBtn: document.getElementById('benchmarks-prev-btn'),
+      nextBtn: document.getElementById('benchmarks-next-btn'),
+      dotsWrap: document.getElementById('benchmarks-carousel-dots'),
+      counterEl: document.getElementById('benchmarks-carousel-counter')
+    });
+  }
+
+  const eduTrack = document.getElementById('education-carousel-track');
+  if (eduTrack) {
+    window.educationCarousel = new CyberCarousel(eduTrack, {
+      prevBtn: document.getElementById('education-prev-btn'),
+      nextBtn: document.getElementById('education-next-btn'),
+      dotsWrap: document.getElementById('education-carousel-dots'),
+      counterEl: document.getElementById('education-carousel-counter')
+    });
+  }
 
   // Initialize Typewriter Effect
   const typeEl = document.getElementById("hero-dynamic-text");

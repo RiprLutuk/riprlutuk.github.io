@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787682468">
+  <link rel="stylesheet" href="css/main.css?v=1787730568">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -197,6 +197,54 @@
       </div>
     </div>
   </header>
+
+  <!-- Cybernetic Mobile Navigation Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-drawer-backdrop" id="mobile-drawer-backdrop"></div>
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <div class="brand-avatar">HR</div>
+          <div>
+            <div class="brand-name">Heri Riski Anto</div>
+            <div class="brand-badge">Platform Architect &amp; Core DBA</div>
+          </div>
+        </div>
+        <button id="mobile-drawer-close" class="btn-icon" aria-label="Close Menu">&times;</button>
+      </div>
+
+      <div class="mobile-drawer-body">
+        <div class="mobile-menu-section-title">QUICK ACCESS</div>
+        <a href="#hero" class="mobile-nav-link"><span class="mobile-nav-icon">🏠</span> Home &amp; Briefing</a>
+        <a href="#recruiter-hub" class="mobile-nav-link"><span class="mobile-nav-icon">⚡</span> Recruiter Hub (30-Sec Fit)</a>
+
+        <div class="mobile-menu-section-title">🖥️ ENGINEERING &amp; ARCHITECTURE</div>
+        <a href="#architecture" class="mobile-nav-link"><span class="mobile-nav-icon">🌐</span> System Architecture Topology</a>
+        <a href="#benchmarks" class="mobile-nav-link"><span class="mobile-nav-icon">📊</span> DBA Benchmarks &amp; SLA</a>
+        <a href="#dba-lab" class="mobile-nav-link"><span class="mobile-nav-icon">🔬</span> DBA Diagnostic Lab (EXPLAIN)</a>
+        <a href="#projects" class="mobile-nav-link"><span class="mobile-nav-icon">🚀</span> Flagship Platforms (Live Sandbox)</a>
+        <a href="#repos" class="mobile-nav-link"><span class="mobile-nav-icon">🐙</span> GitHub Repositories Explorer</a>
+
+        <div class="mobile-menu-section-title">💼 BUSINESS, ROI &amp; CAREER</div>
+        <a href="#roi-calculator" class="mobile-nav-link"><span class="mobile-nav-icon">💰</span> Enterprise Cloud ROI Calculator</a>
+        <a href="#experience" class="mobile-nav-link"><span class="mobile-nav-icon">📜</span> Professional Career Timeline</a>
+        <a href="#education" class="mobile-nav-link"><span class="mobile-nav-icon">🎓</span> Education &amp; Certifications</a>
+        <a href="#contact" class="mobile-nav-link"><span class="mobile-nav-icon">✉️</span> Contact &amp; Schedule</a>
+
+        <div class="mobile-drawer-actions">
+          <button class="btn-cta btn-primary open-resume-modal-btn" style="width: 100%; justify-content: center; padding: 12px 18px;">
+            <span>📄 View Curriculum Vitae</span>
+          </button>
+          <button class="btn-cli-badge open-terminal-btn" style="width: 100%; justify-content: center; padding: 10px 16px;">
+            <span>&gt;_ Launch Interactive CLI Console</span>
+          </button>
+          <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="width: 100%; justify-content: center; padding: 11px 18px;">
+            <span>💬 Direct Telegram (@riprlutuk)</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
     <!-- ==========================================
@@ -664,7 +712,21 @@
         </div>
 
         <div class="benchmark-card">
-          <div class="benchmark-grid">
+          <!-- Carousel Navigation Header for Benchmarks -->
+          <div class="carousel-nav-header" id="benchmarks-carousel-nav">
+            <div class="carousel-swipe-hint">
+              <span>👈</span>
+              <span>Geser / Swipe untuk metrik lainnya</span>
+              <span>👉</span>
+            </div>
+            <div class="carousel-controls-group">
+              <span class="carousel-counter-badge" id="benchmarks-carousel-counter">1 / 3</span>
+              <button class="carousel-nav-btn" id="benchmarks-prev-btn" aria-label="Previous Benchmark" title="Previous Benchmark">‹</button>
+              <button class="carousel-nav-btn" id="benchmarks-next-btn" aria-label="Next Benchmark" title="Next Benchmark">›</button>
+            </div>
+          </div>
+
+          <div class="benchmark-grid carousel-snap" id="benchmarks-carousel-track">
             <!-- Box 1: Query Latency Optimization -->
             <div class="benchmark-box">
               <div class="benchmark-box-title">
@@ -767,6 +829,9 @@
               <span class="benchmark-impact-pill">📊 Sub-Second Analytics</span>
             </div>
           </div>
+
+          <!-- Carousel Dots for Benchmarks -->
+          <div class="carousel-dots-wrap" id="benchmarks-carousel-dots"></div>
         </div>
       </div>
     </section>
@@ -914,8 +979,22 @@ Execution Time: 4280.950 ms</pre>
           </p>
         </div>
 
+        <!-- Carousel Navigation Controls for Flagship Projects -->
+        <div class="carousel-nav-header" id="projects-carousel-nav">
+          <div class="carousel-swipe-hint">
+            <span>👈</span>
+            <span>Geser / Swipe untuk lihat platform lainnya</span>
+            <span>👉</span>
+          </div>
+          <div class="carousel-controls-group">
+            <span class="carousel-counter-badge" id="projects-carousel-counter">1 / 7</span>
+            <button class="carousel-nav-btn" id="projects-prev-btn" aria-label="Previous Project" title="Previous Project">‹</button>
+            <button class="carousel-nav-btn" id="projects-next-btn" aria-label="Next Project" title="Next Project">›</button>
+          </div>
+        </div>
+
         <!-- Symmetrical 3x2 Cybernetic Projects Grid with Live Sandboxes -->
-        <div class="bento-projects-grid">
+        <div class="bento-projects-grid carousel-snap" id="projects-carousel-track">
           <!-- Card 1: DDAG -->
           <article class="bento-card">
             <div class="bento-card-header">
@@ -1319,6 +1398,9 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
             </div>
           </article>
         </div>
+
+        <!-- Carousel Dots for Flagship Projects -->
+        <div class="carousel-dots-wrap" id="projects-carousel-dots"></div>
       </div>
     </section>
 
@@ -1354,10 +1436,27 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
             </div>
           </div>
 
+          <!-- Carousel Navigation Header for Repositories -->
+          <div class="carousel-nav-header" id="repos-carousel-nav">
+            <div class="carousel-swipe-hint">
+              <span>👈</span>
+              <span>Geser / Swipe untuk repo lainnya</span>
+              <span>👉</span>
+            </div>
+            <div class="carousel-controls-group">
+              <span class="carousel-counter-badge" id="repos-carousel-counter">1 / 6</span>
+              <button class="carousel-nav-btn" id="repos-prev-btn" aria-label="Previous Repository" title="Previous Repository">‹</button>
+              <button class="carousel-nav-btn" id="repos-next-btn" aria-label="Next Repository" title="Next Repository">›</button>
+            </div>
+          </div>
+
           <!-- Dynamic Repository Cards Grid -->
-          <div class="repo-cards-grid" id="github-repos-grid">
+          <div class="repo-cards-grid carousel-snap" id="github-repos-grid">
             <!-- Populated dynamically by github.js -->
           </div>
+
+          <!-- Carousel Dots for Repositories -->
+          <div class="carousel-dots-wrap" id="repos-carousel-dots"></div>
         </div>
       </div>
     </section>
@@ -1482,32 +1581,57 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
           <h2 class="section-title">Education &amp; <span class="text-gradient">Certifications</span></h2>
         </div>
 
-        <div class="recruiter-hub-card" style="padding: 28px;">
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
-            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan); margin-bottom: 4px;">FORMAL DEGREE</div>
-              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Bachelor of Computer Science (S.Kom)</div>
-              <div style="color: var(--text-secondary); font-size: 0.85rem;">STMIK Widya Pratama Pekalongan (2014 – 2018)</div>
+        <div class="recruiter-hub-card" style="padding: 24px;">
+          <!-- Carousel Navigation Header for Education -->
+          <div class="carousel-nav-header" id="education-carousel-nav">
+            <div class="carousel-swipe-hint">
+              <span>👈</span>
+              <span>Geser / Swipe untuk sertifikasi lainnya</span>
+              <span>👉</span>
             </div>
-
-            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-emerald); margin-bottom: 4px;">SECURITY CREDENTIAL</div>
-              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">ISO/IEC 27001 ISMS Framework</div>
-              <div style="color: var(--text-secondary); font-size: 0.85rem;">Implementation &amp; Audit Alignment (AFPI)</div>
-            </div>
-
-            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-primary); margin-bottom: 4px;">CYBERSECURITY</div>
-              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Ethical Hacking Fundamentals</div>
-              <div style="color: var(--text-secondary); font-size: 0.85rem;">Spentera Hacking Playground</div>
-            </div>
-
-            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
-              <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-amber); margin-bottom: 4px;">DATA &amp; PYTHON</div>
-              <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Engineering &amp; Python Track</div>
-              <div style="color: var(--text-secondary); font-size: 0.85rem;">DQLab &amp; Dicoding Academy</div>
+            <div class="carousel-controls-group">
+              <span class="carousel-counter-badge" id="education-carousel-counter">1 / 4</span>
+              <button class="carousel-nav-btn" id="education-prev-btn" aria-label="Previous Credential" title="Previous Credential">‹</button>
+              <button class="carousel-nav-btn" id="education-next-btn" aria-label="Next Credential" title="Next Credential">›</button>
             </div>
           </div>
+
+          <div class="education-grid carousel-snap" id="education-carousel-track">
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-cyan); margin-bottom: 4px;">FORMAL DEGREE</div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Bachelor of Computer Science (S.Kom)</div>
+              </div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px;">STMIK Widya Pratama Pekalongan (2014 – 2018)</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-emerald); margin-bottom: 4px;">SECURITY CREDENTIAL</div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">ISO/IEC 27001 ISMS Framework</div>
+              </div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px;">Implementation &amp; Audit Alignment (AFPI)</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-primary); margin-bottom: 4px;">CYBERSECURITY</div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Ethical Hacking Fundamentals</div>
+              </div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px;">Spentera Hacking Playground</div>
+            </div>
+
+            <div style="background: var(--bg-surface-elevated); padding: 18px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div style="font-size: 0.75rem; font-family: var(--font-mono); color: var(--accent-amber); margin-bottom: 4px;">DATA &amp; PYTHON</div>
+                <div style="font-weight: 800; font-size: 1rem; color: var(--text-primary);">Data Engineering &amp; Python Track</div>
+              </div>
+              <div style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 10px;">DQLab &amp; Dicoding Academy</div>
+            </div>
+          </div>
+
+          <!-- Carousel Dots for Education -->
+          <div class="carousel-dots-wrap" id="education-carousel-dots"></div>
         </div>
       </div>
     </section>
@@ -2010,12 +2134,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787682468"></script>
-  <script src="js/dba-lab.js"></script>
-  <script src="js/roi-calculator.js"></script>
-  <script src="js/topology.js?v=1787682468"></script>
-  <script src="js/github.js?v=1787682468"></script>
-  <script src="js/terminal.js?v=1787682468"></script>
-  <script src="js/main.js?v=1787682468"></script>
+  <script src="js/audio.js?v=1787730568"></script>
+  <script src="js/main.js?v=1787730568"></script>
+  <script src="js/dba-lab.js?v=1787730568"></script>
+  <script src="js/roi-calculator.js?v=1787730568"></script>
+  <script src="js/topology.js?v=1787730568"></script>
+  <script src="js/github.js?v=1787730568"></script>
+  <script src="js/terminal.js?v=1787730568"></script>
 </body>
 </html>

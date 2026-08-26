@@ -273,9 +273,9 @@ class GitHubExplorer {
     this.searchQuery = "";
     
     this.container = document.getElementById("github-repos-grid");
-    this.filterTabs = document.querySelectorAll(".repo-tab-btn");
-    this.searchInput = document.getElementById("repo-search-input");
-    this.countBadge = document.getElementById("repo-count-badge");
+    this.filterTabs = document.querySelectorAll(".repo-tab-btn, .github-tab");
+    this.searchInput = document.getElementById("repo-search-input") || document.getElementById("github-search-input");
+    this.countBadge = document.getElementById("repo-count-badge") || document.getElementById("total-repos-count");
     
     this.init();
   }
@@ -289,10 +289,12 @@ class GitHubExplorer {
     if (this.filterTabs) {
       this.filterTabs.forEach(btn => {
         btn.addEventListener("click", () => {
-          if (window.soundFx) window.soundFx.playClick();
+          if (window.soundFx && typeof window.soundFx.playClick === 'function') {
+            window.soundFx.playClick();
+          }
           this.filterTabs.forEach(b => b.classList.remove("active"));
           btn.classList.add("active");
-          this.currentCategory = btn.getAttribute("data-category");
+          this.currentCategory = btn.getAttribute("data-category") || "all";
           this.applyFilter();
         });
       });
@@ -376,7 +378,8 @@ class GitHubExplorer {
 
   applyFilter() {
     this.filteredRepos = this.repos.filter(r => {
-      const matchCat = this.currentCategory === "all" || r.category === this.currentCategory;
+      const isAll = !this.currentCategory || this.currentCategory.toLowerCase() === "all";
+      const matchCat = isAll || (r.category && r.category.toLowerCase() === this.currentCategory.toLowerCase());
       const matchSearch = !this.searchQuery || 
         r.name.toLowerCase().includes(this.searchQuery) || 
         (r.description && r.description.toLowerCase().includes(this.searchQuery)) ||
@@ -394,7 +397,7 @@ class GitHubExplorer {
   renderLoading() {
     if (!this.container) return;
     this.container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); font-family: var(--font-mono);">
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); font-family: var(--font-mono); width: 100%;">
         <div style="display: inline-block; animation: spin 1s infinite linear; font-size: 1.5rem; margin-bottom: 8px;">⏳</div>
         <div>Loading original repositories...</div>
       </div>
@@ -406,12 +409,15 @@ class GitHubExplorer {
 
     if (this.filteredRepos.length === 0) {
       this.container.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted); font-family: var(--font-mono);">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 48px; color: var(--text-muted); font-family: var(--font-mono); width: 100%;">
           <div style="font-size: 1.8rem; margin-bottom: 8px;">🔍</div>
           <div style="font-weight: 700; color: var(--text-secondary);">No repositories matching "${this.searchQuery}"</div>
           <div style="font-size: 0.8rem; margin-top: 4px;">Try searching for another keyword like "postgres", "go", or "api"</div>
         </div>
       `;
+      if (window.reposCarousel) {
+        window.reposCarousel.init();
+      }
       return;
     }
 
@@ -432,27 +438,27 @@ class GitHubExplorer {
       return `
         <article class="repo-card ${r.is_featured ? "featured-repo" : ""}">
           <div>
-            <div class="repo-card-header">
-              <span class="repo-category-pill">${r.category}</span>
+            <div class="repo-card-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <span class="repo-category-pill" style="font-size:0.7rem; font-family:var(--font-mono); color:var(--accent-cyan);">${r.category}</span>
               ${featuredBadge}
             </div>
 
-            <h3 class="repo-name">
-              <a href="${r.html_url}" target="_blank" rel="noopener">${r.name}</a>
+            <h3 class="repo-name" style="font-size:1.05rem; font-weight:800; margin-bottom:6px;">
+              <a href="${r.html_url}" target="_blank" rel="noopener" style="color:var(--text-primary);">${r.name}</a>
             </h3>
 
-            <p class="repo-desc">${r.description}</p>
+            <p class="repo-desc" style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5; margin-bottom:14px;">${r.description}</p>
           </div>
 
-          <div class="repo-card-footer">
-            <div class="repo-lang">
-              <span class="repo-lang-dot" style="background-color: ${langColor};"></span>
+          <div class="repo-card-footer" style="display:flex; justify-content:space-between; align-items:center; padding-top:12px; border-top:1px solid rgba(255,255,255,0.06); font-size:0.75rem; font-family:var(--font-mono);">
+            <div class="repo-lang" style="display:flex; align-items:center; gap:6px;">
+              <span class="repo-lang-dot" style="width:8px; height:8px; border-radius:50%; background-color: ${langColor}; display:inline-block;"></span>
               <span>${r.language}</span>
             </div>
 
-            <div class="repo-links">
+            <div class="repo-links" style="display:flex; align-items:center; gap:8px;">
               ${demoLink}
-              <a href="${r.html_url}" target="_blank" rel="noopener" class="repo-card-link">
+              <a href="${r.html_url}" target="_blank" rel="noopener" class="repo-card-link" style="color:var(--accent-cyan); font-weight:700;">
                 GitHub ↗
               </a>
             </div>
@@ -460,6 +466,21 @@ class GitHubExplorer {
         </article>
       `;
     }).join("");
+
+    // Initialize or update Repos Carousel
+    if (window.CyberCarousel) {
+      if (!window.reposCarousel) {
+        window.reposCarousel = new window.CyberCarousel(this.container, {
+          prevBtn: document.getElementById('repos-prev-btn'),
+          nextBtn: document.getElementById('repos-next-btn'),
+          dotsWrap: document.getElementById('repos-carousel-dots'),
+          counterEl: document.getElementById('repos-carousel-counter')
+        });
+      } else {
+        window.reposCarousel.currentIndex = 0;
+        window.reposCarousel.init();
+      }
+    }
   }
 }
 
