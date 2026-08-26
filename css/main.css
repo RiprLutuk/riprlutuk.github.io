@@ -1144,6 +1144,17 @@ section {
 @keyframes data-stream {
   0% { left: -100%; }
   100% { left: 100%; }
+.topo-swipe-hint {
+  padding: 6px 16px;
+  background: rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
 }
 
 .topology-detail-panel {
@@ -2185,23 +2196,49 @@ section {
   .persona-pitch-title > span#pitch-badge {
     margin-left: 0 !important;
   }
+  .topology-canvas-area {
+    min-height: 200px !important;
+    padding: 12px 8px !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+  }
+
   .arch-diagram-flow {
-    flex-direction: column !important;
-    width: 100% !important;
-    max-width: 320px !important;
-    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: max-content !important;
+    margin: 0 !important;
+    padding: 4px 8px !important;
   }
+
   .arch-node {
-    width: 100% !important;
-    max-width: 100% !important;
+    flex: 0 0 210px !important;
+    width: 210px !important;
+    max-width: 210px !important;
+    min-width: 210px !important;
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
   }
+
   .arch-connector {
-    height: 30px !important;
-    width: 2px !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 20px !important;
+    height: auto !important;
+    flex-shrink: 0 !important;
   }
+
   .arch-connector-line {
-    width: 2px !important;
-    height: 100% !important;
+    width: 20px !important;
+    height: 2px !important;
   }
 }
 
@@ -4169,13 +4206,14 @@ body {
   }
 
   .topology-canvas-area {
-    min-height: 380px !important;
-    padding: 16px 8px !important;
+    min-height: 180px !important;
+    padding: 12px 6px !important;
     overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
   }
 
   .topology-detail-panel {
-    padding: 14px 12px !important;
+    padding: 12px !important;
   }
 
   /* DBA Lab */
