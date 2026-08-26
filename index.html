@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787734895">
+  <link rel="stylesheet" href="css/main.css?v=1787735122">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -335,83 +335,63 @@
                   <span class="t-dot yellow"></span>
                   <span class="t-dot green"></span>
                 </div>
-                <div class="terminal-card-title">fullstack-fleet-telemetry.sh</div>
+                <div class="terminal-card-title">
+                  <span class="live-dot-pulse"></span> telemetry.sh
+                </div>
                 <button class="btn-icon open-terminal-btn" style="width:24px; height:24px; font-size:0.7rem; cursor:pointer;" title="Expand Full CLI">&gt;_</button>
               </div>
 
               <!-- Interactive Terminal Tabs Bar -->
               <div class="terminal-tabs-bar">
-                <button class="t-tab-btn active" data-tab="status">🖥️ Fleet Status</button>
-                <button class="t-tab-btn" data-tab="migrations">🔄 Link Net Migrations</button>
-                <button class="t-tab-btn" data-tab="security">🛡️ ISO 27001 Security</button>
-                <button class="t-tab-btn" data-tab="mobile">📱 Mobile &amp; Web</button>
+                <button class="t-tab-btn active" data-tab="status">Status</button>
+                <button class="t-tab-btn" data-tab="migrations">Migrations</button>
+                <button class="t-tab-btn" data-tab="security">Security</button>
+                <button class="t-tab-btn" data-tab="mobile">Mobile/Web</button>
               </div>
 
               <!-- Terminal Live Console Body -->
               <div id="hero-terminal-body" class="terminal-card-body">
-                <!-- Command 1: Full-Stack Health -->
-                <div class="console-line">
-                  <span class="console-prompt">riprlutuk@prod:~$</span>
-                  <span class="console-cmd">fullstack-status --entire-division</span>
+                <div class="terminal-command-line">
+                  <span class="cmd-prompt">$</span>
+                  <span class="cmd-text">cluster-health --live</span>
                 </div>
 
-                <div class="terminal-table-list">
-                  <div class="terminal-row">
-                    <span class="t-label">📱 Mobile (Java Native &amp; Flutter)</span>
-                    <span class="t-val-green">● FACE ID &amp; GPS ACTIVE</span>
+                <div class="terminal-clean-rows">
+                  <div class="term-clean-row">
+                    <span class="term-label"><span class="term-status-dot green"></span>Core DBA (Postgres, MSSQL, Oracle)</span>
+                    <span class="term-val green">99.98% SLA Streaming</span>
                   </div>
-                  <div class="terminal-row">
-                    <span class="t-label">🌐 Frontend (Vue 3, React, PWA)</span>
-                    <span class="t-val-green">● 100% PWA (PGlite WASM)</span>
+                  <div class="term-clean-row">
+                    <span class="term-label"><span class="term-status-dot cyan"></span>Backend APIs (Go, Python, Laravel)</span>
+                    <span class="term-val cyan">200 OK (&lt; 2.5ms)</span>
                   </div>
-                  <div class="terminal-row">
-                    <span class="t-label">⚡ Backend (Go, Python, Laravel)</span>
-                    <span class="t-val-cyan">● 200 OK (&lt; 2.5ms Overhead)</span>
+                  <div class="term-clean-row">
+                    <span class="term-label"><span class="term-status-dot green"></span>Frontend &amp; PWA (Vue 3, PGlite WASM)</span>
+                    <span class="term-val green">Offline Sync Ready</span>
                   </div>
-                  <div class="terminal-row">
-                    <span class="t-label">💾 Core DBA (Postgres, MSSQL, Oracle)</span>
-                    <span class="t-val-green">● 99.98% SLA STREAMING</span>
-                  </div>
-                  <div class="terminal-row">
-                    <span class="t-label">🛡️ Security (ISO 27001 &amp; FortiGate)</span>
-                    <span class="t-val-green">● 100+ NODES ENFORCED</span>
+                  <div class="term-clean-row">
+                    <span class="term-label"><span class="term-status-dot cyan"></span>Security &amp; ISMS (ISO 27001, FortiGate)</span>
+                    <span class="term-val cyan">100+ Nodes Enforced</span>
                   </div>
                 </div>
 
-                <!-- Command 2: Query Optimization Audit -->
-                <div class="console-line">
-                  <span class="console-prompt">riprlutuk@prod:~$</span>
-                  <span class="console-cmd">explain-analyze --ledger-10m</span>
-                </div>
-
-                <div class="terminal-query-audit">
-                  <div class="t-audit-item">
-                    <span style="color: var(--text-muted);">Query Latency:</span>
-                    <span><span style="color: #ef4444; text-decoration: line-through;">4,200ms</span> &rarr; <strong style="color: var(--accent-emerald);">18ms (-99.5%)</strong></span>
-                  </div>
-                  <div class="t-audit-item">
-                    <span style="color: var(--text-muted);">Security Standard:</span>
-                    <strong style="color: var(--accent-cyan);">ISO/IEC 27001 ISMS Compliant</strong>
-                  </div>
+                <div class="terminal-highlight-bar">
+                  <span class="hl-item"><span class="hl-badge">AUDIT</span> Query: <span class="hl-old">4,200ms</span> &rarr; <span class="hl-new">18ms (-99.5%)</span></span>
                 </div>
               </div>
 
-              <!-- Terminal Bottom 4-HUD Micro Grid -->
+              <!-- Terminal Bottom 3-Stat Strip -->
               <div class="terminal-card-stats">
                 <div class="t-stat-card">
-                  <div class="t-stat-label">Fullstack</div>
-                  <div class="t-stat-val" style="color: var(--accent-emerald);">Web &amp; Mobile</div>
+                  <div class="t-stat-label">Uptime SLA</div>
+                  <div class="t-stat-val" style="color: var(--accent-emerald);">99.98%</div>
                 </div>
                 <div class="t-stat-card">
                   <div class="t-stat-label">Core DBA</div>
                   <div class="t-stat-val" style="color: var(--accent-primary);">4 RDBMS</div>
                 </div>
                 <div class="t-stat-card">
-                  <div class="t-stat-label">Uptime SLA</div>
-                  <div class="t-stat-val" style="color: #fff;">99.98%</div>
-                </div>
-                <div class="t-stat-card">
-                  <div class="t-stat-label">Compliance</div>
+                  <div class="t-stat-label">ISMS Compliance</div>
                   <div class="t-stat-val" style="color: var(--accent-cyan);">ISO 27001</div>
                 </div>
               </div>
@@ -2131,12 +2111,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787734895"></script>
-  <script src="js/main.js?v=1787734895"></script>
-  <script src="js/dba-lab.js?v=1787734895"></script>
-  <script src="js/roi-calculator.js?v=1787734895"></script>
-  <script src="js/topology.js?v=1787734895"></script>
-  <script src="js/github.js?v=1787734895"></script>
-  <script src="js/terminal.js?v=1787734895"></script>
+  <script src="js/audio.js?v=1787735122"></script>
+  <script src="js/main.js?v=1787735122"></script>
+  <script src="js/dba-lab.js?v=1787735122"></script>
+  <script src="js/roi-calculator.js?v=1787735122"></script>
+  <script src="js/topology.js?v=1787735122"></script>
+  <script src="js/github.js?v=1787735122"></script>
+  <script src="js/terminal.js?v=1787735122"></script>
 </body>
 </html>

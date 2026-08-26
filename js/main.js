@@ -906,84 +906,111 @@ function startCoreEngine() {
 
   const TERMINAL_TAB_CONTENT = {
     status: `
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">fullstack-status --entire-division</span>
+      <div class="terminal-command-line">
+        <span class="cmd-prompt">$</span>
+        <span class="cmd-text">cluster-health --live</span>
       </div>
-      <div class="terminal-table-list">
-        <div class="terminal-row"><span class="t-label">📱 Mobile (Java Native &amp; Flutter)</span><span class="t-val-green">● FACE ID &amp; GPS ACTIVE</span></div>
-        <div class="terminal-row"><span class="t-label">🌐 Frontend (Vue 3, React, PWA)</span><span class="t-val-green">● 100% PWA (PGlite WASM)</span></div>
-        <div class="terminal-row"><span class="t-label">⚡ Backend (Go, Python, Laravel)</span><span class="t-val-cyan">● 200 OK (&lt; 2.5ms Overhead)</span></div>
-        <div class="terminal-row"><span class="t-label">💾 Core DBA (Postgres, MSSQL, Oracle)</span><span class="t-val-green">● 99.98% SLA STREAMING</span></div>
-        <div class="terminal-row"><span class="t-label">🛡️ Security (ISO 27001 &amp; FortiGate)</span><span class="t-val-green">● 100+ NODES ENFORCED</span></div>
+      <div class="terminal-clean-rows">
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>Core DBA (Postgres, MSSQL, Oracle)</span>
+          <span class="term-val green">99.98% SLA Streaming</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>Backend APIs (Go, Python, Laravel)</span>
+          <span class="term-val cyan">200 OK (&lt; 2.5ms)</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>Frontend &amp; PWA (Vue 3, PGlite WASM)</span>
+          <span class="term-val green">Offline Sync Ready</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>Security &amp; ISMS (ISO 27001, FortiGate)</span>
+          <span class="term-val cyan">100+ Nodes Enforced</span>
+        </div>
       </div>
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">explain-analyze --ledger-10m</span>
-      </div>
-      <div class="terminal-query-audit">
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Query Latency:</span><span><span style="color: #ef4444; text-decoration: line-through;">4,200ms</span> &rarr; <strong style="color: var(--accent-emerald);">18ms (-99.5%)</strong></span></div>
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Security Standard:</span><strong style="color: var(--accent-cyan);">ISO/IEC 27001 ISMS Compliant</strong></div>
+      <div class="terminal-highlight-bar">
+        <span class="hl-item"><span class="hl-badge">AUDIT</span> Query: <span class="hl-old">4,200ms</span> &rarr; <span class="hl-new">18ms (-99.5%)</span></span>
       </div>
     `,
     migrations: `
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">linknet-migrations --inspect --live</span>
+      <div class="terminal-command-line">
+        <span class="cmd-prompt">$</span>
+        <span class="cmd-text">linknet-migrations --status</span>
       </div>
-      <div class="terminal-table-list">
-        <div class="terminal-row"><span class="t-label">Oracle 19c &rarr; PostgreSQL 16</span><span class="t-val-green">● PL/pgSQL REWRITE (0-LAG)</span></div>
-        <div class="terminal-row"><span class="t-label">MongoDB &rarr; AWS DocumentDB</span><span class="t-val-green">● SHARDED REPLICAS ACTIVE</span></div>
-        <div class="terminal-row"><span class="t-label">AWS RDS &rarr; TencentDB</span><span class="t-val-cyan">● CROSS-CLOUD COST -35%</span></div>
-        <div class="terminal-row"><span class="t-label">Grafana Fleet Telemetry</span><span class="t-val-green">● 24/7 PROMETHEUS HEALTHY</span></div>
+      <div class="terminal-clean-rows">
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>Oracle 19c &rarr; PostgreSQL 16</span>
+          <span class="term-val green">PL/pgSQL Rewritten (0-Lag)</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>MongoDB &rarr; AWS DocumentDB</span>
+          <span class="term-val cyan">Sharded Replicas Active</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>AWS RDS &rarr; TencentDB</span>
+          <span class="term-val green">Cloud Cost -35%</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>Fleet Observability (Prometheus)</span>
+          <span class="term-val cyan">24/7 Monitored</span>
+        </div>
       </div>
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">migration-integrity-check</span>
-      </div>
-      <div class="terminal-query-audit">
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Data Discrepancy:</span><strong style="color: var(--accent-emerald);">0 Rows (100% Validated)</strong></div>
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Downtime Window:</span><strong style="color: var(--accent-cyan);">&lt; 10s Cutover</strong></div>
+      <div class="terminal-highlight-bar">
+        <span class="hl-item"><span class="hl-badge">VALIDATION</span> Discrepancy: <span class="hl-new">0 Rows</span> | Cutover: <span class="hl-new">&lt; 10s</span></span>
       </div>
     `,
     security: `
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">security-audit --iso27001-compliance</span>
+      <div class="terminal-command-line">
+        <span class="cmd-prompt">$</span>
+        <span class="cmd-text">security-audit --iso27001</span>
       </div>
-      <div class="terminal-table-list">
-        <div class="terminal-row"><span class="t-label">ISO/IEC 27001:2022 ISMS</span><span class="t-val-green">● AUDIT PASSED / CERTIFIED</span></div>
-        <div class="terminal-row"><span class="t-label">UU No. 27/2022 (UU PDP)</span><span class="t-val-green">● AES-256 ENCRYPTION ENFORCED</span></div>
-        <div class="terminal-row"><span class="t-label">FortiGate IPsec VPN</span><span class="t-val-cyan">● 100+ P2P LENDERS SECURED</span></div>
-        <div class="terminal-row"><span class="t-label">pgAudit Audit Trails</span><span class="t-val-green">● 5-YEAR RETENTION ACTIVE</span></div>
+      <div class="terminal-clean-rows">
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>ISO/IEC 27001:2022 ISMS</span>
+          <span class="term-val green">Audit Passed &amp; Certified</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>UU No. 27/2022 (UU PDP)</span>
+          <span class="term-val cyan">AES-256 Encryption</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>FortiGate IPsec VPN</span>
+          <span class="term-val green">100+ P2P Lenders Secured</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>pgAudit &amp; Access Controls</span>
+          <span class="term-val cyan">5-Year Retention</span>
+        </div>
       </div>
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">drc-failover-readiness</span>
-      </div>
-      <div class="terminal-query-audit">
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Secondary DRC Site:</span><strong style="color: var(--accent-emerald);">Synchronized Standby</strong></div>
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Recovery Targets:</span><strong style="color: var(--accent-cyan);">RPO &lt; 15m / RTO &lt; 1h</strong></div>
+      <div class="terminal-highlight-bar">
+        <span class="hl-item"><span class="hl-badge">DRC</span> Standby: <span class="hl-new">Synchronized</span> | RPO &lt; 15m, RTO &lt; 1h</span>
       </div>
     `,
     mobile: `
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">mobile-and-web-stack --status</span>
+      <div class="terminal-command-line">
+        <span class="cmd-prompt">$</span>
+        <span class="cmd-text">mobile-stack --status</span>
       </div>
-      <div class="terminal-table-list">
-        <div class="terminal-row"><span class="t-label">Android Native (Java)</span><span class="t-val-green">● FACE ID BIOMETRICS PASS</span></div>
-        <div class="terminal-row"><span class="t-label">Flutter Cross-Platform</span><span class="t-val-green">● ANTI-MOCK GPS 0.00% SPOOF</span></div>
-        <div class="terminal-row"><span class="t-label">Vue 3 PWA + Fastify</span><span class="t-val-cyan">● PGlite WASM (0.4ms QUERY)</span></div>
-        <div class="terminal-row"><span class="t-label">Go REST &amp; WebSockets</span><span class="t-val-green">● 2.5ms LATENCY OVERHEAD</span></div>
+      <div class="terminal-clean-rows">
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>Android Native (Java)</span>
+          <span class="term-val green">Face ID Biometrics Pass</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>Flutter Cross-Platform</span>
+          <span class="term-val cyan">Anti-Mock GPS (0.00% Spoof)</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot green"></span>Vue 3 PWA + Fastify</span>
+          <span class="term-val green">PGlite WASM Embedded</span>
+        </div>
+        <div class="term-clean-row">
+          <span class="term-label"><span class="term-status-dot cyan"></span>Go REST &amp; WebSockets</span>
+          <span class="term-val cyan">2.5ms Overhead</span>
+        </div>
       </div>
-      <div class="console-line">
-        <span class="console-prompt">riprlutuk@prod:~$</span>
-        <span class="console-cmd">mobile-app-benchmark</span>
-      </div>
-      <div class="terminal-query-audit">
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Attendance Logging:</span><strong style="color: var(--accent-emerald);">0.4s Instant Confirmation</strong></div>
-        <div class="t-audit-item"><span style="color: var(--text-muted);">Offline Capability:</span><strong style="color: var(--accent-cyan);">100% Local DB Syncing</strong></div>
+      <div class="terminal-highlight-bar">
+        <span class="hl-item"><span class="hl-badge">PERF</span> Attendance Log: <span class="hl-new">0.4s Instant</span> | Local DB: <span class="hl-new">100% Offline</span></span>
       </div>
     `
   };
