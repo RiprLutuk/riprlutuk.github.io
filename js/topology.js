@@ -251,6 +251,192 @@ const ARCHITECTURE_DATA = {
         details: "Real-time executive uptime dashboard visualizing port UP/DOWN status, SLA compliance percentage, lowest-availability targets, and automated Telegram bot incident alerting."
       }
     ]
+  },
+  paspapan: {
+    title: "PasPapan (Enterprise HRIS, Anti-Mock GPS & 1-Click Payroll Engine)",
+    badge: "Zero-Spoof Biometrics • Multi-Branch HA",
+    description: "High-concurrency enterprise workforce operations engine with Anti-Mock GPS radar, Face ID biometric recognition, real-time WebSockets, automated 1-click multi-branch payroll calculation, and high-availability database replication.",
+    nodes: [
+      {
+        id: "mobile-nodes",
+        badge: "MOBILE / CLIENT",
+        icon: "📱",
+        title: "Native iOS, Android & PWA",
+        desc: "Anti-Mock GPS & Face ID Attendance Ingestion",
+        telemetryNormal: "12,500 Check-ins/m • <400ms",
+        telemetrySpike: "45,000 Rush Ingest • 0 Drop",
+        tags: ["Anti-Mock GPS", "Face ID Match", "Livewire"],
+        details: "High-frequency attendance check-in streams verifying live spatial coordinates against geofenced office perimeters and anti-spoof biometric signatures."
+      },
+      {
+        id: "edge-validator",
+        badge: "EDGE VALIDATOR",
+        icon: "🛡️",
+        title: "Mock-Location & WAF Shield",
+        desc: "Mock Provider Detection & JWT Bearer Session",
+        telemetryNormal: "0 Spoof Passed • 0.3ms Overhead",
+        telemetrySpike: "Rate Limiting Active • 0 Leak",
+        tags: ["Geofence Radar", "Mock Detection", "WAF Rules"],
+        details: "Zero-trust validation layer analyzing mock location provider flags, mock GPS apps, IP ranges, and device signatures before queuing transactions."
+      },
+      {
+        id: "payroll-engine",
+        badge: "PROCESSING CORE",
+        icon: "⚙️",
+        title: "Laravel & Livewire Async Queue",
+        desc: "1-Click Multi-Branch Payroll & Shift Matrix",
+        telemetryNormal: "1,800 Batches/s • 0 Lag",
+        telemetrySpike: "Async Horizon Queue • 100% Synced",
+        tags: ["PHP 8.2", "Horizon Workers", "Shift Matrix"],
+        details: "High-speed queue workers executing multi-tier tax formulas (PPh 21, BPJS), attendance deductions, overtime calculations, and instant payslip generation across branches."
+      },
+      {
+        id: "clustered-db",
+        badge: "STORAGE & CACHE",
+        icon: "💾",
+        title: "MySQL / Postgres HA + Redis Cache",
+        desc: "Primary-Replica DB + In-Memory Session Cache",
+        telemetryNormal: "99.98% Uptime • 1.2ms Query",
+        telemetrySpike: "Read Replica Balanced",
+        tags: ["Read-Write Split", "Redis Sentinel", "ACID"],
+        details: "Enterprise relational database cluster utilizing read-write connection splitting and Redis Sentinel caching to sustain peak morning attendance rushes without I/O contention."
+      },
+      {
+        id: "bi-hub",
+        badge: "EXECUTIVE HUB",
+        icon: "📊",
+        title: "Multi-Branch Executive Dashboard",
+        desc: "Real-Time KPI Appraisal & Financial Ledger",
+        telemetryNormal: "Live Sync • 0 Discrepancy",
+        telemetrySpike: "Instant Export (<1.5s)",
+        tags: ["Live KPI Radar", "Multi-Branch", "Financial Audit"],
+        details: "Centralized corporate reporting panel consolidating multi-branch manpower expenses, attendance heatmaps, and tamper-proof payroll disbursement audit logs."
+      }
+    ]
+  },
+  wargahub: {
+    title: "WargaHub (Civic Governance & Embedded WASM Ledger System)",
+    badge: "PGlite WASM • 100% Offline-Capable PWA",
+    description: "Modern civic information and transparent financial management platform for RT/RW neighborhoods, combining Fastify Node.js backends with offline-first client-side PostgreSQL (PGlite WASM) for zero-discrepancy public bookkeepings.",
+    nodes: [
+      {
+        id: "warga-clients",
+        badge: "OFFLINE-FIRST PWA",
+        icon: "📱",
+        title: "Residents PWA & Web Client",
+        desc: "Vue 3 PWA with Local IndexedDB Storage",
+        telemetryNormal: "Offline First • 0ms UI Latency",
+        telemetrySpike: "Instant PWA Load • ServiceWorker",
+        tags: ["Vue 3", "ServiceWorker", "Offline PWA"],
+        details: "Progressive Web Application allowing residents and community leaders to view ledgers, submit proposals, and record dues even without active internet connectivity."
+      },
+      {
+        id: "pglite-wasm",
+        badge: "CLIENT DATABASE",
+        icon: "⚡",
+        title: "Embedded PGlite (WASM)",
+        desc: "Client-side in-browser PostgreSQL execution",
+        telemetryNormal: "0.4ms Local Query • 0 Roundtrip",
+        telemetrySpike: "Sub-millisecond WASM SQL",
+        tags: ["PGlite WASM", "IndexedDB", "Client SQL"],
+        details: "Full PostgreSQL database running inside client browser WebAssembly, executing local relational queries and maintaining cryptographic financial hashes without server latency."
+      },
+      {
+        id: "fastify-gateway",
+        badge: "API GATEWAY",
+        icon: "⚙️",
+        title: "Fastify Gateway & Sync Daemon",
+        desc: "High-throughput asynchronous event synchronizer",
+        telemetryNormal: "3,200 req/s • 0.8ms Overhead",
+        telemetrySpike: "11,000 req/s • Conflict-Free Sync",
+        tags: ["Node.js", "Fastify", "JWT Session"],
+        details: "Ultra-fast asynchronous REST API handling bi-directional data synchronizations, role-based authorization for neighborhood administrators, and public announcement broadcasts."
+      },
+      {
+        id: "master-pg",
+        badge: "MASTER STORAGE",
+        icon: "💾",
+        title: "Central PostgreSQL Master DB",
+        desc: "ACID Transparent Ledger & WAL Archiving",
+        telemetryNormal: "100% Integrity • RPO 0",
+        telemetrySpike: "Replication Synced",
+        tags: ["PostgreSQL 16", "UUIDv7", "Row-Level Security"],
+        details: "Central relational database enforcing Row-Level Security (RLS) per RT/RW tenant, transparent cashbook mutations, and immutable receipt audit trails."
+      },
+      {
+        id: "public-ledger",
+        badge: "TRANSPARENT LEDGER",
+        icon: "📋",
+        title: "Public Ledger & Digital Musyawarah",
+        desc: "Real-Time Budget Transparency & Voting Consensus",
+        telemetryNormal: "100% Transparan • 0 Selisih",
+        telemetrySpike: "Live Consensus Verified",
+        tags: ["Public Cashbook", "Digital Musyawarah", "0 Discrepancy"],
+        details: "Publicly accessible real-time transparency dashboard allowing community members to audit neighborhood budget inflows/outflows down to individual receipt attachments."
+      }
+    ]
+  },
+  openorg: {
+    title: "OpenOrg (Organization Governance Platform & Headless CMS)",
+    badge: "Digital KTA • Cryptographic SKP Academy",
+    description: "Single-tenant enterprise organization management platform with digital membership IDs (KTA), accredited SKP academy credentialing, multi-tier governance hierarchy, and SHA-256 verifiable certificates.",
+    nodes: [
+      {
+        id: "portal-clients",
+        badge: "PORTAL CLIENTS",
+        icon: "🌐",
+        title: "Member Portal & Verification App",
+        desc: "Public credential lookups & digital KTA cards",
+        telemetryNormal: "4,600 req/s • Global CDN",
+        telemetrySpike: "16,000 req/s • 0 Degradation",
+        tags: ["TypeScript", "QR Verification", "Responsive Web"],
+        details: "Public-facing and member web portals accepting instant QR code credential verifications, academy enrollment requests, and digital KTA card generation."
+      },
+      {
+        id: "rbac-shield",
+        badge: "SECURITY EDGE",
+        icon: "🛡️",
+        title: "Governance Hierarchy & RBAC",
+        desc: "Multi-Tier Delegated Administration (DPP/DPD/DPC)",
+        telemetryNormal: "Route ACL Checked • 0.2ms",
+        telemetrySpike: "Role-Level Strict Isolation",
+        tags: ["Multi-Tier RBAC", "Scoped Permissions", "mTLS"],
+        details: "Strict hierarchical permission engine ensuring national, provincial, and regional officers only access records within their authorized organizational tier."
+      },
+      {
+        id: "skp-engine",
+        badge: "CREDENTIAL CORE",
+        icon: "⚙️",
+        title: "SKP Academy & Certification Engine",
+        desc: "Automated Credit Scoring & Certificate Minting",
+        telemetryNormal: "SHA-256 Signed • <150ms",
+        telemetrySpike: "Batch Cert Generation Active",
+        tags: ["SKP Credit Engine", "PDF Generator", "SHA-256 Hash"],
+        details: "Core business logic service computing SKP training credits, evaluating exam pass thresholds, and cryptographically signing tamper-resistant PDF certificates."
+      },
+      {
+        id: "doc-storage",
+        badge: "ENTERPRISE STORAGE",
+        icon: "💾",
+        title: "PostgreSQL Document & Schema DB",
+        desc: "JSONB Schemas, Partitioned Tables & WAL Storage",
+        telemetryNormal: "100% Data Integrity • WORM",
+        telemetrySpike: "Indexing Optimized • 8ms Query",
+        tags: ["JSONB Dynamic Schema", "B-Tree Indexing", "ACID"],
+        details: "High-availability PostgreSQL cluster storing dynamic headless CMS content models, member biographical data, and cryptographic certificate hash tables."
+      },
+      {
+        id: "hash-verifier",
+        badge: "VERIFICATION HUB",
+        icon: "🔍",
+        title: "Cryptographic Hash Verifier",
+        desc: "Instant Public QR Validation & Anti-Forgery Check",
+        telemetryNormal: "Hash Validated • 0 Fake Pass",
+        telemetrySpike: "Anti-Tamper Signature Confirmed",
+        tags: ["SHA-256 Checksum", "Anti-Forgery", "Public Audit"],
+        details: "Zero-knowledge public verification portal matching QR code tokens against immutable SHA-256 certificate hashes, instantly flagging forged or revoked credentials."
+      }
+    ]
   }
 };
 
