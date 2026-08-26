@@ -295,6 +295,7 @@ section {
   border-radius: var(--radius-full);
   box-shadow: var(--shadow-md);
   transition: all var(--transition-normal);
+  flex-wrap: nowrap;
 }
 
 .brand-link {
@@ -2242,14 +2243,17 @@ section {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1080px) {
   .site-nav {
     top: 8px !important;
     padding: 0 12px !important;
+    max-width: 100% !important;
   }
   .nav-glass-container {
-    padding: 6px 12px !important;
+    padding: 6px 14px !important;
     gap: 8px !important;
+    border-radius: 14px !important;
+    flex-wrap: nowrap !important;
   }
   .brand-name {
     font-size: 0.95rem !important;
@@ -2261,6 +2265,9 @@ section {
     display: none !important;
   }
   .nav-links {
+    display: none !important;
+  }
+  .nav-dropdown-menu {
     display: none !important;
   }
   .mobile-toggle {
