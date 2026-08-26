@@ -471,7 +471,35 @@ class TopologyVisualizer {
 
   init() {
     this.initControls();
+    this.initScrollControls();
     this.render();
+  }
+
+  initScrollControls() {
+    if (!this.container) return;
+
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    this.container.addEventListener('mousedown', (e) => {
+      if (e.target.closest('.arch-node') || e.target.closest('button')) return;
+      isDown = true;
+      startX = e.pageX - this.container.offsetLeft;
+      scrollLeft = this.container.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    this.container.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - this.container.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      this.container.scrollLeft = scrollLeft - walk;
+    });
   }
 
   initControls() {
@@ -626,6 +654,7 @@ class TopologyVisualizer {
     const canvasHtml = '<canvas id="topology-flow-canvas"></canvas>';
     this.container.innerHTML = canvasHtml + html;
 
+    this.container.scrollLeft = 0;
     this.initCanvas();
 
     this.container.querySelectorAll(".arch-node").forEach(el => {

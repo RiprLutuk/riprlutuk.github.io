@@ -1047,13 +1047,32 @@ section {
 .topology-canvas-area {
   position: relative;
   width: 100%;
-  min-height: 440px;
+  min-height: 400px;
   background: radial-gradient(circle at center, rgba(30, 41, 59, 0.4), transparent 70%);
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px 16px;
+  justify-content: flex-start;
+  padding: 24px 20px;
   overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(249, 115, 22, 0.5) rgba(255, 255, 255, 0.05);
+}
+
+.topology-canvas-area::-webkit-scrollbar {
+  height: 6px;
+}
+.topology-canvas-area::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+}
+.topology-canvas-area::-webkit-scrollbar-thumb {
+  background: rgba(249, 115, 22, 0.4);
+  border-radius: 3px;
+}
+.topology-canvas-area::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
 }
 
 /* Interactive Node Elements */
@@ -1062,10 +1081,12 @@ section {
   z-index: 2;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
   width: max-content;
   margin: 0 auto;
+  padding: 6px 10px;
+  box-sizing: border-box;
 }
 
 .arch-node {
@@ -1073,8 +1094,8 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 10px;
   padding: 12px 14px;
-  min-width: 220px;
-  max-width: 250px;
+  min-width: 215px;
+  max-width: 240px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
   cursor: pointer;
   transition: all var(--transition-normal);
