@@ -2795,75 +2795,246 @@ section {
 /* ==========================================================================
    MODULE: ENTERPRISE ROI & CLOUD COST SAVINGS CALCULATOR
    ========================================================================== */
+.roi-preset-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.roi-preset-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+}
+
+.roi-preset-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.roi-preset-btn:hover {
+  background: rgba(249, 115, 22, 0.12);
+  border-color: var(--accent-primary);
+  color: #fff;
+}
+.roi-preset-btn.active {
+  background: rgba(249, 115, 22, 0.2);
+  border-color: var(--accent-primary);
+  color: #fff;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.3);
+}
+
 .roi-calculator-wrap {
   display: grid;
   grid-template-columns: 1.2fr 1fr;
-  gap: 24px;
-  background: linear-gradient(145deg, rgba(15, 23, 36, 0.85) 0%, rgba(9, 13, 20, 0.95) 100%);
-  border: 1px solid rgba(249, 115, 22, 0.3);
-  border-radius: var(--radius-xl);
-  padding: 32px;
+  gap: 20px;
+  background: rgba(10, 15, 26, 0.95);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 14px;
+  padding: 24px;
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(20px);
 }
 @media (max-width: 900px) {
-  .roi-calculator-wrap { grid-template-columns: 1fr; padding: 20px; }
+  .roi-calculator-wrap { grid-template-columns: 1fr; padding: 16px; }
+}
+
+.roi-inputs-pane {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.roi-pane-header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.roi-pane-title {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.04em;
 }
 
 .roi-slider-group {
-  margin-bottom: 22px;
+  margin-bottom: 4px;
 }
 
 .roi-slider-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
 }
+
+.roi-val-chip {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.roi-val-chip.primary { color: var(--accent-primary); border-color: rgba(249, 115, 22, 0.3); }
+.roi-val-chip.emerald { color: var(--accent-emerald); border-color: rgba(16, 185, 129, 0.3); }
+.roi-val-chip.amber { color: var(--accent-amber); border-color: rgba(245, 158, 11, 0.3); }
 
 .roi-slider-input {
   width: 100%;
-  height: 6px;
+  height: 5px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.1);
   outline: none;
   -webkit-appearance: none;
   cursor: pointer;
 }
 .roi-slider-input::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--accent-primary);
   cursor: pointer;
-  box-shadow: 0 0 12px var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-primary);
+  transition: transform var(--transition-fast);
+}
+.roi-slider-input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
 }
 
+/* Breakdown Box */
+.roi-breakdown-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.roi-breakdown-title {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 2px;
+}
+
+.roi-breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+.roi-breakdown-row strong {
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+/* Results Card */
 .roi-results-card {
-  background: rgba(6, 10, 16, 0.8);
+  background: rgba(4, 7, 15, 0.9);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 16px;
-  padding: 24px;
+  border-radius: 12px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 0 25px rgba(16, 185, 129, 0.1);
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.08);
+}
+
+.roi-results-tag {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .roi-savings-hero {
   text-align: center;
-  padding: 16px 0;
+  padding: 12px 0;
 }
 
 .roi-savings-number {
-  font-size: 2.2rem;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
   font-weight: 900;
   color: var(--accent-emerald);
   font-family: var(--font-mono);
   line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.roi-savings-sub {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.roi-savings-year {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-emerald);
+  margin-top: 4px;
+  font-family: var(--font-mono);
+}
+
+.roi-spec-grid {
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 10px;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.roi-spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+}
+
+.roi-spec-label {
+  color: var(--text-secondary);
+}
+
+.roi-spec-val {
+  font-family: var(--font-mono);
+}
+.roi-spec-val.highlight { color: var(--accent-primary); }
+.roi-spec-val.success { color: var(--accent-emerald); }
+.roi-spec-val.cyan { color: var(--accent-cyan); }
+
+.roi-actions-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.roi-cta-row {
+  display: flex;
+  gap: 8px;
 }
 
 /* ==========================================================================
