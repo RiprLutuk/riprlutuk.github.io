@@ -6,63 +6,74 @@
 const ARCHITECTURE_DATA = {
   afpi: {
     title: "AFPI National Fintech Data Center (FDC) — ISO/IEC 27001:2022 & UU PDP",
-    badge: "Dual Ingress (SFTP & API) • .NET EOD @ 03:00 & Dedicated Audit DB",
-    description: "National credit federator connecting 100+ licensed P2P lenders over AES-256 IPsec VPN. Dual-ingress architecture: Fail2ban-shielded SFTP zip CSV ingestion into siktemp with .NET EOD ETL @ 03:00 AM, alongside real-time Inquiry API with a dedicated isolated hit-audit database and separate periodic reporting servers (PHP/Shell/PostgreSQL).",
+    badge: "Dual Ingress (SFTP & API) • Fail2ban Shield • .NET EOD @ 03:00 (siktemp) • Dedicated Audit DB • Periodic Reporting (PHP/Shell)",
+    description: "National credit federator connecting 100+ licensed P2P lenders over AES-256 IPsec VPN. Dual-ingress architecture: Fail2ban-shielded SFTP zip CSV batch ingestion validated by .NET into staging table `siktemp` for nightly 03:00 EOD ETL & dynamic PII masking, alongside real-time Inquiry API with a dedicated isolated hit-audit database and separate periodic reporting server running daily, weekly, and monthly regulatory jobs via PHP, Shell, and PostgreSQL.",
     nodes: [
       {
         id: "fintech-vpn",
-        badge: "PERIMETER & VPN",
+        badge: "TIER 1 // PERIMETER",
         icon: "🛡️",
-        title: "100+ Fintech & IPsec VPN",
-        desc: "FortiGate & StrongSwan AES-256 Tunnel (A.8.24)",
-        telemetryNormal: "100+ Nodes • 0 Dropped",
-        telemetrySpike: "DDoS & Intrusion Filter Active",
-        tags: ["IPsec AES-256", "FortiGate", "ISO 27001 A.8.24"],
-        details: "Site-to-site IPsec VPN tunnels with strict IP whitelisting per member and perimeter encryption connecting 100+ licensed P2P lending platforms under OJK oversight."
+        title: "100+ Fintech & FortiGate IPsec",
+        desc: "Dual-Tunnel AES-256-GCM & Ingress Whitelisting (A.8.24)",
+        telemetryNormal: "100+ Platforms • 0 Dropped",
+        telemetrySpike: "DDoS Mitigation Active • <0.5ms Jitter",
+        tags: ["FortiGate UTM", "StrongSwan IPsec", "AES-256-GCM", "ISO 27001 A.8.24"],
+        details: "Hardware-accelerated Fortinet FortiGate cluster & StrongSwan IPsec VPN terminating encrypted site-to-site tunnels across 100+ licensed P2P lenders. Enforces strict IP source whitelisting per member, egress firewall rules, mutual authentication (mTLS), and anti-DDoS perimeter flood protections."
       },
       {
         id: "dual-ingress",
-        badge: "DUAL INGRESS",
+        badge: "TIER 2 // DUAL INGRESS",
         icon: "⚡",
-        title: "SFTP & Query API + Fail2ban",
-        desc: "Fail2ban Anomaly Shield & Dedicated Hit-Audit DB",
+        title: "SFTP & API Servers + Fail2ban",
+        desc: "Isolated Ingress Nodes & Anomaly Jail Shield",
         telemetryNormal: "3,850 req/s • Fail2ban Clean",
-        telemetrySpike: "Fail2ban Blocked 42 Anomaly IPs",
-        tags: ["Fail2ban Shield", "Dedicated Audit DB", "UU PDP Masking"],
-        details: "Dual entry points protected by Fail2ban for anomaly detection and automated brute-force IP blocking. Real-time Inquiry API logs every access hit and token signature into a dedicated, isolated Audit Log Database (ISO 27001 A.8.15 & UU PDP)."
+        telemetrySpike: "Fail2ban Banned 48 IPs (Brute-Force Blocked)",
+        tags: ["Chrooted SFTP", "Query API Gateway", "Fail2ban Jail", "UU PDP Protection"],
+        details: "Physically and logically segregated ingress server pool protected by Fail2ban dynamic jail filters to auto-block suspicious IP anomalies, port probes, and brute-force attempts. Houses chrooted SFTP servers for raw compressed zip batch ingestion alongside real-time query API gateways under strict tenant rate limits."
+      },
+      {
+        id: "dedicated-audit-db",
+        badge: "TIER 3 // AUDIT ISOLATION",
+        icon: "📋",
+        title: "Dedicated API Hit-Audit Database",
+        desc: "100% Request Hash, Token & PII Audit Log",
+        telemetryNormal: "100% Inquiries Logged • WORM Trace",
+        telemetrySpike: "High-Speed Append • 0 Latency on API",
+        tags: ["pgAudit Engine", "Dedicated DB", "5-Year Retention", "UU No. 27/2022"],
+        details: "Independent dedicated PostgreSQL database instance decoupled from production OLTP, recording 100% of API query hits, requester tokens, client IPs, timestamp hashes, and PII access trails. Guarantees tamper resistance and 5-year immutable audit retention for OJK and ISO/IEC 27001:2022 (A.8.15) compliance."
       },
       {
         id: "dotnet-eod",
-        badge: "ETL & EOD BATCH",
+        badge: "TIER 4 // BATCH & ETL CORE",
         icon: "⚙️",
-        title: ".NET Service & EOD @ 03:00",
-        desc: "ZIP CSV Validate ➔ siktemp ➔ EOD ETL",
-        telemetryNormal: "Raw Zip Extracted • Validation OK",
-        telemetrySpike: "EOD Batch Run @ 03:00 Active",
-        tags: [".NET Service", "siktemp Table", "EOD Batch 03:00"],
-        details: "Automated .NET service validating and decompressing raw member CSV zip files into staging table `siktemp`. Scheduled End-of-Day (EOD) engine triggers at 03:00 AM for heavy ETL transformations, deduplication, UU PDP PII dynamic masking, and financial ledger aggregations."
+        title: ".NET Ingest ➔ siktemp ➔ EOD @ 03:00",
+        desc: "ZIP CSV Validate, Staging & Nightly PII Masking",
+        telemetryNormal: "ZIP Validated • siktemp Ingested",
+        telemetrySpike: "EOD Batch Run @ 03:00 WIB (Cleansing Active)",
+        tags: [".NET Core Daemon", "siktemp Staging Table", "EOD Batch @ 03:00", "Dynamic PII Masking"],
+        details: "Automated .NET backend daemon listening on incoming SFTP drops, executing integrity validations, checksum evaluations, and decompression of raw CSV archives directly into staging tables (`siktemp`). At 03:00 AM daily, the scheduled End-of-Day (EOD) batch engine triggers heavy data cleansing, cross-platform borrower deduplication, dynamic PII masking (NIK KTP/Phone hashing under UU PDP), and credit scoring transformations."
       },
       {
         id: "db-cluster",
-        badge: "CORE & AUDIT DB",
+        badge: "TIER 5 // CORE STORAGE & DRC",
         icon: "💾",
-        title: "PostgreSQL HA & DRC Site",
-        desc: "Consolidated Master DB + Separate Audit DB",
+        title: "PostgreSQL HA Master & DRC Site",
+        desc: "Streaming Replication, Encrypted TDE & PITR",
         telemetryNormal: "99.98% SLA • RPO <15m",
-        telemetrySpike: "Sync Active • RTO <1h",
-        tags: ["Postgres HA", "Isolated Audit DB", "DRC Site"],
-        details: "Enterprise database cluster strictly separating core aggregated borrower credit records from the isolated API hit-audit database. Features WAL archiving, encrypted tablespaces, and real-time streaming replication to a secondary Disaster Recovery Center in Indonesia (POJK 10/2022)."
+        telemetrySpike: "DRC Streaming Active • RTO <1h",
+        tags: ["Postgres Primary-Standby", "TDE AES-256", "DRC Site (Indonesia)", "POJK 10/2022"],
+        details: "Enterprise High-Availability PostgreSQL cluster with primary-standby streaming replication and automated failover drills. Houses consolidated borrower ledgers and historical credit performance with table partitioning. Synchronizes continuous WAL archives to a geographically separated Disaster Recovery Center (DRC) in Indonesia to ensure RPO < 15 mins and RTO < 1 hour in compliance with POJK No. 10/POJK.05/2022."
       },
       {
         id: "reporting-server",
-        badge: "REPORTING SERVER",
+        badge: "TIER 6 // REPORTING SERVER",
         icon: "📊",
-        title: "Periodic Reporting Server",
-        desc: "PHP + Shell Scripts + Automated Postgres Jobs",
-        telemetryNormal: "Daily / Weekly / Monthly Jobs OK",
-        telemetrySpike: "Monthly OJK Regulatory Report Compiled",
-        tags: ["PHP Reporting Engine", "Shell Automation", "OJK Compliance"],
-        details: "Separate dedicated reporting server running automated daily, weekly, and monthly batch jobs via PHP and Shell scripts connected to PostgreSQL to compile industry credit trends, AFPI statistics, and regulatory compliance digests."
+        title: "Dedicated Periodic Reporting Server",
+        desc: "PHP CLI + Shell Scripts + PL/pgSQL Stored Procedures",
+        telemetryNormal: "Cron Schedulers Active • 0 OLTP Contention",
+        telemetrySpike: "Monthly OJK Compliance Digest Compiled",
+        tags: ["PHP Batch Engine", "Shell Automation", "PL/pgSQL Procedures", "OJK Regulatory Reports"],
+        details: "Completely isolated dedicated reporting server running automated cron schedules: Daily (disbursement & default reconciliation), Weekly (cross-platform borrower exposure matrix), and Monthly (OJK regulatory compliance digests and national AFPI industry health indicators). Engineered with PHP CLI scripts, optimized Shell automations, and PostgreSQL analytical stored procedures."
       }
     ]
   },
@@ -556,7 +567,15 @@ class TopologyVisualizer {
   }
 
   triggerFailoverAnimation() {
-    const dbNode = this.container.querySelector('.arch-node[data-index="3"]');
+    const nodes = this.container.querySelectorAll('.arch-node');
+    let dbNode = null;
+    nodes.forEach(node => {
+      const badge = node.querySelector('.arch-node-badge');
+      if (badge && (badge.textContent.includes('STORAGE') || badge.textContent.includes('DB') || badge.textContent.includes('CORE'))) {
+        dbNode = node;
+      }
+    });
+    if (!dbNode && nodes.length > 3) dbNode = nodes[3];
     if (dbNode) {
       dbNode.style.boxShadow = "0 0 50px #10b981";
       dbNode.style.borderColor = "#10b981";
