@@ -2992,6 +2992,11 @@ section {
 }
 
 .sre-log-placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
 /* ==========================================================================
    MODULE: TECHNICAL ADVISORY & FREELANCE ENGAGEMENT MODELS
    ========================================================================== */
