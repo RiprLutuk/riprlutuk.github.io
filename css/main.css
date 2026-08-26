@@ -1622,42 +1622,68 @@ section {
   flex-wrap: wrap;
 }
 
+.github-filter-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
 .github-search-input {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-medium);
-  color: var(--text-primary);
-  padding: 10px 18px;
-  border-radius: var(--radius-full);
-  font-size: 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  background: rgba(10, 15, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
   outline: none;
-  min-width: 280px;
-  transition: border-color var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 .github-search-input:focus {
   border-color: var(--accent-primary);
+  box-shadow: 0 0 15px rgba(249, 115, 22, 0.2);
 }
 
 .github-category-tabs {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 6px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  padding-bottom: 4px;
+}
+.github-category-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .github-tab {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
-  padding: 6px 14px;
+  padding: 5px 12px;
   border-radius: var(--radius-full);
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 600;
+  font-family: var(--font-mono);
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all var(--transition-fast);
 }
 .github-tab.active, .github-tab:hover {
-  background: var(--accent-primary);
+  background: rgba(249, 115, 22, 0.18);
   color: #fff;
   border-color: var(--accent-primary);
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.25);
 }
 
 .repo-cards-grid {
@@ -1667,19 +1693,23 @@ section {
 }
 
 .repo-card {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
+  background: rgba(10, 15, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transition: all var(--transition-normal);
+  box-sizing: border-box;
 }
-.repo-card:hover {
-  border-color: var(--accent-cyan);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+.repo-card:hover, .repo-card.active {
+  border-color: var(--accent-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(249, 115, 22, 0.2);
+}
+.repo-card.featured-repo {
+  border-left: 3px solid var(--accent-primary);
 }
 
 .repo-card-top {

@@ -649,7 +649,8 @@ class CyberCarousel {
     this.updateItems();
     this.dotsWrap.innerHTML = '';
 
-    if (this.items.length <= 1) {
+    // If only 1 item, or if more than 7 items (e.g. 18 repos), hide dots to eliminate visual clutter and rely on the counter badge
+    if (this.items.length <= 1 || this.items.length > 7) {
       this.dotsWrap.style.display = 'none';
       return;
     }
