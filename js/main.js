@@ -906,111 +906,115 @@ function startCoreEngine() {
 
   const TERMINAL_TAB_CONTENT = {
     status: `
-      <div class="terminal-command-line">
-        <span class="cmd-prompt">$</span>
-        <span class="cmd-text">cluster-health --live</span>
+      <div class="cli-prompt-line">
+        <span class="cli-user">riprlutuk@prod-k8s:~$</span>
+        <span class="cli-cmd">fleetctl status --live</span>
       </div>
-      <div class="terminal-clean-rows">
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>Core DBA (Postgres, MSSQL, Oracle)</span>
-          <span class="term-val green">99.98% SLA Streaming</span>
+      <div class="cli-tree-list">
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[DBA]</span> <span class="cli-name">PostgreSQL 16 &amp; MSSQL AlwaysOn</span></span>
+          <span class="cli-status-badge online">● 99.98% STREAMING</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>Backend APIs (Go, Python, Laravel)</span>
-          <span class="term-val cyan">200 OK (&lt; 2.5ms)</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[API]</span> <span class="cli-name">Go &amp; Python Microservices</span></span>
+          <span class="cli-status-badge cyan">● 200 OK (2.1ms)</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>Frontend &amp; PWA (Vue 3, PGlite WASM)</span>
-          <span class="term-val green">Offline Sync Ready</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[APP]</span> <span class="cli-name">Vue 3 PWA &amp; PGlite WASM</span></span>
+          <span class="cli-status-badge online">● OFFLINE SYNC</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>Security &amp; ISMS (ISO 27001, FortiGate)</span>
-          <span class="term-val cyan">100+ Nodes Enforced</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">└─</span> <span class="cli-tag">[SEC]</span> <span class="cli-name">ISO 27001 &amp; FortiGate VPN</span></span>
+          <span class="cli-status-badge cyan">● 100+ NODES ENFORCED</span>
         </div>
       </div>
-      <div class="terminal-highlight-bar">
-        <span class="hl-item"><span class="hl-badge">AUDIT</span> Query: <span class="hl-old">4,200ms</span> &rarr; <span class="hl-new">18ms (-99.5%)</span></span>
+      <div class="cli-audit-panel">
+        <span><span class="cli-audit-key">QUERY OPT:</span> <span style="color:#ef4444;text-decoration:line-through;">4,200ms</span> &rarr; <span class="cli-audit-val">18ms (-99.5%)</span></span>
+        <span><span class="cli-audit-key">ISMS:</span> <span class="cli-audit-val">ISO 27001 Certified</span></span>
       </div>
     `,
     migrations: `
-      <div class="terminal-command-line">
-        <span class="cmd-prompt">$</span>
-        <span class="cmd-text">linknet-migrations --status</span>
+      <div class="cli-prompt-line">
+        <span class="cli-user">riprlutuk@prod-k8s:~$</span>
+        <span class="cli-cmd">db-migrate --audit-log</span>
       </div>
-      <div class="terminal-clean-rows">
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>Oracle 19c &rarr; PostgreSQL 16</span>
-          <span class="term-val green">PL/pgSQL Rewritten (0-Lag)</span>
+      <div class="cli-tree-list">
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[MIGRATE]</span> <span class="cli-name">Oracle 19c &rarr; PostgreSQL 16</span></span>
+          <span class="cli-status-badge online">● PL/pgSQL (0-LAG)</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>MongoDB &rarr; AWS DocumentDB</span>
-          <span class="term-val cyan">Sharded Replicas Active</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[NOSQL]</span> <span class="cli-name">MongoDB &rarr; AWS DocumentDB</span></span>
+          <span class="cli-status-badge cyan">● REPLICAS ACTIVE</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>AWS RDS &rarr; TencentDB</span>
-          <span class="term-val green">Cloud Cost -35%</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[CLOUD]</span> <span class="cli-name">AWS RDS &rarr; TencentDB Cloud</span></span>
+          <span class="cli-status-badge online">● COST REDUCED -35%</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>Fleet Observability (Prometheus)</span>
-          <span class="term-val cyan">24/7 Monitored</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">└─</span> <span class="cli-tag">[METRICS]</span> <span class="cli-name">Prometheus + Grafana Fleet</span></span>
+          <span class="cli-status-badge cyan">● 24/7 TELEMETRY</span>
         </div>
       </div>
-      <div class="terminal-highlight-bar">
-        <span class="hl-item"><span class="hl-badge">VALIDATION</span> Discrepancy: <span class="hl-new">0 Rows</span> | Cutover: <span class="hl-new">&lt; 10s</span></span>
+      <div class="cli-audit-panel">
+        <span><span class="cli-audit-key">DATA INTEGRITY:</span> <span class="cli-audit-val">0 Rows Discrepancy (100%)</span></span>
+        <span><span class="cli-audit-key">CUTOVER:</span> <span class="cli-audit-val">&lt; 10s Downtime</span></span>
       </div>
     `,
     security: `
-      <div class="terminal-command-line">
-        <span class="cmd-prompt">$</span>
-        <span class="cmd-text">security-audit --iso27001</span>
+      <div class="cli-prompt-line">
+        <span class="cli-user">riprlutuk@prod-k8s:~$</span>
+        <span class="cli-cmd">isms-audit --compliance</span>
       </div>
-      <div class="terminal-clean-rows">
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>ISO/IEC 27001:2022 ISMS</span>
-          <span class="term-val green">Audit Passed &amp; Certified</span>
+      <div class="cli-tree-list">
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[ISO-27001]</span> <span class="cli-name">ISO/IEC 27001:2022 ISMS</span></span>
+          <span class="cli-status-badge online">● AUDIT PASSED</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>UU No. 27/2022 (UU PDP)</span>
-          <span class="term-val cyan">AES-256 Encryption</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[PDP-LAW]</span> <span class="cli-name">UU No. 27/2022 Data Privacy</span></span>
+          <span class="cli-status-badge cyan">● AES-256 ACTIVE</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>FortiGate IPsec VPN</span>
-          <span class="term-val green">100+ P2P Lenders Secured</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[IPSEC]</span> <span class="cli-name">FortiGate VPN Mesh (100+ P2P)</span></span>
+          <span class="cli-status-badge online">● TUNNELS SECURE</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>pgAudit &amp; Access Controls</span>
-          <span class="term-val cyan">5-Year Retention</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">└─</span> <span class="cli-tag">[AUDIT]</span> <span class="cli-name">pgAudit Immutable Audit Trails</span></span>
+          <span class="cli-status-badge cyan">● 5-YEAR ARCHIVE</span>
         </div>
       </div>
-      <div class="terminal-highlight-bar">
-        <span class="hl-item"><span class="hl-badge">DRC</span> Standby: <span class="hl-new">Synchronized</span> | RPO &lt; 15m, RTO &lt; 1h</span>
+      <div class="cli-audit-panel">
+        <span><span class="cli-audit-key">DRC SITE:</span> <span class="cli-audit-val">Synchronized Standby</span></span>
+        <span><span class="cli-audit-key">RECOVERY:</span> <span class="cli-audit-val">RPO &lt; 15m / RTO &lt; 1h</span></span>
       </div>
     `,
     mobile: `
-      <div class="terminal-command-line">
-        <span class="cmd-prompt">$</span>
-        <span class="cmd-text">mobile-stack --status</span>
+      <div class="cli-prompt-line">
+        <span class="cli-user">riprlutuk@prod-k8s:~$</span>
+        <span class="cli-cmd">mobile-stack --diagnostics</span>
       </div>
-      <div class="terminal-clean-rows">
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>Android Native (Java)</span>
-          <span class="term-val green">Face ID Biometrics Pass</span>
+      <div class="cli-tree-list">
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[ANDROID]</span> <span class="cli-name">Java Native + Face Biometrics</span></span>
+          <span class="cli-status-badge online">● PASS (0.4s CONFIRM)</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>Flutter Cross-Platform</span>
-          <span class="term-val cyan">Anti-Mock GPS (0.00% Spoof)</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[FLUTTER]</span> <span class="cli-name">Anti-Mock GPS Geo-Fencing</span></span>
+          <span class="cli-status-badge cyan">● 0.00% SPOOF RATE</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot green"></span>Vue 3 PWA + Fastify</span>
-          <span class="term-val green">PGlite WASM Embedded</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">├─</span> <span class="cli-tag">[PWA-SQL]</span> <span class="cli-name">PGlite WASM Embedded DB</span></span>
+          <span class="cli-status-badge online">● 0.4ms LOCAL QUERY</span>
         </div>
-        <div class="term-clean-row">
-          <span class="term-label"><span class="term-status-dot cyan"></span>Go REST &amp; WebSockets</span>
-          <span class="term-val cyan">2.5ms Overhead</span>
+        <div class="cli-tree-row">
+          <span><span class="cli-branch">└─</span> <span class="cli-tag">[GATEWAY]</span> <span class="cli-name">Go REST &amp; WebSocket Daemon</span></span>
+          <span class="cli-status-badge cyan">● 2.5ms LATENCY</span>
         </div>
       </div>
-      <div class="terminal-highlight-bar">
-        <span class="hl-item"><span class="hl-badge">PERF</span> Attendance Log: <span class="hl-new">0.4s Instant</span> | Local DB: <span class="hl-new">100% Offline</span></span>
+      <div class="cli-audit-panel">
+        <span><span class="cli-audit-key">ATTENDANCE LOG:</span> <span class="cli-audit-val">0.4s Instant Sync</span></span>
+        <span><span class="cli-audit-key">STORAGE:</span> <span class="cli-audit-val">100% Offline-First</span></span>
       </div>
     `
   };
