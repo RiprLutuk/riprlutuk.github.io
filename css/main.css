@@ -2513,36 +2513,150 @@ section {
   gap: 14px;
 }
 
+/* ==========================================================================
+   MODULE: INTERACTIVE DBA DIAGNOSTIC LAB & EXPLAIN ANALYZE VISUALIZER
+   ========================================================================== */
+.dba-lab-card {
+  background: rgba(10, 15, 26, 0.95);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+}
+
+.dba-lab-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 18px;
+  background: rgba(6, 9, 17, 0.95);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dba-topbar-select-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dba-scenario-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  white-space: nowrap;
+}
+
 .dba-select-input {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-medium);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-primary);
-  padding: 8px 14px;
-  border-radius: var(--radius-md);
-  font-family: var(--font-sans);
-  font-size: 0.88rem;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
   font-weight: 600;
   outline: none;
   cursor: pointer;
+  max-width: 100%;
+  flex: 1 1 auto;
+  transition: all var(--transition-fast);
 }
 .dba-select-input:focus {
   border-color: var(--accent-primary);
 }
 
+.dba-topbar-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* Scenario Header */
+.dba-scenario-header {
+  padding: 16px 20px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.dba-scenario-left {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.dba-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.dba-engine-badge {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.dba-scenario-title {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.dba-problem-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.dba-speedup-badge {
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  background: rgba(244, 63, 94, 0.12);
+  color: var(--accent-rose);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+/* Panes */
 .dba-lab-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 24px;
+  gap: 14px;
+  padding: 16px 20px;
 }
-@media (max-width: 900px) {
-  .dba-lab-body { grid-template-columns: 1fr; }
+@media (max-width: 840px) {
+  .dba-lab-body { grid-template-columns: 1fr; gap: 10px; }
 }
 
 .dba-code-pane {
-  background: #050811;
+  background: #040711;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -2552,65 +2666,130 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.dba-badge-in {
+  color: var(--accent-cyan);
+}
+.dba-badge-out {
+  color: var(--accent-emerald);
 }
 
 .dba-code-content {
-  padding: 16px;
+  padding: 12px 14px;
   margin: 0;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.72rem;
+  line-height: 1.5;
   color: #e2e8f0;
   overflow-x: auto;
   flex-grow: 1;
-  max-height: 320px;
+  max-height: 220px;
+}
+.dba-code-content.output {
+  color: #a7f3d0;
+}
+
+/* Footer & Metrics HUD */
+.dba-footer-wrap {
+  padding: 0 20px 20px 20px;
 }
 
 .dba-metrics-hud {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
+  gap: 8px;
 }
-@media (max-width: 600px) {
+@media (max-width: 640px) {
   .dba-metrics-hud { grid-template-columns: 1fr; }
 }
 
 .dba-metric-box {
-  background: rgba(6, 10, 16, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 12px 14px;
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  padding: 8px 12px;
+  text-align: center;
 }
 
 .dba-metric-box-label {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.64rem;
   color: var(--text-muted);
   text-transform: uppercase;
-  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
 }
 
 .dba-metric-box-val {
   font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-size: 0.92rem;
   font-weight: 800;
-  color: var(--accent-primary);
+  color: #fff;
 }
 
-/* SRE Incident Room */
+.dba-solution-desc {
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+
+/* SRE Box */
 .sre-incident-box {
-  background: rgba(6, 10, 16, 0.85);
-  border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 14px;
-  padding: 20px;
-  margin-top: 20px;
+  margin-top: 12px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--accent-rose);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.sre-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.sre-box-title {
+  color: #fff;
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+}
+
+.sre-box-sub {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-left: 6px;
+}
+
+.sre-live-logs {
+  background: #03060f;
+  border-radius: 6px;
+  padding: 8px 12px;
+  max-height: 95px;
+  overflow-y: auto;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.sre-log-placeholder {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -4444,19 +4623,45 @@ body {
   .dba-lab-topbar {
     flex-direction: column !important;
     align-items: stretch !important;
-    padding: 12px !important;
-    gap: 10px !important;
+    padding: 10px 12px !important;
+    gap: 8px !important;
+  }
+
+  .dba-topbar-select-wrap {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 4px !important;
+  }
+
+  .dba-topbar-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+  .dba-topbar-actions .persona-btn-minimal {
+    font-size: 0.72rem !important;
+    padding: 6px 8px !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100% !important;
   }
 
   .dba-select-input {
     width: 100% !important;
-    font-size: 0.78rem !important;
+    font-size: 0.74rem !important;
+    padding: 6px 8px !important;
+  }
+
+  .dba-scenario-header {
+    padding: 12px 12px 0 12px !important;
+    gap: 8px !important;
   }
 
   .dba-lab-body {
-    padding: 12px 10px !important;
+    padding: 10px 12px !important;
     grid-template-columns: 1fr !important;
-    gap: 12px !important;
+    gap: 10px !important;
   }
 
   .dba-code-pane {
@@ -4465,18 +4670,31 @@ body {
   }
 
   .dba-code-content {
-    font-size: 0.7rem !important;
-    max-height: 200px !important;
-    padding: 10px !important;
+    font-size: 0.68rem !important;
+    max-height: 180px !important;
+    padding: 8px 10px !important;
+  }
+
+  .dba-footer-wrap {
+    padding: 0 12px 14px 12px !important;
   }
 
   .dba-metrics-hud {
-    grid-template-columns: 1fr !important;
-    gap: 6px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px !important;
+  }
+  .dba-metric-box {
+    padding: 6px 4px !important;
+  }
+  .dba-metric-box-label {
+    font-size: 0.56rem !important;
+  }
+  .dba-metric-box-val {
+    font-size: 0.78rem !important;
   }
 
   .sre-incident-box {
-    padding: 12px !important;
+    padding: 10px !important;
   }
 
   /* Bento Project Cards Internal */

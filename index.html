@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787753496">
+  <link rel="stylesheet" href="css/main.css?v=1787753759">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -860,10 +860,8 @@
         <div id="dba-lab-container" class="dba-lab-card">
           <!-- Topbar Controls -->
           <div class="dba-lab-topbar">
-            <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
-              <span style="font-family: var(--font-mono); font-size: 0.8rem; font-weight: 700; color: var(--accent-primary);">
-                🔬 WORKLOAD SCENARIO:
-              </span>
+            <div class="dba-topbar-select-wrap">
+              <span class="dba-scenario-label">🔬 WORKLOAD SCENARIO:</span>
               <select id="dba-scenario-select" class="dba-select-input">
                 <option value="seqscan">1. 10M Row Ledger Table (Sequential Scan vs Composite B-Tree Index)</option>
                 <option value="deadlock">2. Crowdfunding Escrow Deadlock (Advisory Locks &amp; Serializable Isolation)</option>
@@ -872,29 +870,29 @@
               </select>
             </div>
 
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <button id="dba-toggle-optimize-btn" class="btn-cta btn-primary" style="padding: 8px 16px; font-size: 0.82rem;">
+            <div class="dba-topbar-actions">
+              <button id="dba-toggle-optimize-btn" class="persona-btn-minimal active">
                 <span>⚡ Apply Heri&#39;s DB Optimization</span>
               </button>
-              <button id="dba-run-btn" class="btn-cta btn-secondary" style="padding: 8px 14px; font-size: 0.82rem;">
+              <button id="dba-run-btn" class="persona-btn-minimal">
                 <span>🚀 Run EXPLAIN ANALYZE</span>
               </button>
             </div>
           </div>
 
           <!-- Scenario Header & Speedup Badge -->
-          <div style="padding: 20px 24px 0 24px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px;">
-            <div>
-              <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span id="dba-engine-badge" class="bento-pill">PostgreSQL 16</span>
-                <h3 id="dba-scenario-title" style="font-size: 1.15rem; font-weight: 800; color: #fff; margin: 0;">10M Row Ledger Table: Sequential Scan vs B-Tree Composite Index</h3>
+          <div class="dba-scenario-header">
+            <div class="dba-scenario-left">
+              <div class="dba-title-row">
+                <span id="dba-engine-badge" class="dba-engine-badge">PostgreSQL 16</span>
+                <h3 id="dba-scenario-title" class="dba-scenario-title">10M Row Ledger Table: Sequential Scan vs B-Tree Composite Index</h3>
               </div>
-              <p id="dba-problem-desc" style="font-size: 0.85rem; color: var(--text-secondary); margin: 0; max-width: 800px; line-height: 1.5;">
+              <p id="dba-problem-desc" class="dba-problem-desc">
                 A monthly financial aggregation query on a 10,000,000 row transaction table takes 4,280ms, triggering CPU spikes and locking connection threads.
               </p>
             </div>
 
-            <div id="dba-speedup-badge" style="padding: 6px 14px; border-radius: var(--radius-full); font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; border: 1px solid rgba(244, 63, 94, 0.3); background: rgba(244, 63, 94, 0.15); color: var(--accent-rose); display: inline-flex; align-items: center; gap: 6px;">
+            <div id="dba-speedup-badge" class="dba-speedup-badge">
               ⚠️ UNOPTIMIZED WORKLOAD
             </div>
           </div>
@@ -905,14 +903,14 @@
             <div class="dba-code-pane">
               <div class="dba-code-header">
                 <span>📄 SQL WORKLOAD &amp; DDL</span>
-                <span style="color: var(--accent-cyan);">INPUT</span>
+                <span class="dba-badge-in">INPUT</span>
               </div>
-              <pre id="dba-query-code" class="dba-code-content">SELECT tenant_id, DATE_TRUNC(&#39;month&#39;, created_at) AS tx_month, 
+              <pre id="dba-query-code" class="dba-code-content">SELECT tenant_id, DATE_TRUNC('month', created_at) AS tx_month, 
        SUM(amount) AS total_volume, COUNT(*) AS tx_count
 FROM financial_transactions
-WHERE tenant_id = &#39;afpi_node_99&#39; 
-  AND created_at &gt;= &#39;2025-01-01&#39; 
-  AND status = &#39;COMPLETED&#39;
+WHERE tenant_id = 'afpi_node_99' 
+  AND created_at &gt;= '2025-01-01' 
+  AND status = 'COMPLETED'
 GROUP BY 1, 2;</pre>
             </div>
 
@@ -920,10 +918,10 @@ GROUP BY 1, 2;</pre>
             <div class="dba-code-pane">
               <div class="dba-code-header">
                 <span>📊 EXPLAIN (ANALYZE, BUFFERS) OUTPUT</span>
-                <span style="color: var(--accent-emerald);">EXECUTION TREE</span>
+                <span class="dba-badge-out">EXECUTION TREE</span>
               </div>
-              <pre id="dba-plan-output" class="dba-code-content" style="color: #a7f3d0;">Seq Scan on financial_transactions (cost=0.00..428,940.10 rows=14,200 width=48) (actual time=42.10..4280.45 rows=14,198 loops=1)
-  Filter: ((created_at &gt;= &#39;2025-01-01&#39;::date) AND (status = &#39;COMPLETED&#39;::text) AND (tenant_id = &#39;afpi_node_99&#39;::text))
+              <pre id="dba-plan-output" class="dba-code-content output">Seq Scan on financial_transactions (cost=0.00..428,940.10 rows=14,200 width=48) (actual time=42.10..4280.45 rows=14,198 loops=1)
+  Filter: ((created_at &gt;= '2025-01-01'::date) AND (status = 'COMPLETED'::text) AND (tenant_id = 'afpi_node_99'::text))
   Rows Removed by Filter: 9,985,802
   Buffers: shared hit=8,201 read=342,100
 Planning Time: 0.852 ms
@@ -931,41 +929,41 @@ Execution Time: 4280.950 ms</pre>
             </div>
           </div>
 
-          <!-- Live Metrics HUD -->
-          <div style="padding: 0 24px 24px 24px;">
+          <!-- Live Metrics HUD & Diagnosis -->
+          <div class="dba-footer-wrap">
             <div class="dba-metrics-hud">
               <div class="dba-metric-box">
                 <div class="dba-metric-box-label">Execution Latency</div>
                 <div id="dba-metric-latency" class="dba-metric-box-val" style="color: #f43f5e;">4,280 ms</div>
               </div>
               <div class="dba-metric-box">
-                <div class="dba-metric-box-label">Optimizer Planner Cost</div>
+                <div class="dba-metric-box-label">Optimizer Cost</div>
                 <div id="dba-metric-cost" class="dba-metric-box-val">428,940</div>
               </div>
               <div class="dba-metric-box">
                 <div class="dba-metric-box-label">Buffer Cache vs Disk I/O</div>
-                <div id="dba-metric-buffers" class="dba-metric-box-val" style="font-size: 0.95rem;">342,100 Disk Read</div>
+                <div id="dba-metric-buffers" class="dba-metric-box-val" style="font-size: 0.82rem;">342,100 Disk Read</div>
               </div>
             </div>
 
-            <div id="dba-solution-desc" style="margin-top: 14px; padding: 12px 16px; background: rgba(255, 255, 255, 0.04); border-radius: 8px; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5;">
-              <strong>Bottleneck Diagnosis:</strong> Click <em>"Apply Heri&#39;s DB Optimization"</em> to see the index tuning and architecture refactor.
+            <div id="dba-solution-desc" class="dba-solution-desc">
+              <strong>Bottleneck Diagnosis:</strong> Click <em>"Apply Heri's DB Optimization"</em> to see the index tuning and architecture refactor.
             </div>
 
             <!-- Embedded SRE Incident Simulator -->
             <div class="sre-incident-box">
-              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 10px;">
+              <div class="sre-box-header">
                 <div>
-                  <strong style="color: #fff; font-size: 0.95rem;">🚨 Production SRE Resilience Drill:</strong>
-                  <span style="font-size: 0.8rem; color: var(--text-secondary); margin-left: 6px;">Simulate automated incident response under 40,000 req/s load.</span>
+                  <strong class="sre-box-title">🚨 Production SRE Resilience Drill:</strong>
+                  <span class="sre-box-sub">Simulate automated incident response under 40,000 req/s load.</span>
                 </div>
-                <button id="sre-drill-trigger-btn" class="btn-cta btn-primary" style="padding: 6px 14px; font-size: 0.78rem;">
-                  <span>⚡ Simulate Automated Playbook</span>
+                <button id="sre-drill-trigger-btn" class="persona-btn-minimal">
+                  <span>⚡ Run SRE Drill</span>
                 </button>
               </div>
-              <div id="sre-live-logs" style="background: #050811; border-radius: 6px; padding: 10px 14px; max-height: 110px; overflow-y: auto; border: 1px solid rgba(255,255,255,0.06);">
-                <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-muted);">
-                  [System Idle] Click "Simulate Automated Playbook" to test multi-tier perimeter &amp; database failover drill.
+              <div id="sre-live-logs" class="sre-live-logs">
+                <div class="sre-log-placeholder">
+                  [System Idle] Click "Run SRE Drill" to test multi-tier perimeter &amp; database failover drill.
                 </div>
               </div>
             </div>
@@ -2129,12 +2127,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787753496"></script>
-  <script src="js/main.js?v=1787753496"></script>
-  <script src="js/dba-lab.js?v=1787753496"></script>
-  <script src="js/roi-calculator.js?v=1787753496"></script>
-  <script src="js/topology.js?v=1787753496"></script>
-  <script src="js/github.js?v=1787753496"></script>
-  <script src="js/terminal.js?v=1787753496"></script>
+  <script src="js/audio.js?v=1787753759"></script>
+  <script src="js/main.js?v=1787753759"></script>
+  <script src="js/dba-lab.js?v=1787753759"></script>
+  <script src="js/roi-calculator.js?v=1787753759"></script>
+  <script src="js/topology.js?v=1787753759"></script>
+  <script src="js/github.js?v=1787753759"></script>
+  <script src="js/terminal.js?v=1787753759"></script>
 </body>
 </html>
