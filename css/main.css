@@ -1893,53 +1893,67 @@ section {
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (MOBILE & TABLET)
+   RESPONSIVE DESIGN (BASE MOBILE & TABLET LAYOUT)
    ========================================================================== */
 
 @media (max-width: 992px) {
-  .hero-grid, .recruiter-grid, .benchmark-grid {
-    grid-template-columns: 1fr;
-  }
-  .bento-projects-grid {
-    grid-template-columns: 1fr;
+  .hero-grid, .recruiter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
   }
   .footer-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
   }
   .hero-stats-row {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr) !important;
   }
   .arch-diagram-flow {
-    flex-direction: column;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 320px !important;
+    margin: 0 auto !important;
+  }
+  .arch-node {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .arch-connector {
+    height: 30px !important;
+    width: 2px !important;
   }
   .arch-connector-line {
-    width: 2px;
-    height: 30px;
+    width: 2px !important;
+    height: 100% !important;
   }
 }
 
 @media (max-width: 768px) {
-  .nav-links {
-    display: none;
+  .site-nav {
+    top: 8px !important;
+    padding: 0 12px !important;
   }
-  .nav-links.mobile-open {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 70px;
-    left: 24px;
-    right: 24px;
-    background: var(--bg-surface-elevated);
-    border: 1px solid var(--border-medium);
-    border-radius: var(--radius-lg);
-    padding: 20px;
-    box-shadow: var(--shadow-lg);
+  .nav-glass-container {
+    padding: 6px 12px !important;
+    gap: 8px !important;
+  }
+  .brand-name {
+    font-size: 0.95rem !important;
+  }
+  .brand-badge {
+    display: none !important;
+  }
+  .btn-cli-badge {
+    display: none !important;
+  }
+  .nav-links {
+    display: none !important;
   }
   .mobile-toggle {
-    display: inline-flex;
+    display: inline-flex !important;
   }
   .ats-features-list {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 }
 
@@ -3249,13 +3263,20 @@ body {
   .repo-cards-grid.carousel-snap,
   .education-grid.carousel-snap {
     display: flex !important;
+    flex-direction: row !important;
     flex-wrap: nowrap !important;
     overflow-x: auto !important;
+    overflow-y: hidden !important;
     scroll-snap-type: x mandatory !important;
     scroll-behavior: smooth !important;
     -webkit-overflow-scrolling: touch !important;
-    gap: 16px !important;
-    padding: 10px 4px 20px 4px !important;
+    gap: 14px !important;
+    padding: 10px 16px 20px 16px !important;
+    margin-left: -16px !important;
+    margin-right: -16px !important;
+    width: calc(100% + 32px) !important;
+    max-width: calc(100% + 32px) !important;
+    box-sizing: border-box !important;
     scrollbar-width: none !important; /* Firefox */
   }
 
@@ -3266,91 +3287,98 @@ body {
     display: none !important; /* Chrome, Safari, Edge */
   }
 
-  /* Card Widths & Snap Alignment for 1-Card Mobile View */
-  .bento-projects-grid.carousel-snap > .bento-card {
-    flex: 0 0 calc(100% - 32px) !important;
-    max-width: 380px !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-
-  .benchmark-grid.carousel-snap > .benchmark-box {
-    flex: 0 0 calc(100% - 32px) !important;
-    max-width: 380px !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-
-  .repo-cards-grid.carousel-snap > .repo-card {
-    flex: 0 0 calc(100% - 32px) !important;
-    max-width: 360px !important;
-    scroll-snap-align: center !important;
-    scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-  }
-
+  /* Card Widths & Snap Alignment for Native App-like Card Peeking */
+  .bento-projects-grid.carousel-snap > .bento-card,
+  .benchmark-grid.carousel-snap > .benchmark-box,
+  .repo-cards-grid.carousel-snap > .repo-card,
   .education-grid.carousel-snap > div {
-    flex: 0 0 calc(100% - 32px) !important;
-    max-width: 340px !important;
+    flex: 0 0 calc(100vw - 48px) !important;
+    max-width: 360px !important;
+    min-width: 270px !important;
     scroll-snap-align: center !important;
     scroll-snap-stop: always !important;
     box-sizing: border-box !important;
+    margin: 0 !important;
+    touch-action: pan-y pinch-zoom !important;
   }
 
-  /* Disable 3D tilt on mobile/tablet to avoid touch conflicts */
+  /* Disable 3D tilt on touch screens */
   .bento-card, .benchmark-box, .dba-lab-card, .roi-results-card, .repo-card {
     transform: none !important;
   }
 }
 
-/* Additional Fine-Tuning for Small Screens (<= 640px) */
+/* ==========================================================================
+   FINE-TUNING FOR MOBILE SCREENS (<= 640px)
+   ========================================================================== */
 @media (max-width: 640px) {
   html, body {
     overflow-x: hidden !important;
+    max-width: 100vw !important;
+    width: 100% !important;
+    position: relative !important;
   }
 
   .container {
+    width: 100% !important;
+    max-width: 100% !important;
     padding: 0 16px !important;
+    box-sizing: border-box !important;
   }
 
   section {
-    padding: 48px 0 !important;
+    padding: 40px 0 !important;
   }
 
   .section-header {
-    margin-bottom: 28px !important;
+    margin-bottom: 24px !important;
   }
 
   .section-title {
-    font-size: clamp(1.6rem, 6vw, 2.1rem) !important;
+    font-size: clamp(1.5rem, 5.8vw, 2rem) !important;
   }
 
   .section-subtitle {
-    font-size: 0.92rem !important;
+    font-size: 0.88rem !important;
   }
 
   /* Hero Section */
   .hero-section {
-    padding: 24px 0 40px !important;
+    padding: 16px 0 36px !important;
     min-height: auto !important;
   }
 
   .hero-headline {
-    font-size: clamp(1.75rem, 6.5vw, 2.4rem) !important;
+    font-size: clamp(1.65rem, 6.2vw, 2.2rem) !important;
     line-height: 1.25 !important;
+    word-break: break-word !important;
+  }
+
+  .hero-dynamic-text-wrap {
+    white-space: normal !important;
+    flex-wrap: wrap !important;
+    min-height: auto !important;
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    margin-bottom: 14px !important;
+  }
+
+  .status-badge-live {
+    font-size: 0.72rem !important;
+    padding: 4px 10px !important;
+    margin-bottom: 14px !important;
+    white-space: normal !important;
   }
 
   .persona-switch-bar {
-    margin: 14px 0 !important;
+    margin: 12px 0 !important;
   }
 
   .persona-pills-group {
     display: flex !important;
     overflow-x: auto !important;
     flex-wrap: nowrap !important;
-    gap: 8px !important;
+    gap: 6px !important;
     padding-bottom: 6px !important;
     scrollbar-width: none !important;
     -webkit-overflow-scrolling: touch !important;
@@ -3364,7 +3392,15 @@ body {
   }
 
   .persona-pitch-card {
-    padding: 14px 16px !important;
+    padding: 14px 14px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .persona-pitch-title {
+    font-size: 0.88rem !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
   }
 
   .persona-pitch-points {
@@ -3372,11 +3408,81 @@ body {
     gap: 6px !important;
   }
 
-  /* Hero Terminal HUD Stats */
+  .persona-pitch-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 8px !important;
+  }
+
+  .persona-pitch-actions > * {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  /* Hero Terminal Card */
+  .hero-card-terminal {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .terminal-tabs-bar {
+    display: flex !important;
+    overflow-x: auto !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    padding: 6px 8px !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .t-tab-btn {
+    white-space: nowrap !important;
+    flex-shrink: 0 !important;
+    font-size: 0.68rem !important;
+    padding: 4px 8px !important;
+  }
+
+  .terminal-card-body {
+    padding: 12px 10px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-x: auto !important;
+  }
+
+  .terminal-table-list, .terminal-query-audit {
+    padding: 8px 10px !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
+  }
+
+  .terminal-row {
+    font-size: 0.7rem !important;
+    gap: 6px !important;
+  }
+
+  .t-label {
+    white-space: normal !important;
+  }
+
+  .t-val-green, .t-val-cyan {
+    white-space: nowrap !important;
+    font-size: 0.68rem !important;
+    flex-shrink: 0 !important;
+  }
+
+  .t-audit-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    font-size: 0.72rem !important;
+  }
+
   .terminal-card-stats {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 6px !important;
-    padding: 0 14px 14px 14px !important;
+    padding: 0 10px 12px 10px !important;
   }
 
   .t-stat-card {
@@ -3386,7 +3492,7 @@ body {
   .hero-stats-row {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 8px !important;
-    padding: 12px 14px !important;
+    padding: 12px 10px !important;
   }
 
   .stat-box {
@@ -3394,23 +3500,30 @@ body {
   }
 
   .stat-number {
-    font-size: 1.15rem !important;
+    font-size: 1.1rem !important;
   }
 
   .stat-label {
     font-size: 0.68rem !important;
   }
 
+  .telemetry-ticker-bar {
+    padding: 6px 10px !important;
+    font-size: 0.68rem !important;
+    overflow-x: auto !important;
+    max-width: 100% !important;
+  }
+
   /* Recruiter Role Matcher & Quiz */
   .recruiter-matcher-wrap {
-    padding: 16px !important;
+    padding: 14px 12px !important;
   }
 
   .matcher-role-pills {
     display: flex !important;
     overflow-x: auto !important;
     flex-wrap: nowrap !important;
-    gap: 8px !important;
+    gap: 6px !important;
     padding-bottom: 6px !important;
     scrollbar-width: none !important;
     -webkit-overflow-scrolling: touch !important;
@@ -3419,16 +3532,28 @@ body {
   .matcher-pill-btn {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
-    font-size: 0.76rem !important;
-    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+    padding: 6px 10px !important;
+  }
+
+  .matcher-result-card {
+    padding: 14px 12px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+  }
+
+  .matcher-result-card .btn-cta {
+    width: 100% !important;
+    justify-content: center !important;
   }
 
   .recruiter-quiz-card {
-    padding: 16px !important;
+    padding: 14px 12px !important;
   }
 
   .quiz-question-box {
-    padding: 12px 14px !important;
+    padding: 10px 12px !important;
   }
 
   .quiz-option-btn {
@@ -3437,9 +3562,24 @@ body {
     min-height: 44px !important;
   }
 
-  /* Topology */
+  .faq-row {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+    padding: 6px 0 !important;
+  }
+
+  /* System Topology */
   .topology-container {
-    border-radius: var(--radius-lg) !important;
+    border-radius: var(--radius-md) !important;
+    max-width: 100% !important;
+  }
+
+  .topology-header {
+    padding: 12px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
   }
 
   .topology-tabs {
@@ -3455,38 +3595,126 @@ body {
   .topology-tab-btn {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
+    padding: 6px 12px !important;
+    font-size: 0.75rem !important;
+  }
+
+  .topology-controls-bar {
+    display: flex !important;
+    gap: 6px !important;
+    width: 100% !important;
+  }
+
+  .topology-btn-sim {
+    flex: 1 !important;
+    font-size: 0.72rem !important;
+    padding: 6px 8px !important;
+    text-align: center !important;
+    justify-content: center !important;
+  }
+
+  .topology-canvas-area {
+    min-height: 380px !important;
+    padding: 16px 8px !important;
+    overflow-x: auto !important;
+  }
+
+  .topology-detail-panel {
+    padding: 14px 12px !important;
   }
 
   /* DBA Lab */
+  .dba-lab-card {
+    border-radius: var(--radius-md) !important;
+    max-width: 100% !important;
+  }
+
   .dba-lab-topbar {
     flex-direction: column !important;
     align-items: stretch !important;
-    padding: 14px 16px !important;
+    padding: 12px !important;
+    gap: 10px !important;
   }
 
   .dba-select-input {
     width: 100% !important;
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
   }
 
   .dba-lab-body {
-    padding: 14px 16px !important;
+    padding: 12px 10px !important;
+    grid-template-columns: 1fr !important;
     gap: 12px !important;
   }
 
+  .dba-code-pane {
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+
   .dba-code-content {
-    font-size: 0.72rem !important;
-    max-height: 220px !important;
+    font-size: 0.7rem !important;
+    max-height: 200px !important;
+    padding: 10px !important;
   }
 
   .dba-metrics-hud {
     grid-template-columns: 1fr !important;
-    gap: 8px !important;
+    gap: 6px !important;
+  }
+
+  .sre-incident-box {
+    padding: 12px !important;
+  }
+
+  /* Bento Project Cards Internal */
+  .bento-card {
+    padding: 18px 14px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .bento-hud-metric {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 4px !important;
+    padding: 8px 6px !important;
+    margin: 8px 0 12px 0 !important;
+  }
+
+  .bento-hud-label {
+    font-size: 0.58rem !important;
+  }
+
+  .bento-hud-val {
+    font-size: 0.72rem !important;
+  }
+
+  .bento-card-footer {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+    padding-top: 10px !important;
+  }
+
+  .bento-action-links {
+    display: flex !important;
+    width: 100% !important;
+    gap: 6px !important;
+  }
+
+  .bento-action-links > * {
+    flex: 1 !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 7px 10px !important;
+    font-size: 0.76rem !important;
   }
 
   /* ROI Calculator */
   .roi-calculator-wrap {
-    padding: 16px !important;
+    padding: 14px 12px !important;
+    grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
 
@@ -3496,26 +3724,37 @@ body {
   }
 
   .roi-results-card {
-    padding: 16px !important;
+    padding: 14px 12px !important;
   }
 
   .roi-savings-number {
-    font-size: 1.8rem !important;
+    font-size: 1.7rem !important;
+  }
+
+  .roi-preset-bar {
+    gap: 6px !important;
+  }
+
+  .roi-preset-btn {
+    font-size: 0.72rem !important;
+    padding: 5px 10px !important;
   }
 
   /* GitHub Explorer Filters */
   .github-explorer-wrap {
-    padding: 16px !important;
+    padding: 14px 12px !important;
   }
 
   .github-filter-bar {
     flex-direction: column !important;
     align-items: stretch !important;
+    gap: 10px !important;
   }
 
   .github-search-input {
+    width: 100% !important;
     min-width: 100% !important;
-    font-size: 0.82rem !important;
+    font-size: 0.8rem !important;
   }
 
   .github-category-tabs {
@@ -3531,6 +3770,8 @@ body {
   .github-tab {
     white-space: nowrap !important;
     flex-shrink: 0 !important;
+    font-size: 0.75rem !important;
+    padding: 6px 10px !important;
   }
 
   /* Career Timeline */
@@ -3539,8 +3780,8 @@ body {
   }
 
   .timeline-item {
-    padding-left: 32px !important;
-    margin-bottom: 24px !important;
+    padding-left: 30px !important;
+    margin-bottom: 20px !important;
   }
 
   .timeline-node-point {
@@ -3551,11 +3792,28 @@ body {
   }
 
   .timeline-content-card {
-    padding: 16px !important;
+    padding: 14px 12px !important;
   }
 
   .timeline-role-title {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
+  }
+
+  /* Contact Section */
+  #contact .recruiter-hub-card {
+    padding: 28px 16px !important;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .footer-bottom {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 8px !important;
   }
 
   /* Floating Action Dock */
@@ -3568,7 +3826,7 @@ body {
   }
 
   .dock-btn {
-    padding: 5px 8px !important;
-    font-size: 0.72rem !important;
+    padding: 5px 6px !important;
+    font-size: 0.7rem !important;
   }
 }
