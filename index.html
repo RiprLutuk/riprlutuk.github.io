@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787735309">
+  <link rel="stylesheet" href="css/main.css?v=1787735459">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -450,72 +450,91 @@
       <div class="container">
         <div class="section-header">
           <div class="section-tag">Recruiter &amp; Hiring Fast-Track</div>
-          <h2 class="section-title">The 30-Second <span class="text-gradient">Candidate Summary</span></h2>
+          <h2 class="section-title">The 30-Second <span class="text-gradient">Candidate Profile</span></h2>
           <p class="section-subtitle">
-            Everything HR recruiters, talent acquisition leads, and engineering managers need to know at a single glance.
+            Verified production track record, core competencies, and hiring specifications at a single glance.
           </p>
         </div>
 
         <div class="recruiter-hub-card">
           <div class="recruiter-grid">
-            <!-- Left Summary -->
-            <div>
-              <h3 class="recruiter-summary-title">Why Hire Heri Riski Anto?</h3>
-              <p style="margin-bottom: 14px; font-size: 1rem; line-height: 1.65;">
-                A battle-tested <strong>Senior DBA, Infrastructure, and Backend Platform Engineer</strong> who bridges the gap between deep database internals, high-performance backend pipelines (Go, Python, Laravel), and enterprise security compliance.
-              </p>
-
-              <div class="recruiter-tag-list">
-                <span class="recruiter-tag highlight">🎯 PostgreSQL, MSSQL, Oracle, MySQL</span>
-                <span class="recruiter-tag highlight">🚀 Go (Golang) &amp; Python APIs</span>
-                <span class="recruiter-tag highlight">🔄 Kafka &amp; Debezium CDC Streaming</span>
-                <span class="recruiter-tag highlight">🛡️ ISO/IEC 27001 ISMS Lead</span>
-                <span class="recruiter-tag">⚡ Query Tuning (-60% latency)</span>
-                <span class="recruiter-tag">🌐 Linux Fleet &amp; FortiGate VPN</span>
-                <span class="recruiter-tag">📊 ClickHouse Real-Time OLAP</span>
-                <span class="recruiter-tag">🔐 Zero-Trust API Gateways</span>
+            <!-- Left Summary & Core Value -->
+            <div class="recruiter-left-col">
+              <div class="recruiter-profile-header">
+                <h3 class="recruiter-candidate-name">HERI RISKI ANTO, S.Kom</h3>
+                <span class="recruiter-role-badge">Senior DBA &amp; Platform Engineer</span>
               </div>
 
-              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                <button class="btn-cta btn-primary open-resume-modal-btn">
-                  <span>📄 View & Request Curriculum Vitae</span>
+              <div class="recruiter-meta-chips">
+                <span class="meta-chip">🏆 7+ Years Prod IT</span>
+                <span class="meta-chip">🛡️ ISO 27001 ISMS Lead</span>
+                <span class="meta-chip">⚡ 99.98% SLA Record</span>
+              </div>
+
+              <p class="recruiter-summary-text">
+                Bridges the gap between <strong>deep database internals</strong> (PostgreSQL, MSSQL, Oracle), <strong>high-throughput backend microservices</strong> (Go, Python, Laravel), and <strong>enterprise security governance</strong>.
+              </p>
+
+              <div class="recruiter-competencies-wrap">
+                <div class="recruiter-comp-label">KEY STACK &amp; CAPABILITIES:</div>
+                <div class="recruiter-tag-list">
+                  <span class="recruiter-tag highlight">PostgreSQL 16 HA</span>
+                  <span class="recruiter-tag highlight">MSSQL AlwaysOn</span>
+                  <span class="recruiter-tag highlight">Oracle 19c</span>
+                  <span class="recruiter-tag highlight">Go (Golang)</span>
+                  <span class="recruiter-tag highlight">Python APIs</span>
+                  <span class="recruiter-tag">Kafka CDC</span>
+                  <span class="recruiter-tag">ClickHouse OLAP</span>
+                  <span class="recruiter-tag">ISO 27001 ISMS</span>
+                  <span class="recruiter-tag">FortiGate VPN</span>
+                  <span class="recruiter-tag">Flutter &amp; Vue 3</span>
+                </div>
+              </div>
+
+              <div class="recruiter-actions-row">
+                <button class="persona-btn-minimal open-resume-modal-btn" style="flex: 1 1 auto; justify-content: center; padding: 8px 16px;">
+                  <span>📄 View Full CV / Resume</span>
+                  <span class="arrow">↗</span>
                 </button>
-                <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram">
-                  <span>💬 Chat on Telegram (@riprlutuk)</span>
+                <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="persona-btn-minimal telegram" style="flex: 1 1 auto; justify-content: center; padding: 8px 16px;">
+                  <span>✈️ Telegram: @riprlutuk</span>
+                  <span class="arrow">↗</span>
                 </a>
               </div>
             </div>
 
-            <!-- Right FAQ Grid -->
-            <div>
-              <div class="recruiter-faq-box">
-                <div class="faq-row">
-                  <span class="faq-key">Target Roles:</span>
-                  <span class="faq-val">Senior / Lead DBA, Infra Engineer, Platform / Backend Engineer</span>
+            <!-- Right Specifications Grid -->
+            <div class="recruiter-right-col">
+              <div class="recruiter-spec-card">
+                <div class="spec-header">
+                  <span class="spec-title">📋 HIRING SPECIFICATIONS</span>
+                  <span class="spec-match">98/100 ATS Match</span>
                 </div>
-                <div class="faq-row">
-                  <span class="faq-key">Experience Level:</span>
-                  <span class="faq-val">7+ Years in Production IT</span>
-                </div>
-                <div class="faq-row">
-                  <span class="faq-key">Location:</span>
-                  <span class="faq-val">Tangerang, Banten / Pemalang, ID</span>
-                </div>
-                <div class="faq-row">
-                  <span class="faq-key">Work Model:</span>
-                  <span class="faq-val">Remote / Hybrid / On-site (Jakarta &amp; Tangerang)</span>
-                </div>
-                <div class="faq-row">
-                  <span class="faq-key">Availability:</span>
-                  <span class="faq-val" style="color: var(--accent-emerald);">● Open for Full-time &amp; Consulting</span>
-                </div>
-                <div class="faq-row">
-                  <span class="faq-key">Languages:</span>
-                  <span class="faq-val">Indonesian (Native), English (Professional Working)</span>
-                </div>
-                <div class="faq-row">
-                  <span class="faq-key">Curriculum Vitae Compatibility:</span>
-                  <span class="faq-val" style="color: var(--accent-emerald);">98/100 (Workday, Taleo, Greenhouse)</span>
+                <div class="spec-list">
+                  <div class="spec-item">
+                    <span class="spec-k">Target Roles</span>
+                    <span class="spec-v">Senior / Lead DBA, Infra &amp; Backend Platform</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-k">Experience</span>
+                    <span class="spec-v">7+ Years Production Track Record</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-k">Work Model</span>
+                    <span class="spec-v">Remote &bull; Hybrid &bull; On-site (JKT / TNG)</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-k">Availability</span>
+                    <span class="spec-v highlight-green">● Open for Full-Time &amp; Consulting</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-k">Education</span>
+                    <span class="spec-v">S.Kom (Informatics) + ISO 27001 Certified</span>
+                  </div>
+                  <div class="spec-item">
+                    <span class="spec-k">Languages</span>
+                    <span class="spec-v">Indonesian (Native), English (Professional)</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -526,31 +545,31 @@
         <div class="recruiter-matcher-wrap">
           <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;">
             <div>
-              <strong style="color: #fff; font-size: 1.05rem;">🎯 Recruiter 1-Click Candidate Compatibility Scanner:</strong>
-              <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 2px;">
-                Select your open position to evaluate Heri&#39;s verified competencies &amp; production match score:
+              <strong style="color: #fff; font-size: 0.95rem;">🎯 1-Click Candidate Compatibility Radar:</strong>
+              <div style="font-size: 0.76rem; color: var(--text-secondary); margin-top: 2px;">
+                Select your open position to evaluate Heri&#39;s verified production match:
               </div>
             </div>
-            <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-emerald); font-weight: 800; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 4px 12px; border-radius: var(--radius-full);">
+            <div style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-emerald); font-weight: 800; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); padding: 3px 10px; border-radius: var(--radius-full);">
               ⚡ RADAR READY
             </div>
           </div>
 
           <div class="matcher-role-pills">
             <button class="matcher-pill-btn active" data-role="fullstack">
-              <span>📱 Fullstack Web &amp; Mobile Apps (Flutter, Vue, Laravel)</span>
+              <span>📱 Fullstack &amp; Mobile</span>
             </button>
             <button class="matcher-pill-btn" data-role="dba">
-              <span>💾 Senior DBA (Postgres / MSSQL / Oracle)</span>
+              <span>💾 Senior DBA</span>
             </button>
             <button class="matcher-pill-btn" data-role="platform">
-              <span>⚡ Platform &amp; Golang Backend Engineer</span>
+              <span>⚡ Platform &amp; Go</span>
             </button>
             <button class="matcher-pill-btn" data-role="cdc">
-              <span>🔄 Real-Time CDC &amp; ClickHouse OLAP</span>
+              <span>🔄 CDC &amp; ClickHouse</span>
             </button>
             <button class="matcher-pill-btn" data-role="security">
-              <span>🛡️ ISO 27001 &amp; UU PDP Compliance Lead</span>
+              <span>🛡️ ISO 27001 Lead</span>
             </button>
           </div>
 
@@ -558,22 +577,24 @@
           <div id="matcher-result-box" class="matcher-result-card">
             <div>
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-                <span style="font-family: var(--font-mono); font-size: 0.85rem; font-weight: 800; color: var(--accent-emerald);">
+                <span style="font-family: var(--font-mono); font-size: 0.82rem; font-weight: 800; color: var(--accent-emerald);">
                   ✅ 100% COMPATIBILITY MATCH
                 </span>
-                <span id="matcher-exp-badge" class="bento-chip highlight">7+ Years Track Record</span>
+                <span id="matcher-exp-badge" class="bento-chip highlight" style="font-size: 0.7rem;">7+ Years Track Record</span>
               </div>
-              <div id="matcher-desc" style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.5; max-width: 700px;">
+              <div id="matcher-desc" style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.5; max-width: 700px;">
                 Proven production experience managing high-availability multi-engine clusters at PT Link Net Tbk (99.98% SLA), query plan optimizer, partition tuning, and RMAN automated disaster recovery.
               </div>
             </div>
 
-            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="btn-cta btn-telegram" style="padding: 8px 16px; font-size: 0.82rem;">
-                <span>✈️ Schedule Interview on Telegram</span>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="persona-btn-minimal telegram" style="padding: 6px 14px; font-size: 0.78rem;">
+                <span>✈️ Chat Telegram</span>
+                <span class="arrow">↗</span>
               </a>
-              <button class="btn-cta btn-secondary open-resume-modal-btn" style="padding: 8px 14px; font-size: 0.82rem;">
-                <span>📄 View Full CV</span>
+              <button class="persona-btn-minimal open-resume-modal-btn" style="padding: 6px 14px; font-size: 0.78rem;">
+                <span>📄 Full CV</span>
+                <span class="arrow">↗</span>
               </button>
             </div>
           </div>
@@ -2110,12 +2131,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787735309"></script>
-  <script src="js/main.js?v=1787735309"></script>
-  <script src="js/dba-lab.js?v=1787735309"></script>
-  <script src="js/roi-calculator.js?v=1787735309"></script>
-  <script src="js/topology.js?v=1787735309"></script>
-  <script src="js/github.js?v=1787735309"></script>
-  <script src="js/terminal.js?v=1787735309"></script>
+  <script src="js/audio.js?v=1787735459"></script>
+  <script src="js/main.js?v=1787735459"></script>
+  <script src="js/dba-lab.js?v=1787735459"></script>
+  <script src="js/roi-calculator.js?v=1787735459"></script>
+  <script src="js/topology.js?v=1787735459"></script>
+  <script src="js/github.js?v=1787735459"></script>
+  <script src="js/terminal.js?v=1787735459"></script>
 </body>
 </html>

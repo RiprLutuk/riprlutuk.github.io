@@ -780,85 +780,210 @@ section {
    ========================================================================== */
 
 .recruiter-hub-card {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-strong);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-lg), var(--shadow-glow);
-  padding: 36px;
+  background: rgba(10, 15, 26, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(249, 115, 22, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  padding: 24px 28px;
   position: relative;
   overflow: hidden;
-}
-
-.recruiter-hub-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: var(--gradient-accent);
+  box-sizing: border-box;
 }
 
 .recruiter-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 36px;
-  align-items: start;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: 24px;
+  align-items: stretch;
 }
 
-.recruiter-summary-title {
-  font-size: 1.5rem;
+.recruiter-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recruiter-profile-header {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.recruiter-candidate-name {
+  font-family: var(--font-mono);
+  font-size: clamp(1.15rem, 3vw, 1.4rem);
   font-weight: 800;
-  margin-bottom: 14px;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.recruiter-role-badge {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--accent-primary);
+  background: rgba(249, 115, 22, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.3);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.recruiter-meta-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.meta-chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.recruiter-summary-text {
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.recruiter-competencies-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.recruiter-comp-label {
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
 }
 
 .recruiter-tag-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 0 24px;
+  gap: 5px;
+  margin: 0;
 }
 
 .recruiter-tag {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-medium);
-  border-radius: var(--radius-full);
-  padding: 4px 12px;
-  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 4px;
+  padding: 3px 7px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
   font-weight: 600;
   color: var(--text-secondary);
 }
+
 .recruiter-tag.highlight {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-  background: rgba(249, 115, 22, 0.1);
+  border-color: rgba(249, 115, 22, 0.35);
+  color: #fff;
+  background: rgba(249, 115, 22, 0.08);
 }
 
-.recruiter-faq-box {
-  background: var(--bg-surface-elevated);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 20px;
+.recruiter-actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
 }
 
-.faq-row {
+/* Right Spec Card */
+.recruiter-right-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.recruiter-spec-card {
+  background: rgba(4, 7, 15, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 16px 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.spec-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border-subtle);
-  font-size: 0.9rem;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
-.faq-row:last-child {
-  border-bottom: none;
-}
-.faq-key {
+
+.spec-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
   color: var(--text-muted);
-  font-weight: 500;
+  letter-spacing: 0.04em;
 }
-.faq-val {
+
+.spec-match {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--accent-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.76rem;
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  padding-bottom: 6px;
+}
+.spec-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.spec-k {
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  flex-shrink: 0;
+}
+
+.spec-v {
   color: var(--text-primary);
   font-weight: 600;
   text-align: right;
+  word-break: break-word;
+}
+
+.spec-v.highlight-green {
+  color: var(--accent-emerald);
+  font-family: var(--font-mono);
+  font-weight: 700;
 }
 
 /* ==========================================================================
@@ -2503,11 +2628,11 @@ body {
    FEATURE 1: RECRUITER 1-CLICK ROLE MATCHER
    ========================================== */
 .recruiter-matcher-wrap {
-  margin-top: 24px;
-  background: rgba(13, 19, 32, 0.85);
-  border: 1px solid var(--border-strong);
-  border-radius: 16px;
-  padding: 24px;
+  margin-top: 18px;
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 18px 20px;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: 0 12px 36px rgba(0,0,0,0.5);
@@ -2515,21 +2640,28 @@ body {
 
 .matcher-role-pills {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: 16px 0 20px 0;
+  gap: 6px;
+  margin: 12px 0 14px 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2px;
+}
+.matcher-role-pills::-webkit-scrollbar {
+  display: none;
 }
 
 .matcher-pill-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
-  font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
   font-weight: 600;
-  padding: 8px 16px;
-  border-radius: var(--radius-full);
+  padding: 5px 12px;
+  border-radius: 6px;
   cursor: pointer;
+  white-space: nowrap;
   transition: all var(--transition-fast);
   display: inline-flex;
   align-items: center;
@@ -2537,30 +2669,28 @@ body {
 }
 
 .matcher-pill-btn:hover {
-  background: rgba(249, 115, 22, 0.15);
-  border-color: var(--accent-primary);
+  background: rgba(249, 115, 22, 0.12);
+  border-color: rgba(249, 115, 22, 0.35);
   color: #fff;
-  transform: translateY(-1px);
 }
 
 .matcher-pill-btn.active {
-  background: var(--gradient-accent);
+  background: rgba(249, 115, 22, 0.18);
   border-color: var(--accent-primary);
   color: #fff;
   font-weight: 700;
-  box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
 }
 
 .matcher-result-card {
-  background: rgba(6, 10, 16, 0.9);
+  background: rgba(4, 7, 15, 0.9);
   border: 1px solid rgba(16, 185, 129, 0.3);
-  border-radius: 12px;
-  padding: 18px 20px;
+  border-radius: 10px;
+  padding: 14px 16px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 12px;
   animation: fadeIn 0.3s ease;
 }
 
@@ -3916,7 +4046,42 @@ body {
     max-width: 100% !important;
   }
 
-  /* Recruiter Role Matcher & Quiz */
+  /* Recruiter Role Matcher & Hub Mobile */
+  .recruiter-hub-card {
+    padding: 16px 14px !important;
+  }
+
+  .recruiter-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .recruiter-candidate-name {
+    font-size: 1.15rem !important;
+  }
+
+  .recruiter-summary-text {
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .spec-item {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .spec-v {
+    text-align: left !important;
+    font-size: 0.74rem !important;
+  }
+
+  .recruiter-actions-row {
+    flex-direction: column !important;
+    gap: 8px !important;
+  }
+
   .recruiter-matcher-wrap {
     padding: 14px 12px !important;
   }
@@ -3945,9 +4110,9 @@ body {
     gap: 12px !important;
   }
 
-  .matcher-result-card .btn-cta {
+  .matcher-result-card .persona-btn-minimal {
     width: 100% !important;
-    justify-content: center !important;
+    justify-content: space-between !important;
   }
 
   .recruiter-quiz-card {
@@ -3962,13 +4127,6 @@ body {
     padding: 10px 12px !important;
     font-size: 0.78rem !important;
     min-height: 44px !important;
-  }
-
-  .faq-row {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 2px !important;
-    padding: 6px 0 !important;
   }
 
   /* System Topology */
