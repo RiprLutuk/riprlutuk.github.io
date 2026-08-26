@@ -34,7 +34,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="css/main.css?v=1787754631">
+  <link rel="stylesheet" href="css/main.css?v=1787756777">
 
   <!-- Structured Data JSON-LD -->
   <script type="application/ld+json">
@@ -121,6 +121,13 @@
                   <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">DDAG, CDC, DB Sentinel, OpenOrg, WargaHub</div>
                 </div>
               </a>
+              <a href="#war-stories" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🔥</span>
+                <div>
+                  <div>Incident War Stories</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Real Production Post-Mortems</div>
+                </div>
+              </a>
               <a href="#repos" class="nav-dropdown-item">
                 <span class="nav-dropdown-icon">🐙</span>
                 <div>
@@ -150,6 +157,13 @@
                 <div>
                   <div>Recruiter Fast-Track Hub</div>
                   <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">30-Sec Fit Summary &amp; Hiring FAQ</div>
+                </div>
+              </a>
+              <a href="#services" class="nav-dropdown-item">
+                <span class="nav-dropdown-icon">🛠️</span>
+                <div>
+                  <div>Advisory &amp; Services</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">Audit, Migration &amp; Retainer Options</div>
                 </div>
               </a>
               <a href="#roi-calculator" class="nav-dropdown-item">
@@ -1406,6 +1420,112 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
     </section>
 
     <!-- ==========================================
+         SECTION: PRODUCTION INCIDENT WAR STORIES & POST-MORTEMS
+         ========================================== -->
+    <section id="war-stories">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Crisis Resolution &amp; Post-Mortems</div>
+          <h2 class="section-title">Production <span class="text-gradient">Incident War Stories</span></h2>
+          <p class="section-subtitle">
+            Real high-stakes database crises diagnosed and resolved under pressure. Zero data loss, fast RTO, and verified root-cause remediation.
+          </p>
+        </div>
+
+        <div class="war-stories-grid">
+          <!-- Story 1 -->
+          <article class="war-story-card">
+            <div class="story-header-row">
+              <span class="story-badge red">CRITICAL INCIDENT // AFPI FDC</span>
+              <span class="story-rto">RTO: &lt; 8 Mins</span>
+            </div>
+            <h3 class="story-title">14,000 req/s Connection Starvation &amp; Max Connections Saturation</h3>
+            <div class="story-meta-box">
+              <div class="story-cause"><strong>Root Cause:</strong> Synchronized nationwide OJK credit inquiries exhausted max_connections (500), cascading 504 timeouts across 100+ fintech lenders.</div>
+              <div class="story-solution-row">
+                <strong>Heri's Fix:</strong> Deployed PgBouncer transaction-mode pooler multiplexing 2,500 active app clients into 45 backend DB connections. Server load plummeted by 85% with 0ms wait queue.
+              </div>
+            </div>
+            <div class="story-footer">
+              <span class="story-tag">PostgreSQL 16</span>
+              <span class="story-tag">PgBouncer</span>
+              <span class="story-tag">OJK Regulated</span>
+            </div>
+          </article>
+
+          <!-- Story 2 -->
+          <article class="war-story-card">
+            <div class="story-header-row">
+              <span class="story-badge amber">TRANSACTION LOCK // VESTORA.ID</span>
+              <span class="story-rto">Collision: 0%</span>
+            </div>
+            <h3 class="story-title">Crowdfunding Campaign Flash Sale Asset Allocation Deadlock</h3>
+            <div class="story-meta-box">
+              <div class="story-cause"><strong>Root Cause:</strong> Concurrent investor pledges locked shared project ledger rows non-deterministically, triggering deadlocks and transaction rollbacks.</div>
+              <div class="story-solution-row">
+                <strong>Heri's Fix:</strong> Implemented PostgreSQL advisory locks paired with deterministic alphabetical resource locking order, achieving zero deadlock collisions at 100% campaign concurrency.
+              </div>
+            </div>
+            <div class="story-footer">
+              <span class="story-tag">Advisory Locks</span>
+              <span class="story-tag">Isolation Levels</span>
+              <span class="story-tag">Fintech Escrow</span>
+            </div>
+          </article>
+
+          <!-- Story 3 -->
+          <article class="war-story-card">
+            <div class="story-header-row">
+              <span class="story-badge cyan">REPLICATION LAG // LINK NET</span>
+              <span class="story-rto">Lag: 42m &rarr; 1.1s</span>
+            </div>
+            <h3 class="story-title">40GB Standby Replication Lag Threatening Executive SLA</h3>
+            <div class="story-meta-box">
+              <div class="story-cause"><strong>Root Cause:</strong> Unindexed bulk batch ingestion saturated single-threaded WAL streaming receiver on standby replicas, causing 42-minute lag.</div>
+              <div class="story-solution-row">
+                <strong>Heri's Fix:</strong> Partitioned ingestion tables by monthly range with unlogged staging, tuned WAL sender buffers and parallel workers, slashing replication lag to &lt; 1.2s.
+              </div>
+            </div>
+            <div class="story-footer">
+              <span class="story-tag">WAL Streaming</span>
+              <span class="story-tag">Partitioning</span>
+              <span class="story-tag">99.98% SLA</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- Executive Endorsements -->
+        <div class="endorsements-grid">
+          <div class="endorsement-card">
+            <div class="endorsement-quote">
+              &ldquo;Heri possesses that rare combination of deep database internals mastery and strict regulatory discipline. His leadership in implementing ISO 27001 and scaling the Fintech Data Center across 100+ platforms was flawless.&rdquo;
+            </div>
+            <div class="endorsement-author">
+              <div class="author-avatar">🛡️</div>
+              <div>
+                <div class="author-name">Fintech Data Center Leadership</div>
+                <div class="author-role">AFPI &bull; OJK Regulated Ecosystem</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="endorsement-card">
+            <div class="endorsement-quote">
+              &ldquo;When our crowdfunding investment engine was experiencing race conditions during peak flash campaigns, Heri redesigned our transactional locking mechanism in 48 hours. Zero deadlocks ever since.&rdquo;
+            </div>
+            <div class="endorsement-author">
+              <div class="author-avatar">🚀</div>
+              <div>
+                <div class="author-name">Engineering Leadership</div>
+                <div class="author-role">Vestora.id &bull; Sharia Crowdfunding</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
          PUBLIC GITHUB REPOSITORIES LIVE EXPLORER
          ========================================== -->
     <section id="repos">
@@ -1643,9 +1763,112 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
     </section>
 
     <!-- ==========================================
-         CONTACT & HIRE SECTION
+         SECTION: TECHNICAL ADVISORY & FREELANCE ENGAGEMENT MODELS
          ========================================== -->
-        <!-- ==========================================
+    <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Engagement Options</div>
+          <h2 class="section-title">Technical Advisory &amp; <span class="text-gradient">DBA Services</span></h2>
+          <p class="section-subtitle">
+            Flexible engagement models tailored for fast-moving startups, fintech lenders, and enterprise fleets requiring elite database performance, ISO 27001 compliance, and zero-downtime reliability.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Tier 1 -->
+          <div class="service-card">
+            <div class="service-card-top">
+              <div class="service-tier-badge cyan">TIER 1 // 1–2 WEEKS</div>
+              <span class="service-icon">🩺</span>
+            </div>
+            <h3 class="service-title">Database Health &amp; Security Audit</h3>
+            <p class="service-desc">
+              Comprehensive deep-dive analysis of query bottlenecks, buffer cache hit ratios, lock contention, and ISO 27001 / UU PDP data privacy compliance.
+            </p>
+            <ul class="service-points">
+              <li>pg_stat_statements slow query &amp; index profiling</li>
+              <li>PgBouncer connection pool right-sizing &amp; memory tuning</li>
+              <li>Sensitive PII data masking &amp; RBAC audit</li>
+              <li>Actionable prioritized remediation blueprint</li>
+            </ul>
+            <div class="service-footer">
+              <div class="service-deliverable"><strong>Deliverable:</strong> Executive Audit Dossier + Remediation SQL</div>
+              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="service-btn">
+                <span>Book Database Audit &rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tier 2 -->
+          <div class="service-card featured">
+            <div class="service-featured-ribbon">HIGH ROI FOR MIGRATIONS</div>
+            <div class="service-card-top">
+              <div class="service-tier-badge emerald">TIER 2 // PROJECT-BASED</div>
+              <span class="service-icon">🚀</span>
+            </div>
+            <h3 class="service-title">Zero-Downtime Migration &amp; CDC</h3>
+            <p class="service-desc">
+              Full-lifecycle schema refactoring, PL/SQL to PL/pgSQL translation, cloud cost downsizing, and real-time Kafka/Debezium/ClickHouse OLAP offloading.
+            </p>
+            <ul class="service-points">
+              <li>Oracle / SQL Server &rarr; PostgreSQL 16 migration</li>
+              <li>AWS RDS &rarr; TencentDB / Bare-Metal cost cutting</li>
+              <li>Kafka + Debezium + ClickHouse columnar CDC pipeline</li>
+              <li>Deterministic dual-write cutover (0 sec data loss)</li>
+            </ul>
+            <div class="service-footer">
+              <div class="service-deliverable"><strong>Deliverable:</strong> Production Cutover Execution &amp; Dual-Write Sync</div>
+              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="service-btn primary">
+                <span>Discuss Migration &rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Tier 3 -->
+          <div class="service-card">
+            <div class="service-card-top">
+              <div class="service-tier-badge amber">TIER 3 // MONTHLY RETAINER</div>
+              <span class="service-icon">🛡️</span>
+            </div>
+            <h3 class="service-title">Fractional DBA &amp; 24/7 Reliability</h3>
+            <p class="service-desc">
+              Dedicated high-availability operations, Prometheus/Grafana monitoring sentinel, disaster recovery drills, and priority emergency on-call support.
+            </p>
+            <ul class="service-points">
+              <li>Guaranteed 99.98% production uptime SLA</li>
+              <li>Quarterly Disaster Recovery drills (RPO &lt; 15m, RTO &lt; 1h)</li>
+              <li>Continuous query plan regression testing &amp; tuning</li>
+              <li>Priority emergency incident escalation channel</li>
+            </ul>
+            <div class="service-footer">
+              <div class="service-deliverable"><strong>Deliverable:</strong> 24/7 Sentinel Observability &amp; On-Call Retainer</div>
+              <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="service-btn">
+                <span>Inquire Retainer &rarr;</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust & Compliance Bar -->
+        <div class="services-trust-bar">
+          <div class="trust-item">
+            <span class="trust-icon">🔒</span>
+            <span>100% Enterprise NDA Protected</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">📜</span>
+            <span>POJK 10/2022 &amp; ISO 27001 Compliant</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-icon">⚡</span>
+            <span>Immediate Onboarding &amp; Zero-Disruption Start</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
          SECTION: ENTERPRISE ROI & CLOUD COST CALCULATOR
          ========================================== -->
     <section id="roi-calculator">
@@ -1955,6 +2178,10 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
             </div>
 
             <div class="resume-actions-grid">
+              <a href="cv-ats-heri-riski-anto.html" target="_blank" class="persona-btn-minimal" style="background: rgba(249, 115, 22, 0.18); border-color: var(--accent-primary); color: #fff; font-weight: 700;">
+                <span>📥 Download ATS PDF Resume</span>
+                <span class="btn-arrow">↗</span>
+              </a>
               <a href="https://t.me/riprlutuk" target="_blank" rel="noopener" class="persona-btn-minimal telegram">
                 <span>✈️ Telegram: @riprlutuk</span>
                 <span class="btn-arrow">↗</span>
@@ -1964,7 +2191,7 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
                 <span class="btn-arrow">↗</span>
               </a>
               <a href="https://linkedin.com/in/riprlutuk" target="_blank" rel="noopener" class="persona-btn-minimal">
-                <span>🔗 LinkedIn</span>
+                <span>💼 LinkedIn</span>
                 <span class="btn-arrow">↗</span>
               </a>
               <a href="https://github.com/RiprLutuk" target="_blank" rel="noopener" class="persona-btn-minimal">
@@ -2208,12 +2435,12 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
   </div>
 
   <!-- JavaScript Modules -->
-  <script src="js/audio.js?v=1787754631"></script>
-  <script src="js/main.js?v=1787754631"></script>
-  <script src="js/dba-lab.js?v=1787754631"></script>
-  <script src="js/roi-calculator.js?v=1787754631"></script>
-  <script src="js/topology.js?v=1787754631"></script>
-  <script src="js/github.js?v=1787754631"></script>
-  <script src="js/terminal.js?v=1787754631"></script>
+  <script src="js/audio.js?v=1787756777"></script>
+  <script src="js/main.js?v=1787756777"></script>
+  <script src="js/dba-lab.js?v=1787756777"></script>
+  <script src="js/roi-calculator.js?v=1787756777"></script>
+  <script src="js/topology.js?v=1787756777"></script>
+  <script src="js/github.js?v=1787756777"></script>
+  <script src="js/terminal.js?v=1787756777"></script>
 </body>
 </html>
