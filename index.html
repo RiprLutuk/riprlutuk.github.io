@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Heri Riski Anto — Senior Database Administrator (DBA) | Cloud Infrastructure & Platform Engineer</title>
+  <title>Heri Riski Anto — Platform Architect &amp; Core DBA</title>
   
-  <meta name="description" content="Official portfolio of Heri Riski Anto (@RiprLutuk). Senior Database Administrator (DBA), Cloud Infrastructure, and Backend Platform Engineer with 7+ years of experience across PostgreSQL, MSSQL, Oracle, MySQL, Kafka CDC, Go, and ISO 27001 security.">
-  <meta name="keywords" content="Heri Riski Anto, RiprLutuk, Database Administrator, DBA, Cloud Infrastructure, Backend Engineer, PostgreSQL, Oracle, SQL Server, Go, Kafka, ClickHouse, Debezium, ISO 27001, Indonesia DBA">
+  <meta name="description" content="Official portfolio of Heri Riski Anto (@RiprLutuk). Platform Architect &amp; Core DBA with 7+ years of experience across PostgreSQL, MSSQL, Oracle, MySQL, Kafka CDC, Go, Flutter, and ISO 27001 security.">
+  <meta name="keywords" content="Heri Riski Anto, RiprLutuk, Platform Architect, Database Administrator, DBA, Fullstack Engineer, PostgreSQL, Oracle, SQL Server, Go, Kafka, ClickHouse, Debezium, Flutter, ISO 27001, Indonesia DBA">
   <meta name="author" content="Heri Riski Anto">
   <link rel="canonical" href="https://riprlutuk.github.io">
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://riprlutuk.github.io/">
-  <meta property="og:title" content="Heri Riski Anto — Senior DBA & Cloud Infrastructure Engineer">
-  <meta property="og:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, and ISO 27001 certified infrastructure.">
+  <meta property="og:title" content="Heri Riski Anto — Platform Architect &amp; Core DBA">
+  <meta property="og:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, fullstack apps, and ISO 27001 certified infrastructure.">
   <meta property="og:image" content="https://riprlutuk.github.io/images/ico.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://riprlutuk.github.io/">
-  <meta property="twitter:title" content="Heri Riski Anto — Senior DBA & Cloud Infrastructure Engineer">
-  <meta property="twitter:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, and ISO 27001 certified infrastructure.">
+  <meta property="twitter:title" content="Heri Riski Anto — Platform Architect &amp; Core DBA">
+  <meta property="twitter:description" content="7+ years designing high-availability database clusters, real-time CDC pipelines, fullstack apps, and ISO 27001 certified infrastructure.">
   <meta property="twitter:image" content="https://riprlutuk.github.io/images/ico.png">
 
   <!-- Favicons -->
@@ -84,7 +84,7 @@
         <div class="brand-avatar">HR</div>
         <div class="brand-title">
           <span class="brand-name">Heri Riski Anto</span>
-          <span class="brand-badge">Senior DBA & Infra</span>
+          <span class="brand-badge">Platform Architect &amp; Core DBA</span>
         </div>
       </a>
 
@@ -118,7 +118,7 @@
                 <span class="nav-dropdown-icon">🚀</span>
                 <div>
                   <div>Flagship Projects</div>
-                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">DDAG, CDC, OpenOrg, WargaHub</div>
+                  <div style="font-size: 0.7rem; color: var(--text-muted); font-weight: normal;">DDAG, CDC, DB Sentinel, OpenOrg, WargaHub</div>
                 </div>
               </a>
               <a href="#repos" class="nav-dropdown-item">
@@ -621,6 +621,7 @@
               <button class="topology-tab-btn active" data-topology="afpi">1. AFPI Fintech Data Center</button>
               <button class="topology-tab-btn" data-topology="cdc">2. Real-Time CDC Pipeline</button>
               <button class="topology-tab-btn" data-topology="ddag">3. DDAG Zero-Trust Gateway</button>
+              <button class="topology-tab-btn" data-topology="dbmon">4. DB Port Sentinel &amp; Monitoring</button>
             </div>
 
             <div class="topology-controls-bar">
@@ -1252,6 +1253,63 @@ Face Match Confidence: 99.4% &bull; Attendance Logged in 0.4s</div>
                   🔄 Sync Map
                 </button>
                 <a href="https://github.com/RiprLutuk/pg2ora_debezium_kafka" target="_blank" rel="noopener" class="bento-icon-btn">
+                  GitHub ↗
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Card 7: db-port-monitoring -->
+          <article class="bento-card">
+            <div class="bento-card-header">
+              <span class="bento-code-tag">[ 07 // SENTINEL-MONITORING ]</span>
+              <span class="bento-status-pill">● ACTIVE</span>
+            </div>
+
+            <div class="bento-card-body">
+              <h3 class="bento-title">db-port-monitoring</h3>
+              <div style="font-size: 0.8rem; font-weight: 700; color: var(--accent-cyan); margin-bottom: 8px;">Multi-Database Port &amp; Connection Health Sentinel</div>
+              <p class="bento-desc">
+                Enterprise zero-credential database port availability &amp; latency probe platform. Features Prometheus Blackbox Exporter, resilient chunked PostgreSQL time-series ingestion daemon, downtime event tracking, and 7-panel Grafana SLA KPI executive reporting.
+              </p>
+              
+              <div class="bento-hud-metric">
+                <div class="bento-hud-col">
+                  <span class="bento-hud-label">📡 Scrape</span>
+                  <span class="bento-hud-val">5m Cadence</span>
+                </div>
+                <div class="bento-hud-col">
+                  <span class="bento-hud-label">🛡️ Security</span>
+                  <span class="bento-hud-val">0 DB Creds</span>
+                </div>
+                <div class="bento-hud-col">
+                  <span class="bento-hud-label">💾 Storage</span>
+                  <span class="bento-hud-val">Postgres TS</span>
+                </div>
+              </div>
+
+              <!-- Interactive Sandbox Panel -->
+              <div id="sandbox-dbmon" class="project-sandbox-panel">
+                <div class="sandbox-header">
+                  <span class="sandbox-title">📡 TCP PROBE &amp; SENTINEL TELEMETRY</span>
+                  <span class="sandbox-badge">ALL PORTS UP (0.6ms)</span>
+                </div>
+                <div class="sandbox-content">PROBE [postgres:5432, mysql:3306, oracle:1521, mssql:1433, clickhouse:9000] &rarr; STATUS: 100% UP, RTT: 0.62ms, Writer Ingest: SYNCED (0 Gap)</div>
+              </div>
+            </div>
+
+            <div class="bento-card-footer">
+              <div class="bento-chips-wrap">
+                <span class="bento-chip highlight">Prometheus</span>
+                <span class="bento-chip">Blackbox</span>
+                <span class="bento-chip">PostgreSQL</span>
+                <span class="bento-chip">Grafana</span>
+              </div>
+              <div class="bento-action-links">
+                <button class="sandbox-trigger-btn" data-target="sandbox-dbmon">
+                  ⚡ Test Probe
+                </button>
+                <a href="https://github.com/RiprLutuk/db-port-monitoring" target="_blank" rel="noopener" class="bento-icon-btn">
                   GitHub ↗
                 </a>
               </div>

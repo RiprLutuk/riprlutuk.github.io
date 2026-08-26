@@ -189,6 +189,68 @@ const ARCHITECTURE_DATA = {
         details: "Records complete cryptographic access logs and latency traces for security audit compliance and performance troubleshooting."
       }
     ]
+  },
+  dbmon: {
+    title: "Multi-Database Port & Availability Sentinel (db-port-monitoring)",
+    badge: "Zero-Credential TCP Sentinel • SLA 99.99%",
+    description: "Enterprise multi-engine database availability & port socket prober. Automated 5-minute scrape cycles, zero-credential security, persistent PostgreSQL time-series state writer, and instant Grafana executive KPI analytics.",
+    nodes: [
+      {
+        id: "target-clusters",
+        badge: "TARGET DB CLUSTERS",
+        icon: "🗄️",
+        title: "Multi-RDBMS Targets",
+        desc: "PostgreSQL, MySQL, Oracle 19c, MSSQL, ClickHouse",
+        telemetryNormal: "64 DB Targets • 0 Auth",
+        telemetrySpike: "128 DB Targets • 0.3ms Socket",
+        tags: ["Zero-Credential", "Multi-Engine", "Non-Intrusive TCP"],
+        details: "Heterogeneous enterprise database instances monitored strictly via non-intrusive TCP socket handshakes without storing or requiring database credentials, passwords, or elevated permissions."
+      },
+      {
+        id: "blackbox-prober",
+        badge: "PROBE ENGINE",
+        icon: "📡",
+        title: "Prometheus + Blackbox Exporter",
+        desc: "Automated TCP probe & dynamic discovery daemon",
+        telemetryNormal: "5m Cadence • 0.8ms Socket RTT",
+        telemetrySpike: "Fast Probe Active • 1.1ms RTT",
+        tags: ["Blackbox TCP", "Dynamic File SD", "Prometheus 9090"],
+        details: "Prometheus file-based service discovery continuously reloading db-targets.yml every 60 seconds with Blackbox Exporter executing microsecond-level TCP connection syn/ack probes."
+      },
+      {
+        id: "pg-writer",
+        badge: "INGESTION DAEMON",
+        icon: "⚙️",
+        title: "blackbox-pg-writer",
+        desc: "Durable state writer & historical backfill engine",
+        telemetryNormal: "0 Backlog • Overlap Synced",
+        telemetrySpike: "Auto-Backfill Chunk Active",
+        tags: ["Durable State Cursor", "Deduplication", "Chunk Backfill"],
+        details: "Resilient containerized daemon querying Prometheus raw samples across overlapping time windows, preventing duplicate records with unique key constraints (checked_at, target_name) and auto-resuming from checkpoint state."
+      },
+      {
+        id: "pg-storage",
+        badge: "TIME-SERIES STORAGE",
+        icon: "💾",
+        title: "PostgreSQL KPI & Event Hub",
+        desc: "Daily KPI aggregates & Downtime incident audit log",
+        telemetryNormal: "100% Data Integrity • WORM",
+        telemetrySpike: "Partition Pruning Active",
+        tags: ["Daily KPI", "Incident Event Log", "Audit History"],
+        details: "Consolidates raw probes into db_port_blackbox_daily_kpi and db_port_blackbox_downtime_events for continuous SLA reporting and multi-year compliance audit tracking."
+      },
+      {
+        id: "grafana-alerting",
+        badge: "EXECUTIVE OPS",
+        icon: "📊",
+        title: "Grafana KPI & Alertmanager",
+        desc: "Executive 7-panel dashboard & Telegram alert gateway",
+        telemetryNormal: "SLA: 99.99% • 0 Alert",
+        telemetrySpike: "Instant Alert Triggered (<30s)",
+        tags: ["Executive SQL Panels", "Alertmanager", "Telegram Bot"],
+        details: "Real-time executive uptime dashboard visualizing port UP/DOWN status, SLA compliance percentage, lowest-availability targets, and automated Telegram bot incident alerting."
+      }
+    ]
   }
 };
 

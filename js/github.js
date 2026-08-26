@@ -44,15 +44,15 @@ const FALLBACK_REPOS = [
   },
   {
     "name": "db-port-monitoring",
-    "description": "Top secret architecture ideas, diagrams, and brainstorming",
-    "language": "PLpgSQL",
-    "stars": 0,
-    "forks": 0,
+    "description": "Zero-credential multi-database port & connection health sentinel. Prometheus Blackbox TCP probing, durable PostgreSQL time-series backfill ingestion daemon, incident downtime event tracking, and 7-panel Grafana SLA KPI executive reporting.",
+    "language": "Shell",
+    "stars": 4,
+    "forks": 1,
     "url": "https://github.com/RiprLutuk/db-port-monitoring",
-    "updated_at": "2026-08-24T10:19:17Z",
+    "updated_at": "2026-08-26T09:00:00Z",
     "category": "DBA & Data Platform",
     "is_fork": false,
-    "is_featured": false,
+    "is_featured": true,
     "demo_url": null
   },
   {
@@ -370,7 +370,7 @@ class GitHubExplorer {
       forks_count: r.forks_count || 0,
       updated_at: r.updated_at,
       category: category,
-      is_featured: ["DDAG", "ch-olap-pipeline", "openorg", "WargaHub", "PasPapan", "pg2ora_debezium_kafka"].includes(r.name)
+      is_featured: ["DDAG", "ch-olap-pipeline", "openorg", "WargaHub", "PasPapan", "pg2ora_debezium_kafka", "db-port-monitoring"].includes(r.name)
     };
   }
 

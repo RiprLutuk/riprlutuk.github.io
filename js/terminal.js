@@ -538,7 +538,8 @@ class CyberTerminal {
         3. <strong>OpenOrg:</strong> Organization governance platform &amp; digital KTA (<a href="https://github.com/RiprLutuk/openorg" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub ↗</a>)<br>
         4. <strong>WargaHub:</strong> Civic governance PWA with embedded WASM Postgres (<a href="https://github.com/RiprLutuk/WargaHub" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub ↗</a>)<br>
         5. <strong>PasPapan HRIS:</strong> Enterprise HRIS with Anti-Mock GPS &amp; Face ID (<a href="https://paspapan.pandanteknik.com" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">Demo ↗</a>)<br>
-        6. <strong>pg2ora-cdc:</strong> Postgres to Oracle real-time CDC sync pipeline (<a href="https://github.com/RiprLutuk/pg2ora_debezium_kafka" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub ↗</a>)
+        6. <strong>pg2ora-cdc:</strong> Postgres to Oracle real-time CDC sync pipeline (<a href="https://github.com/RiprLutuk/pg2ora_debezium_kafka" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub ↗</a>)<br>
+        7. <strong>db-port-monitoring:</strong> Multi-DB Port &amp; Connection Health Sentinel (<a href="https://github.com/RiprLutuk/db-port-monitoring" target="_blank" style="color:var(--accent-primary); text-decoration:underline;">GitHub ↗</a>)
       </div>
     `);
   }
@@ -551,9 +552,9 @@ class CyberTerminal {
       { name: "WargaHub", desc: "Neighborhood governance & financial transparency PWA", lang: "Fastify/Vue3", url: "https://github.com/RiprLutuk/WargaHub" },
       { name: "PasPapan", desc: "Enterprise HRIS & biometric attendance platform", lang: "PHP/Laravel", url: "https://github.com/RiprLutuk/PasPapan" },
       { name: "pg2ora_debezium_kafka", desc: "Real-Time CDC streaming from Postgres to Oracle 19c", lang: "Shell/Kafka", url: "https://github.com/RiprLutuk/pg2ora_debezium_kafka" },
+      { name: "db-port-monitoring", desc: "Zero-credential multi-database port & connection health sentinel", lang: "Shell", url: "https://github.com/RiprLutuk/db-port-monitoring" },
       { name: "copy-table-oracle-to-postgresql", desc: "Automated table data migrator from Oracle to PostgreSQL", lang: "Python", url: "https://github.com/RiprLutuk/copy-table-oracle-to-postgresql" },
-      { name: "docker-php-81", desc: "Optimized Dockerfile for PHP 8.1 FPM & Nginx", lang: "Dockerfile", url: "https://github.com/RiprLutuk/docker-php-81" },
-      { name: "db-port-monitoring", desc: "Database port & connection health monitoring scripts", lang: "PLpgSQL", url: "https://github.com/RiprLutuk/db-port-monitoring" }
+      { name: "docker-php-81", desc: "Optimized Dockerfile for PHP 8.1 FPM & Nginx", lang: "Dockerfile", url: "https://github.com/RiprLutuk/docker-php-81" }
     ];
 
     let filtered = list;
@@ -654,7 +655,7 @@ class CyberTerminal {
         server: GitHub.com<br>
         content-type: text/html; charset=utf-8<br>
         x-sla-status: 99.98% High Availability<br>
-        x-candidate: Heri Riski Anto (Senior DBA &amp; Cloud Infra)<br>
+        x-candidate: Heri Riski Anto (Platform Architect &amp; Core DBA)<br>
         <span style="color:var(--accent-emerald); font-weight:700;">Connection successful to ${url} (1.2ms latency)</span>
       </div>
     `);
