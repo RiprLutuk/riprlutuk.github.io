@@ -3319,6 +3319,10 @@ body {
     position: relative !important;
   }
 
+  body {
+    padding-bottom: 90px !important;
+  }
+
   .container {
     width: 100% !important;
     max-width: 100% !important;
@@ -3394,18 +3398,59 @@ body {
   .persona-pitch-card {
     padding: 14px 14px !important;
     width: 100% !important;
+    max-width: 100% !important;
     box-sizing: border-box !important;
   }
 
   .persona-pitch-title {
-    font-size: 0.88rem !important;
+    display: flex !important;
     flex-wrap: wrap !important;
+    align-items: center !important;
     gap: 6px !important;
+    margin-bottom: 12px !important;
+  }
+
+  .persona-pitch-title > span#pitch-title {
+    font-size: 0.95rem !important;
+    font-weight: 800 !important;
+    flex: 1 1 100% !important;
+    line-height: 1.35 !important;
+    color: #fff !important;
+  }
+
+  .persona-pitch-title > span#pitch-badge {
+    margin-left: 0 !important;
+    font-size: 0.68rem !important;
   }
 
   .persona-pitch-points {
-    grid-template-columns: 1fr !important;
-    gap: 6px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    width: 100% !important;
+    margin-bottom: 12px !important;
+  }
+
+  .persona-pitch-point-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    font-size: 0.8rem !important;
+    line-height: 1.45 !important;
+  }
+
+  .persona-pitch-point-item > span:first-child {
+    flex-shrink: 0 !important;
+    font-size: 0.95rem !important;
+    margin-top: 1px !important;
+  }
+
+  .persona-pitch-point-item > span:last-child {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
   .persona-pitch-actions {
@@ -3458,25 +3503,46 @@ body {
   }
 
   .terminal-row {
-    font-size: 0.7rem !important;
-    gap: 6px !important;
-  }
-
-  .t-label {
-    white-space: normal !important;
-  }
-
-  .t-val-green, .t-val-cyan {
-    white-space: nowrap !important;
-    font-size: 0.68rem !important;
-    flex-shrink: 0 !important;
-  }
-
-  .t-audit-item {
+    display: flex !important;
     flex-direction: column !important;
     align-items: flex-start !important;
     gap: 2px !important;
+    padding: 6px 0 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    white-space: normal !important;
+    width: 100% !important;
+  }
+
+  .terminal-row:last-child {
+    border-bottom: none !important;
+  }
+
+  .t-label {
+    font-size: 0.74rem !important;
+    color: var(--text-secondary) !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    line-height: 1.35 !important;
+  }
+
+  .t-val-green, .t-val-cyan {
     font-size: 0.72rem !important;
+    font-weight: 700 !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    padding-left: 18px !important;
+    line-height: 1.35 !important;
+  }
+
+  .t-audit-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 3px !important;
+    font-size: 0.72rem !important;
+    padding: 4px 0 !important;
+    white-space: normal !important;
+    width: 100% !important;
   }
 
   .terminal-card-stats {
@@ -3818,15 +3884,27 @@ body {
 
   /* Floating Action Dock */
   .floating-action-dock {
-    bottom: 8px !important;
-    padding: 5px 8px !important;
-    gap: 2px !important;
-    max-width: calc(100vw - 16px) !important;
+    position: fixed !important;
+    bottom: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: rgba(6, 10, 18, 0.92) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(249, 115, 22, 0.35) !important;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 20px rgba(249, 115, 22, 0.25) !important;
+    padding: 4px 8px !important;
+    gap: 3px !important;
+    max-width: calc(100vw - 24px) !important;
+    width: max-content !important;
+    z-index: 9999 !important;
     justify-content: space-around !important;
+    border-radius: var(--radius-full) !important;
   }
 
   .dock-btn {
-    padding: 5px 6px !important;
-    font-size: 0.7rem !important;
+    padding: 6px 10px !important;
+    font-size: 0.72rem !important;
+    border-radius: var(--radius-full) !important;
   }
 }
