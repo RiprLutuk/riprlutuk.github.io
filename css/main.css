@@ -2248,27 +2248,43 @@ section {
     top: 8px !important;
     padding: 0 12px !important;
     max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   .nav-glass-container {
     padding: 6px 14px !important;
     gap: 8px !important;
-    border-radius: 14px !important;
+    border-radius: var(--radius-full) !important;
     flex-wrap: nowrap !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    height: 48px !important;
+    max-height: 48px !important;
+    overflow: hidden !important;
+  }
+  .desktop-nav,
+  .desktop-nav *,
+  .nav-links,
+  .nav-links *,
+  .nav-item-dropdown,
+  .nav-dropdown-menu,
+  .nav-dropdown-trigger,
+  .btn-cli-badge,
+  .brand-badge {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    overflow: hidden !important;
   }
   .brand-name {
     font-size: 0.95rem !important;
-  }
-  .brand-badge {
-    display: none !important;
-  }
-  .btn-cli-badge {
-    display: none !important;
-  }
-  .nav-links {
-    display: none !important;
-  }
-  .nav-dropdown-menu {
-    display: none !important;
+    white-space: nowrap !important;
   }
   .mobile-toggle {
     display: inline-flex !important;
@@ -4440,5 +4456,38 @@ body {
     padding: 6px 10px !important;
     font-size: 0.72rem !important;
     border-radius: var(--radius-full) !important;
+  }
+}
+
+/* ==========================================================================
+   DEFINITIVE MOBILE/TABLET NAVBAR OVERFLOW SAFETY LOCK (<= 1080px)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .site-nav header,
+  .site-nav nav.desktop-nav,
+  nav.desktop-nav,
+  .desktop-nav,
+  .nav-links,
+  .nav-item-dropdown,
+  .nav-dropdown-menu,
+  .nav-dropdown-trigger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    max-width: 0 !important;
+    max-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    overflow: hidden !important;
+  }
+
+  .nav-glass-container {
+    max-height: 52px !important;
+    overflow: hidden !important;
+    flex-wrap: nowrap !important;
   }
 }
