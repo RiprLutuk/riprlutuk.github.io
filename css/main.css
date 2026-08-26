@@ -1145,6 +1145,8 @@ section {
 @keyframes data-stream {
   0% { left: -100%; }
   100% { left: 100%; }
+}
+
 .topo-swipe-hint {
   padding: 6px 16px;
   background: rgba(0, 0, 0, 0.4);
