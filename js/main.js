@@ -381,7 +381,8 @@ class ModalManager {
   bindModals() {
     // Open Resume Modal
     document.querySelectorAll(".open-resume-modal-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         if (window.soundFx) window.soundFx.playClick();
         this.openModal("resume-modal");
       });
@@ -389,9 +390,23 @@ class ModalManager {
 
     // Open Contact Modal
     document.querySelectorAll(".open-contact-modal-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
         if (window.soundFx) window.soundFx.playClick();
         this.openModal("contact-modal");
+      });
+    });
+
+    // Open Terminal Modal
+    document.querySelectorAll(".open-terminal-btn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (window.soundFx) window.soundFx.playClick();
+        if (window.cyberTerminal) {
+          window.cyberTerminal.open();
+        } else {
+          this.openModal("terminal-modal");
+        }
       });
     });
 

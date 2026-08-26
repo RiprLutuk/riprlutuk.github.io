@@ -9,9 +9,10 @@ class CyberTerminal {
     this.historyIndex = -1;
     this.isMaximized = false;
 
-    this.modal = document.getElementById("cli-modal");
-    this.output = document.getElementById("cli-output");
+    this.modal = document.getElementById("terminal-modal") || document.getElementById("cli-modal");
+    this.output = document.getElementById("cli-output-body") || document.getElementById("cli-output");
     this.input = document.getElementById("cli-input");
+    this.form = document.getElementById("cli-form");
     this.promptUser = document.getElementById("cli-prompt-user");
 
     this.init();
@@ -27,7 +28,10 @@ class CyberTerminal {
   bindEvents() {
     // Open modal buttons
     document.querySelectorAll(".open-terminal-btn").forEach(btn => {
-      btn.addEventListener("click", () => this.open());
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.open();
+      });
     });
 
     // Keyboard shortcut Ctrl+K / Cmd+K
@@ -41,21 +45,48 @@ class CyberTerminal {
       }
     });
 
-    // Modal Close button
-    const closeBtn = this.modal.querySelector(".modal-close-btn");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", () => this.close());
-    }
+    // Modal Close buttons
+    const closeBtns = this.modal.querySelectorAll(".modal-close-btn");
+    closeBtns.forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.close();
+      });
+    });
 
-    // Input handlers
-    this.input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
+    // Backdrop click close
+    this.modal.addEventListener("click", (e) => {
+      if (e.target === this.modal) {
+        this.close();
+      }
+    });
+
+    // Form submit for Run button & mobile enter
+    if (this.form) {
+      this.form.addEventListener("submit", (e) => {
+        e.preventDefault();
         const cmd = this.input.value.trim();
         if (cmd) {
           this.history.push(cmd);
           this.historyIndex = this.history.length;
           this.execute(cmd);
           this.input.value = "";
+        }
+      });
+    }
+
+    // Input handlers
+    this.input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        // Handled by form submit if form exists; fallback here:
+        if (!this.form) {
+          const cmd = this.input.value.trim();
+          if (cmd) {
+            this.history.push(cmd);
+            this.historyIndex = this.history.length;
+            this.execute(cmd);
+            this.input.value = "";
+          }
         }
       } else if (e.key === "ArrowUp") {
         e.preventDefault();
@@ -80,20 +111,26 @@ class CyberTerminal {
 
     // Auto-focus input when clicking terminal window
     this.modal.addEventListener("click", (e) => {
-      if (!e.target.closest("a") && !e.target.closest("button")) {
+      if (!e.target.closest("a") && !e.target.closest("button") && e.target !== this.modal) {
         this.input.focus();
       }
     });
   }
 
   open() {
+    if (!this.modal) return;
     this.modal.classList.add("active");
+    this.modal.classList.add("open");
     if (window.soundFx) window.soundFx.playClick();
-    setTimeout(() => this.input.focus(), 50);
+    setTimeout(() => {
+      if (this.input) this.input.focus();
+    }, 50);
   }
 
   close() {
+    if (!this.modal) return;
     this.modal.classList.remove("active");
+    this.modal.classList.remove("open");
   }
 
   toggle() {
@@ -102,7 +139,7 @@ class CyberTerminal {
   }
 
   isOpen() {
-    return this.modal.classList.contains("active");
+    return this.modal && (this.modal.classList.contains("active") || this.modal.classList.contains("open"));
   }
 
   print(html, className = "") {

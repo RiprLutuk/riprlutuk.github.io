@@ -1924,7 +1924,7 @@ section {
   transition: opacity var(--transition-normal);
 }
 
-.modal-backdrop.open {
+.modal-backdrop.open, .modal-backdrop.active {
   opacity: 1;
   pointer-events: auto;
 }
@@ -1944,7 +1944,7 @@ section {
   overflow: hidden;
 }
 
-.modal-backdrop.open .modal-dialog {
+.modal-backdrop.open .modal-dialog, .modal-backdrop.active .modal-dialog {
   transform: scale(1);
 }
 
