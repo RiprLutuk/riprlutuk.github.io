@@ -438,7 +438,7 @@ class ModalManager {
 }
 
 // ==========================================
-// 8. CYBERNETIC LEFT-RIGHT SWIPE & SNAP CAROUSEL ENGINE
+// 8. CYBERNETIC LEFT-RIGHT SWIPE & INFINITE LOOP AUTO-CAROUSEL ENGINE
 // ==========================================
 class CyberCarousel {
   constructor(trackEl, options = {}) {
@@ -449,8 +449,14 @@ class CyberCarousel {
     this.nextBtn = options.nextBtn || null;
     this.dotsWrap = options.dotsWrap || null;
     this.counterEl = options.counterEl || null;
+    this.autoPlayInterval = options.autoPlayInterval || 4000;
+    this.autoPlay = options.autoPlay !== false;
+    
     this.currentIndex = 0;
     this.items = [];
+    this.autoTimer = null;
+    this.resumeTimeout = null;
+    this.isPaused = false;
 
     this.init();
   }
@@ -464,6 +470,11 @@ class CyberCarousel {
     this.bindEvents();
     this.renderDots();
     this.updateUI();
+
+    if (this.autoPlay && this.items.length > 1) {
+      this.initIntersectionObserver();
+      this.startAutoPlay();
+    }
   }
 
   updateItems() {
@@ -479,16 +490,26 @@ class CyberCarousel {
     if (this.prevBtn) {
       this.prevBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        this.pauseAutoPlay();
         this.scrollPrev();
+        this.resumeAutoPlayAfterDelay(5000);
       });
     }
 
     if (this.nextBtn) {
       this.nextBtn.addEventListener('click', (e) => {
         e.preventDefault();
+        this.pauseAutoPlay();
         this.scrollNext();
+        this.resumeAutoPlayAfterDelay(5000);
       });
     }
+
+    // Touch & Mouse hover interactions
+    this.track.addEventListener('touchstart', () => this.pauseAutoPlay(), { passive: true });
+    this.track.addEventListener('touchend', () => this.resumeAutoPlayAfterDelay(4000), { passive: true });
+    this.track.addEventListener('mouseenter', () => this.pauseAutoPlay());
+    this.track.addEventListener('mouseleave', () => this.resumeAutoPlayAfterDelay(2000));
 
     let scrollTimeout;
     this.track.addEventListener('scroll', () => {
@@ -499,6 +520,61 @@ class CyberCarousel {
     window.addEventListener('resize', () => {
       this.updateUI();
     });
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        this.pauseAutoPlay();
+      } else if (this.autoPlay && this.items.length > 1) {
+        this.startAutoPlay();
+      }
+    });
+  }
+
+  initIntersectionObserver() {
+    if (!('IntersectionObserver' in window)) return;
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (!this.isPaused) this.startAutoPlay();
+        } else {
+          this.pauseAutoPlay();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    observer.observe(this.track);
+  }
+
+  startAutoPlay() {
+    this.stopAutoPlay();
+    if (!this.autoPlay || this.items.length <= 1) return;
+    this.autoTimer = setInterval(() => {
+      this.scrollNext(true);
+    }, this.autoPlayInterval);
+  }
+
+  stopAutoPlay() {
+    if (this.autoTimer) {
+      clearInterval(this.autoTimer);
+      this.autoTimer = null;
+    }
+  }
+
+  pauseAutoPlay() {
+    this.isPaused = true;
+    this.stopAutoPlay();
+    if (this.resumeTimeout) {
+      clearTimeout(this.resumeTimeout);
+      this.resumeTimeout = null;
+    }
+  }
+
+  resumeAutoPlayAfterDelay(delay = 4000) {
+    if (this.resumeTimeout) clearTimeout(this.resumeTimeout);
+    this.resumeTimeout = setTimeout(() => {
+      this.isPaused = false;
+      this.startAutoPlay();
+    }, delay);
   }
 
   handleScroll() {
@@ -528,11 +604,18 @@ class CyberCarousel {
     }
   }
 
-  scrollToIndex(index) {
+  scrollToIndex(index, isAuto = false) {
     this.updateItems();
-    if (this.items.length === 0) return;
+    const count = this.items.length;
+    if (count === 0) return;
 
-    index = Math.max(0, Math.min(index, this.items.length - 1));
+    // Continuous Infinite Loop Wrap
+    if (index >= count) {
+      index = 0;
+    } else if (index < 0) {
+      index = count - 1;
+    }
+
     this.currentIndex = index;
 
     const targetItem = this.items[index];
@@ -548,7 +631,7 @@ class CyberCarousel {
     }
 
     this.updateUI();
-    if (window.soundFx && typeof window.soundFx.playClick === 'function') {
+    if (!isAuto && window.soundFx && typeof window.soundFx.playClick === 'function') {
       window.soundFx.playClick();
     }
   }
@@ -557,8 +640,8 @@ class CyberCarousel {
     this.scrollToIndex(this.currentIndex - 1);
   }
 
-  scrollNext() {
-    this.scrollToIndex(this.currentIndex + 1);
+  scrollNext(isAuto = false) {
+    this.scrollToIndex(this.currentIndex + 1, isAuto);
   }
 
   renderDots() {
@@ -578,7 +661,9 @@ class CyberCarousel {
       dot.setAttribute('aria-label', `Slide ${i + 1}`);
       dot.addEventListener('click', (e) => {
         e.preventDefault();
+        this.pauseAutoPlay();
         this.scrollToIndex(i);
+        this.resumeAutoPlayAfterDelay(5000);
       });
       this.dotsWrap.appendChild(dot);
     });
@@ -592,14 +677,15 @@ class CyberCarousel {
       return;
     }
 
+    // Always enabled for continuous infinite loop
     if (this.prevBtn) {
-      this.prevBtn.disabled = this.currentIndex <= 0;
-      this.prevBtn.classList.toggle('disabled', this.currentIndex <= 0);
+      this.prevBtn.disabled = false;
+      this.prevBtn.classList.remove('disabled');
     }
 
     if (this.nextBtn) {
-      this.nextBtn.disabled = this.currentIndex >= count - 1;
-      this.nextBtn.classList.toggle('disabled', this.currentIndex >= count - 1);
+      this.nextBtn.disabled = false;
+      this.nextBtn.classList.remove('disabled');
     }
 
     if (this.counterEl) {
