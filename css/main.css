@@ -1084,8 +1084,8 @@ section {
   justify-content: flex-start;
   gap: 10px;
   width: max-content;
-  margin: 0 auto;
-  padding: 6px 10px;
+  margin: 0;
+  padding: 10px 16px;
   box-sizing: border-box;
 }
 
