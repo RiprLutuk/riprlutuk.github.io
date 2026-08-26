@@ -6,63 +6,63 @@
 const ARCHITECTURE_DATA = {
   afpi: {
     title: "AFPI National Fintech Data Center (FDC) — ISO/IEC 27001:2022 & UU PDP",
-    badge: "ISO 27001:2022 & POJK 10/2022",
-    description: "National credit federator connecting 100+ licensed P2P lenders with dynamic PII data masking, tamper-resistant audit trails (5-yr retention), and secondary DRC site.",
+    badge: "Dual Ingress (SFTP & API) • .NET EOD @ 03:00 & Dedicated Audit DB",
+    description: "National credit federator connecting 100+ licensed P2P lenders over AES-256 IPsec VPN. Dual-ingress architecture: Fail2ban-shielded SFTP zip CSV ingestion into siktemp with .NET EOD ETL @ 03:00 AM, alongside real-time Inquiry API with a dedicated isolated hit-audit database and separate periodic reporting servers (PHP/Shell/PostgreSQL).",
     nodes: [
       {
-        id: "fintech-nodes",
-        badge: "SOURCE",
-        icon: "🏢",
-        title: "100+ Fintech Nodes",
-        desc: "P2P lenders credit score & deduplication inquiries",
-        telemetryNormal: "3,850 req/s • 1.2ms",
-        telemetrySpike: "12,400 req/s • 2.8ms",
-        tags: ["mTLS", "POJK 10/2022", "Token Auth"],
-        details: "Secure API endpoints accepting encrypted JSON credit inquiries and borrower deduplication requests across 100+ member platforms under OJK oversight."
-      },
-      {
-        id: "vpn-edge",
-        badge: "SECURITY EDGE",
+        id: "fintech-vpn",
+        badge: "PERIMETER & VPN",
         icon: "🛡️",
-        title: "FortiGate + IPsec VPN",
-        desc: "AES-256 StrongSwan & Fortinet Firewall (A.8.24)",
-        telemetryNormal: "0 Dropped • 0.4ms",
-        telemetrySpike: "DDoS Filter Active • 0.9ms",
-        tags: ["AES-256-GCM", "IPsec Tunnel", "Egress Filtering"],
-        details: "Hardware-accelerated site-to-site IPsec VPN tunnels with strict ingress firewall policies, IP whitelisting per member, and anti-DDoS perimeter protection."
+        title: "100+ Fintech & IPsec VPN",
+        desc: "FortiGate & StrongSwan AES-256 Tunnel (A.8.24)",
+        telemetryNormal: "100+ Nodes • 0 Dropped",
+        telemetrySpike: "DDoS & Intrusion Filter Active",
+        tags: ["IPsec AES-256", "FortiGate", "ISO 27001 A.8.24"],
+        details: "Site-to-site IPsec VPN tunnels with strict IP whitelisting per member and perimeter encryption connecting 100+ licensed P2P lending platforms under OJK oversight."
       },
       {
-        id: "ingest-backend",
-        badge: "COMPUTE",
+        id: "dual-ingress",
+        badge: "DUAL INGRESS",
+        icon: "⚡",
+        title: "SFTP & Query API + Fail2ban",
+        desc: "Fail2ban Anomaly Shield & Dedicated Hit-Audit DB",
+        telemetryNormal: "3,850 req/s • Fail2ban Clean",
+        telemetrySpike: "Fail2ban Blocked 42 Anomaly IPs",
+        tags: ["Fail2ban Shield", "Dedicated Audit DB", "UU PDP Masking"],
+        details: "Dual entry points protected by Fail2ban for anomaly detection and automated brute-force IP blocking. Real-time Inquiry API logs every access hit and token signature into a dedicated, isolated Audit Log Database (ISO 27001 A.8.15 & UU PDP)."
+      },
+      {
+        id: "dotnet-eod",
+        badge: "ETL & EOD BATCH",
         icon: "⚙️",
-        title: "Ingestion & PII Masking",
-        desc: "Go & Python ETL + UU PDP Data Masking (A.8.11)",
-        telemetryNormal: "4,200 evt/s • 0.9ms",
-        telemetrySpike: "14,000 evt/s • 2.1ms",
-        tags: ["UU No. 27/2022", "Dynamic Masking", "Go Gateway"],
-        details: "High-throughput microservices performing dynamic masking on NIK KTP, phone numbers, and bank accounts before analytical processing to guarantee UU PDP compliance."
+        title: ".NET Service & EOD @ 03:00",
+        desc: "ZIP CSV Validate ➔ siktemp ➔ EOD ETL",
+        telemetryNormal: "Raw Zip Extracted • Validation OK",
+        telemetrySpike: "EOD Batch Run @ 03:00 Active",
+        tags: [".NET Service", "siktemp Table", "EOD Batch 03:00"],
+        details: "Automated .NET service validating and decompressing raw member CSV zip files into staging table `siktemp`. Scheduled End-of-Day (EOD) engine triggers at 03:00 AM for heavy ETL transformations, deduplication, UU PDP PII dynamic masking, and financial ledger aggregations."
       },
       {
-        id: "db-ha",
-        badge: "STORAGE",
+        id: "db-cluster",
+        badge: "CORE & AUDIT DB",
         icon: "💾",
-        title: "Postgres & MySQL HA + DRC",
-        desc: "Streaming Replication & DRC Site (POJK 10/2022)",
+        title: "PostgreSQL HA & DRC Site",
+        desc: "Consolidated Master DB + Separate Audit DB",
         telemetryNormal: "99.98% SLA • RPO <15m",
         telemetrySpike: "Sync Active • RTO <1h",
-        tags: ["Primary-Standby", "TDE AES-256", "DRC Site"],
-        details: "Enterprise database cluster with encrypted tablespaces, WAL archiving, and real-time replication to a secondary Disaster Recovery Center in Indonesia."
+        tags: ["Postgres HA", "Isolated Audit DB", "DRC Site"],
+        details: "Enterprise database cluster strictly separating core aggregated borrower credit records from the isolated API hit-audit database. Features WAL archiving, encrypted tablespaces, and real-time streaming replication to a secondary Disaster Recovery Center in Indonesia (POJK 10/2022)."
       },
       {
-        id: "audit-telemetry",
-        badge: "AUDIT LOGS",
+        id: "reporting-server",
+        badge: "REPORTING SERVER",
         icon: "📊",
-        title: "Audit Trail & Telemetry",
-        desc: "pgAudit + 5-Yr Logs & Blackbox Exporter (A.8.15)",
-        telemetryNormal: "100% Integrity • WORM",
-        telemetrySpike: "Real-Time Telemetry Active",
-        tags: ["5-Year Retention", "Prometheus", "Grafana SLA"],
-        details: "Tamper-resistant centralized audit logging (pgAudit) combined with Prometheus Blackbox Exporter performing 24/7 synthetic HTTP/TCP probes, SSL expiry tracking, and Grafana SLA uptime telemetry."
+        title: "Periodic Reporting Server",
+        desc: "PHP + Shell Scripts + Automated Postgres Jobs",
+        telemetryNormal: "Daily / Weekly / Monthly Jobs OK",
+        telemetrySpike: "Monthly OJK Regulatory Report Compiled",
+        tags: ["PHP Reporting Engine", "Shell Automation", "OJK Compliance"],
+        details: "Separate dedicated reporting server running automated daily, weekly, and monthly batch jobs via PHP and Shell scripts connected to PostgreSQL to compile industry credit trends, AFPI statistics, and regulatory compliance digests."
       }
     ]
   },
