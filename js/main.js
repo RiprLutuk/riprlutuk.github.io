@@ -485,7 +485,6 @@ class ModalManager {
 }
 
 window.ModalManager = ModalManager;
-window.CyberCarousel = CyberCarousel;
 
 // ==========================================
 // 8. CYBERNETIC LEFT-RIGHT SWIPE & INFINITE LOOP AUTO-CAROUSEL ENGINE
