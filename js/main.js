@@ -560,6 +560,37 @@ class CyberCarousel {
     this.track.addEventListener('mouseenter', () => this.pauseAutoPlay());
     this.track.addEventListener('mouseleave', () => this.resumeAutoPlayAfterDelay(2000));
 
+    // Desktop Mouse Drag-to-Scroll support
+    let isDown = false;
+    let startX = 0;
+    let scrollStart = 0;
+    let hasDragged = false;
+
+    this.track.addEventListener('mousedown', (e) => {
+      if (e.target.closest('a') || e.target.closest('button') || e.target.closest('input') || e.target.closest('select')) return;
+      isDown = true;
+      hasDragged = false;
+      startX = e.pageX - this.track.offsetLeft;
+      scrollStart = this.track.scrollLeft;
+      this.pauseAutoPlay();
+    });
+
+    window.addEventListener('mouseup', (e) => {
+      if (isDown) {
+        isDown = false;
+        this.resumeAutoPlayAfterDelay(4000);
+      }
+    });
+
+    this.track.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      hasDragged = true;
+      const x = e.pageX - this.track.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      this.track.scrollLeft = scrollStart - walk;
+    });
+
     let scrollTimeout;
     this.track.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);

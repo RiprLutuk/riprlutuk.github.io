@@ -5090,52 +5090,102 @@ body {
   box-shadow: 0 0 10px rgba(249, 115, 22, 0.6);
 }
 
-/* Education Grid Base */
-.education-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+/* ==========================================================================
+   UNIVERSAL HORIZONTAL SNAP CAROUSEL SYSTEM (DESKTOP, TABLET & MOBILE)
+   ========================================================================== */
+
+.carousel-swipe-hint {
+  display: inline-flex;
 }
 
-/* ==========================================================================
-   MOBILE & TABLET CAROUSEL SNAP & RESPONSIVENESS (< 992px)
-   ========================================================================== */
-@media (max-width: 992px) {
-  .carousel-swipe-hint {
-    display: inline-flex;
-  }
+/* Base horizontal snap track for all carousels */
+.carousel-snap,
+.bento-projects-grid.carousel-snap,
+.benchmark-grid.carousel-snap,
+.repo-cards-grid.carousel-snap,
+.education-grid.carousel-snap {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-snap-type: x mandatory !important;
+  scroll-behavior: smooth !important;
+  -webkit-overflow-scrolling: touch !important;
+  gap: 24px !important;
+  padding: 12px 4px 24px 4px !important;
+  margin: 0 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+  scrollbar-width: none !important; /* Firefox */
+  cursor: grab;
+}
 
-  /* Transform card grids into horizontal snap carousels */
+.carousel-snap:active,
+.bento-projects-grid.carousel-snap:active,
+.benchmark-grid.carousel-snap:active,
+.repo-cards-grid.carousel-snap:active,
+.education-grid.carousel-snap:active {
+  cursor: grabbing;
+}
+
+.carousel-snap::-webkit-scrollbar,
+.bento-projects-grid.carousel-snap::-webkit-scrollbar,
+.benchmark-grid.carousel-snap::-webkit-scrollbar,
+.repo-cards-grid.carousel-snap::-webkit-scrollbar,
+.education-grid.carousel-snap::-webkit-scrollbar {
+  display: none !important; /* Chrome, Safari, Edge */
+}
+
+/* Default Desktop Card Widths (3-column view) */
+.bento-projects-grid.carousel-snap > .bento-card,
+.benchmark-grid.carousel-snap > .benchmark-box,
+.repo-cards-grid.carousel-snap > .repo-card,
+.education-grid.carousel-snap > div {
+  flex: 0 0 calc((100% - 48px) / 3) !important;
+  min-width: 330px !important;
+  scroll-snap-align: start !important;
+  scroll-snap-stop: normal !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+/* Tablet Responsive Sizing (768px - 1120px: 2-column view) */
+@media (max-width: 1120px) {
+  .carousel-snap,
   .bento-projects-grid.carousel-snap,
   .benchmark-grid.carousel-snap,
   .repo-cards-grid.carousel-snap,
   .education-grid.carousel-snap {
-    display: flex !important;
-    flex-direction: row !important;
-    flex-wrap: nowrap !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    scroll-snap-type: x mandatory !important;
-    scroll-behavior: smooth !important;
-    -webkit-overflow-scrolling: touch !important;
+    gap: 18px !important;
+  }
+
+  .bento-projects-grid.carousel-snap > .bento-card,
+  .benchmark-grid.carousel-snap > .benchmark-box,
+  .repo-cards-grid.carousel-snap > .repo-card,
+  .education-grid.carousel-snap > div {
+    flex: 0 0 calc((100% - 18px) / 2) !important;
+    min-width: 290px !important;
+    scroll-snap-align: start !important;
+  }
+}
+
+/* Mobile Responsive Sizing (<= 768px: 1-column with peek view) */
+@media (max-width: 768px) {
+  .carousel-snap,
+  .bento-projects-grid.carousel-snap,
+  .benchmark-grid.carousel-snap,
+  .repo-cards-grid.carousel-snap,
+  .education-grid.carousel-snap {
     gap: 14px !important;
     padding: 10px 16px 20px 16px !important;
     margin-left: -16px !important;
     margin-right: -16px !important;
     width: calc(100% + 32px) !important;
     max-width: calc(100% + 32px) !important;
-    box-sizing: border-box !important;
-    scrollbar-width: none !important; /* Firefox */
   }
 
-  .bento-projects-grid.carousel-snap::-webkit-scrollbar,
-  .benchmark-grid.carousel-snap::-webkit-scrollbar,
-  .repo-cards-grid.carousel-snap::-webkit-scrollbar,
-  .education-grid.carousel-snap::-webkit-scrollbar {
-    display: none !important; /* Chrome, Safari, Edge */
-  }
-
-  /* Card Widths & Snap Alignment for Native App-like Card Peeking */
   .bento-projects-grid.carousel-snap > .bento-card,
   .benchmark-grid.carousel-snap > .benchmark-box,
   .repo-cards-grid.carousel-snap > .repo-card,
@@ -5145,8 +5195,6 @@ body {
     min-width: 270px !important;
     scroll-snap-align: center !important;
     scroll-snap-stop: always !important;
-    box-sizing: border-box !important;
-    margin: 0 !important;
     touch-action: pan-y pinch-zoom !important;
   }
 
