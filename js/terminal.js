@@ -256,6 +256,14 @@ class CyberTerminal {
       case "apps":
         this.cmdMobile();
         break;
+      case "security":
+      case "iso":
+      case "iso27001":
+      case "masking":
+      case "encryption":
+      case "compliance":
+        this.cmdSecurity();
+        break;
       case "fullstack":
       case "skills":
       case "stack":
@@ -560,6 +568,20 @@ class CyberTerminal {
         • <strong>Frameworks:</strong> Flutter, React Native, Native Android (Java/Kotlin)<br>
         • <strong>Biometrics &amp; Security:</strong> Face ID Biometric Attendance, Anti-Mock GPS spoof detection, Offline SQLite/WASM caching, Secure Keystore tokenization.<br>
         • <strong>Flagship Apps:</strong> PasPapan Enterprise HRIS &amp; WargaHub Civic Governance PWA.
+      </div>
+    `);
+  }
+
+  cmdSecurity() {
+    if (window.soundFx) window.soundFx.playSuccess();
+    this.print(`
+      <div style="color: var(--text-secondary); line-height: 1.6; font-size: 0.82rem;">
+        <strong style="color: var(--accent-emerald); font-size: 0.95rem;">🛡️ ISO/IEC 27001:2022 &amp; DATA PRIVACY ARCHITECTURE</strong><br>
+        • <strong>Audit Lead:</strong> Spearheaded full ISO/IEC 27001:2022 ISMS lifecycle &amp; transition for national Fintech Data Center (AFPI).<br>
+        • <strong>Data Masking &amp; PII Anonymization:</strong> Dynamic Data Masking (DDM), salted HMAC-SHA256 pseudonymization for NIK, bank accounts &amp; credit records across staging/analytics clusters.<br>
+        • <strong>Encryption:</strong> AES-256-GCM Transparent Data Encryption (TDE) &amp; LUKS at rest, TLS 1.3 / mTLS &amp; FortiGate IPsec tunnels in transit.<br>
+        • <strong>Access Control &amp; Forensics:</strong> Row-Level Security (RLS) multi-tenant isolation, pgAudit 5-year tamper-proof immutable audit retention.<br>
+        • <strong>Regulatory Compliance:</strong> 100% compliant with UU Pelindungan Data Pribadi (UU PDP No. 27/2022), POJK 10/2022, and CIS Linux Benchmarks.
       </div>
     `);
   }

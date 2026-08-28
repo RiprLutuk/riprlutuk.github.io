@@ -926,7 +926,7 @@ function startCoreEngine() {
     },
     security: {
       badge: "Lead ISO 27001:2022 & UU PDP",
-      desc: "Led security compliance across AFPI Fintech Data Center for 100+ P2P nodes, IPsec StrongSwan VPNs, FortiGate perimeter security, and pgAudit 5-year log retention."
+      desc: "Led ISO/IEC 27001:2022 & UU PDP compliance for AFPI Fintech Data Center (100+ P2P platforms). Implemented Dynamic Data Masking (DDM), AES-256-GCM / TDE encryption, Row-Level Security (RLS), FortiGate IPsec tunnels, and pgAudit 5-year tamper-proof forensics."
     }
   };
 
