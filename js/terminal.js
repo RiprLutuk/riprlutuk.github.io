@@ -8,35 +8,33 @@ class CyberTerminal {
     this.history = [];
     this.historyIndex = -1;
     this.isMaximized = false;
+    this.welcomePrinted = false;
 
-    this.modal = document.getElementById("terminal-modal") || document.getElementById("cli-modal");
-    this.output = document.getElementById("cli-output-body") || document.getElementById("cli-output");
-    this.input = document.getElementById("cli-input");
-    this.form = document.getElementById("cli-form");
-    this.promptUser = document.getElementById("cli-prompt-user");
-
+    this.resolveElements();
     this.init();
   }
 
-  init() {
-    if (!this.modal || !this.input) return;
+  resolveElements() {
+    if (!this.modal) this.modal = document.getElementById("terminal-modal") || document.getElementById("cli-modal");
+    if (!this.output) this.output = document.getElementById("cli-output-body") || document.getElementById("cli-output");
+    if (!this.input) this.input = document.getElementById("cli-input");
+    if (!this.form) this.form = document.getElementById("cli-form");
+    if (!this.promptUser) this.promptUser = document.getElementById("cli-prompt-user");
+  }
 
+  init() {
+    this.resolveElements();
     this.bindEvents();
-    this.printWelcome();
+    if (!this.welcomePrinted && this.output) {
+      this.printWelcome();
+      this.welcomePrinted = true;
+    }
   }
 
   bindEvents() {
-    // Open modal buttons
-    document.querySelectorAll(".open-terminal-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.open();
-      });
-    });
-
     // Keyboard shortcut Ctrl+K / Cmd+K
     window.addEventListener("keydown", (e) => {
-      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+      if ((e.ctrlKey || e.metaKey) && (e.key.toLowerCase() === "k" || e.code === "KeyK")) {
         e.preventDefault();
         this.toggle();
       }
@@ -45,92 +43,116 @@ class CyberTerminal {
       }
     });
 
-    // Modal Close buttons
-    const closeBtns = this.modal.querySelectorAll(".modal-close-btn");
-    closeBtns.forEach(btn => {
-      btn.addEventListener("click", (e) => {
+    // Delegated click handler on document for open-terminal buttons
+    document.addEventListener("click", (e) => {
+      const openBtn = e.target.closest(".open-terminal-btn");
+      if (openBtn) {
         e.preventDefault();
-        this.close();
-      });
-    });
-
-    // Backdrop click close
-    this.modal.addEventListener("click", (e) => {
-      if (e.target === this.modal) {
-        this.close();
+        this.open();
       }
     });
+
+    this.resolveElements();
+    if (this.modal) {
+      // Modal Close buttons inside terminal modal
+      const closeBtns = this.modal.querySelectorAll(".modal-close-btn");
+      closeBtns.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          this.close();
+        });
+      });
+
+      // Backdrop click close
+      this.modal.addEventListener("click", (e) => {
+        if (e.target === this.modal) {
+          this.close();
+        }
+      });
+
+      // Auto-focus input when clicking terminal window background
+      this.modal.addEventListener("click", (e) => {
+        if (!e.target.closest("a") && !e.target.closest("button") && e.target !== this.modal) {
+          if (this.input) this.input.focus();
+        }
+      });
+    }
 
     // Form submit for Run button & mobile enter
     if (this.form) {
       this.form.addEventListener("submit", (e) => {
         e.preventDefault();
-        const cmd = this.input.value.trim();
+        if (!this.input) this.input = document.getElementById("cli-input");
+        const cmd = this.input ? this.input.value.trim() : "";
         if (cmd) {
           this.history.push(cmd);
           this.historyIndex = this.history.length;
           this.execute(cmd);
-          this.input.value = "";
+          if (this.input) this.input.value = "";
         }
       });
     }
 
     // Input handlers
-    this.input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        // Handled by form submit if form exists; fallback here:
-        if (!this.form) {
-          const cmd = this.input.value.trim();
-          if (cmd) {
-            this.history.push(cmd);
+    if (this.input) {
+      this.input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          if (!this.form) {
+            const cmd = this.input.value.trim();
+            if (cmd) {
+              this.history.push(cmd);
+              this.historyIndex = this.history.length;
+              this.execute(cmd);
+              this.input.value = "";
+            }
+          }
+        } else if (e.key === "ArrowUp") {
+          e.preventDefault();
+          if (this.history.length > 0 && this.historyIndex > 0) {
+            this.historyIndex--;
+            this.input.value = this.history[this.historyIndex];
+          }
+        } else if (e.key === "ArrowDown") {
+          e.preventDefault();
+          if (this.historyIndex < this.history.length - 1) {
+            this.historyIndex++;
+            this.input.value = this.history[this.historyIndex];
+          } else {
             this.historyIndex = this.history.length;
-            this.execute(cmd);
             this.input.value = "";
           }
+        } else if (e.key === "Tab") {
+          e.preventDefault();
+          this.handleAutocomplete();
         }
-      } else if (e.key === "ArrowUp") {
-        e.preventDefault();
-        if (this.history.length > 0 && this.historyIndex > 0) {
-          this.historyIndex--;
-          this.input.value = this.history[this.historyIndex];
-        }
-      } else if (e.key === "ArrowDown") {
-        e.preventDefault();
-        if (this.historyIndex < this.history.length - 1) {
-          this.historyIndex++;
-          this.input.value = this.history[this.historyIndex];
-        } else {
-          this.historyIndex = this.history.length;
-          this.input.value = "";
-        }
-      } else if (e.key === "Tab") {
-        e.preventDefault();
-        this.handleAutocomplete();
-      }
-    });
-
-    // Auto-focus input when clicking terminal window
-    this.modal.addEventListener("click", (e) => {
-      if (!e.target.closest("a") && !e.target.closest("button") && e.target !== this.modal) {
-        this.input.focus();
-      }
-    });
+      });
+    }
   }
 
   open() {
+    this.resolveElements();
     if (!this.modal) return;
     this.modal.classList.add("active");
     this.modal.classList.add("open");
-    if (window.soundFx) window.soundFx.playClick();
+    document.body.style.overflow = "hidden";
+    if (window.soundFx && typeof window.soundFx.playClick === "function") {
+      window.soundFx.playClick();
+    }
     setTimeout(() => {
+      if (!this.input) this.input = document.getElementById("cli-input");
       if (this.input) this.input.focus();
-    }, 50);
+    }, 60);
   }
 
   close() {
+    this.resolveElements();
     if (!this.modal) return;
     this.modal.classList.remove("active");
     this.modal.classList.remove("open");
+    const remainingOpen = document.querySelectorAll(".modal-backdrop.open, .modal-backdrop.active");
+    if (remainingOpen.length === 0) {
+      document.body.style.overflow = "";
+    }
   }
 
   toggle() {
@@ -139,6 +161,7 @@ class CyberTerminal {
   }
 
   isOpen() {
+    this.resolveElements();
     return this.modal && (this.modal.classList.contains("active") || this.modal.classList.contains("open"));
   }
 
@@ -799,8 +822,12 @@ class CyberTerminal {
   }
 }
 
+window.CyberTerminal = CyberTerminal;
+
 function initTerminal() {
-  window.cyberTerminal = new CyberTerminal();
+  if (!window.cyberTerminal) {
+    window.cyberTerminal = new CyberTerminal();
+  }
 }
 
 if (document.readyState === "loading") {

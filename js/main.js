@@ -379,59 +379,79 @@ class ModalManager {
   }
 
   bindModals() {
-    // Open Resume Modal
-    document.querySelectorAll(".open-resume-modal-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+    // Delegated click handler for robust modal triggering across static and dynamic elements
+    document.addEventListener("click", (e) => {
+      // Open Terminal Modal
+      const terminalBtn = e.target.closest(".open-terminal-btn");
+      if (terminalBtn) {
         e.preventDefault();
-        if (window.soundFx) window.soundFx.playClick();
-        this.openModal("resume-modal");
-      });
-    });
-
-    // Open Contact Modal
-    document.querySelectorAll(".open-contact-modal-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (window.soundFx) window.soundFx.playClick();
-        this.openModal("contact-modal");
-      });
-    });
-
-    // Open Terminal Modal
-    document.querySelectorAll(".open-terminal-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        if (window.soundFx) window.soundFx.playClick();
-        if (window.cyberTerminal) {
+        if (window.soundFx && typeof window.soundFx.playClick === "function") window.soundFx.playClick();
+        if (window.cyberTerminal && typeof window.cyberTerminal.open === "function") {
           window.cyberTerminal.open();
         } else {
           this.openModal("terminal-modal");
         }
-      });
-    });
+        return;
+      }
 
-    // Close buttons & backdrop click
-    document.querySelectorAll(".modal-backdrop").forEach(modal => {
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal || e.target.classList.contains("modal-close-btn") || e.target.closest(".modal-close-btn")) {
-          this.closeModal(modal.id);
-        }
-      });
-    });
-
-    // Copy to clipboard buttons
-    document.querySelectorAll(".copy-btn").forEach(btn => {
-      btn.addEventListener("click", (e) => {
+      // Open Resume Modal
+      const resumeBtn = e.target.closest(".open-resume-modal-btn");
+      if (resumeBtn) {
         e.preventDefault();
-        const text = btn.getAttribute("data-copy");
-        const msg = btn.getAttribute("data-msg") || "Copied to clipboard!";
+        if (window.soundFx && typeof window.soundFx.playClick === "function") window.soundFx.playClick();
+        this.openModal("resume-modal");
+        return;
+      }
+
+      // Open Contact Modal
+      const contactBtn = e.target.closest(".open-contact-modal-btn");
+      if (contactBtn) {
+        e.preventDefault();
+        if (window.soundFx && typeof window.soundFx.playClick === "function") window.soundFx.playClick();
+        this.openModal("contact-modal");
+        return;
+      }
+
+      // Modal Close buttons
+      const closeBtn = e.target.closest(".modal-close-btn");
+      if (closeBtn) {
+        e.preventDefault();
+        const parentModal = closeBtn.closest(".modal-backdrop");
+        if (parentModal) {
+          this.closeModal(parentModal.id);
+        }
+        return;
+      }
+
+      // Modal Backdrop click (clicking outside dialog)
+      if (e.target.classList.contains("modal-backdrop")) {
+        this.closeModal(e.target.id);
+        return;
+      }
+
+      // Copy to clipboard buttons
+      const copyBtn = e.target.closest(".copy-btn");
+      if (copyBtn) {
+        e.preventDefault();
+        const text = copyBtn.getAttribute("data-copy");
+        const msg = copyBtn.getAttribute("data-msg") || "Copied to clipboard!";
         if (text) {
           navigator.clipboard.writeText(text).then(() => {
-            if (window.soundFx) window.soundFx.playSuccess();
+            if (window.soundFx && typeof window.soundFx.playSuccess === "function") window.soundFx.playSuccess();
             window.showToast(msg);
           });
         }
-      });
+        return;
+      }
+    });
+
+    // Global keyboard listener for ESC key to close any active modal
+    window.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" || e.keyCode === 27) {
+        document.querySelectorAll(".modal-backdrop.open, .modal-backdrop.active").forEach(modal => {
+          this.closeModal(modal.id);
+        });
+      }
     });
   }
 
@@ -440,6 +460,14 @@ class ModalManager {
     if (modal) {
       modal.classList.add("active");
       modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+
+      if (modalId === "terminal-modal") {
+        const input = document.getElementById("cli-input");
+        if (input) {
+          setTimeout(() => input.focus(), 60);
+        }
+      }
     }
   }
 
@@ -448,9 +476,16 @@ class ModalManager {
     if (modal) {
       modal.classList.remove("active");
       modal.classList.remove("open");
+      const remainingOpen = document.querySelectorAll(".modal-backdrop.open, .modal-backdrop.active");
+      if (remainingOpen.length === 0) {
+        document.body.style.overflow = "";
+      }
     }
   }
 }
+
+window.ModalManager = ModalManager;
+window.CyberCarousel = CyberCarousel;
 
 // ==========================================
 // 8. CYBERNETIC LEFT-RIGHT SWIPE & INFINITE LOOP AUTO-CAROUSEL ENGINE
