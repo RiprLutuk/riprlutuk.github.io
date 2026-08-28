@@ -133,7 +133,7 @@ class ROICalculator {
       const body = encodeURIComponent(
         `Hi Heri,\n\nI calculated our database metrics on your portfolio website:\n- Total Database Size: ${dbSize} TB\n- Monthly Cloud DB Spend: $${spend.toLocaleString()} / mo\n- Slow Query Latency: ${latency.toFixed(1)}s\n- Projected Savings: $${monthlySavings.toLocaleString()}/mo ($${yearlySavings.toLocaleString()}/yr)\n\nWe would like to explore a database architecture audit and query optimization engagement.\n\nBest regards,\n[Your Name / Company]`
       );
-      this.emailLinkEl.href = `mailto:lutuk.dev@gmail.com?subject=${subject}&body=${body}`;
+      this.emailLinkEl.href = `mailto:rizqy.pra85@gmail.com?subject=${subject}&body=${body}`;
     }
   }
 
@@ -165,7 +165,7 @@ Generated via Heri Riski Anto's Infrastructure Portfolio (https://riprlutuk.gith
 
 ---
 **Consultant**: Heri Riski Anto — Senior DBA, Infrastructure & Platform Architect
-**Telegram**: @riprlutuk | **Email**: lutuk.dev@gmail.com | **Portfolio**: https://riprlutuk.github.io`;
+**Telegram**: @riprlutuk | **Email**: rizqy.pra85@gmail.com | **Portfolio**: https://riprlutuk.github.io`;
 
     try {
       if (navigator.clipboard && navigator.clipboard.writeText) {

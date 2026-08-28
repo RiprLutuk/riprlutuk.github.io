@@ -400,10 +400,11 @@ class CyberTerminal {
 • <strong>Track Record:</strong> 7+ Years Experience across Telecom (PT Link Net Tbk), Fintech (AFPI Data Center), and Crowdfunding (Vestora.id)<br>
         • <strong>Compliance Lead:</strong> ISO/IEC 27001:2013 &amp; Upgrade to 27001:2022 (ISMS), UU No. 27/2022 (UU PDP), POJK 10/2022<br>
         • <strong>Core Databases:</strong> PostgreSQL, MS SQL Server (AlwaysOn AG), Oracle 19c, MySQL, ClickHouse, Redis<br>
-        • <strong>Direct Contact:</strong><br>
-        &nbsp;&nbsp;👉 <a href="https://t.me/riprlutuk" target="_blank" style="color:#229ED9; text-decoration:underline; font-weight:700;">Chat on Telegram (@riprlutuk) ↗</a><br>
-        &nbsp;&nbsp;👉 <a href="https://linkedin.com/in/riprlutuk" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:700;">LinkedIn: linkedin.com/in/riprlutuk ↗</a><br>
-        &nbsp;&nbsp;👉 <a href="mailto:rizqy.pra85@gmail.com" style="color:var(--accent-primary); text-decoration:underline; font-weight:700;">Email: rizqy.pra85@gmail.com ↗</a>
+        • <strong>Direct Contact &amp; Download:</strong><br>
+        &nbsp;&nbsp;👉 <a href="cv-ats-heri-riski-anto.html" target="_blank" style="color:var(--accent-emerald); text-decoration:underline; font-weight:700;">📄 View Official ATS Print-Ready Resume / PDF ↗</a><br>
+        &nbsp;&nbsp;👉 <a href="https://t.me/riprlutuk" target="_blank" style="color:#229ED9; text-decoration:underline; font-weight:700;">✈️ Chat on Telegram (@riprlutuk) ↗</a><br>
+        &nbsp;&nbsp;👉 <a href="https://linkedin.com/in/riprlutuk" target="_blank" style="color:var(--accent-cyan); text-decoration:underline; font-weight:700;">💼 LinkedIn: linkedin.com/in/riprlutuk ↗</a><br>
+        &nbsp;&nbsp;👉 <a href="mailto:rizqy.pra85@gmail.com" style="color:var(--accent-primary); text-decoration:underline; font-weight:700;">✉️ Email: rizqy.pra85@gmail.com ↗</a>
       </div>
     `);
   }

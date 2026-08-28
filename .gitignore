@@ -4,9 +4,8 @@ Thumbs.db
 
 # Sensitive & Personal Documents (Do NOT upload to public repo)
 *.pdf
-CV*
-cv-*
 *.cdr
+!cv-ats-heri-riski-anto.html
 
 # Python & Build artifacts
 __pycache__/

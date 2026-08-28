@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Curriculum Vitae — Heri Riski Anto, S.Kom (Senior DBA &amp; Platform Architect)</title>
+  <meta name="description" content="Official ATS-Compliant Technical Resume of Heri Riski Anto, Senior Database Administrator and Platform Infrastructure Architect with 7+ years production experience.">
+  <link rel="canonical" href="https://riprlutuk.github.io/cv-ats-heri-riski-anto.html">
+  <link rel="icon" type="image/png" href="images/ico.png">
+  
+  <!-- Typography for ATS Print & Screen -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --color-text-main: #0f172a;
+      --color-text-muted: #475569;
+      --color-text-light: #64748b;
+      --color-accent: #0f766e;
+      --color-border: #cbd5e1;
+      --color-bg-subtle: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-sans);
+      color: var(--color-text-main);
+      background: #f1f5f9;
+      line-height: 1.5;
+      font-size: 13.5px;
+      -webkit-font-smoothing: antialiased;
+      padding: 32px 16px 60px;
+    }
+
+    /* Floating Action Bar */
+    .action-bar {
+      position: fixed;
+      top: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-action {
+      background: transparent;
+      border: none;
+      color: #e2e8f0;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+    }
+
+    .btn-action.primary {
+      background: #f97316;
+      color: #fff;
+    }
+
+    .btn-action.primary:hover {
+      background: #ea580c;
+    }
+
+    /* Paper Container (A4 Proportions) */
+    .paper-sheet {
+      background: #ffffff;
+      max-width: 860px;
+      margin: 48px auto 0;
+      padding: 48px 56px;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--color-border);
+    }
+
+    /* Header */
+    .cv-header {
+      border-bottom: 2px solid var(--color-text-main);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .candidate-name {
+      font-size: 26px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--color-text-main);
+      margin-bottom: 4px;
+    }
+
+    .candidate-role {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-accent);
+      margin-bottom: 10px;
+    }
+
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 18px;
+      font-size: 12.5px;
+      color: var(--color-text-muted);
+    }
+
+    .contact-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .contact-item a {
+      color: var(--color-text-main);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-item a:hover {
+      text-decoration: underline;
+      color: var(--color-accent);
+    }
+
+    /* Section Structure */
+    .cv-section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-main);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Summary */
+    .summary-p {
+      color: var(--color-text-muted);
+      text-align: justify;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Competencies Grid */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 6px 12px;
+      font-size: 12.5px;
+    }
+
+    .comp-key {
+      font-weight: 700;
+      color: var(--color-text-main);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+    }
+
+    .comp-val {
+      color: var(--color-text-muted);
+    }
+
+    /* Experience Items */
+    .experience-entry {
+      margin-bottom: 16px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 3px;
+    }
+
+    .entry-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-main);
+    }
+
+    .entry-company {
+      font-weight: 600;
+      color: var(--color-accent);
+    }
+
+    .entry-period {
+      font-size: 12px;
+      font-family: var(--font-mono);
+      color: var(--color-text-light);
+      white-space: nowrap;
+    }
+
+    .entry-bullets {
+      list-style-type: disc;
+      padding-left: 18px;
+      margin-top: 4px;
+      color: var(--color-text-muted);
+      font-size: 12.8px;
+    }
+
+    .entry-bullets li {
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    .entry-bullets strong {
+      color: var(--color-text-main);
+    }
+
+    /* Projects / Key Artifacts */
+    .project-row {
+      margin-bottom: 8px;
+      font-size: 12.8px;
+    }
+
+    .project-name {
+      font-weight: 700;
+      color: var(--color-text-main);
+      font-family: var(--font-mono);
+    }
+
+    /* Education & Certs */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px 16px;
+      font-size: 12.5px;
+    }
+
+    .edu-item strong {
+      color: var(--color-text-main);
+    }
+
+    /* Toast Notification */
+    .cv-toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0f172a;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      z-index: 2000;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .cv-toast.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ==========================================================================
+       PRINT STYLESHEET (CLEAN 100% WHITE A4 PDF EXPORT)
+       ========================================================================== */
+    @media print {
+      @page {
+        size: A4;
+        margin: 12mm 14mm 14mm 14mm;
+      }
+
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        color: #000000 !important;
+        font-size: 11pt !important;
+        line-height: 1.4 !important;
+      }
+
+      .action-bar, .cv-toast {
+        display: none !important;
+      }
+
+      .paper-sheet {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+      }
+
+      .candidate-name {
+        font-size: 20pt !important;
+        color: #000000 !important;
+      }
+
+      .candidate-role {
+        font-size: 12pt !important;
+        color: #0f766e !important;
+      }
+
+      .section-title {
+        border-bottom: 1.5pt solid #0f172a !important;
+        font-size: 10.5pt !important;
+        margin-top: 10pt !important;
+      }
+
+      .entry-title {
+        font-size: 11pt !important;
+      }
+
+      .entry-bullets {
+        font-size: 9.8pt !important;
+      }
+
+      .comp-grid, .edu-grid {
+        font-size: 9.8pt !important;
+      }
+
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Navigation Controls -->
+  <div class="action-bar">
+    <a href="index.html" class="btn-action">
+      <span>← Interactive Portfolio</span>
+    </a>
+    <button onclick="window.print()" class="btn-action primary" title="Print to PDF (Ctrl+P)">
+      <span>🖨️ Save as Official PDF</span>
+    </button>
+    <button onclick="copyDossier()" class="btn-action" title="Copy Full Text Dossier">
+      <span>📋 Copy ATS Text</span>
+    </button>
+  </div>
+
+  <!-- A4 Document Paper Sheet -->
+  <main class="paper-sheet" id="printable-resume">
+    
+    <!-- Header Block -->
+    <header class="cv-header">
+      <h1 class="candidate-name">HERI RISKI ANTO, S.Kom</h1>
+      <div class="candidate-role">Senior Database Administrator (DBA) &bull; Infrastructure &amp; Platform Architect</div>
+      
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span>📍</span>
+          <span>Tangerang City / Jakarta, Indonesia (UTC+7) &bull; Remote / Hybrid</span>
+        </div>
+        <div class="contact-item">
+          <span>✉️</span>
+          <a href="mailto:rizqy.pra85@gmail.com">rizqy.pra85@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span>✈️</span>
+          <a href="https://t.me/riprlutuk" target="_blank" rel="noopener">Telegram: @riprlutuk</a>
+        </div>
+        <div class="contact-item">
+          <span>💼</span>
+          <a href="https://linkedin.com/in/riprlutuk" target="_blank" rel="noopener">linkedin.com/in/riprlutuk</a>
+        </div>
+        <div class="contact-item">
+          <span>🐙</span>
+          <a href="https://github.com/RiprLutuk" target="_blank" rel="noopener">github.com/RiprLutuk</a>
+        </div>
+        <div class="contact-item">
+          <span>🌐</span>
+          <a href="https://riprlutuk.github.io" target="_blank" rel="noopener">riprlutuk.github.io</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- 01. Professional Summary -->
+    <section class="cv-section">
+      <h2 class="section-title">01 // Executive Professional Summary</h2>
+      <p class="summary-p">
+        Results-driven <strong>Database Administrator (DBA), Cloud Infrastructure, and Backend Platform Architect</strong> with <strong>7+ years of production experience</strong> designing, scaling, and securing mission-critical data platforms, enterprise telecommunication fleets, and national fintech infrastructure. Expert in administering multi-engine database environments (<strong>PostgreSQL, MS SQL Server AlwaysOn, Oracle 19c, MySQL, ClickHouse</strong>), designing high-availability (HA/DR) failovers, automating real-time CDC/ETL data pipelines with <strong>Apache Kafka &amp; Debezium</strong>, and leading <strong>ISO/IEC 27001:2022 Information Security Management System (ISMS)</strong> compliance. Proven track record developing high-throughput microservices and API gateways using <strong>Go (Golang)</strong> and <strong>Python</strong>.
+      </p>
+    </section>
+
+    <!-- 02. Technical Competencies Matrix -->
+    <section class="cv-section">
+      <h2 class="section-title">02 // Technical Competencies &amp; Stack</h2>
+      <div class="comp-grid">
+        <span class="comp-key">DBA &amp; HA FLEET:</span>
+        <span class="comp-val">PostgreSQL (9.x–16.x), MS SQL Server (2016–2022 AlwaysOn AG), Oracle 11g/19c (RMAN, Data Guard, PL/SQL), MySQL/MariaDB, ClickHouse Columnar OLAP, PgBouncer pooling, zero-downtime schema migrations.</span>
+
+        <span class="comp-key">CDC &amp; STREAMING:</span>
+        <span class="comp-val">Change Data Capture (CDC), Debezium Connector, Apache Kafka Cluster, OLTP-to-OLAP ETL pipelines, Prometheus exporters, Grafana Blackbox SLA telemetry.</span>
+
+        <span class="comp-key">BACKEND &amp; CLOUD:</span>
+        <span class="comp-val">Go (Golang), Python (FastAPI, Flask), PHP 8.x (Laravel 11), Linux Administration (Ubuntu, Debian, RHEL), AWS (EC2, RDS, VPC), TencentDB, Docker Compose, CI/CD automation.</span>
+
+        <span class="comp-key">SECURITY &amp; ISMS:</span>
+        <span class="comp-val">ISO/IEC 27001:2022 ISMS Lead, Fortinet FortiGate enterprise firewalls, Site-to-Site IPsec VPN (StrongSwan), OpenVPN, Tailscale, CIS Benchmark hardening, UU PDP compliance.</span>
+
+        <span class="comp-key">FRONTEND &amp; MOBILE:</span>
+        <span class="comp-val">Flutter, Android Native (Java), Vue 3, PGlite WASM (Offline-first embedded SQL).</span>
+      </div>
+    </section>
+
+    <!-- 03. Professional Experience History -->
+    <section class="cv-section">
+      <h2 class="section-title">03 // Professional Experience History</h2>
+      
+      <!-- Role 1: Link Net -->
+      <article class="experience-entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Database Administrator (DBA)</span> &bull; 
+            <span class="entry-company">PT Link Net Tbk</span>
+          </div>
+          <span class="entry-period">Feb 2025 – Present | Jakarta / Remote</span>
+        </div>
+        <ul class="entry-bullets">
+          <li><strong>Enterprise Oracle to PostgreSQL Migration:</strong> Architected zero-downtime migration from <strong>Oracle 19c to PostgreSQL 16</strong>, rewriting legacy PL/SQL stored procedures and triggers into optimized PL/pgSQL with automated data validation.</li>
+          <li><strong>Distributed NoSQL Optimization:</strong> Migrated MongoDB replica sets to <strong>AWS DocumentDB</strong>, tuning indexing structures and aggregation pipelines for high-concurrency billing systems.</li>
+          <li><strong>Cross-Cloud Downsizing:</strong> Executed zero-downtime database migration from <strong>AWS RDS to TencentDB</strong>, achieving significant cloud compute cost savings while preserving <strong>99.98% production SLA</strong>.</li>
+          <li><strong>Observability &amp; Telemetry:</strong> Deployed centralized Grafana &amp; Prometheus fleet dashboards monitoring connection pools, replication lag, and query execution plans across production clusters.</li>
+        </ul>
+      </article>
+
+      <!-- Role 2: Vestora -->
+      <article class="experience-entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Senior Fullstack Engineer / IT Specialist</span> &bull; 
+            <span class="entry-company">Halalvestor Global Asia (Vestora.id)</span>
+          </div>
+          <span class="entry-period">Dec 2024 – Oct 2025 | Tangerang / Jakarta</span>
+        </div>
+        <ul class="entry-bullets">
+          <li><strong>Crowdfunding Financial Ledgers:</strong> Architected backend financial microservices for <strong>Vestora.id</strong>, a regulated Sharia securities crowdfunding (SCF) platform operating under strict OJK oversight.</li>
+          <li><strong>Deadlock &amp; Race Condition Elimination:</strong> Enforced PostgreSQL Advisory Locks and Serializable transactions, completely eliminating race conditions and double-allocation anomalies during rapid investment oversubscriptions.</li>
+          <li><strong>Payment &amp; KYC Integrations:</strong> Built automated payment gateway webhooks, automated investor identity verification (e-KYC), and dividend distribution engines with <strong>PHP 8.x / Laravel and PostgreSQL</strong>.</li>
+        </ul>
+      </article>
+
+      <!-- Role 3: AFPI -->
+      <article class="experience-entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">Data Management &amp; Infrastructure Operations Lead</span> &bull; 
+            <span class="entry-company">AFPI (Fintech Data Center)</span>
+          </div>
+          <span class="entry-period">Mar 2020 – Apr 2025 (5+ Years) | Jakarta</span>
+        </div>
+        <ul class="entry-bullets">
+          <li><strong>National Fintech Data Center Operations:</strong> Supervised data management and infrastructure for the national <strong>Fintech Data Center (FDC)</strong>, federating real-time credit data exchange across <strong>100+ licensed P2P fintech lenders nationwide</strong>.</li>
+          <li><strong>ISO/IEC 27001:2022 ISMS Lead:</strong> Spearheaded full security audit lifecycle and ISO 27001 certification, establishing security baselines, incident response protocols, and server hardening against CIS benchmarks.</li>
+          <li><strong>Perimeter Network &amp; VPN Architecture:</strong> Maintained high-availability site-to-site <strong>IPsec VPN tunnels (StrongSwan)</strong> and <strong>Fortinet FortiGate enterprise firewalls</strong> connecting member institutions.</li>
+          <li><strong>Real-Time ETL &amp; SRE Monitoring:</strong> Designed automated data ingestion pipelines and Grafana dashboards, cutting incident triage and resolution times by <strong>50%</strong>.</li>
+        </ul>
+      </article>
+
+      <!-- Role 4: PT Sas Kreasindo -->
+      <article class="experience-entry">
+        <div class="entry-header">
+          <div>
+            <span class="entry-title">IT Business Analyst &amp; Systems Officer</span> &bull; 
+            <span class="entry-company">PT Sas Kreasindo &amp; Syarfi Fintech</span>
+          </div>
+          <span class="entry-period">2018 – 2020 | Indonesia</span>
+        </div>
+        <ul class="entry-bullets">
+          <li>Streamlined ERP manufacturing workflows in Odoo ERP and administered cloud Linux servers for early-stage Sharia P2P fintech platforms with native Android Java modules.</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- 04. Key Engineering Projects -->
+    <section class="cv-section">
+      <h2 class="section-title">04 // Key Engineering Artifacts &amp; Open Source</h2>
+      <div class="project-row">
+        <span class="project-name">⚡ DDAG (Dynamic Database API Gateway):</span> High-performance Go gateway dynamically exposing PostgreSQL, MSSQL, Oracle, and MySQL schemas as secure, authenticated REST APIs (<a href="https://github.com/RiprLutuk/DDAG" target="_blank" rel="noopener">github.com/RiprLutuk/DDAG</a>).
+      </div>
+      <div class="project-row">
+        <span class="project-name">🔄 ch-olap-pipeline:</span> Continuous real-time CDC pipeline streaming WAL mutations from OLTP into ClickHouse columnar storage for sub-second analytical reporting (<a href="https://github.com/RiprLutuk/ch-olap-pipeline" target="_blank" rel="noopener">github.com/RiprLutuk/ch-olap-pipeline</a>).
+      </div>
+      <div class="project-row">
+        <span class="project-name">🛡️ OpenOrg:</span> Civic organization administration platform with digital identity issuance and cryptographic certificate verification (<a href="https://github.com/RiprLutuk/openorg" target="_blank" rel="noopener">github.com/RiprLutuk/openorg</a>).
+      </div>
+      <div class="project-row">
+        <span class="project-name">📱 WargaHub:</span> Community governance PWA featuring offline-first local SQL storage powered by embedded PGlite WASM (<a href="https://github.com/RiprLutuk/WargaHub" target="_blank" rel="noopener">github.com/RiprLutuk/WargaHub</a>).
+      </div>
+    </section>
+
+    <!-- 05. Education & Credentials -->
+    <section class="cv-section">
+      <h2 class="section-title">05 // Education &amp; Certifications</h2>
+      <div class="edu-grid">
+        <div class="edu-item">
+          <strong>🎓 Bachelor of Computer Science (S.Kom)</strong><br>
+          <span style="color:var(--color-text-muted);">STMIK Widya Pratama Pekalongan (2014 – 2018)</span>
+        </div>
+        <div class="edu-item">
+          <strong>🛡️ ISO/IEC 27001:2022 ISMS Lead</strong><br>
+          <span style="color:var(--color-text-muted);">Implementation &amp; Audit Alignment (AFPI)</span>
+        </div>
+        <div class="edu-item">
+          <strong>🔒 Ethical Hacking &amp; Penetration Testing</strong><br>
+          <span style="color:var(--color-text-muted);">Spentera Hacking Playground</span>
+        </div>
+        <div class="edu-item">
+          <strong>📊 Data Engineering &amp; Python Track</strong><br>
+          <span style="color:var(--color-text-muted);">DQLab Academy &amp; Dicoding</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="cv-toast" class="cv-toast">
+    <span>📋 ATS Text Dossier copied to clipboard!</span>
+  </div>
+
+  <script>
+    function copyDossier() {
+      const text = `HERI RISKI ANTO, S.Kom
+Senior Database Administrator (DBA) | Infrastructure & Platform Architect
+Location: Tangerang / Jakarta, Indonesia (UTC+7) | Remote / Hybrid
+Email: rizqy.pra85@gmail.com | Telegram: @riprlutuk
+LinkedIn: https://linkedin.com/in/riprlutuk | GitHub: https://github.com/RiprLutuk
+Portfolio: https://riprlutuk.github.io
+
+PROFESSIONAL SUMMARY:
+Results-driven DBA, Cloud Infrastructure, and Backend Platform Engineer with 7+ years of experience administering PostgreSQL, MS SQL Server AlwaysOn, Oracle 19c, MySQL, ClickHouse, Apache Kafka CDC, Go, and leading ISO/IEC 27001 ISMS certification.
+
+TECHNICAL COMPETENCIES:
+• Database: PostgreSQL (9.x-16.x), MS SQL Server AlwaysOn AG, Oracle 11g/19c (RMAN, Data Guard), ClickHouse OLAP, MySQL, Redis, PgBouncer.
+• Streaming & CDC: Apache Kafka, Debezium, Real-Time ETL, Prometheus, Grafana.
+• Backend & Cloud: Go (Golang), Python, PHP 8/Laravel, Linux (Ubuntu, Debian, RHEL), AWS, Docker Compose.
+• Security & ISMS: ISO/IEC 27001:2022 Lead, Fortinet FortiGate, StrongSwan IPsec VPN, CIS Hardening.
+
+EXPERIENCE:
+1. Database Administrator (DBA) — PT Link Net Tbk (Feb 2025 - Present)
+   - Oracle 19c to PostgreSQL 16 zero-downtime migration, PL/SQL to PL/pgSQL conversion.
+   - Distributed MongoDB to AWS DocumentDB migration and AWS RDS to TencentDB cloud cost downsizing.
+   - Centralized Prometheus & Grafana 99.98% SLA telemetry.
+
+2. Senior Fullstack Engineer / IT Specialist — Halalvestor Global Asia / Vestora.id (Dec 2024 - Oct 2025)
+   - OJK-regulated Sharia crowdfunding ledgers with row-level locking & zero race conditions.
+   - Payment gateway webhooks, automated investor KYC, and dividend distribution engine.
+
+3. Data Management & Infrastructure Operations Lead — AFPI Fintech Data Center (Mar 2020 - Apr 2025)
+   - Supervised national Fintech Data Center (FDC) credit data exchange for 100+ fintech lenders.
+   - Spearheaded ISO/IEC 27001:2022 ISMS certification and Linux CIS benchmark hardening.
+   - High-availability StrongSwan IPsec VPN & FortiGate enterprise firewalls.
+
+4. IT Business Analyst & Systems Officer — PT Sas Kreasindo & Syarfi Fintech (2018 - 2020)
+   - Odoo ERP manufacturing workflows & native Android Java modules.
+
+EDUCATION & CERTS:
+• S.Kom in Informatics — STMIK Widya Pratama Pekalongan (2014-2018)
+• ISO/IEC 27001:2022 ISMS Lead (AFPI)
+• Ethical Hacking — Spentera Hacking Playground`;
+
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById("cv-toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 3000);
+      });
+    }
+  </script>
+</body>
+</html>
